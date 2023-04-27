@@ -1,0 +1,33 @@
+.form {
+  box-shadow: 0 0 10px #0891b2;
+  @apply w-full max-w-md p-5 flex flex-col items-center justify-center gap-3 border border-cyan-600 rounded-lg;
+}
+
+.input-element {
+  @apply w-full flex flex-col;
+}
+
+.label {
+  @apply flex flex-row items-center gap-1;
+}
+
+.input {
+  @apply bg-gray-300 text-black outline-none p-2 rounded-md border border-black;
+}
+
+.input:focus {
+  @apply border border-blue-600;
+}
+
+.button {
+  @apply mt-2 w-full flex items-center justify-center h-12 rounded-md border border-cyan-600 font-semibold;
+}
+
+.form:invalid .button {
+  @apply cursor-not-allowed;
+}
+
+.form:valid .button:enabled:hover {
+  box-shadow: 0 0 10px #0891b2;
+  transition: 300ms;
+}
