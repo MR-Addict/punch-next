@@ -1,3 +1,5 @@
+"use client";
+
 import { formatDate } from "@/lib/utils";
 
 import style from "./Table.module.css";
@@ -28,7 +30,7 @@ export default function Table() {
                   <td>{note.name}</td>
                   <td>{note.group}</td>
                   <td>{formatDate(note.date)}</td>
-                  <td className='max-w-sm whitespace-break-spaces'>{note.content}</td>
+                  <td className='max-w-md min-w-[18rem] whitespace-break-spaces'>{note.content}</td>
                 </tr>
               ))}
             </tbody>

@@ -12,7 +12,10 @@ export default function NormalLinks() {
   return (
     <ul className='hidden md:flex flex-row gap-4'>
       {links.map((item) => (
-        <li key={item.name} className={classNames("font-semibold", { "text-cyan-600": rootPath === item.link })}>
+        <li
+          key={item.name}
+          className={classNames("font-semibold text-lg", { "text-cyan-600": rootPath === item.link })}
+        >
           <Link href={item.link}>{item.name}</Link>
         </li>
       ))}

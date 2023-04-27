@@ -52,14 +52,14 @@ export default function Header() {
   }, [rawNotes]);
 
   return (
-    <div className='w-full flex flex-row justify-end gap-3 mb-2'>
+    <div className='w-full flex flex-row justify-end gap-3 mb-3'>
       <div className='w-full flex flex-row justify-end'>
         <input
           value={searchKeywords}
           placeholder='Search...'
           name='filter searchKeywords'
           onChange={(e) => setSearchKeywords(e.target.value)}
-          className='bg-gray-600 w-full py-1 px-2 rounded-sm border border-gray-500 outline-none focus:border-blue-600'
+          className='bg-[#33373e] w-full py-1 px-2 rounded-sm border border-gray-500 outline-none focus:border-blue-600'
         />
       </div>
 
@@ -68,7 +68,7 @@ export default function Header() {
         name='filter type'
         // @ts-expect-error
         onChange={(e) => setFilter(e.target.value)}
-        className='bg-gray-600 border border-gray-500 py-1 px-2 outline-none rounded-sm focus:border-blue-600'
+        className='bg-[#33373e] border border-gray-500 py-1 px-2 outline-none rounded-sm focus:border-blue-600'
       >
         <option value='所有'>所有</option>
         <option value='航模组'>航模组</option>
