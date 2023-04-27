@@ -5,7 +5,7 @@ import { useClientContext } from "../../contexts";
 export default function Pagination() {
   const leftSide = 1;
   const buttonsWidth = 5;
-  const { notesPerpage, notes, totalPages, currentNotes, currentPage, setCurrentPage } = useClientContext();
+  const { notes, totalPages, currentNotes, currentPage, setCurrentPage } = useClientContext();
 
   function Button({ page }: { page: number }) {
     return (
@@ -17,7 +17,7 @@ export default function Pagination() {
         }}
         className={classNames(
           { "text-cyan-600": page === currentPage },
-          "w-7 h-7 place-items-center border border-gray-500"
+          "w-6 h-6 place-items-center border border-gray-500"
         )}
       >
         {page + 1}
@@ -25,12 +25,15 @@ export default function Pagination() {
     );
   }
 
+  if (notes.length === 0) return <></>;
+
   return (
-    <div className='w-full flex flex-row items-center justify-between py-3 pl-2 pr-5 border border-gray-500 border-t-0'>
-      <p className='text-sm'>
-        {currentPage + 1}/{totalPages}页(共{notes.length}条记录)
+    <div className='w-full flex flex-col md:flex-row items-center justify-between gap-2 text-sm py-3 pl-2 pr-5 border border-gray-500 border-t-0'>
+      <p>
+        {currentPage + 1}/{totalPages}页 (共{notes.length}条记录)
       </p>
-      <div className='flex flex-row items-center gap-2'>
+
+      <div className='flex flex-row items-center gap-1.5'>
         {/* first button */}
         {currentNotes.length > 0 && <Button page={0} />}
 

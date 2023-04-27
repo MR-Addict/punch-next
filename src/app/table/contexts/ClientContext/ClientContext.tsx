@@ -39,7 +39,7 @@ export const ClientContextProvider = ({ children, data }: ClientContextProviderP
 
   useEffect(() => setNotes(data), [data]);
 
-  const totalPages = useMemo(() => Math.ceil(data.length / notesPerpage), [data]);
+  const totalPages = useMemo(() => Math.ceil(notes.length / notesPerpage), [notes]);
 
   const currentNotes = useMemo(() => {
     const firstNoteIndex = currentPage * notesPerpage;

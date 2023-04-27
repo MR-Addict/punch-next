@@ -37,7 +37,7 @@ export default function Table() {
       )}
 
       {/* no results */}
-      {currentNotes.length === 0 && <h1 className='my-auto'>暂无结果</h1>}
+      {currentNotes.length === 0 && <h1 className='w-full text-center py-3'>没有符合条件的结果</h1>}
     </>
   );
 }
