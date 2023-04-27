@@ -43,7 +43,7 @@ async function query() {
     return { success: true, data };
   } catch (error) {
     console.error(error);
-    return { success: false, message: "提交失败" };
+    return { success: false, message: "数据库获取失败" };
   }
 }
 
