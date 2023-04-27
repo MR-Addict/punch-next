@@ -1,6 +1,6 @@
 .form {
   box-shadow: 0 0 15px #0891b280;
-  @apply w-full max-w-md p-5 flex flex-col items-center justify-center gap-3 border border-cyan-600 rounded-lg;
+  @apply w-full max-w-md p-4 flex flex-col items-center justify-center gap-3 border border-cyan-600 rounded-lg;
 }
 
 .input-element {
@@ -12,7 +12,7 @@
 }
 
 .input {
-  @apply bg-white text-black outline-none p-2 rounded-md border border-black;
+  @apply bg-gray-100 text-black outline-none p-2 rounded-md border border-black;
 }
 
 .input:focus {
