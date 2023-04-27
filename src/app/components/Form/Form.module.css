@@ -1,5 +1,5 @@
 .form {
-  box-shadow: 0 0 10px #0891b2;
+  box-shadow: 0 0 15px #0891b280;
   @apply w-full max-w-md p-5 flex flex-col items-center justify-center gap-3 border border-cyan-600 rounded-lg;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .input {
-  @apply bg-gray-300 text-black outline-none p-2 rounded-md border border-black;
+  @apply bg-white text-black outline-none p-2 rounded-md border border-black;
 }
 
 .input:focus {
@@ -28,6 +28,6 @@
 }
 
 .form:valid .button:enabled:hover {
-  box-shadow: 0 0 10px #0891b2;
+  box-shadow: 0 0 15px #0891b280;
   transition: 300ms;
 }

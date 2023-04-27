@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { FaUserAlt, FaEdit, FaFire } from "react-icons/fa";
+import { FaRegUser, FaRegEdit, FaRegLightbulb } from "react-icons/fa";
 
 import style from "./Form.module.css";
 import { LoadingDots } from "@/components";
 import { usePopupContext } from "@/contexts";
 
-const defaultFormData = { group: "航模组", name: "", notes: "" };
+const defaultFormData = { group: "航模组", name: "", content: "" };
 
 export default function Form() {
   const { popup } = usePopupContext();
@@ -26,10 +26,7 @@ export default function Form() {
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
-      .then((result) => {
-        if (result.success) popup({ success: true, message: "提交成功" });
-        else popup({ success: false, message: "提交失败" });
-      })
+      .then((result) => popup(result))
       .catch((error) => console.error(error))
       .finally(() => setIsSubmitting(false));
   }
@@ -41,7 +38,7 @@ export default function Form() {
       <section className='w-full flex flex-col gap-3'>
         <div className={style["input-element"]}>
           <label className={style.label} htmlFor='submitFormGroup'>
-            <FaFire size={13} />
+            <FaRegLightbulb size={13} />
             <span>组别</span>
           </label>
           <select
@@ -61,7 +58,7 @@ export default function Form() {
 
         <div className={style["input-element"]}>
           <label className={style.label} htmlFor='submitFormName'>
-            <FaUserAlt size={13} />
+            <FaRegUser size={13} />
             <span>姓名</span>
           </label>
           <input
@@ -78,17 +75,17 @@ export default function Form() {
         </div>
 
         <div className={style["input-element"]}>
-          <label className={style.label} htmlFor='submitFormNotes'>
-            <FaEdit size={15} />
+          <label className={style.label} htmlFor='submitFormContent'>
+            <FaRegEdit size={15} />
             <span>值班笔记</span>
           </label>
           <textarea
             required
-            name='notes'
-            id='submitFormNotes'
+            name='content'
+            id='submitFormContent'
             minLength={4}
             maxLength={500}
-            value={formData.notes}
+            value={formData.content}
             onChange={handleChange}
             style={{ height: 200 }}
             className={style.input}
@@ -97,7 +94,7 @@ export default function Form() {
         </div>
       </section>
 
-      <button disabled={!formData.name || !formData.notes || isSubmitting} type='submit' className={style.button}>
+      <button disabled={!formData.name || !formData.content || isSubmitting} type='submit' className={style.button}>
         {isSubmitting ? <LoadingDots /> : <span>提交</span>}
       </button>
     </form>

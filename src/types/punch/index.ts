@@ -1,16 +1,15 @@
 import z from "zod";
-import { ObjectId } from "mongodb";
 
-const PunchPost = z.object({
+const Punch = z.object({
   group: z.string().max(10),
   name: z.string().max(10),
-  notes: z.string().max(500),
+  content: z.string().max(500),
 });
 
-const Punch = PunchPost.merge(z.object({ _id: z.custom<ObjectId>(), date: z.date() }));
+const PunchDatabse = Punch.merge(z.object({ _id: z.string(), date: z.date() }));
 
 type PunchType = z.TypeOf<typeof Punch>;
-type PunchPostType = z.TypeOf<typeof PunchPost>;
+type PunchDatabseType = z.TypeOf<typeof PunchDatabse>;
 
-export { Punch, PunchPost };
-export type { PunchType, PunchPostType };
+export { PunchDatabse, Punch };
+export type { PunchDatabseType, PunchType };
