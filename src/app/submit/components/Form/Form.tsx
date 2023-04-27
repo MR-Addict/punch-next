@@ -14,7 +14,7 @@ export default function Form() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
 
-  const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value.trim() });
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

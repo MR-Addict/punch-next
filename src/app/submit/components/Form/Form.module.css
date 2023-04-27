@@ -20,6 +20,7 @@
 }
 
 .button {
+  transition: 300ms;
   @apply mt-2 w-full flex items-center justify-center h-12 rounded-md border border-cyan-600 font-semibold;
 }
 
@@ -29,5 +30,4 @@
 
 .form:valid .button:enabled:hover {
   box-shadow: 0 0 15px #0891b280;
-  transition: 300ms;
 }
