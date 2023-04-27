@@ -1,12 +1,12 @@
 import z from "zod";
 
 import clientPromise from "./clientPromise";
-import { PunchDatabse, PunchType } from "@/types/punch";
+import { NoteDatabse, NoteType } from "@/types/notes";
 
-async function insert(punch: PunchType) {
+async function insert(note: NoteType) {
   try {
     const client = await clientPromise;
-    const collection = client.db("stats").collection("punch");
+    const collection = client.db("stas").collection("notes");
 
     const startOfDay = new Date();
     const endOfDay = new Date();
@@ -14,8 +14,8 @@ async function insert(punch: PunchType) {
     endOfDay.setHours(23, 59, 59, 999);
 
     const result = await collection.replaceOne(
-      { group: punch.group, name: punch.name, date: { $gte: startOfDay, $lt: endOfDay } },
-      { date: new Date(), ...punch },
+      { group: note.group, name: note.name, date: { $gte: startOfDay, $lt: endOfDay } },
+      { date: new Date(), ...note },
       { upsert: true }
     );
 
@@ -31,14 +31,14 @@ async function insert(punch: PunchType) {
 async function query() {
   try {
     const client = await clientPromise;
-    const collection = client.db("stats").collection("punch");
+    const collection = client.db("stas").collection("notes");
 
     const result = await collection
       .find({})
       .sort({ date: -1 })
       .map((item) => ({ ...item, _id: item._id.toString() }))
       .toArray();
-    const data = z.array(PunchDatabse).parse(result);
+    const data = z.array(NoteDatabse).parse(result);
 
     return { success: true, data };
   } catch (error) {

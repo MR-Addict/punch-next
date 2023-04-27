@@ -4,7 +4,7 @@ import Link from "next/link";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
 
-import links from "../config";
+import links from "../../config";
 
 export default function NormalLinks() {
   const rootPath = (usePathname() || "/").split("/").slice(0, 2).join("/");

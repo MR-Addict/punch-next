@@ -3,8 +3,7 @@ import Image from "next/image";
 import { BsGithub } from "react-icons/bs";
 
 import logo from "./logo.svg";
-import MobileLinks from "./Mobile/MobileLinks";
-import NormalLinks from "./Normal/NormalLinks";
+import { MobileLinks, NormalLinks } from "./components";
 
 export default function Navbar() {
   return (

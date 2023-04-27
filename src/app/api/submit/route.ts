@@ -1,11 +1,11 @@
-import { punch } from "@/lib/mongodb";
-import { Punch } from "@/types/punch";
+import { notes } from "@/lib/mongodb";
+import { Note } from "@/types/notes";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const data = Punch.parse(body);
-    const result = await punch.insert(data);
+    const data = Note.parse(body);
+    const result = await notes.insert(data);
 
     return new Response(JSON.stringify(result), {
       headers: { "Content-Type": "application/json" },

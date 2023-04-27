@@ -7,7 +7,7 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-import links from "../config";
+import links from "../../config";
 import style from "./MobileLinks.module.css";
 
 export default function MobileLinks() {

@@ -1,1 +1,1 @@
-export { default as punch } from "./punch";
+export { default as notes } from "./notes";
