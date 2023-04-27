@@ -1,7 +1,7 @@
 import "./globals.css";
 
 import { Footer, Navbar } from "@/components";
-import { RootContextProvider } from "@/contexts";
+import { PopupContextProvider } from "@/contexts";
 
 export const metadata = {
   title: "值班笔记",
@@ -13,11 +13,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='zh-Hans'>
       <body>
-        <RootContextProvider>
+        <PopupContextProvider>
           <Navbar />
           {children}
           <Footer />
-        </RootContextProvider>
+        </PopupContextProvider>
       </body>
     </html>
   );

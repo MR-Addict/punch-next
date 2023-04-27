@@ -25,6 +25,7 @@ npm start
 ## 2. 可用链接
 
 - [https://punch.mraddict.top](https://punch.mraddict.top)
+- [https://punch.mraddict.vercel.app](https://punch.mraddict.vercel.app)
 
 > 原项目地址:
 >

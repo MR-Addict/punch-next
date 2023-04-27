@@ -1,0 +1,18 @@
+/* windows */
+.popupwindow {
+  @apply translate-y-0;
+  @apply px-5 md:px-0 w-full max-w-md z-10 fixed flex flex-col items-center -top-20 left-1/2 -translate-x-1/2 duration-300;
+}
+
+.popupwindow.active {
+  @apply translate-y-28;
+}
+
+/* body */
+.popupbody {
+  @apply w-full max-w-md flex flex-row items-center gap-3 rounded-md px-5 py-3 bg-red-600 text-white;
+}
+
+.popupbody.active {
+  @apply bg-green-600;
+}

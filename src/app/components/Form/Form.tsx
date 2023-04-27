@@ -5,10 +5,12 @@ import { FaUserAlt, FaEdit, FaFire } from "react-icons/fa";
 
 import style from "./Form.module.css";
 import { LoadingDots } from "@/components";
+import { usePopupContext } from "@/contexts";
 
 const defaultFormData = { group: "航模组", name: "", notes: "" };
 
 export default function Form() {
+  const { popup } = usePopupContext();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
 
@@ -25,7 +27,8 @@ export default function Form() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        if (result.success) popup({ success: true, message: "提交成功" });
+        else popup({ success: false, message: "提交失败" });
       })
       .catch((error) => console.error(error))
       .finally(() => setIsSubmitting(false));
@@ -37,11 +40,18 @@ export default function Form() {
 
       <section className='w-full flex flex-col gap-3'>
         <div className={style["input-element"]}>
-          <label className={style.label}>
+          <label className={style.label} htmlFor='submitFormGroup'>
             <FaFire size={13} />
             <span>组别</span>
           </label>
-          <select className={style.input} name='group' required value={formData.group} onChange={handleChange}>
+          <select
+            required
+            name='group'
+            id='submitFormGroup'
+            value={formData.group}
+            onChange={handleChange}
+            className={style.input}
+          >
             <option>航模组</option>
             <option>电子组</option>
             <option>编程组</option>
@@ -50,15 +60,16 @@ export default function Form() {
         </div>
 
         <div className={style["input-element"]}>
-          <label className={style.label}>
+          <label className={style.label} htmlFor='submitFormName'>
             <FaUserAlt size={13} />
             <span>姓名</span>
           </label>
           <input
-            type='text'
             required
-            placeholder='姓名'
+            type='text'
             name='name'
+            id='submitFormName'
+            placeholder='姓名'
             maxLength={10}
             value={formData.name}
             onChange={handleChange}
@@ -67,13 +78,14 @@ export default function Form() {
         </div>
 
         <div className={style["input-element"]}>
-          <label className={style.label}>
+          <label className={style.label} htmlFor='submitFormNotes'>
             <FaEdit size={15} />
             <span>值班笔记</span>
           </label>
           <textarea
             required
             name='notes'
+            id='submitFormNotes'
             minLength={4}
             maxLength={500}
             value={formData.notes}
