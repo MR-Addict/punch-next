@@ -3,16 +3,17 @@
 import { formatDate } from "@/lib/utils";
 
 import style from "./Table.module.css";
+import Pagination from "./Pagination";
 import { useClientContext } from "../../contexts";
 
 export default function Table() {
   const { currentNotes, currentPage, notesPerpage } = useClientContext();
 
   return (
-    <>
+    <section className='w-full bg-[#33373e]'>
       {/* got results */}
       {currentNotes.length > 0 && (
-        <section className='w-full overflow-x-auto border border-b-0 border-gray-500'>
+        <div className='w-full overflow-x-auto border border-b-0 border-gray-500'>
           <table className={style.table}>
             <thead>
               <tr>
@@ -35,11 +36,13 @@ export default function Table() {
               ))}
             </tbody>
           </table>
-        </section>
+        </div>
       )}
 
       {/* no results */}
       {currentNotes.length === 0 && <h1 className='w-full text-center py-3'>没有符合条件的结果</h1>}
-    </>
+
+      <Pagination />
+    </section>
   );
 }

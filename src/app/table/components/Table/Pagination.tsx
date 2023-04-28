@@ -14,6 +14,7 @@ export default function Pagination() {
       <button
         type='button'
         onClick={() => {
+          if (page === currentPage) return;
           setCurrentPage(page);
           window.scroll({ top: 0, behavior: "smooth" });
         }}

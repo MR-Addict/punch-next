@@ -64,10 +64,10 @@ export default function Form() {
             onChange={handleChange}
             className={style.input}
           >
-            <option>航模组</option>
-            <option>电子组</option>
-            <option>编程组</option>
-            <option>静模组</option>
+            <option value='航模组'>航模组</option>
+            <option value='编程组'>编程组</option>
+            <option value='电子组'>电子组</option>
+            <option value='静模组'>静模组</option>
           </select>
         </div>
 

@@ -19,7 +19,6 @@ function filterNotes(notes: NoteDatabseType[], filter: FilterType) {
 function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
   type KeyType = "group" | "name" | "content" | "date";
   const keys: KeyType[] = ["group", "name", "content", "date"];
-  const mappedNotes = notes.map((note) => ({ ...note, date: formatDate(note.date) }));
   return notes.filter((note) =>
     keys.some((key) => {
       if (key === "date") return formatDate(note[key]).includes(searchKeywords);
@@ -28,7 +27,7 @@ function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
   );
 }
 
-export default function Header() {
+export default function Toolbar() {
   const [filter, setFilter] = useState<FilterType>("所有");
   const [searchKeywords, setSearchKeywords] = useState("");
   const { rawNotes, setNotes, setCurrentPage } = useClientContext();

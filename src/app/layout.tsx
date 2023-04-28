@@ -1,7 +1,7 @@
 import "./globals.css";
 
-import { Footer, Navbar, VercelAnalytics } from "@/components";
 import { PopupContextProvider } from "@/contexts";
+import { Footer, Navbar, VercelAnalytics } from "@/components";
 
 export const metadata = {
   title: "值班笔记",

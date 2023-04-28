@@ -16,8 +16,14 @@ export default function MobileLinks() {
 
   return (
     <div className='md:hidden flex items-center justify-center'>
-      <button aria-label='menu button' onClick={() => setIsExpandMenu(!isExpandMenu)} type='button'>
-        {isExpandMenu ? <AiOutlineCloseCircle size={26} /> : <HiMenuAlt3 size={26} />}
+      <button
+        type='button'
+        aria-label='menu button'
+        className={style["menu-btn"]}
+        onClick={() => setIsExpandMenu(!isExpandMenu)}
+      >
+        <AiOutlineCloseCircle className={classNames(style["menu-icon"], { [style.active]: isExpandMenu })} />
+        <HiMenuAlt3 className={classNames(style["menu-icon"], { [style.active]: !isExpandMenu })} />
       </button>
 
       <ul className={classNames(style.menu, { [style.active]: isExpandMenu })}>
