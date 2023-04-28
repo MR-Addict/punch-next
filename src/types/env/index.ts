@@ -3,8 +3,8 @@ import z from "zod";
 const NodeEnv = z.enum(["development", "production", "test", "preview"]);
 
 const Env = z.object({
-  MONGODB_URI: z.string(),
   NODE_ENV: NodeEnv,
+  MONGODB_URI: z.string(),
 });
 
 type EnvType = z.TypeOf<typeof Env>;

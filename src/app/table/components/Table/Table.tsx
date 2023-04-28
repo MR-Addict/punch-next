@@ -40,7 +40,9 @@ export default function Table() {
       )}
 
       {/* no results */}
-      {currentNotes.length === 0 && <h1 className='w-full text-center py-3'>没有符合条件的结果</h1>}
+      {currentNotes.length === 0 && (
+        <h1 className='w-full text-center py-3 border border-gray-500 rounded-sm'>没有符合条件的结果</h1>
+      )}
 
       <Pagination />
     </section>
