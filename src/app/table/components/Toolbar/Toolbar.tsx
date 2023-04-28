@@ -1,19 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
+import { formatDate } from "@/lib/utils";
 import { NoteDatabseType } from "@/types/notes";
 import { useClientContext } from "../../contexts";
-import { formatDate } from "@/lib/utils";
 
 export type FilterType = "所有" | "航模组" | "编程组" | "电子组" | "静模组";
 
 function filterNotes(notes: NoteDatabseType[], filter: FilterType) {
-  if (filter === "航模组") return notes.filter((note) => note.group === "航模组");
-  else if (filter === "编程组") return notes.filter((note) => note.group === "编程组");
-  else if (filter === "电子组") return notes.filter((note) => note.group === "电子组");
-  else if (filter === "静模组") return notes.filter((note) => note.group === "静模组");
-  return notes;
+  if (filter === "所有") return notes;
+  return notes.filter((note) => note.group === filter);
 }
 
 function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
@@ -52,15 +50,21 @@ export default function Toolbar() {
 
   return (
     <section className='w-full flex flex-row justify-end gap-3 mb-3'>
-      <div className='w-full flex flex-row justify-end'>
+      <div className='bg-[#33373e] w-full flex flex-row items-center gap-1 justify-end border border-gray-500 py-1 px-2 rounded-sm focus-within:border-blue-600'>
         <input
           value={searchKeywords}
           placeholder='Search...'
           aria-label='search input'
           name='filter searchKeywords'
-          onChange={(e) => setSearchKeywords(e.target.value)}
-          className='bg-[#33373e] w-full py-1 px-2 rounded-sm border border-gray-500 outline-none focus:border-blue-600'
+          onChange={(e) => setSearchKeywords(e.target.value.trim())}
+          className='bg-[#33373e] w-full outline-none'
         />
+
+        {searchKeywords.length !== 0 && (
+          <button type='button' aria-label='clear button' onClick={() => setSearchKeywords("")}>
+            <AiOutlineCloseCircle />
+          </button>
+        )}
       </div>
 
       <select

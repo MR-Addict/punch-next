@@ -64,6 +64,9 @@ export default function Form() {
             onChange={handleChange}
             className={style.input}
           >
+            <option disabled value=''>
+              -- 请选择组别 --
+            </option>
             <option value='航模组'>航模组</option>
             <option value='编程组'>编程组</option>
             <option value='电子组'>电子组</option>
