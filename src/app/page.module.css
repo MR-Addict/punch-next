@@ -11,3 +11,11 @@
 .title {
   @apply font-semibold;
 }
+
+.card:first-of-type {
+  @apply animate-slideFromLeft;
+}
+
+.card:last-of-type {
+  @apply animate-slideFromRight;
+}

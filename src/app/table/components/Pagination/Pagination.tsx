@@ -15,7 +15,7 @@ export default function Pagination() {
         type='button'
         onClick={() => {
           setCurrentPage(page);
-          window.scroll({ top: 0, behavior: "auto" });
+          window.scroll({ top: 0, behavior: "smooth" });
         }}
         className={classNames(
           { "text-cyan-600": page === currentPage },

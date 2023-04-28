@@ -14,7 +14,7 @@ async function insert(note: NoteType) {
     endOfDay.setHours(23, 59, 59, 999);
 
     const todayDuplicatedNote = await collection
-      .find({ group: note.group, name: note.name, date: { $gte: startOfDay, $lt: endOfDay } })
+      .find({ name: note.name, date: { $gte: startOfDay, $lt: endOfDay } })
       .next();
     if (todayDuplicatedNote) return { success: false, message: "你今天已经提交过啦，请勿重复提交" };
 

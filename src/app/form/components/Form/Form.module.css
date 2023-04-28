@@ -1,6 +1,6 @@
 .form {
   box-shadow: 0 0 15px #0891b280;
-  @apply w-full max-w-md p-4 flex flex-col items-center justify-center gap-3 border border-cyan-600 rounded-lg;
+  @apply w-full max-w-md p-4 flex flex-col items-center justify-center gap-3 border border-cyan-600 rounded-lg animate-slideFromBottom;
 }
 
 .input-element {
