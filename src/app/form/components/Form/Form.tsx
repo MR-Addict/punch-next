@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaRegUser, FaRegEdit, FaRegLightbulb } from "react-icons/fa";
 
 import style from "./Form.module.css";
 import { LoadingDots } from "@/components";
 import { usePopupContext } from "@/contexts";
 
-const defaultFormData = { group: "航模组", name: "", content: "" };
+const storageName = "user-submit-info";
+const defaultFormData = { group: "", name: "", content: "" };
 
 export default function Form() {
   const { popup } = usePopupContext();
@@ -26,10 +27,24 @@ export default function Form() {
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
-      .then((result) => popup(result))
+      .then((result) => {
+        popup(result);
+        if (result.success) {
+          setFormData({ ...formData, content: "" });
+          localStorage.setItem(storageName, JSON.stringify({ name: formData.name, group: formData.group }));
+        }
+      })
       .catch((error) => console.error(error))
       .finally(() => setIsSubmitting(false));
   }
+
+  useEffect(() => {
+    const localUserInfo = localStorage.getItem(storageName);
+    if (localUserInfo) {
+      const parsedUserInfo = JSON.parse(localUserInfo);
+      setFormData({ ...formData, ...parsedUserInfo });
+    }
+  }, []);
 
   return (
     <form className={style.form} onSubmit={handleSubmit}>

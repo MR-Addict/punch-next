@@ -13,14 +13,13 @@ async function insert(note: NoteType) {
     startOfDay.setHours(0, 0, 0, 0);
     endOfDay.setHours(23, 59, 59, 999);
 
-    const result = await collection.replaceOne(
-      { group: note.group, name: note.name, date: { $gte: startOfDay, $lt: endOfDay } },
-      { date: new Date(), ...note },
-      { upsert: true }
-    );
+    const todayDuplicatedNote = await collection
+      .find({ group: note.group, name: note.name, date: { $gte: startOfDay, $lt: endOfDay } })
+      .next();
+    if (todayDuplicatedNote) return { success: false, message: "你今天已经提交过啦，请勿重复提交" };
 
-    if (result.upsertedCount) return { success: true, message: "提交成功" };
-    else if (result.modifiedCount) return { success: true, message: "你已提交过啦，请勿重复提交" };
+    const result = await collection.insertOne({ date: new Date(), ...note });
+    if (result.insertedId) return { success: true, message: "提交成功" };
     else return { success: false, message: "提交失败" };
   } catch (error) {
     console.error(error);

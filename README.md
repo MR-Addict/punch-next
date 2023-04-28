@@ -22,7 +22,11 @@ npm run build
 npm start
 ```
 
-## 2. 可用链接
+## 2. 可能存在的问题
+
+- [时区问题](时间显示默认使用东八区，如果你的Mongodb不在东八区，很可能会告诉你今日已提交)
+
+## 3. 可用链接
 
 - [https://punch.mraddict.top](https://punch.mraddict.top)
 - [https://punch.mraddict.vercel.app](https://punch.mraddict.vercel.app)
