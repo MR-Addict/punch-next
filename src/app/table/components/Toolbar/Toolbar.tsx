@@ -51,11 +51,12 @@ export default function Toolbar() {
   }, [rawNotes]);
 
   return (
-    <div className='w-full flex flex-row justify-end gap-3 mb-3'>
+    <section className='w-full flex flex-row justify-end gap-3 mb-3'>
       <div className='w-full flex flex-row justify-end'>
         <input
           value={searchKeywords}
           placeholder='Search...'
+          aria-label='search input'
           name='filter searchKeywords'
           onChange={(e) => setSearchKeywords(e.target.value)}
           className='bg-[#33373e] w-full py-1 px-2 rounded-sm border border-gray-500 outline-none focus:border-blue-600'
@@ -65,6 +66,7 @@ export default function Toolbar() {
       <select
         value={filter}
         name='filter type'
+        aria-label='group filter'
         // @ts-expect-error
         onChange={(e) => setFilter(e.target.value)}
         className='bg-[#33373e] border border-gray-500 py-1 px-2 outline-none rounded-sm focus:border-blue-600'
@@ -75,6 +77,6 @@ export default function Toolbar() {
         <option value='电子组'>电子组</option>
         <option value='静模组'>静模组</option>
       </select>
-    </div>
+    </section>
   );
 }

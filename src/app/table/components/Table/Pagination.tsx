@@ -28,8 +28,6 @@ export default function Pagination() {
     );
   }
 
-  if (notes.length === 0) return <></>;
-
   return (
     <div className='w-full flex flex-col md:flex-row items-center justify-between gap-2 text-sm py-3 pl-2 pr-5 border border-gray-500 border-t-0 rounded-b-sm'>
       <p>

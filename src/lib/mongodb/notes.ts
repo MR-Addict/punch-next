@@ -1,6 +1,7 @@
 import z from "zod";
 
 import clientPromise from "./clientPromise";
+import { formatDate } from "@/lib/utils";
 import { NoteDatabse, NoteType } from "@/types/notes";
 
 async function insert(note: NoteType) {
@@ -8,15 +9,14 @@ async function insert(note: NoteType) {
     const client = await clientPromise;
     const collection = client.db("stas").collection("notes");
 
-    const startOfDay = new Date();
-    const endOfDay = new Date();
-    startOfDay.setHours(0, 0, 0, 0);
-    endOfDay.setHours(23, 59, 59, 999);
-
-    const todayDuplicatedNote = await collection
-      .find({ name: note.name, date: { $gte: startOfDay, $lt: endOfDay } })
+    const duplicatedNote = await collection
+      .find({ name: note.name, group: note.group })
+      .sort({ date: -1 })
+      .limit(1)
       .next();
-    if (todayDuplicatedNote) return { success: false, message: "你今天已经提交过啦，请勿重复提交" };
+
+    if (duplicatedNote && formatDate(duplicatedNote.date) === formatDate(new Date()))
+      return { success: false, message: "你今天已经提交过啦，请勿重复提交" };
 
     const result = await collection.insertOne({ date: new Date(), ...note });
     if (result.insertedId) return { success: true, message: "提交成功" };

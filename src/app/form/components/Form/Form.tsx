@@ -50,8 +50,8 @@ export default function Form() {
     <form className={style.form} onSubmit={handleSubmit}>
       <h1 className='text-2xl font-semibold'>值班笔记</h1>
 
-      <section className='w-full flex flex-col gap-3'>
-        <div className={style["input-element"]}>
+      <div className='w-full flex flex-col gap-3'>
+        <section className={style["input-element"]}>
           <label className={style.label} htmlFor='submitFormGroup'>
             <FaRegLightbulb size={13} />
             <span>组别</span>
@@ -69,9 +69,9 @@ export default function Form() {
             <option value='电子组'>电子组</option>
             <option value='静模组'>静模组</option>
           </select>
-        </div>
+        </section>
 
-        <div className={style["input-element"]}>
+        <section className={style["input-element"]}>
           <label className={style.label} htmlFor='submitFormName'>
             <FaRegUser size={13} />
             <span>姓名</span>
@@ -87,9 +87,9 @@ export default function Form() {
             onChange={handleChange}
             className={style.input}
           />
-        </div>
+        </section>
 
-        <div className={style["input-element"]}>
+        <section className={style["input-element"]}>
           <label className={style.label} htmlFor='submitFormContent'>
             <FaRegEdit size={15} />
             <span>值班笔记</span>
@@ -106,8 +106,8 @@ export default function Form() {
             className={style.input}
             placeholder='今天的值班笔记内容'
           />
-        </div>
-      </section>
+        </section>
+      </div>
 
       <button disabled={!formData.name || !formData.content || isSubmitting} type='submit' className={style.button}>
         {isSubmitting ? <LoadingDots /> : <span>提交</span>}
