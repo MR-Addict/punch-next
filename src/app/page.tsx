@@ -12,7 +12,7 @@ export default async function Page() {
           <h1 className={style.title}>提交笔记</h1>
         </Link>
 
-        <Link href='/table' className={style.card}>
+        <Link href='/view' className={style.card}>
           <FcDataSheet size={60} />
           <h1 className={style.title}>查看笔记</h1>
         </Link>

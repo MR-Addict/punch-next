@@ -2,12 +2,12 @@
 
 import classNames from "classnames";
 
-import { useClientContext } from "../../contexts";
+import { useTableContext } from "../../contexts";
 
 export default function Pagination() {
   const leftSide = 1;
   const buttonsWidth = 5;
-  const { notes, totalPages, currentNotes, currentPage, setCurrentPage } = useClientContext();
+  const { notes, totalPages, currentNotes, currentPage, setCurrentPage } = useTableContext();
 
   function Button({ page }: { page: number }) {
     return (
@@ -16,7 +16,7 @@ export default function Pagination() {
         onClick={() => {
           if (page === currentPage) return;
           setCurrentPage(page);
-          window.scroll({ top: 0, behavior: "smooth" });
+          window.scroll({ top: 0, behavior: "auto" });
         }}
         className={classNames(
           { "text-cyan-600": page === currentPage },

@@ -1,7 +1,0 @@
-.chip {
-  @apply animate-scaleUp duration-300 flex flex-row justify-between items-center py-5 px-10 rounded-xl bg-dark;
-}
-
-.chip:hover {
-  @apply md:scale-105 md:cursor-pointer;
-}

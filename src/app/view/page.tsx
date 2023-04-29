@@ -1,6 +1,6 @@
 import Client from "./Client";
 import { notes } from "@/lib/mongodb";
-import { ClientContextProvider } from "./contexts";
+import { ClientContextProvider, TableContextProvider } from "./contexts";
 
 export const revalidate = 0;
 
@@ -10,7 +10,9 @@ export default async function Page() {
 
   return (
     <ClientContextProvider data={result.data}>
-      <Client />
+      <TableContextProvider>
+        <Client />
+      </TableContextProvider>
     </ClientContextProvider>
   );
 }

@@ -1,9 +1,13 @@
+"use client";
+
+import { useMemo } from "react";
 import { BsFillCalendarDayFill, BsFillCalendarDateFill } from "react-icons/bs";
 import { BsFillCalendarMonthFill, BsFillCalendarWeekFill } from "react-icons/bs";
 
 import Chip from "./Chip";
 import { formatDate } from "@/lib/utils";
 import { NoteDatabseType } from "@/types/notes";
+import { useClientContext } from "../../contexts";
 
 function getToday(notes: NoteDatabseType[]) {
   return notes.filter((note) => formatDate(note.date) === formatDate(new Date())).length;
@@ -24,11 +28,12 @@ function getThisMonth(notes: NoteDatabseType[]) {
   return notes.filter((note) => formatDate(note.date).slice(0, 7) === formatDate(new Date()).slice(0, 7)).length;
 }
 
-export default function Chips({ notes }: { notes: NoteDatabseType[] }) {
+export default function Chips() {
+  const { notes } = useClientContext();
   const all = notes.length;
-  const today = getToday(notes);
-  const thisWeek = getThisWeek(notes);
-  const thisMonth = getThisMonth(notes);
+  const today = useMemo(() => getToday(notes), [notes]);
+  const thisWeek = useMemo(() => getThisWeek(notes), [notes]);
+  const thisMonth = useMemo(() => getThisMonth(notes), [notes]);
 
   return (
     <section className='w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-7'>

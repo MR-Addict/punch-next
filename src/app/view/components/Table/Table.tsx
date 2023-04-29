@@ -4,15 +4,15 @@ import { formatDate } from "@/lib/utils";
 
 import style from "./Table.module.css";
 import Pagination from "./Pagination";
-import { useClientContext } from "../../contexts";
+import { useTableContext } from "../../contexts";
 
 export default function Table() {
-  const { currentNotes, currentPage, notesPerpage } = useClientContext();
+  const { currentNotes, currentPage, notesPerpage } = useTableContext();
 
   if (currentNotes.length === 0) return <h1 className='w-full text-center py-3 rounded-sm'>没有符合条件的结果</h1>;
 
   return (
-    <section className='w-full bg-dark'>
+    <div className='w-full bg-dark animate-slideFromBottom'>
       <div className='w-full overflow-x-auto border border-b-0 border-gray-500'>
         <table className={style.table}>
           <thead>
@@ -39,6 +39,6 @@ export default function Table() {
       </div>
 
       <Pagination />
-    </section>
+    </div>
   );
 }
