@@ -21,7 +21,7 @@ export default function Form() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    fetch("/api/submit", {
+    fetch("/api/form", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: { "Content-Type": "application/json" },

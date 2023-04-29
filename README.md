@@ -1,4 +1,4 @@
-# 值班笔记-Next.js
+# 值班笔记
 
 值班笔记 Next.js 重构
 
@@ -22,10 +22,10 @@ npm run build
 npm start
 ```
 
-## 2. 可用链接
+## 2. 链接
 
 - [https://punch.mraddict.top](https://punch.mraddict.top)
 
-> 原项目地址:
+> 原项目地址（原项目已弃用）:
 >
 > - [https://github.com/MR-Addict/punch](https://github.com/MR-Addict/punch)
