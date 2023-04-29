@@ -12,7 +12,7 @@ export default function Table() {
   if (currentNotes.length === 0) return <h1 className='w-full text-center py-3 rounded-sm'>没有符合条件的结果</h1>;
 
   return (
-    <section className='w-full bg-[#33373e]'>
+    <section className='w-full bg-dark'>
       <div className='w-full overflow-x-auto border border-b-0 border-gray-500'>
         <table className={style.table}>
           <thead>

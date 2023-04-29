@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        dark: "#20232a",
+        light: "#33373e",
+      },
       keyframes: {
         slideFromLeft: {
           from: { transform: 'translateX(-1rem)', opacity: 0 },

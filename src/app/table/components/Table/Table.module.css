@@ -6,19 +6,19 @@
   @apply text-left;
 }
 
-.table :is(th, td) {
-  @apply py-3 px-2;
-}
-
 .table tr {
   @apply border-b border-b-gray-600;
+}
+
+.table tbody tr:hover {
+  @apply md:bg-light;
+}
+
+.table :is(th, td) {
+  @apply py-3 px-2;
 }
 
 .table thead th,
 .table tbody tr td:not(:last-of-type) {
   @apply whitespace-nowrap;
-}
-
-.table tbody tr:nth-of-type(even) {
-  @apply bg-[#3b3e41];
 }

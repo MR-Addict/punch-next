@@ -50,14 +50,14 @@ export default function Toolbar() {
 
   return (
     <section className='w-full flex flex-row justify-end gap-3 mb-3'>
-      <div className='bg-[#33373e] w-full flex flex-row items-center gap-1 justify-end border border-gray-500 py-1 px-2 rounded-sm focus-within:border-blue-600'>
+      <div className='bg-dark w-full flex flex-row items-center gap-1 justify-end border border-gray-500 py-1 px-2 rounded-sm focus-within:border-blue-600'>
         <input
           value={searchKeywords}
           placeholder='Search...'
           aria-label='search input'
           name='filter searchKeywords'
           onChange={(e) => setSearchKeywords(e.target.value.trim())}
-          className='bg-[#33373e] w-full outline-none'
+          className='bg-dark w-full outline-none'
         />
 
         {searchKeywords.length !== 0 && (
@@ -73,7 +73,7 @@ export default function Toolbar() {
         aria-label='group filter'
         // @ts-expect-error
         onChange={(e) => setFilter(e.target.value)}
-        className='bg-[#33373e] border border-gray-500 py-1 px-2 outline-none rounded-sm focus:border-blue-600'
+        className='border bg-dark border-gray-500 py-1 px-2 outline-none rounded-sm focus:border-blue-600'
       >
         <option value='所有'>所有</option>
         <option value='航模组'>航模组</option>
