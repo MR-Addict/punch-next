@@ -13,6 +13,14 @@ module.exports = {
         light: "#33373e",
       },
       keyframes: {
+        scaleUp: {
+          from: { transform: "scale(0.9)" },
+          to: { transform: 'scale(1)' },
+        },
+        scaleDown: {
+          from: { transform: "scale(1.1)" },
+          to: { transform: 'scale(1)' },
+        },
         slideFromLeft: {
           from: { transform: 'translateX(-1rem)', opacity: 0 },
           to: { transform: 'translateX(0)', opacity: 1 }
@@ -32,6 +40,8 @@ module.exports = {
       }
     },
     animation: {
+      scaleUp: "scaleUp ease 700ms",
+      scaleDown: "scaleDown ease 700ms",
       slideFromLeft: "slideFromLeft ease 700ms",
       slideFromRight: "slideFromRight ease 700ms",
       slideFromTop: "slideFromTop ease 700ms",

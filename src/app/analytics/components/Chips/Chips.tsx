@@ -1,13 +1,9 @@
+import { BsFillCalendarDayFill, BsFillCalendarDateFill } from "react-icons/bs";
+import { BsFillCalendarMonthFill, BsFillCalendarWeekFill } from "react-icons/bs";
+
 import Chip from "./Chip";
 import { formatDate } from "@/lib/utils";
 import { NoteDatabseType } from "@/types/notes";
-
-import {
-  BsFillCalendarDayFill,
-  BsFillCalendarDateFill,
-  BsFillCalendarMonthFill,
-  BsFillCalendarWeekFill,
-} from "react-icons/bs";
 
 function getToday(notes: NoteDatabseType[]) {
   return notes.filter((note) => formatDate(note.date) === formatDate(new Date())).length;
@@ -35,7 +31,7 @@ export default function Chips({ notes }: { notes: NoteDatabseType[] }) {
   const thisMonth = getThisMonth(notes);
 
   return (
-    <section className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-7'>
+    <section className='w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-7'>
       <Chip Icon={BsFillCalendarDateFill} title='今日提交' value={today} color='#FF6D28' />
       <Chip Icon={BsFillCalendarDayFill} title='本周提交' value={thisWeek} color='#FA2FB5' />
       <Chip Icon={BsFillCalendarMonthFill} title='本月提交' value={thisMonth} color='#8758FF' />
