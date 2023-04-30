@@ -4,7 +4,7 @@ import { createContext, useContext, useState, useMemo, useEffect } from "react";
 
 import { formatDate } from "@/lib/utils";
 import { NoteDatabseType } from "@/types/notes";
-import { useClientContext } from "../ClientContext/ClientContext";
+import { useViewContext } from "../ViewContext/ViewContext";
 
 const notesPerpage = 20;
 
@@ -40,7 +40,7 @@ function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
 }
 
 export const TableContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const rawNotes = useClientContext().notes;
+  const rawNotes = useViewContext().notes;
 
   const [currentPage, setCurrentPage] = useState(0);
   const [searchKeywords, setSearchKeywords] = useState("");

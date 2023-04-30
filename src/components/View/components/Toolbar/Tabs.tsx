@@ -3,11 +3,10 @@
 import classNames from "classnames";
 
 import style from "./Tabs.module.css";
-import type { TabType } from "../../contexts";
-import { useClientContext } from "../../contexts";
+import { useViewContext, TabType } from "../../contexts";
 
 function Tab({ title, tab }: { title: string; tab: TabType }) {
-  const { activeTab, setActiveTab } = useClientContext();
+  const { activeTab, setActiveTab } = useViewContext();
 
   return (
     <button

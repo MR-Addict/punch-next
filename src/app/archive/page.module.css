@@ -1,0 +1,8 @@
+.list {
+  @apply flex flex-row gap-1 items-center animate-slideFromRight;
+}
+
+.list::before {
+  content: "";
+  @apply w-2.5 h-2.5 rounded-full bg-white;
+}

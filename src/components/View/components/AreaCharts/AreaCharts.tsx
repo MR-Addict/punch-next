@@ -3,11 +3,11 @@
 import { useMemo } from "react";
 
 import AreaChart from "./AreaChart";
-import { useClientContext } from "../../contexts";
+import { useViewContext } from "../../contexts";
 import { groupBy, formatDate, getISOWeekNumber } from "@/lib/utils";
 
 export default function AreaCharts() {
-  const { notes, filter, firstWeek } = useClientContext();
+  const { notes, filter, firstWeek } = useViewContext();
 
   const notesGroupedByDay = useMemo(() => groupBy([...notes].reverse(), (note) => formatDate(note.date)), [notes]);
   const notesGroupedByWeek = useMemo(
