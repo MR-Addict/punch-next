@@ -7,11 +7,11 @@ import { useClientContext } from "../../contexts";
 import { groupBy, formatDate, getISOWeekNumber } from "@/lib/utils";
 
 export default function AreaCharts() {
-  const { notes, filter } = useClientContext();
+  const { notes, filter, firstWeek } = useClientContext();
 
   const notesGroupedByDay = useMemo(() => groupBy([...notes].reverse(), (note) => formatDate(note.date)), [notes]);
   const notesGroupedByWeek = useMemo(
-    () => groupBy([...notes].reverse(), (note) => `第${getISOWeekNumber(note.date) - 2772}周`),
+    () => groupBy([...notes].reverse(), (note) => `第${getISOWeekNumber(note.date) - getISOWeekNumber(firstWeek)}周`),
     [notes]
   );
 
