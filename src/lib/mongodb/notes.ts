@@ -35,7 +35,7 @@ async function query() {
     const result = await collection
       .find({})
       .sort({ date: -1 })
-      .map((item) => ({ ...item, _id: item._id.toString() }))
+      .map((item) => ({ ...item, _id: item._id.toString(), date: item.date.toISOString() }))
       .toArray();
     const data = z.array(NoteDatabse).parse(result);
 

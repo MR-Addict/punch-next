@@ -6,7 +6,7 @@ const Note = z.object({
   content: z.string().max(500),
 });
 
-const NoteDatabse = Note.merge(z.object({ _id: z.string(), date: z.date() }));
+const NoteDatabse = Note.merge(z.object({ _id: z.string(), date: z.string() }));
 
 type NoteType = z.TypeOf<typeof Note>;
 type NoteDatabseType = z.TypeOf<typeof NoteDatabse>;

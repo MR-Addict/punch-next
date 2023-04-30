@@ -9,7 +9,7 @@ import { NoteDatabseType } from "@/types/notes";
 function getNotes(name: string) {
   const filePath = path.join(process.cwd(), `src/assets/${name}.json`);
   const fileContent = fs.readFileSync(filePath, "utf8");
-  const notes: NoteDatabseType[] = JSON.parse(fileContent).map((item: any) => ({ ...item, date: new Date(item.date) }));
+  const notes: NoteDatabseType[] = JSON.parse(fileContent);
   return { name, notes };
 }
 
