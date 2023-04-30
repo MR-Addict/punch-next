@@ -5,7 +5,7 @@ import { BsFillCalendarDayFill, BsFillCalendarDateFill } from "react-icons/bs";
 import { BsFillCalendarMonthFill, BsFillCalendarWeekFill } from "react-icons/bs";
 
 import Chip from "./Chip";
-import { useViewContext } from "../../contexts";
+import { useClientContext } from "../../contexts";
 import { NoteDatabseType } from "@/types/notes";
 import { formatDate, getISOWeekNumber } from "@/lib/utils";
 
@@ -22,7 +22,7 @@ function getThisMonth(notes: NoteDatabseType[]) {
 }
 
 export default function Chips() {
-  const { notes, filter } = useViewContext();
+  const { notes, filter } = useClientContext();
   const all = notes.length;
   const today = useMemo(() => getToday(notes), [notes]);
   const thisWeek = useMemo(() => getThisWeek(notes), [notes]);

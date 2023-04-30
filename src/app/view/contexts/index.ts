@@ -1,3 +1,3 @@
-export type { TabType } from "./ViewContext/ViewContext";
+export type { TabType } from "./ClientContext/ClientContext";
 export { TableContextProvider, useTableContext } from "./TableContext/TableContext";
-export { ViewContextProvider, useViewContext } from "./ViewContext/ViewContext";
+export { ClientContextProvider, useClientContext } from "./ClientContext/ClientContext";

@@ -1,9 +1,9 @@
 "use client";
 
-import { useViewContext } from "../../contexts";
+import { useClientContext } from "../../contexts";
 
 export default function Filter() {
-  const { filter, setFilter } = useViewContext();
+  const { filter, setFilter } = useClientContext();
 
   return (
     <select

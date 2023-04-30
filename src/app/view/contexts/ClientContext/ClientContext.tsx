@@ -4,11 +4,11 @@ import { createContext, useContext, useState, useMemo } from "react";
 
 import { NoteDatabseType } from "@/types/notes";
 
-export type TabType = "chart" | "table";
+export type TabType = "table" | "chart";
 
 type FilterType = "技术部" | "航模组" | "编程组" | "电子组" | "静模组";
 
-interface ViewContextProps {
+interface ClientContextProps {
   firstWeek: Date;
   notes: NoteDatabseType[];
   rawNotes: NoteDatabseType[];
@@ -18,7 +18,7 @@ interface ViewContextProps {
   setActiveTab: (value: TabType) => void;
 }
 
-const ViewContext = createContext<ViewContextProps>({
+const ClientContext = createContext<ClientContextProps>({
   firstWeek: new Date(),
   notes: [],
   rawNotes: [],
@@ -33,23 +33,23 @@ function filterNotes(notes: NoteDatabseType[], filter: FilterType) {
   return notes.filter((note) => note.group === filter);
 }
 
-interface ViewContextProviderProps {
+interface ClientContextProviderProps {
   children: React.ReactNode;
   data: NoteDatabseType[];
   firstWeek: Date;
 }
 
-export const ViewContextProvider = ({ children, data, firstWeek }: ViewContextProviderProps) => {
+export const ClientContextProvider = ({ children, data, firstWeek }: ClientContextProviderProps) => {
   const [filter, setFilter] = useState<FilterType>("技术部");
-  const [activeTab, setActiveTab] = useState<TabType>("chart");
+  const [activeTab, setActiveTab] = useState<TabType>("table");
 
   const notes = useMemo(() => filterNotes(data, filter), [data, filter]);
 
   return (
-    <ViewContext.Provider value={{ firstWeek, notes, rawNotes: data, filter, setFilter, activeTab, setActiveTab }}>
+    <ClientContext.Provider value={{ firstWeek, notes, rawNotes: data, filter, setFilter, activeTab, setActiveTab }}>
       {children}
-    </ViewContext.Provider>
+    </ClientContext.Provider>
   );
 };
 
-export const useViewContext = () => useContext(ViewContext);
+export const useClientContext = () => useContext(ClientContext);
