@@ -12,7 +12,7 @@ export default function Filter() {
       aria-label='group filter'
       // @ts-expect-error
       onChange={(e) => setFilter(e.target.value)}
-      className='bg-black outline-none border-b border-b-gray-500'
+      className='bg-black outline-none rounded-xl py-0.5 px-1.5 border-b border-b-gray-500'
     >
       <option value='所有'>所有</option>
       <option value='航模组'>航模组</option>

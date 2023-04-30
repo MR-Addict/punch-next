@@ -23,7 +23,7 @@ const LineOptions = {
       position: "top",
     },
     title: {
-      display: true,
+      display: false,
       color: "#d1d5db",
       text: "每日提交",
       font: { size: 21 },
@@ -62,26 +62,29 @@ export default function AreaChart() {
   }, [groupedNotes]);
 
   return (
-    <div className='w-full overflow-x-auto bg-dark rounded-xl p-5'>
-      <div className='w-full min-w-[600px] h-[300px] md:h-[500px]'>
-        <Line
-          // @ts-expect-error
-          options={LineOptions}
-          plugins={[ChartDataLabels]}
-          data={{
-            labels,
-            datasets: [
-              {
-                data,
-                fill: true,
-                tension: 0.4,
-                label: "LineChart",
-                borderColor: "#0ea5e9a0",
-                backgroundColor: "#0ea5e980",
-              },
-            ],
-          }}
-        />
+    <div className='bg-dark rounded-xl p-5 flex flex-col items-center gap-3'>
+      <h1 className='font-semibold text-lg'>每日提交</h1>
+      <div className='w-full overflow-x-auto'>
+        <div className='w-full min-w-[600px] h-[300px] md:h-[500px]'>
+          <Line
+            // @ts-expect-error
+            options={LineOptions}
+            plugins={[ChartDataLabels]}
+            data={{
+              labels,
+              datasets: [
+                {
+                  data,
+                  fill: true,
+                  tension: 0.4,
+                  label: "LineChart",
+                  borderColor: "#0ea5e9a0",
+                  backgroundColor: "#0ea5e980",
+                },
+              ],
+            }}
+          />
+        </div>
       </div>
     </div>
   );
