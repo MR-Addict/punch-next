@@ -1,12 +1,8 @@
 "use client";
 
-import { useMemo } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-
-import { useClientContext } from "../../contexts";
-import { formatDate, groupBy } from "@/lib/utils";
 
 Chart.register(...registerables);
 
@@ -18,18 +14,10 @@ const LineOptions = {
     x: { grid: { color: "#6b728040" } },
   },
   plugins: {
-    legend: {
-      display: false,
-      position: "top",
-    },
-    title: {
-      display: false,
-      color: "#d1d5db",
-      text: "每日提交",
-      font: { size: 21 },
-    },
+    legend: { display: false },
+    title: { display: false },
     datalabels: {
-      align: "top",
+      align: "middle",
       anchor: "top",
       color: "#d1d5db",
       formatter: (value: any, context: { dataset: { data: any[] } }) => {
@@ -49,21 +37,10 @@ const LineOptions = {
   },
 };
 
-export default function AreaChart() {
-  const { notes } = useClientContext();
-
-  const groupedNotes = useMemo(() => groupBy([...notes].reverse(), (note) => formatDate(note.date)), [notes]);
-  const data = useMemo(() => groupedNotes.map((item) => item.count), [groupedNotes]);
-  const labels = useMemo(() => {
-    return groupedNotes.map((item) => {
-      const [month, day] = item.category.slice(5).split("-");
-      return Number(month) + "." + Number(day);
-    });
-  }, [groupedNotes]);
-
+export default function AreaChart({ title, data, labels }: { title: string; data: any[]; labels: any[] }) {
   return (
     <div className='bg-dark rounded-xl p-5 flex flex-col items-center gap-3'>
-      <h1 className='font-semibold text-lg'>每日提交</h1>
+      <h1 className='font-semibold text-lg'>{title}</h1>
       <div className='w-full overflow-x-auto'>
         <div className='w-full min-w-[600px] h-[300px] md:h-[500px]'>
           <Line

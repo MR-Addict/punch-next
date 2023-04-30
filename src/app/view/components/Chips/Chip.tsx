@@ -10,12 +10,12 @@ interface Props {
 export default function Chip({ Icon, title, value, color }: Props) {
   return (
     <div className='duration-300 flex flex-row justify-between items-center py-5 px-10 rounded-xl bg-dark'>
-      <div className='flex flex-col justify-between items-center gap-3 animate-slideFromLeft'>
-        <Icon size={45} fill={color} />
-        <h1 className='text-sm text-gray-500'>{title}</h1>
-      </div>
+      <Icon size={60} fill={color} className='animate-scaleUp' />
 
-      <p className='text-5xl font-bold animate-slideFromRight'>{value}</p>
+      <div className='flex flex-col justify-between items-center'>
+        <p className='text-4xl font-bold animate-slideFromLeft'>{value}</p>
+        <p className='text-xs text-gray-500 animate-slideFromRight'>{title}</p>
+      </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import classNames from "classnames";
 
 import { useClientContext } from "./contexts";
-import { Table, Searchbar, Toolbar, Chips, AreaChart } from "./components";
+import { Table, Searchbar, Toolbar, Chips, AreaCharts } from "./components";
 
 export default function Client() {
   const { activeTab } = useClientContext();
@@ -14,7 +14,7 @@ export default function Client() {
 
       <div className={classNames("flex-col gap-5", activeTab === "chart" ? "flex" : "hidden")}>
         <Chips />
-        <AreaChart />
+        <AreaCharts />
       </div>
 
       <div className={classNames("flex-col gap-5", activeTab === "table" ? "flex" : "hidden")}>

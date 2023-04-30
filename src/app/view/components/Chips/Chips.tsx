@@ -5,23 +5,16 @@ import { BsFillCalendarDayFill, BsFillCalendarDateFill } from "react-icons/bs";
 import { BsFillCalendarMonthFill, BsFillCalendarWeekFill } from "react-icons/bs";
 
 import Chip from "./Chip";
-import { formatDate } from "@/lib/utils";
 import { NoteDatabseType } from "@/types/notes";
 import { useClientContext } from "../../contexts";
+import { formatDate, getISOWeekNumber } from "@/lib/utils";
 
 function getToday(notes: NoteDatabseType[]) {
   return notes.filter((note) => formatDate(note.date) === formatDate(new Date())).length;
 }
 
 function getThisWeek(notes: NoteDatabseType[]) {
-  const now = new Date();
-  const firstDay = now.getDate() - now.getDay();
-  const lastDay = firstDay + 6;
-
-  const thisWeekFirstDay = new Date(now.setDate(firstDay));
-  const thisWeekLastDay = new Date(now.setDate(lastDay));
-
-  return notes.filter((note) => note.date <= thisWeekLastDay && note.date >= thisWeekFirstDay).length;
+  return notes.filter((note) => getISOWeekNumber(note.date) === getISOWeekNumber(new Date())).length;
 }
 
 function getThisMonth(notes: NoteDatabseType[]) {
@@ -29,7 +22,7 @@ function getThisMonth(notes: NoteDatabseType[]) {
 }
 
 export default function Chips() {
-  const { notes } = useClientContext();
+  const { notes, filter } = useClientContext();
   const all = notes.length;
   const today = useMemo(() => getToday(notes), [notes]);
   const thisWeek = useMemo(() => getThisWeek(notes), [notes]);
@@ -37,10 +30,10 @@ export default function Chips() {
 
   return (
     <section className='w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-7'>
-      <Chip Icon={BsFillCalendarDateFill} title='今日提交' value={today} color='#FF6D28' />
-      <Chip Icon={BsFillCalendarDayFill} title='本周提交' value={thisWeek} color='#FA2FB5' />
-      <Chip Icon={BsFillCalendarMonthFill} title='本月提交' value={thisMonth} color='#8758FF' />
-      <Chip Icon={BsFillCalendarWeekFill} title='所有提交' value={all} color='#42855B' />
+      <Chip Icon={BsFillCalendarDateFill} title={filter + "今天"} value={today} color='#FF6D28' />
+      <Chip Icon={BsFillCalendarDayFill} title={filter + "本周"} value={thisWeek} color='#FA2FB5' />
+      <Chip Icon={BsFillCalendarMonthFill} title={filter + "本月"} value={thisMonth} color='#8758FF' />
+      <Chip Icon={BsFillCalendarWeekFill} title={filter + "所有"} value={all} color='#42855B' />
     </section>
   );
 }

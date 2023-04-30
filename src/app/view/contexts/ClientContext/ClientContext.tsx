@@ -6,7 +6,7 @@ import { NoteDatabseType } from "@/types/notes";
 
 export type TabType = "chart" | "table";
 
-type FilterType = "所有" | "航模组" | "编程组" | "电子组" | "静模组";
+type FilterType = "技术部" | "航模组" | "编程组" | "电子组" | "静模组";
 
 interface ClientContextProps {
   notes: NoteDatabseType[];
@@ -20,7 +20,7 @@ interface ClientContextProps {
 const ClientContext = createContext<ClientContextProps>({
   notes: [],
   rawNotes: [],
-  filter: "所有",
+  filter: "技术部",
   setFilter: (value: FilterType) => {},
   activeTab: "table",
   setActiveTab: (value: TabType) => {},
@@ -32,12 +32,12 @@ interface ClientContextProviderProps {
 }
 
 function filterNotes(notes: NoteDatabseType[], filter: FilterType) {
-  if (filter === "所有") return notes;
+  if (filter === "技术部") return notes;
   return notes.filter((note) => note.group === filter);
 }
 
 export const ClientContextProvider = ({ children, data }: ClientContextProviderProps) => {
-  const [filter, setFilter] = useState<FilterType>("所有");
+  const [filter, setFilter] = useState<FilterType>("技术部");
   const [activeTab, setActiveTab] = useState<TabType>("chart");
 
   const notes = useMemo(() => filterNotes(data, filter), [data, filter]);
