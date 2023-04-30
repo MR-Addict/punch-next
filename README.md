@@ -2,6 +2,8 @@
 
 值班笔记 Next.js 重构
 
+![preview](preview.png)
+
 ## 1. 部署
 
 添加环境变量：

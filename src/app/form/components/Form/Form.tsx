@@ -122,7 +122,11 @@ export default function Form() {
         </section>
       </div>
 
-      <button disabled={!formData.name || !formData.content || isSubmitting} type='submit' className={style.button}>
+      <button
+        type='submit'
+        className={style.button}
+        disabled={!formData.group || !formData.name || !formData.content || isSubmitting}
+      >
         {isSubmitting ? <LoadingDots /> : <span>提交</span>}
       </button>
     </form>
