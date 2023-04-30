@@ -10,12 +10,12 @@
   @apply border-b border-b-gray-600;
 }
 
-.table tbody tr:hover {
-  @apply md:bg-light;
-}
-
 .table :is(th, td) {
   @apply py-3 px-2;
+}
+
+.table tbody tr:nth-of-type(odd) {
+  @apply bg-light;
 }
 
 .table thead th,

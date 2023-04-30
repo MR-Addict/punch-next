@@ -62,25 +62,27 @@ export default function AreaChart() {
   }, [groupedNotes]);
 
   return (
-    <section className='w-full h-[300px] md:h-[500px] bg-dark p-5 rounded-xl'>
-      <Line
-        // @ts-expect-error
-        options={LineOptions}
-        plugins={[ChartDataLabels]}
-        data={{
-          labels,
-          datasets: [
-            {
-              data,
-              fill: true,
-              tension: 0.4,
-              label: "LineChart",
-              borderColor: "#0ea5e9a0",
-              backgroundColor: "#0ea5e980",
-            },
-          ],
-        }}
-      />
-    </section>
+    <div className='w-full overflow-x-auto bg-dark rounded-xl p-5'>
+      <div className='w-full min-w-[600px] h-[300px] md:h-[500px]'>
+        <Line
+          // @ts-expect-error
+          options={LineOptions}
+          plugins={[ChartDataLabels]}
+          data={{
+            labels,
+            datasets: [
+              {
+                data,
+                fill: true,
+                tension: 0.4,
+                label: "LineChart",
+                borderColor: "#0ea5e9a0",
+                backgroundColor: "#0ea5e980",
+              },
+            ],
+          }}
+        />
+      </div>
+    </div>
   );
 }

@@ -41,7 +41,6 @@ function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
 
 export const TableContextProvider = ({ children }: { children: React.ReactNode }) => {
   const rawNotes = useClientContext().notes;
-  const { activeTab, filter } = useClientContext();
 
   const [currentPage, setCurrentPage] = useState(0);
   const [searchKeywords, setSearchKeywords] = useState("");
@@ -55,13 +54,7 @@ export const TableContextProvider = ({ children }: { children: React.ReactNode }
     return notes.slice(firstNoteIndex, lastNoteIndex);
   }, [notes, currentPage]);
 
-  useEffect(() => setCurrentPage(0), [filter, searchKeywords]);
-
-  // clear init data when change tab
-  useEffect(() => {
-    setCurrentPage(0);
-    setSearchKeywords("");
-  }, [activeTab]);
+  useEffect(() => setCurrentPage(0), [totalPages]);
 
   return (
     <TableContext.Provider

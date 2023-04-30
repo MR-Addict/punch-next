@@ -2,7 +2,7 @@
 
 import classNames from "classnames";
 
-import style from "./Tabbar.module.css";
+import style from "./Tabs.module.css";
 import type { TabType } from "../../contexts";
 import { useClientContext } from "../../contexts";
 
@@ -20,11 +20,11 @@ function Tab({ title, tab }: { title: string; tab: TabType }) {
   );
 }
 
-export default function Tabbar() {
+export default function Tabs() {
   return (
-    <div className='flex flex-row gap-2'>
-      <Tab title='表格' tab='table' />
+    <div className='flex flex-row gap-3'>
       <Tab title='图表' tab='chart' />
+      <Tab title='表格' tab='table' />
     </div>
   );
 }

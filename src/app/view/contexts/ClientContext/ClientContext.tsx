@@ -4,7 +4,7 @@ import { createContext, useContext, useState, useMemo } from "react";
 
 import { NoteDatabseType } from "@/types/notes";
 
-export type TabType = "table" | "chart";
+export type TabType = "chart" | "table";
 
 type FilterType = "所有" | "航模组" | "编程组" | "电子组" | "静模组";
 
@@ -38,7 +38,7 @@ function filterNotes(notes: NoteDatabseType[], filter: FilterType) {
 
 export const ClientContextProvider = ({ children, data }: ClientContextProviderProps) => {
   const [filter, setFilter] = useState<FilterType>("所有");
-  const [activeTab, setActiveTab] = useState<TabType>("table");
+  const [activeTab, setActiveTab] = useState<TabType>("chart");
 
   const notes = useMemo(() => filterNotes(data, filter), [data, filter]);
 

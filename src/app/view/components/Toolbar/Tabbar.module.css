@@ -1,8 +1,0 @@
-.tab {
-  @apply py-1 px-2 rounded-md;
-}
-
-.tab.active,
-.tab:hover {
-  @apply bg-dark;
-}

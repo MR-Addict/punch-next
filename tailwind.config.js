@@ -10,7 +10,7 @@ module.exports = {
     extend: {
       colors: {
         dark: "#20232a",
-        light: "#33373e",
+        light: "#2c3036",
       },
       keyframes: {
         scaleUp: {
