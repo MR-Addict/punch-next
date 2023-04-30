@@ -19,7 +19,7 @@ interface ViewContextProps {
 }
 
 const ViewContext = createContext<ViewContextProps>({
-  firstWeek: new Date("1970-01-01 12:30"),
+  firstWeek: new Date(),
   notes: [],
   rawNotes: [],
   filter: "技术部",

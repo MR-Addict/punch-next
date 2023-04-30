@@ -1,7 +1,8 @@
+import View from "./View";
 import { notes } from "@/lib/mongodb";
-import { View, ViewContextProvider, TableContextProvider } from "@/components/View";
+import { ViewContextProvider, TableContextProvider } from "./contexts";
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function Page() {
   const result = await notes.query();

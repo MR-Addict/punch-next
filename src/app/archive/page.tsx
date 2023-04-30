@@ -1,22 +1,24 @@
-import Link from "next/link";
+import fs from "fs";
+import path from "path";
 
 import data from "./config";
-import style from "./page.module.css";
+import Client from "./Client";
+import { TableContextProvider } from "./contexts";
+import { NoteDatabseType } from "@/types/notes";
+
+function getNotes(name: string) {
+  const filePath = path.join(process.cwd(), `src/assets/${name}.json`);
+  const fileContent = fs.readFileSync(filePath, "utf8");
+  const notes: NoteDatabseType[] = JSON.parse(fileContent).map((item: any) => ({ ...item, date: new Date(item.date) }));
+  return { name, notes };
+}
 
 export default function Page() {
-  return (
-    <main className='flex-1 w-full py-10 px-4 md:px-48 flex flex-col gap-1'>
-      <h1 className='font-semibold text-lg'>历史归档</h1>
+  const result = data.map((item) => getNotes(item.name));
 
-      <ul>
-        {data.map((item) => (
-          <li key={item.name} className={style.list}>
-            <Link href={`/archive/${item.name}`} className='hover:underline'>
-              {item.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </main>
+  return (
+    <TableContextProvider data={result}>
+      <Client />
+    </TableContextProvider>
   );
 }
