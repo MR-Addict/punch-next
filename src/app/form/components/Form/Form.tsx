@@ -17,6 +17,15 @@ export default function Form() {
 
   const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value.trim() });
 
+  function revalidatePage() {
+    fetch(`/api/revalidate`)
+      .then((res) => res.json())
+      .then((result) => {
+        if (!result.success) console.error(result.message);
+      })
+      .catch((error) => console.error(error));
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setIsSubmitting(true);
@@ -30,9 +39,10 @@ export default function Form() {
       .then((result) => {
         popup(result);
         if (result.success) {
+          revalidatePage();
           setFormData({ ...formData, content: "" });
           localStorage.setItem(storageName, JSON.stringify({ name: formData.name, group: formData.group }));
-        }
+        } else console.error(result.message);
       })
       .catch((error) => console.error(error))
       .finally(() => setIsSubmitting(false));
