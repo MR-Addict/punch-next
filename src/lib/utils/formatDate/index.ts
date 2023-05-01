@@ -1,10 +1,6 @@
-export default function formatDate(date: string | Date) {
+export default function formatDate(date: string | Date, offset: number = 8) {
   const newDate = date instanceof Date ? date : new Date(date);
-  const localDate = newDate.toLocaleString("zh-cn", { timeZone: "Asia/Shanghai" });
+  const localDate = newDate.getTime() + offset * 60 * 60 * 1000;
 
-  return localDate
-    .split(" ")[0]
-    .split("/")
-    .map((item) => (Number(item) < 10 ? "0" + Number(item) : item))
-    .join("-");
+  return new Date(localDate).toISOString().split("T")[0];
 }
