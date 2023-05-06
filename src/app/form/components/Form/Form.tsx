@@ -17,20 +17,11 @@ export default function Form() {
 
   const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value.trim() });
 
-  function revalidatePage() {
-    fetch(`/api/revalidate`)
-      .then((res) => res.json())
-      .then((result) => {
-        if (!result.success) console.error(result.message);
-      })
-      .catch((error) => console.error(error));
-  }
-
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    fetch("/api/form", {
+    fetch("/api", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: { "Content-Type": "application/json" },
@@ -39,7 +30,6 @@ export default function Form() {
       .then((result) => {
         popup(result);
         if (result.success) {
-          revalidatePage();
           setFormData({ ...formData, content: "" });
           localStorage.setItem(storageName, JSON.stringify({ name: formData.name, group: formData.group }));
         } else console.error(result.message);
@@ -58,43 +48,43 @@ export default function Form() {
 
   return (
     <form className={style.form} onSubmit={handleSubmit}>
-      <h1 className='text-2xl font-semibold'>值班笔记</h1>
+      <h1 className="text-2xl font-semibold">值班笔记</h1>
 
-      <div className='w-full flex flex-col gap-3'>
+      <div className="w-full flex flex-col gap-3">
         <section className={style["input-element"]}>
-          <label className={style.label} htmlFor='submitFormGroup'>
+          <label className={style.label} htmlFor="submitFormGroup">
             <FaRegLightbulb size={13} />
             <span>组别</span>
           </label>
           <select
             required
-            name='group'
-            id='submitFormGroup'
+            name="group"
+            id="submitFormGroup"
             value={formData.group}
             onChange={handleChange}
             className={style.input}
           >
-            <option disabled value=''>
+            <option disabled value="">
               -- 请选择组别 --
             </option>
-            <option value='航模组'>航模组</option>
-            <option value='编程组'>编程组</option>
-            <option value='电子组'>电子组</option>
-            <option value='静模组'>静模组</option>
+            <option value="航模组">航模组</option>
+            <option value="编程组">编程组</option>
+            <option value="电子组">电子组</option>
+            <option value="静模组">静模组</option>
           </select>
         </section>
 
         <section className={style["input-element"]}>
-          <label className={style.label} htmlFor='submitFormName'>
+          <label className={style.label} htmlFor="submitFormName">
             <FaRegUser size={13} />
             <span>姓名</span>
           </label>
           <input
             required
-            type='text'
-            name='name'
-            id='submitFormName'
-            placeholder='姓名'
+            type="text"
+            name="name"
+            id="submitFormName"
+            placeholder="姓名"
             maxLength={10}
             value={formData.name}
             onChange={handleChange}
@@ -103,27 +93,27 @@ export default function Form() {
         </section>
 
         <section className={style["input-element"]}>
-          <label className={style.label} htmlFor='submitFormContent'>
+          <label className={style.label} htmlFor="submitFormContent">
             <FaRegEdit size={15} />
             <span>值班笔记</span>
           </label>
           <textarea
             required
-            name='content'
-            id='submitFormContent'
+            name="content"
+            id="submitFormContent"
             minLength={4}
             maxLength={500}
             value={formData.content}
             onChange={handleChange}
             style={{ height: 200 }}
             className={style.input}
-            placeholder='今天的值班笔记内容'
+            placeholder="今天的值班笔记内容"
           />
         </section>
       </div>
 
       <button
-        type='submit'
+        type="submit"
         className={style.button}
         disabled={!formData.group || !formData.name || !formData.content || isSubmitting}
       >
