@@ -14,14 +14,14 @@ export default function MobileLinks() {
   const [isExpandMenu, setIsExpandMenu] = useState(false);
   const rootPath = (usePathname() || "/").split("/").slice(0, 2).join("/");
 
+  function handleClick() {
+    setIsExpandMenu(!isExpandMenu);
+    document.body.style.overflow = isExpandMenu ? "hidden" : "auto";
+  }
+
   return (
-    <div className='md:hidden flex items-center justify-center'>
-      <button
-        type='button'
-        aria-label='menu button'
-        className={style["menu-btn"]}
-        onClick={() => setIsExpandMenu(!isExpandMenu)}
-      >
+    <div className="md:hidden flex items-center justify-center">
+      <button type="button" aria-label="menu button" className={style["menu-btn"]} onClick={handleClick}>
         <AiOutlineCloseCircle className={classNames(style["menu-icon"], { [style.active]: isExpandMenu })} />
         <HiMenuAlt3 className={classNames(style["menu-icon"], { [style.active]: !isExpandMenu })} />
       </button>

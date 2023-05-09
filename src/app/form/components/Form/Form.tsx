@@ -15,7 +15,7 @@ export default function Form() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
 
-  const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value.trim() });
+  const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -23,7 +23,7 @@ export default function Form() {
 
     fetch("/api", {
       method: "POST",
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ ...formData, content: formData.content.trim() }),
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
@@ -34,7 +34,10 @@ export default function Form() {
           localStorage.setItem(storageName, JSON.stringify({ name: formData.name, group: formData.group }));
         } else console.error(result.message);
       })
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        console.error(error);
+        popup({ success: false, message: "提交失败" });
+      })
       .finally(() => setIsSubmitting(false));
   }
 
