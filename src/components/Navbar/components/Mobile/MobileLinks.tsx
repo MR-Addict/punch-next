@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import classNames from "classnames";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -14,15 +14,18 @@ export default function MobileLinks() {
   const [isExpandMenu, setIsExpandMenu] = useState(false);
   const rootPath = (usePathname() || "/").split("/").slice(0, 2).join("/");
 
-  function handleClick() {
-    const nowMenuState = !isExpandMenu;
-    setIsExpandMenu(nowMenuState);
-    document.body.style.overflow = nowMenuState ? "hidden" : "auto";
-  }
+  useEffect(() => {
+    document.body.style.overflow = isExpandMenu ? "hidden" : "auto";
+  }, [isExpandMenu]);
 
   return (
     <div className="md:hidden flex items-center justify-center">
-      <button type="button" aria-label="menu button" className={style["menu-btn"]} onClick={handleClick}>
+      <button
+        type="button"
+        aria-label="menu button"
+        className={style["menu-btn"]}
+        onClick={() => setIsExpandMenu(!isExpandMenu)}
+      >
         <AiOutlineCloseCircle className={classNames(style["menu-icon"], { [style.active]: isExpandMenu })} />
         <HiMenuAlt3 className={classNames(style["menu-icon"], { [style.active]: !isExpandMenu })} />
       </button>
