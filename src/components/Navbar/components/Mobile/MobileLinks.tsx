@@ -15,8 +15,9 @@ export default function MobileLinks() {
   const rootPath = (usePathname() || "/").split("/").slice(0, 2).join("/");
 
   function handleClick() {
-    setIsExpandMenu(!isExpandMenu);
-    document.body.style.overflow = isExpandMenu ? "hidden" : "auto";
+    const nowMenuState = !isExpandMenu;
+    setIsExpandMenu(nowMenuState);
+    document.body.style.overflow = nowMenuState ? "hidden" : "auto";
   }
 
   return (
