@@ -1,7 +1,7 @@
 import "./globals.css";
 
+import { Footer, Navbar } from "@/components";
 import { PopupContextProvider } from "@/contexts";
-import { Footer, Navbar, VercelAnalytics } from "@/components";
 
 export const metadata = {
   title: "值班笔记",
@@ -11,9 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='zh-Hans'>
+    <html lang="zh-Hans">
       <body>
-        <VercelAnalytics />
         <PopupContextProvider>
           <Navbar />
           {children}
