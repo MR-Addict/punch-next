@@ -4,7 +4,7 @@ const NodeEnv = z.enum(["development", "production", "test", "preview"]);
 
 const Env = z.object({
   NODE_ENV: NodeEnv,
-  MONGODB_URI: z.string(),
+  MONGODB_URI: z.string()
 });
 
 type EnvType = z.TypeOf<typeof Env>;

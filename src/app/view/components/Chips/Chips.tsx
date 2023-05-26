@@ -29,11 +29,11 @@ export default function Chips() {
   const thisMonth = useMemo(() => getThisMonth(notes), [notes]);
 
   return (
-    <section className='w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-7'>
-      <Chip Icon={BsFillCalendarDateFill} title={filter + "今天"} value={today} color='#FF6D28' />
-      <Chip Icon={BsFillCalendarDayFill} title={filter + "本周"} value={thisWeek} color='#FA2FB5' />
-      <Chip Icon={BsFillCalendarMonthFill} title={filter + "本月"} value={thisMonth} color='#8758FF' />
-      <Chip Icon={BsFillCalendarWeekFill} title={filter + "所有"} value={all} color='#42855B' />
+    <section className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-7">
+      <Chip Icon={BsFillCalendarDateFill} title={filter + "今天"} value={today} color="#FF6D28" />
+      <Chip Icon={BsFillCalendarDayFill} title={filter + "本周"} value={thisWeek} color="#FA2FB5" />
+      <Chip Icon={BsFillCalendarMonthFill} title={filter + "本月"} value={thisMonth} color="#8758FF" />
+      <Chip Icon={BsFillCalendarWeekFill} title={filter + "所有"} value={all} color="#42855B" />
     </section>
   );
 }

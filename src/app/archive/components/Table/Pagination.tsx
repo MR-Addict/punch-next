@@ -12,7 +12,7 @@ export default function Pagination() {
   function Button({ page }: { page: number }) {
     return (
       <button
-        type='button'
+        type="button"
         onClick={() => {
           if (page === currentPage) return;
           setCurrentPage(page);
@@ -29,18 +29,18 @@ export default function Pagination() {
   }
 
   return (
-    <div className='w-full flex flex-col md:flex-row items-center justify-between gap-2 text-sm py-3 pl-2 pr-5 border border-gray-500 border-t-0 rounded-b-sm'>
+    <div className="w-full flex flex-col md:flex-row items-center justify-between gap-2 text-sm py-3 pl-2 pr-5 border border-gray-500 border-t-0 rounded-b-sm">
       <p>
         {currentPage + 1}/{totalPages}页 (共{notes.length}条记录)
       </p>
 
-      <div className='flex flex-row items-center gap-1.5'>
+      <div className="flex flex-row items-center gap-1.5">
         {/* first button */}
         {currentNotes.length > 0 && <Button page={0} />}
 
         {/* dots */}
         {totalPages > buttonsWidth + 2 && currentPage - Math.floor(buttonsWidth / 2) > leftSide && (
-          <div className='place-items-center'>...</div>
+          <div className="place-items-center">...</div>
         )}
 
         {/* other buttons */}
@@ -56,7 +56,7 @@ export default function Pagination() {
 
         {/* dots */}
         {totalPages > buttonsWidth + 2 && currentPage + Math.ceil(buttonsWidth / 2) < totalPages - 1 && (
-          <div className='place-items-center'>...</div>
+          <div className="place-items-center">...</div>
         )}
 
         {/* last button show only page are more than one page */}

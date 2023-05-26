@@ -25,7 +25,7 @@ const ClientContext = createContext<ClientContextProps>({
   filter: "技术部",
   setFilter: (value: FilterType) => {},
   activeTab: "table",
-  setActiveTab: (value: TabType) => {},
+  setActiveTab: (value: TabType) => {}
 });
 
 function filterNotes(notes: NoteDatabseType[], filter: FilterType) {

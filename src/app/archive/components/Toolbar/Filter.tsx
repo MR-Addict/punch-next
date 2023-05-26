@@ -6,10 +6,10 @@ export default function Filter() {
   return (
     <select
       value={archiveIndex}
-      name='filter type'
-      aria-label='archive filter'
+      name="filter type"
+      aria-label="archive filter"
       onChange={(e) => setArchiveIndex(Number(e.target.value))}
-      className='bg-dark outline-none rounded-sm py-1 px-2 border border-gray-500'
+      className="bg-dark outline-none rounded-sm py-1 px-2 border border-gray-500"
     >
       {totalArchives.map((item) => (
         <option key={item.name} value={item.index}>

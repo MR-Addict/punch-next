@@ -10,7 +10,7 @@ function Tab({ title, tab }: { title: string; tab: TabType }) {
 
   return (
     <button
-      type='button'
+      type="button"
       onClick={() => setActiveTab(tab)}
       className={classNames(style.tab, { [style.active]: activeTab === tab })}
     >
@@ -21,9 +21,9 @@ function Tab({ title, tab }: { title: string; tab: TabType }) {
 
 export default function Tabs() {
   return (
-    <div className='flex flex-row gap-2'>
-      <Tab title='表格' tab='table' />
-      <Tab title='图表' tab='chart' />
+    <div className="flex flex-row gap-2">
+      <Tab title="表格" tab="table" />
+      <Tab title="图表" tab="chart" />
     </div>
   );
 }

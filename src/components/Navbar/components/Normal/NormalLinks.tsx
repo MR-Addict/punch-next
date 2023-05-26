@@ -10,7 +10,7 @@ export default function NormalLinks() {
   const rootPath = (usePathname() || "/").split("/").slice(0, 2).join("/");
 
   return (
-    <ul className='hidden md:flex flex-row gap-4'>
+    <ul className="hidden md:flex flex-row gap-4">
       {links.map((item) => (
         <li
           key={item.name}

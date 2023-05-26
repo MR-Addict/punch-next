@@ -13,7 +13,7 @@ interface Props {
 
 export default function Popup({ popupData, isPopup }: Props) {
   return (
-    <section aria-label='popup window' className={classNames(style.popupwindow, isPopup ? style.active : "")}>
+    <section aria-label="popup window" className={classNames(style.popupwindow, isPopup ? style.active : "")}>
       <div className={classNames(style.popupbody, popupData.success ? style.active : "")}>
         <div>{popupData.success ? <BsCheckCircle size={30} /> : <MdErrorOutline size={30} />}</div>
         <p>{popupData.message}</p>

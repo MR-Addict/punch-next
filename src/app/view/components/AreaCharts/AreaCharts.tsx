@@ -11,7 +11,8 @@ export default function AreaCharts() {
 
   const notesGroupedByDay = useMemo(() => groupBy([...notes].reverse(), (note) => formatDate(note.date)), [notes]);
   const notesGroupedByWeek = useMemo(
-    () => groupBy([...notes].reverse(), (note) => `第${getISOWeekNumber(note.date) - getISOWeekNumber(firstWeek)}周`),
+    () =>
+      groupBy([...notes].reverse(), (note) => `第${getISOWeekNumber(note.date) - getISOWeekNumber(firstWeek) + 1}周`),
     [notes]
   );
 
@@ -25,7 +26,7 @@ export default function AreaCharts() {
   const weekLabels = useMemo(() => notesGroupedByWeek.map((item) => item.category), [notesGroupedByWeek]);
 
   return (
-    <div className='flex flex-col gap-10 animate-slideFromBottom'>
+    <div className="flex flex-col gap-10 animate-slideFromBottom">
       <AreaChart title={filter + "每日提交"} data={notesGroupedByDay.map((item) => item.count)} labels={dayLabels} />
       <AreaChart title={filter + "每周提交"} data={notesGroupedByWeek.map((item) => item.count)} labels={weekLabels} />
     </div>

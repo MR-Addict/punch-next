@@ -25,7 +25,7 @@ const TableContext = createContext<TableContextProps>({
   currentPage: 0,
   setCurrentPage(value: number) {},
   currentNotes: [],
-  notes: [],
+  notes: []
 });
 
 function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
@@ -65,7 +65,7 @@ export const TableContextProvider = ({ children }: { children: React.ReactNode }
         currentPage,
         setCurrentPage,
         currentNotes,
-        notes,
+        notes
       }}
     >
       {children}

@@ -11,7 +11,7 @@ const LineOptions = {
   responsive: true,
   scales: {
     y: { grid: { color: "#6b728040" } },
-    x: { grid: { color: "#6b728040" } },
+    x: { grid: { color: "#6b728040" } }
   },
   plugins: {
     legend: { display: false },
@@ -29,20 +29,20 @@ const LineOptions = {
         title: {
           font: {
             size: 14,
-            weight: "bold",
-          },
-        },
-      },
-    },
-  },
+            weight: "bold"
+          }
+        }
+      }
+    }
+  }
 };
 
 export default function AreaChart({ title, data, labels }: { title: string; data: any[]; labels: any[] }) {
   return (
-    <div className='bg-dark rounded-xl p-5 flex flex-col items-center gap-3'>
-      <h1 className='font-semibold text-lg'>{title}</h1>
-      <div className='w-full overflow-x-auto'>
-        <div className='w-full min-w-[600px] h-[300px] md:h-[500px]'>
+    <div className="bg-dark rounded-xl p-5 flex flex-col items-center gap-3">
+      <h1 className="font-semibold text-lg">{title}</h1>
+      <div className="w-full overflow-x-auto">
+        <div className="w-full min-w-[600px] h-[300px] md:h-[500px]">
           <Line
             // @ts-expect-error
             options={LineOptions}
@@ -56,9 +56,9 @@ export default function AreaChart({ title, data, labels }: { title: string; data
                   tension: 0.4,
                   label: "LineChart",
                   borderColor: "#0ea5e9a0",
-                  backgroundColor: "#0ea5e980",
-                },
-              ],
+                  backgroundColor: "#0ea5e980"
+                }
+              ]
             }}
           />
         </div>

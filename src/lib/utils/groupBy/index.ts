@@ -13,6 +13,6 @@ export default function groupBy<T>(array: T[], predicate: (value: T, index: numb
   return Object.keys(groups).map((category) => ({
     category,
     count: groups[category].length,
-    data: groups[category],
+    data: groups[category]
   }));
 }

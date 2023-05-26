@@ -10,20 +10,20 @@ export async function POST(request: Request) {
     if (!parsedResult.success)
       return new Response(JSON.stringify({ success: false, message: "提交失败" }), {
         headers: { "Content-Type": "application/json" },
-        status: 400,
+        status: 400
       });
 
     const result = await notes.insert(parsedResult.data);
     if (result.success) revalidatePath("/view");
     return new Response(JSON.stringify(result), {
       headers: { "Content-Type": "application/json" },
-      status: result.success ? 201 : 500,
+      status: result.success ? 201 : 500
     });
   } catch (error) {
     console.error(error);
     return new Response(JSON.stringify({ success: false, message: "提交失败" }), {
       headers: { "Content-Type": "application/json" },
-      status: 400,
+      status: 400
     });
   }
 }

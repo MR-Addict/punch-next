@@ -9,7 +9,7 @@ interface PopupContextProps {
 }
 
 const PopupContext = createContext<PopupContextProps>({
-  popup: (data: { success: boolean; message: string }) => {},
+  popup: (data: { success: boolean; message: string }) => {}
 });
 
 export const PopupContextProvider = ({ children }: { children: React.ReactNode }) => {

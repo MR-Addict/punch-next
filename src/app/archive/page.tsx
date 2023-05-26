@@ -3,8 +3,8 @@ import path from "path";
 
 import data from "./config";
 import Client from "./Client";
-import { TableContextProvider } from "./contexts";
 import { NoteDatabseType } from "@/types/notes";
+import { TableContextProvider } from "./contexts";
 
 function getNotes(name: string) {
   const filePath = path.join(process.cwd(), `src/assets/${name}.json`);

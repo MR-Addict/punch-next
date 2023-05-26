@@ -24,7 +24,7 @@ export default function Form() {
     fetch("/api", {
       method: "POST",
       body: JSON.stringify({ ...formData, content: formData.content.trim() }),
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" }
     })
       .then((res) => res.json())
       .then((result) => {
