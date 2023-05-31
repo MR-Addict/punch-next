@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-import { useTableContext } from "../../contexts";
+import { useClientContext, useTableContext } from "../../contexts";
 
 export default function Searchbar() {
+  const { rawNotes } = useClientContext();
   const { setSearchKeywords } = useTableContext();
   const [localSearchKeywords, setLocalSearchKeywords] = useState("");
 
@@ -13,6 +14,8 @@ export default function Searchbar() {
     const timer = setTimeout(() => setSearchKeywords(localSearchKeywords.toLowerCase()), 500);
     return () => clearTimeout(timer);
   }, [localSearchKeywords]);
+
+  if (rawNotes.length === 0) return <></>;
 
   return (
     <div className="bg-dark w-full flex flex-row items-center gap-1 justify-end border border-gray-500 py-1 px-2 rounded-sm focus-within:border-blue-600 animate-slideFromTop">

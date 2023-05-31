@@ -48,7 +48,7 @@ async function query() {
 
 const user = {
   insert,
-  query
+  query,
 };
 
 export default user;

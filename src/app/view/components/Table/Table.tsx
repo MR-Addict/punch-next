@@ -9,7 +9,7 @@ import { useTableContext } from "../../contexts";
 export default function Table() {
   const { currentNotes, currentPage, notesPerpage } = useTableContext();
 
-  if (currentNotes.length === 0) return <h1 className="w-full text-center py-3 rounded-sm">没有符合条件的结果</h1>;
+  if (currentNotes.length === 0) return <h1 className="w-full text-center py-28 rounded-sm">没有符合条件的结果</h1>;
 
   return (
     <div className="w-full bg-dark animate-slideFromBottom">
