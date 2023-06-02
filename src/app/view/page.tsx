@@ -8,7 +8,7 @@ export default async function Page() {
 
   return (
     <main className="w-full flex-1 py-10 px-4 md:px-48">
-      <ClientContextProvider data={result.data} firstWeek={new Date("2022-02-13 12:30")}>
+      <ClientContextProvider data={result.data} firstWeek={new Date("2023-02-13 12:30")}>
         <TableContextProvider>
           <Client />
         </TableContextProvider>
