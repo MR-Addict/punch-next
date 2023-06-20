@@ -1,23 +1,31 @@
+import z from "zod";
 import fs from "fs";
 import path from "path";
 
-import data from "./config";
 import Client from "./Client";
-import { NoteDatabseType } from "@/types/notes";
+import { NoteDatabse } from "@/types/notes";
 import { TableContextProvider } from "./contexts";
 
-function getNotes(name: string) {
-  const filePath = path.join(process.cwd(), `src/assets/${name}.json`);
-  const fileContent = fs.readFileSync(filePath, "utf8");
-  const notes: NoteDatabseType[] = JSON.parse(fileContent);
-  return { name, notes };
+function getNotes() {
+  const archivePath = path.join(process.cwd(), "src/assets");
+  const fileNames = fs.readdirSync(archivePath);
+  fileNames.sort((a, b) => b.localeCompare(a));
+
+  return fileNames.map((fileName) => {
+    const name = fileName.replace(".json", "");
+    const filePath = path.join(archivePath, fileName);
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    const notes = z.array(NoteDatabse).parse(JSON.parse(fileContent));
+    notes.sort(({ date: a }, { date: b }) => new Date(b).getTime() - new Date(a).getTime());
+    return { name, notes };
+  });
 }
 
 export default function Page() {
-  const result = data.map((item) => getNotes(item.name));
+  const data = getNotes();
 
   return (
-    <TableContextProvider data={result}>
+    <TableContextProvider data={data}>
       <Client />
     </TableContextProvider>
   );
