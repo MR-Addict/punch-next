@@ -1,6 +1,9 @@
 import Client from "./Client";
 import { notes } from "@/lib/mongodb";
+import { setMetadata } from "@/lib/utils";
 import { ClientContextProvider, TableContextProvider } from "./contexts";
+
+export const metadata = setMetadata("查看笔记");
 
 export default async function Page() {
   const result = await notes.query();

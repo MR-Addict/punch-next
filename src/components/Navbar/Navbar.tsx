@@ -1,15 +1,13 @@
 import Link from "next/link";
-import Image from "next/image";
 import { BsGithub } from "react-icons/bs";
 
-import logo from "./logo.svg";
 import { MobileLinks, NormalLinks } from "./components";
 
 export default function Navbar() {
   return (
     <nav className="w-full px-4 md:px-48 pt-4 md:pt-7 flex flex-row items-center justify-between isolate">
-      <Link href="/" className="animate-slideFromLeft">
-        <Image src={logo} alt="logo" height={26} />
+      <Link href="/" className="font-bold text-lg animate-slideFromLeft">
+        值班笔记
       </Link>
 
       <NormalLinks />

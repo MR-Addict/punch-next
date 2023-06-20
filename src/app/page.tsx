@@ -1,7 +1,10 @@
 import Link from "next/link";
 
 import style from "./page.module.css";
+import { setMetadata } from "@/lib/utils";
 import { FcAddressBook, FcDataSheet } from "react-icons/fc";
+
+export const metadata = setMetadata();
 
 export default async function Page() {
   return (

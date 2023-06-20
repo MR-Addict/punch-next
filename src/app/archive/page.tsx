@@ -3,8 +3,11 @@ import fs from "fs";
 import path from "path";
 
 import Client from "./Client";
+import { setMetadata } from "@/lib/utils";
 import { NoteDatabse } from "@/types/notes";
 import { TableContextProvider } from "./contexts";
+
+export const metadata = setMetadata("笔记归档");
 
 function getNotes() {
   const archivePath = path.join(process.cwd(), "src/assets");

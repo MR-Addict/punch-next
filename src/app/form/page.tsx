@@ -1,4 +1,7 @@
 import { Form } from "./components";
+import { setMetadata } from "@/lib/utils";
+
+export const metadata = setMetadata("提交笔记");
 
 export default function Page() {
   return (
