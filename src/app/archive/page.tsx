@@ -7,7 +7,7 @@ import { setMetadata } from "@/lib/utils";
 import { NoteDatabse } from "@/types/notes";
 import { TableContextProvider } from "./contexts";
 
-export const metadata = setMetadata("笔记归档");
+export const metadata = setMetadata("归档笔记");
 
 function getNotes() {
   const archivePath = path.join(process.cwd(), "/src/assets");
