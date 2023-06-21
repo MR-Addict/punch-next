@@ -36,7 +36,7 @@ export default function Form() {
       })
       .catch((error) => {
         console.error(error);
-        popup({ success: false, message: "提交失败" });
+        popup({ success: false, message: "提交失败，未知错误" });
       })
       .finally(() => setIsSubmitting(false));
   }

@@ -1,5 +1,5 @@
 .card {
-  @apply duration-300 p-5 md:p-7 rounded-md border border-cyan-600;
+  @apply duration-300 p-7 rounded-xl border border-cyan-600;
   @apply flex flex-row md:flex-col items-center justify-center gap-3 animate-scaleUp;
 }
 
