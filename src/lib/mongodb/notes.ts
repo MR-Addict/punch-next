@@ -20,10 +20,10 @@ async function insert(note: NoteType) {
 
     const result = await collection.insertOne({ date: new Date(), ...note });
     if (result.insertedId) return { success: true, message: "提交成功" };
-    else return { success: false, message: "提交失败" };
+    else return { success: false, message: "提交失败，无法写入数据库" };
   } catch (error) {
     console.error(error);
-    return { success: false, message: "提交失败" };
+    return { success: false, message: "提交失败，数据库连接失败" };
   }
 }
 
@@ -42,7 +42,7 @@ async function query() {
     return { success: true, data };
   } catch (error) {
     console.error(error);
-    return { success: false, message: "数据库获取失败" };
+    return { success: false, message: "数据库连接失败" };
   }
 }
 

@@ -17,7 +17,7 @@ export default function Logo() {
       </Link>
 
       <div className="absolute top-0 -right-1 translate-x-full text-xs bg-cyan-600 rounded-lg px-1">
-        {termWeek + "周"}
+        {"第" + termWeek + "周"}
       </div>
     </div>
   );

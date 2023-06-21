@@ -1,9 +1,3 @@
-export type GroupedType<T> = {
-  category: string;
-  count: number;
-  data: T[];
-}[];
-
 export default function groupBy<T>(array: T[], predicate: (value: T, index: number, array: T[]) => string) {
   const groups = array.reduce((acc, value, index, array) => {
     (acc[predicate(value, index, array)] ||= []).push(value);

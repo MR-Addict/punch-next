@@ -1,9 +1,8 @@
 "use client";
 
-import { formatDate } from "@/lib/utils";
-
 import style from "./Table.module.css";
 import Pagination from "./Pagination";
+import { formatDate } from "@/lib/utils";
 import { useTableContext } from "../../contexts";
 
 export default function Table() {
