@@ -9,6 +9,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 
 import links from "../../config";
 import style from "./MobileLinks.module.css";
+import { Footer } from "@/components";
 
 export default function MobileLinks() {
   const [isExpandMenu, setIsExpandMenu] = useState(false);
@@ -30,15 +31,19 @@ export default function MobileLinks() {
         <HiMenuAlt3 className={classNames(style["menu-icon"], { [style.active]: !isExpandMenu })} />
       </button>
 
-      <ul className={classNames(style.menu, { [style.active]: isExpandMenu })}>
-        {links.map((item) => (
-          <li key={item.name} className={classNames(style.link, { [style.active]: rootPath === item.link })}>
-            <Link href={item.link} onClick={() => setIsExpandMenu(rootPath === item.link)}>
-              {item.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className={classNames(style.menu, { [style.active]: isExpandMenu })}>
+        <ul className="flex items-center flex-col gap-7">
+          {links.map((item) => (
+            <li key={item.name} className={classNames(style.link, { [style.active]: rootPath === item.link })}>
+              <Link href={item.link} onClick={() => setIsExpandMenu(rootPath === item.link)}>
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <Footer mobile={true} />
+      </div>
     </div>
   );
 }

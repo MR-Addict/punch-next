@@ -10,7 +10,7 @@ import { TableContextProvider } from "./contexts";
 export const metadata = setMetadata("笔记归档");
 
 function getNotes() {
-  const archivePath = path.join(process.cwd(), "/assets");
+  const archivePath = path.join(process.cwd(), "/src/assets");
   const fileNames = fs.readdirSync(archivePath);
   fileNames.sort((a, b) => b.localeCompare(a));
 

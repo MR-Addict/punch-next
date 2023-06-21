@@ -1,8 +1,10 @@
 "use client";
 
-export default function Footer() {
+import classNames from "classnames";
+
+export default function Footer({ mobile = false }: { mobile?: boolean }) {
   return (
-    <footer className="w-full flex flex-row justify-center gap-1 pb-2 text-sm">
+    <footer className={classNames("space-x-1 pb-2 text-sm", mobile ? "flex" : "hidden md:flex")}>
       <p>
         <span>Copyright &copy; {new Date().getFullYear()} </span>
         <a href="https://github.com/NJTUSTAS" className="underline">
