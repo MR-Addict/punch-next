@@ -3,8 +3,15 @@
 export default function Footer() {
   return (
     <footer className="w-full flex flex-row justify-center gap-1 pb-2 text-sm">
-      <p>Copyright &copy; {new Date().getFullYear()} 校大学生科协</p>
+      <p>
+        <span>Copyright &copy; {new Date().getFullYear()} </span>
+        <a href="https://github.com/NJTUSTAS" className="underline">
+          校大学生科协
+        </a>
+      </p>
+
       <p>•</p>
+
       <a href="https://github.com/MR-Addict" className="underline">
         MR-Addict
       </a>

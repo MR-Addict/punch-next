@@ -14,38 +14,38 @@ module.exports = {
       },
       keyframes: {
         scaleUp: {
-          from: { transform: "scale(0.9)" },
-          to: { transform: "scale(1)" }
+          from: { transform: "scale(0.8)", opacity: 0 },
+          to: { transform: "scale(1)", opacity: 1 }
         },
         scaleDown: {
-          from: { transform: "scale(1.1)" },
-          to: { transform: "scale(1)" }
+          from: { transform: "scale(1.1)", opacity: 0 },
+          to: { transform: "scale(1)", opacity: 1 }
         },
         slideFromLeft: {
-          from: { transform: "translateX(-1rem)", opacity: 0 },
+          from: { transform: "translateX(-2rem)", opacity: 0 },
           to: { transform: "translateX(0)", opacity: 1 }
         },
         slideFromRight: {
-          from: { transform: "translateX(1rem)", opacity: 0 },
+          from: { transform: "translateX(2rem)", opacity: 0 },
           to: { transform: "translateX(0)", opacity: 1 }
         },
         slideFromTop: {
-          from: { transform: "translateY(-1rem)", opacity: 0 },
+          from: { transform: "translateY(-2rem)", opacity: 0 },
           to: { transform: "translateY(0)", opacity: 1 }
         },
         slideFromBottom: {
-          from: { transform: "translateY(1rem)", opacity: 0 },
+          from: { transform: "translateY(2rem)", opacity: 0 },
           to: { transform: "translateY(0)", opacity: 1 }
         }
       }
     },
     animation: {
-      scaleUp: "scaleUp ease 700ms",
-      scaleDown: "scaleDown ease 700ms",
-      slideFromLeft: "slideFromLeft ease 700ms",
-      slideFromRight: "slideFromRight ease 700ms",
-      slideFromTop: "slideFromTop ease 700ms",
-      slideFromBottom: "slideFromBottom ease 700ms"
+      scaleUp: "scaleUp ease-out 700ms",
+      scaleDown: "scaleDown ease-out 700ms",
+      slideFromLeft: "slideFromLeft ease-out 700ms",
+      slideFromRight: "slideFromRight ease-out 700ms",
+      slideFromTop: "slideFromTop ease-out 700ms",
+      slideFromBottom: "slideFromBottom ease-out 700ms"
     }
   },
   plugins: []

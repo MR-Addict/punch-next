@@ -1,7 +1,9 @@
 import Client from "./Client";
+import { ClientContextProvider, TableContextProvider } from "./contexts";
+
+import { config } from "@/lib/config";
 import { notes } from "@/lib/mongodb";
 import { setMetadata } from "@/lib/utils";
-import { ClientContextProvider, TableContextProvider } from "./contexts";
 
 export const metadata = setMetadata("查看笔记");
 
@@ -10,12 +12,10 @@ export default async function Page() {
   if (!result.data) throw new Error(result.message);
 
   return (
-    <main className="w-full flex-1 py-10 px-4 md:px-48">
-      <ClientContextProvider data={result.data} firstWeek={new Date("2023-09-04 12:30")}>
-        <TableContextProvider>
-          <Client />
-        </TableContextProvider>
-      </ClientContextProvider>
-    </main>
+    <ClientContextProvider data={result.data} start={config.start}>
+      <TableContextProvider>
+        <Client />
+      </TableContextProvider>
+    </ClientContextProvider>
   );
 }

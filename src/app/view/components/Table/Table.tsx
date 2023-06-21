@@ -7,9 +7,8 @@ import Pagination from "./Pagination";
 import { useTableContext } from "../../contexts";
 
 export default function Table() {
-  const { notes, currentNotes, currentPage, notesPerpage, totalPages } = useTableContext();
+  const { currentNotes, currentPage, notesPerpage, totalPages } = useTableContext();
 
-  if (notes.length === 0) return <h1 className="w-full text-center py-28 rounded-sm">本学期还没有人提交值班笔记哦</h1>;
   if (currentNotes.length === 0) return <h1 className="w-full text-center py-28 rounded-sm">没有符合条件的结果</h1>;
 
   return (

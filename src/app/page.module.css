@@ -1,5 +1,5 @@
 .card {
-  @apply flex flex-col items-center justify-center gap-3;
+  @apply flex flex-col items-center justify-center;
   @apply duration-300 p-7 rounded-md border border-cyan-600;
 }
 
@@ -8,13 +8,21 @@
 }
 
 .title {
-  @apply font-semibold;
+  @apply font-semibold text-lg mt-3 mb-1.5;
 }
 
-.card:first-of-type {
+.subtitle {
+  @apply text-xs text-gray-500;
+}
+
+.card:nth-of-type(1) {
   @apply animate-slideFromLeft;
 }
 
-.card:last-of-type {
+.card:nth-of-type(2) {
+  @apply animate-scaleUp;
+}
+
+.card:nth-of-type(3) {
   @apply animate-slideFromRight;
 }
