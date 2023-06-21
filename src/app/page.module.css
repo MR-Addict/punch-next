@@ -1,14 +1,18 @@
 .card {
   @apply flex flex-col items-center justify-center;
-  @apply duration-300 p-7 rounded-md border border-cyan-600;
+  @apply duration-300 p-3 md:p-7 rounded-md border border-cyan-600;
 }
 
 .card:hover {
   box-shadow: 0 0 15px #0891b2;
 }
 
+.icon {
+  @apply text-[3.5rem] md:text-[6rem];
+}
+
 .title {
-  @apply font-semibold text-lg mt-3 mb-1.5;
+  @apply font-semibold md:text-lg mt-1.5 md:mt-3 mb-1.5;
 }
 
 .subtitle {
@@ -16,7 +20,7 @@
 }
 
 .card:nth-of-type(1) {
-  @apply animate-slideFromLeft;
+  @apply animate-slideFromTop md:animate-slideFromLeft;
 }
 
 .card:nth-of-type(2) {
@@ -24,5 +28,5 @@
 }
 
 .card:nth-of-type(3) {
-  @apply animate-slideFromRight;
+  @apply animate-slideFromBottom md:animate-slideFromRight;
 }
