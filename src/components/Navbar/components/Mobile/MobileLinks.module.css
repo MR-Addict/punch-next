@@ -1,7 +1,7 @@
 .menu {
   height: 100vh;
   height: 100svh;
-  @apply -z-10 duration-300 fixed top-0 left-0 p-24 w-full flex items-center flex-col gap-7 invisible scale-y-90 opacity-0 origin-top-right bg-stone-900;
+  @apply -z-10 duration-300 fixed top-0 left-0 p-24 w-full flex items-center flex-col gap-7 invisible scale-y-90 opacity-0 origin-top-right bg-black;
 }
 
 .menu.active {

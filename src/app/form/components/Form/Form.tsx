@@ -108,7 +108,7 @@ export default function Form() {
             maxLength={500}
             value={formData.content}
             onChange={handleChange}
-            style={{ height: 200 }}
+            style={{ height: 170 }}
             className={style.input}
             placeholder="今天的值班笔记内容"
           />

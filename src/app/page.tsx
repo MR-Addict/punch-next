@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { IconType } from "react-icons/lib";
+import { FcAddressBook, FcDataSheet, FcKindle } from "react-icons/fc";
 
 import style from "./page.module.css";
 import { setMetadata } from "@/lib/utils";
-import { FcAddressBook, FcDataSheet, FcKindle } from "react-icons/fc";
-import { IconType } from "react-icons/lib";
 
 export const metadata = setMetadata();
 
@@ -11,9 +11,12 @@ function LinkCard({ Icon, title, subtitle, link }: { Icon: IconType; title: stri
   return (
     <li>
       <Link href={link} className={style.card}>
-        <Icon className={style.icon} />
-        <h1 className={style.title}>{title}</h1>
-        <p className={style.subtitle}>{subtitle}</p>
+        <Icon size={90} />
+
+        <div className="flex flex-col md:items-center gap-1">
+          <h1 className="font-semibold text-lg">{title}</h1>
+          <p className="text-xs text-gray-400">{subtitle}</p>
+        </div>
       </Link>
     </li>
   );
