@@ -1,6 +1,6 @@
 import Client from "./Client";
 
-import { config } from "@/lib/config";
+import { config } from "@/config";
 import { setMetadata } from "@/lib/utils";
 
 export const metadata = setMetadata("提交笔记");

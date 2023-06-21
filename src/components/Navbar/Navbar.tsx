@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Logo } from "./components";
 import { BsGithub } from "react-icons/bs";
 
 import { MobileLinks, NormalLinks } from "./components";
@@ -6,10 +6,7 @@ import { MobileLinks, NormalLinks } from "./components";
 export default function Navbar() {
   return (
     <nav className="w-full px-4 md:px-48 pt-4 md:pt-7 flex flex-row items-center justify-between isolate">
-      <Link href="/" className="font-bold text-xl">
-        值班笔记
-      </Link>
-
+      <Logo />
       <NormalLinks />
 
       <div className="flex flex-row items-center gap-5">

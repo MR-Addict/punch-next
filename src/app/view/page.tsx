@@ -1,7 +1,7 @@
 import Client from "./Client";
 import { ClientContextProvider, TableContextProvider } from "./contexts";
 
-import { config } from "@/lib/config";
+import { config } from "@/config";
 import { notes } from "@/lib/mongodb";
 import { setMetadata } from "@/lib/utils";
 

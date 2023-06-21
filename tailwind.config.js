@@ -40,12 +40,12 @@ module.exports = {
       }
     },
     animation: {
-      scaleUp: "scaleUp ease-out 700ms",
-      scaleDown: "scaleDown ease-out 700ms",
-      slideFromLeft: "slideFromLeft ease-out 700ms",
-      slideFromRight: "slideFromRight ease-out 700ms",
-      slideFromTop: "slideFromTop ease-out 700ms",
-      slideFromBottom: "slideFromBottom ease-out 700ms"
+      scaleUp: "scaleUp ease-out 500ms",
+      scaleDown: "scaleDown ease-out 500ms",
+      slideFromLeft: "slideFromLeft ease-out 500ms",
+      slideFromRight: "slideFromRight ease-out 500ms",
+      slideFromTop: "slideFromTop ease-out 500ms",
+      slideFromBottom: "slideFromBottom ease-out 500ms"
     }
   },
   plugins: []

@@ -1,5 +1,5 @@
 .card {
-  @apply flex flex-col items-center justify-center;
+  @apply flex flex-col items-center justify-center animate-scaleUp;
   @apply duration-300 p-3 md:p-7 rounded-md border border-cyan-600;
 }
 
@@ -16,17 +16,5 @@
 }
 
 .subtitle {
-  @apply text-xs text-gray-500;
-}
-
-.card:nth-of-type(1) {
-  @apply animate-slideFromTop md:animate-slideFromLeft;
-}
-
-.card:nth-of-type(2) {
-  @apply animate-scaleUp;
-}
-
-.card:nth-of-type(3) {
-  @apply animate-slideFromBottom md:animate-slideFromRight;
+  @apply text-xs text-gray-400;
 }
