@@ -6,7 +6,7 @@
 
 ## 1. 项目开发
 
-添加环境变量.env：
+添加环境变量：
 
 ```env
 MONGODB_URI="mongodb://username:password@mongodb0.example.com:27017/"
