@@ -6,7 +6,7 @@
 
 ## 1. 项目开发
 
-添加环境变量：
+添加环境变量.env：
 
 ```env
 MONGODB_URI="mongodb://username:password@mongodb0.example.com:27017/"
@@ -14,15 +14,33 @@ MONGODB_URI="mongodb://username:password@mongodb0.example.com:27017/"
 
 开发项目:
 
-```bash
+```sh
 npm run dev
+```
+
+编译项目：
+
+```sh
+npm run build
+```
+
+启动项目：
+
+```sh
+npm run start
+```
+
+格式化项目代码：
+
+```sh
+npm run format
 ```
 
 ## 2. 相关问题
 
 ### 2.1. 时区
 
-时区默认使用东八区，你可以在配置文件中设置时区，配置文件的路径是`src/config`：
+时区默认使用东八区，你可以在配置文件中设置时区，配置文件的路径是`src/config.ts`：
 
 ```ts
 export const config = {
@@ -50,7 +68,7 @@ export const config = {
 
 ### 2.4. 值班时间
 
-值班笔记可以设置值班时间，不在值班时间不能提交值班笔记，只能查看笔记。值班时间需要设置开始时间和结束时间，开始时间必须是每学期的第一天，否则页面有关周数的地方都会不准确，配置文件的路径是`/src/config`，下面是一个参考示例：
+值班笔记可以设置值班时间，不在值班时间不能提交值班笔记，只能查看笔记。值班时间需要设置开始时间和结束时间，开始时间必须是每学期的第一天，否则页面有关周数的地方都会不准确，配置文件的路径是`/src/config.ts`，下面是一个参考示例：
 
 ```ts
 export const config = {
