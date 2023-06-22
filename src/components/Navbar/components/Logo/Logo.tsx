@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 
-import { config } from "@/config";
+import env from "@/types/env/client";
 import { getISOWeekNumber } from "@/lib/utils";
 
 export default function Logo() {
-  const firstWeek = getISOWeekNumber(config.start);
+  const firstWeek = getISOWeekNumber(env.START_DATE);
   const currentWeek = getISOWeekNumber(new Date());
   const termWeek = currentWeek - firstWeek + 1;
 

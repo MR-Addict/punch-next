@@ -1,12 +1,12 @@
 import { revalidatePath } from "next/cache";
 
-import { config } from "@/config";
+import env from "@/types/env/client";
 import { Note } from "@/types/notes";
 import { notes } from "@/lib/mongodb";
 
 export async function POST(request: Request) {
   const now = new Date();
-  if (now < config.start || now > config.end) {
+  if (now < env.START_DATE || now > env.END_DATE) {
     return new Response(JSON.stringify({ success: false, message: "不在值班时间哦，不用提交值班笔记" }), {
       headers: { "Content-Type": "application/json" },
       status: 400

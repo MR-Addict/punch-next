@@ -7,9 +7,6 @@ const Env = z.object({
   MONGODB_URI: z.string()
 });
 
-type EnvType = z.TypeOf<typeof Env>;
-
 const env = Env.parse(process.env);
 
-export { env };
-export type { EnvType };
+export default env;

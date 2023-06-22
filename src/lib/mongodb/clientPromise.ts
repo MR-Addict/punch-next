@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-import { env } from "@/types/env";
+import env from "@/types/env/server";
 
 const uri = env.MONGODB_URI;
 let client: MongoClient;

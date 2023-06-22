@@ -1,7 +1,7 @@
 import Client from "./Client";
 import { ClientContextProvider, TableContextProvider } from "./contexts";
 
-import { config } from "@/config";
+import env from "@/types/env/client";
 import { notes } from "@/lib/mongodb";
 import { setMetadata } from "@/lib/utils";
 
@@ -12,7 +12,7 @@ export default async function Page() {
   if (!result.data) throw new Error(result.message);
 
   return (
-    <ClientContextProvider data={result.data} start={config.start}>
+    <ClientContextProvider data={result.data} start={env.START_DATE}>
       <TableContextProvider>
         <Client />
       </TableContextProvider>
