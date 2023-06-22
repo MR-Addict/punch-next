@@ -6,7 +6,7 @@
 
 ## 1. 项目开发
 
-添加环境变量 env：
+添加环境变量.env：
 
 ```env
 MONGODB_URI="mongodb://username:password@mongodb0.example.com:27017/"
@@ -22,15 +22,31 @@ npm run dev
 
 ### 2.1. 时区
 
-时区默认使用东八区。
+时区默认使用东八区，你可以在配置文件中设置时区，配置文件的路径是`src/config`：
+
+```ts
+export const config = {
+  timezone: 8
+};
+```
 
 ### 2.2. 数据库
 
-本项目使用 `mongodb` 作为数据库，只需要提供正确的 URL 即可，schema 由项目配置，正确连接后提交的值班笔记会存到`stas/notes` 当中。
+本项目使用`mongodb`作为数据库，只需要提供可使用数据的 URL 即可，schema 由项目配置，提交的值班笔记会保存到`stas/notes`当中。
 
 ### 2.3. 归档笔记
 
-每学期结束后我会把本学期的笔记添加到归档页面当中，归档页面不再使用云端数据库，而是存在本地的 JSON 文件当中并编译成静态页面，以提高访问速度，JSON 文件的路径是`/src/assets` 。
+每学期结束后我会把本学期的笔记添加到归档页面当中，归档页面不再使用云端数据库，而是存在本地的 JSON 文件当中并编译成静态页面，以提高访问速度，JSON 文件的路径是`/src/assets` ，每条笔记的 schema 如下：
+
+```json
+{
+  "_id": "unique_id",
+  "date": "ISO_date",
+  "group": "group_name",
+  "name": "name",
+  "content": "notes_content"
+}
+```
 
 ### 2.4. 值班时间
 
