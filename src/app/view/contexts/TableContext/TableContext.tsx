@@ -29,12 +29,12 @@ const TableContext = createContext<TableContextProps>({
 });
 
 function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
-  type KeyType = "group" | "name" | "content" | "date";
-  const keys: KeyType[] = ["group", "name", "content", "date"];
+  type KeyType = "group" | "name" | "content" | "date" | "week";
+  const keys: KeyType[] = ["group", "name", "content", "date", "week"];
   return notes.filter((note) =>
     keys.some((key) => {
       if (key === "date") return formatDate(note[key]).includes(searchKeywords);
-      else return note[key]?.toLowerCase().includes(searchKeywords);
+      else return String(note[key]).toLowerCase().includes(searchKeywords);
     })
   );
 }
