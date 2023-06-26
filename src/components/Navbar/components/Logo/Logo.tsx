@@ -6,9 +6,7 @@ import env from "@/types/env/client";
 import { getISOWeekNumber } from "@/lib/utils";
 
 export default function Logo() {
-  const firstWeek = getISOWeekNumber(env.START_DATE);
-  const currentWeek = getISOWeekNumber(new Date());
-  const termWeek = currentWeek - firstWeek + 1;
+  const week = getISOWeekNumber(new Date()) - getISOWeekNumber(env.FIRST_WEEK) + 1;
 
   return (
     <div className="relative">
@@ -16,9 +14,7 @@ export default function Logo() {
         值班笔记
       </Link>
 
-      <div className="absolute top-0 -right-1 translate-x-full text-xs bg-cyan-600 rounded-lg px-1">
-        {"第" + termWeek + "周"}
-      </div>
+      <p className="absolute top-0 -right-1 translate-x-full text-xs bg-cyan-600 rounded-lg px-1">{`第${week}周`}</p>
     </div>
   );
 }

@@ -19,6 +19,7 @@ export default function Table() {
               <th>序号</th>
               <th>姓名</th>
               <th>组别</th>
+              <th>周数</th>
               <th>日期</th>
               <th>值班笔记</th>
             </tr>
@@ -29,6 +30,7 @@ export default function Table() {
                 <td>{currentPage * notesPerpage + index + 1}</td>
                 <td>{note.name}</td>
                 <td>{note.group}</td>
+                <td>{`第${note.week}周`}</td>
                 <td>{formatDate(note.date)}</td>
                 <td className="max-w-md min-w-[18rem] whitespace-break-spaces">{note.content}</td>
               </tr>

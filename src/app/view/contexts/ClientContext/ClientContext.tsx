@@ -9,7 +9,6 @@ export type TabType = "table" | "chart";
 type FilterType = "技术部" | "航模组" | "编程组" | "电子组" | "静模组";
 
 interface ClientContextProps {
-  start: Date;
   notes: NoteDatabseType[];
   rawNotes: NoteDatabseType[];
   filter: FilterType;
@@ -19,7 +18,6 @@ interface ClientContextProps {
 }
 
 const ClientContext = createContext<ClientContextProps>({
-  start: new Date(),
   notes: [],
   rawNotes: [],
   filter: "技术部",
@@ -36,17 +34,16 @@ function filterNotes(notes: NoteDatabseType[], filter: FilterType) {
 interface ClientContextProviderProps {
   children: React.ReactNode;
   data: NoteDatabseType[];
-  start: Date;
 }
 
-export const ClientContextProvider = ({ children, data, start }: ClientContextProviderProps) => {
+export const ClientContextProvider = ({ children, data }: ClientContextProviderProps) => {
   const [filter, setFilter] = useState<FilterType>("技术部");
   const [activeTab, setActiveTab] = useState<TabType>("table");
 
   const notes = useMemo(() => filterNotes(data, filter), [data, filter]);
 
   return (
-    <ClientContext.Provider value={{ start, notes, rawNotes: data, filter, setFilter, activeTab, setActiveTab }}>
+    <ClientContext.Provider value={{ notes, rawNotes: data, filter, setFilter, activeTab, setActiveTab }}>
       {children}
     </ClientContext.Provider>
   );

@@ -8,7 +8,7 @@ import { LoadingDots } from "@/components";
 import { usePopupContext } from "@/contexts";
 
 const storageName = "user-submit-info";
-const defaultFormData = { group: "", name: "", content: "" };
+const defaultFormData = { name: "", group: "", content: "" };
 
 export default function Form() {
   const { popup } = usePopupContext();

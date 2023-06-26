@@ -22,7 +22,7 @@ function LinkCard({ Icon, title, subtitle, link }: { Icon: IconType; title: stri
   );
 }
 
-export default async function Page() {
+export default function Page() {
   return (
     <main className="w-full px-4 md:px-48 flex-1 flex flex-col items-center justify-center">
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">

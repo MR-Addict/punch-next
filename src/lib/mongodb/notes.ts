@@ -9,12 +9,7 @@ async function insert(note: NoteType) {
     const client = await clientPromise;
     const collection = client.db("stas").collection("notes");
 
-    const duplicatedNote = await collection
-      .find({ name: note.name, group: note.group })
-      .sort({ date: -1 })
-      .limit(1)
-      .next();
-
+    const duplicatedNote = await collection.find({ name: note.name, group: note.group }).limit(1).next();
     if (duplicatedNote && formatDate(duplicatedNote.date) === formatDate(new Date()))
       return { success: false, message: "你今天已经提交过啦，请勿重复提交" };
 

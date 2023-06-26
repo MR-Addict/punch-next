@@ -10,8 +10,9 @@
 
 ```env
 NEXT_PUBLIC_TIMEZONE="8"
-NEXT_PUBLIC_END_DATE="2023-06-02 23:59"
+NEXT_PUBLIC_FIRST_WEEK="2023-02-13 00:01"
 NEXT_PUBLIC_START_DATE="2023-02-13 00:01"
+NEXT_PUBLIC_END_DATE="2023-06-02 23:59"
 MONGODB_URI="mongodb://username:password@mongodb0.example.com:27017/"
 ```
 
@@ -43,7 +44,7 @@ npm run format
 
 ### 2.1. 数据库
 
-本项目使用`mongodb`作为数据库，只需要提供可使用数据的 URL 即可，schema 由项目配置，提交的值班笔记会保存到`stas/notes`当中。
+本项目使用`mongodb`作为数据库，只需要提供可使用的 URL 地址，schema 会由项目配置，新提交的值班笔记会存到`stas/notes`当中。
 
 ### 2.2. 归档笔记
 
@@ -53,19 +54,21 @@ npm run format
 {
   "_id": "unique_id",
   "date": "ISO_date",
-  "group": "group_name",
+  "week": 1,
   "name": "name",
+  "group": "group_name",
   "content": "notes_content"
 }
 ```
 
 ### 2.3. 值班时间
 
-值班笔记可以设置值班时间，不在值班时间不能提交值班笔记，只能查看笔记。值班时间需要设置开始时间和结束时间，开始时间必须是每学期的第一天，否则页面有关周数的地方都会不准确，直接在 `.env` 中配置即可，下面是一个参考示例：
+值班笔记可以设置值班时间，不在值班时间不能提交值班笔记，只能查看笔记。值班时间需要设置第一周的时间，开始时间和结束时间，第一周的时间必须是每学期的第一天，否则页面有关周数的地方都会不准确，直接在 `.env` 中配置即可，下面是一个参考示例：
 
 ```env
-NEXT_PUBLIC_END_DATE="2023-06-02 23:59"
+NEXT_PUBLIC_FIRST_WEEK="2023-02-13 00:01"
 NEXT_PUBLIC_START_DATE="2023-02-13 00:01"
+NEXT_PUBLIC_END_DATE="2023-06-02 23:59"
 ```
 
 ### 2.5. ISR
