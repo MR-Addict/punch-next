@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { FaRegUser, FaRegEdit, FaRegLightbulb } from "react-icons/fa";
 
@@ -11,6 +12,7 @@ const storageName = "user-submit-info";
 const defaultFormData = { name: "", group: "", content: "" };
 
 export default function Form() {
+  const router = useRouter();
   const { popup } = usePopupContext();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
@@ -30,6 +32,7 @@ export default function Form() {
       .then((result) => {
         popup(result);
         if (result.success) {
+          router.refresh();
           setFormData({ ...formData, content: "" });
           localStorage.setItem(storageName, JSON.stringify({ name: formData.name, group: formData.group }));
         } else console.error(result.message);

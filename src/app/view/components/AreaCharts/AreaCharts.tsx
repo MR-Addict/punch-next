@@ -9,8 +9,8 @@ import { groupBy, formatDate } from "@/lib/utils";
 export default function AreaCharts() {
   const { notes, filter } = useClientContext();
 
-  const notesGroupedByDay = useMemo(() => groupBy([...notes], (note) => formatDate(note.date)), [notes]);
-  const notesGroupedByWeek = useMemo(() => groupBy([...notes], (note) => `第${note.week}周`), [notes]);
+  const notesGroupedByDay = useMemo(() => groupBy([...notes].reverse(), (note) => formatDate(note.date)), [notes]);
+  const notesGroupedByWeek = useMemo(() => groupBy([...notes].reverse(), (note) => `第${note.week}周`), [notes]);
 
   const dayLabels = useMemo(() => {
     return notesGroupedByDay.map((item) => {
