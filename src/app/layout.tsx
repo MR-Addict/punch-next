@@ -1,6 +1,5 @@
 import "./globals.css";
 
-import { Suspense } from "react";
 import { PopupContextProvider } from "@/contexts";
 import { Footer, Navbar, Cronitor } from "@/components";
 
@@ -9,12 +8,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-Hans">
       <body>
         <PopupContextProvider>
-          <Suspense>
-            <Navbar />
-            {children}
-            <Footer />
-            <Cronitor />
-          </Suspense>
+          <Navbar />
+          {children}
+          <Footer />
+          <Cronitor />
         </PopupContextProvider>
       </body>
     </html>

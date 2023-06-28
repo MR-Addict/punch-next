@@ -6,7 +6,7 @@
 
 ## 1. 项目开发
 
-添加环境变量 .env：
+添加环境变量 `.env`：
 
 ```env
 NEXT_PUBLIC_TIMEZONE="8"
@@ -34,7 +34,7 @@ npm run build
 npm run start
 ```
 
-格式化项目代码：
+格式化代码：
 
 ```sh
 npm run format
@@ -44,7 +44,7 @@ npm run format
 
 ### 2.1. 数据库
 
-本项目使用`mongodb`作为数据库，只需要提供可使用的 URL 地址，schema 会由项目配置，新提交的值班笔记会存到`stas/notes`当中。
+本项目使用`mongodb`作为数据库，只需要提供正确的 URL 地址即可，新提交的值班笔记会存到`stas/notes`当中。
 
 ### 2.2. 归档笔记
 
