@@ -1,16 +1,20 @@
 import "./globals.css";
 
-import { Footer, Navbar } from "@/components";
+import { Suspense } from "react";
 import { PopupContextProvider } from "@/contexts";
+import { Footer, Navbar, Cronitor } from "@/components";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-Hans">
       <body>
         <PopupContextProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <Suspense>
+            <Navbar />
+            {children}
+            <Footer />
+            <Cronitor />
+          </Suspense>
         </PopupContextProvider>
       </body>
     </html>
