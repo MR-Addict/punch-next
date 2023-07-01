@@ -1,7 +1,8 @@
 import "./globals.css";
 
+import Script from "next/script";
+import { Footer, Navbar } from "@/components";
 import { PopupContextProvider } from "@/contexts";
-import { Footer, Navbar, Cronitor } from "@/components";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,9 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           {children}
           <Footer />
-          <Cronitor />
         </PopupContextProvider>
       </body>
+      <Script async src="https://umami.mraddict.one/script.js" data-website-id="0a767ab9-b602-47dd-bab4-485ca6e9179b" />
     </html>
   );
 }

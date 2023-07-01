@@ -1,6 +1,5 @@
 "use client";
 
-import { Suspense } from "react";
 import { createContext, useContext, useState, useEffect } from "react";
 
 import Popup from "./Popup";
@@ -30,10 +29,8 @@ export const PopupContextProvider = ({ children }: { children: React.ReactNode }
 
   return (
     <PopupContext.Provider value={{ popup }}>
-      <Suspense>
-        <Popup popupData={popupData} isPopup={isPopup} />
-        {children}
-      </Suspense>
+      <Popup popupData={popupData} isPopup={isPopup} />
+      {children}
     </PopupContext.Provider>
   );
 };
