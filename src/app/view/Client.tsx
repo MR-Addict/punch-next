@@ -12,7 +12,7 @@ export default function Client() {
   if (rawNotes.length === 0) {
     return (
       <main className="w-full flex-1 flex flex-col items-center justify-center">
-        <Message message="本学期还没有人提交值班笔记哦" icon="people" />
+        <Message message="这里还没有值班笔记哦，快去提交一个吧" icon="people" />
       </main>
     );
   }
