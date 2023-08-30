@@ -13,8 +13,6 @@ steps:
         from_secret: ssh_host
       username:
         from_secret: ssh_username
-      password:
-        from_secret: ssh_password
       key:
         from_secret: ssh_key
       script:
@@ -30,4 +28,4 @@ trigger:
     - main
   event:
     - push
-    - pull_request
+    - cron
