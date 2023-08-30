@@ -1,0 +1,32 @@
+kind: pipeline
+type: docker
+name: default
+
+clone:
+  disable: true
+
+steps:
+  - name: ssh
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        from_secret: ssh_host
+      username:
+        from_secret: ssh_username
+      password:
+        from_secret: ssh_password
+      key:
+        from_secret: ssh_key
+      script:
+        - cd /home/ubuntu/projects/punch
+        - docker-compose down
+        - docker rmi mraddict063/punch-next
+        - docker build -t mraddict063/punch-next .
+        - docker-compose up -d
+
+trigger:
+  branch:
+    - main
+  event:
+    - push
+    - pull_request

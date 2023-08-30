@@ -50,14 +50,14 @@ npm run format
 
 每学期结束后我会把本学期的笔记添加到归档页面当中，归档页面不再使用云端数据库，而是存在本地的 JSON 文件当中并编译成静态页面，以提高访问速度，JSON 文件的路径是`/src/assets` ，每条笔记的 schema 如下：
 
-```json
+```
 {
-  "_id": "unique_id",
-  "date": "ISO_date",
-  "week": 1,
-  "name": "name",
-  "group": "group_name",
-  "content": "notes_content"
+  "_id": string,
+  "date": string,
+  "week": number,
+  "name": string,
+  "group": string,
+  "content": string
 }
 ```
 
