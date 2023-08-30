@@ -19,6 +19,7 @@ steps:
         from_secret: ssh_key
       script:
         - cd /home/ubuntu/projects/punch
+        - git pull
         - docker-compose down
         - docker rmi mraddict063/punch-next
         - docker build -t mraddict063/punch-next .
