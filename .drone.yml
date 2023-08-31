@@ -21,6 +21,7 @@ steps:
         - docker-compose down
         - docker rmi mraddict063/punch-next
         - docker build -t mraddict063/punch-next .
+        - docker image prune -f --filter label=stage=builder
         - docker-compose up -d
 
 trigger:
