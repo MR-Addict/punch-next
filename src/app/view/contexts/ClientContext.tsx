@@ -3,27 +3,33 @@
 import { createContext, useContext, useState, useMemo } from "react";
 
 import { NoteDatabseType } from "@/types/notes";
-import { TableContextProvider } from "@/contexts/Table/TableProvider";
+import { TableContextProvider } from "./TableProvider";
 
 export type TabType = "table" | "chart";
 
 type FilterType = "技术部" | "航模组" | "编程组" | "电子组" | "静模组";
 
 interface ClientContextProps {
+  filter: FilterType;
+  activeTab: TabType;
+  archiveIndex: number;
   notes: NoteDatabseType[];
   rawNotes: NoteDatabseType[];
-  filter: FilterType;
+  totalArchives: { index: number; name: string }[];
   setFilter: (value: FilterType) => void;
-  activeTab: TabType;
   setActiveTab: (value: TabType) => void;
+  setArchiveIndex: (value: number) => void;
 }
 
 const ClientContext = createContext<ClientContextProps>({
   notes: [],
   rawNotes: [],
+  totalArchives: [],
+  archiveIndex: 0,
   filter: "技术部",
-  setFilter: (value: FilterType) => {},
   activeTab: "table",
+  setArchiveIndex(value: number) {},
+  setFilter: (value: FilterType) => {},
   setActiveTab: (value: TabType) => {}
 });
 
@@ -34,17 +40,32 @@ function filterNotes(notes: NoteDatabseType[], filter: FilterType) {
 
 interface ClientContextProviderProps {
   children: React.ReactNode;
-  data: NoteDatabseType[];
+  data: { name: string; notes: NoteDatabseType[] }[];
 }
 
 export const ClientContextProvider = ({ children, data }: ClientContextProviderProps) => {
+  const [archiveIndex, setArchiveIndex] = useState(0);
   const [filter, setFilter] = useState<FilterType>("技术部");
   const [activeTab, setActiveTab] = useState<TabType>("table");
 
-  const notes = useMemo(() => filterNotes(data, filter), [data, filter]);
+  const rawNotes = useMemo(() => data[archiveIndex].notes, [archiveIndex]);
+  const notes = useMemo(() => filterNotes(rawNotes, filter), [rawNotes, filter]);
+  const totalArchives = useMemo(() => data.map((item, index) => ({ index, name: item.name })), [data]);
 
   return (
-    <ClientContext.Provider value={{ notes, rawNotes: data, filter, setFilter, activeTab, setActiveTab }}>
+    <ClientContext.Provider
+      value={{
+        notes,
+        filter,
+        rawNotes,
+        activeTab,
+        archiveIndex,
+        totalArchives,
+        setFilter,
+        setActiveTab,
+        setArchiveIndex
+      }}
+    >
       <TableContextProvider rawNotes={notes}>{children}</TableContextProvider>
     </ClientContext.Provider>
   );

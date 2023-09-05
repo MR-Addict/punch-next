@@ -1,7 +1,0 @@
-.tab {
-  @apply duration-100 flex flex-row items-center gap-0.5 py-1 px-2 rounded-md;
-}
-
-.tab.active {
-  @apply bg-dark;
-}

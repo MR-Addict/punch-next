@@ -1,9 +1,10 @@
 "use client";
 
 import style from "./Table.module.css";
-import Pagination from "./Pagination";
 import formatDate from "@/lib/utils/formatDate";
-import { useTableContext } from "@/contexts/Table/TableProvider";
+import { useTableContext } from "../../contexts/TableProvider";
+
+import Pagination from "./Pagination";
 
 export default function Table() {
   const { currentNotes, currentPage, notesPerpage, totalPages } = useTableContext();

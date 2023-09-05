@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-import { useTableContext } from "@/contexts/Table/TableProvider";
+import { useTableContext } from "../../contexts/TableProvider";
 
 export default function Searchbar() {
-  const { setSearchKeywords, rawNotes } = useTableContext();
+  const { setSearchKeywords } = useTableContext();
   const [localSearchKeywords, setLocalSearchKeywords] = useState("");
 
   useEffect(() => {

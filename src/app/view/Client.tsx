@@ -2,12 +2,12 @@
 
 import classNames from "classnames";
 
-import Table from "@/components/Table/Table";
 import Message from "@/components/Message/Message";
-import Searchbar from "@/components/Table/Searchbar";
 
+import Table from "./components/Table/Table";
 import Chips from "./components/Chips/Chips";
 import Toolbar from "./components/Toolbar/Toolbar";
+import Searchbar from "./components/Searchbar/Searchbar";
 import AreaCharts from "./components/AreaCharts/AreaCharts";
 
 import { useClientContext } from "./contexts/ClientContext";
