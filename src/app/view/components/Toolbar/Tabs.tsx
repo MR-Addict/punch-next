@@ -3,7 +3,7 @@
 import classNames from "classnames";
 
 import style from "./Tabs.module.css";
-import { useClientContext, TabType } from "../../contexts";
+import { useClientContext, TabType } from "../../contexts/ClientContext";
 
 function Tab({ title, tab }: { title: string; tab: TabType }) {
   const { activeTab, setActiveTab } = useClientContext();

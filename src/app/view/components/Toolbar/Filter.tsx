@@ -1,6 +1,6 @@
 "use client";
 
-import { useClientContext } from "../../contexts";
+import { useClientContext } from "../../contexts/ClientContext";
 
 export default function Filter() {
   const { filter, setFilter } = useClientContext();

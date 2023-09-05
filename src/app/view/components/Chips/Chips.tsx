@@ -5,9 +5,10 @@ import { BsFillCalendarDayFill, BsFillCalendarDateFill } from "react-icons/bs";
 import { BsFillCalendarMonthFill, BsFillCalendarWeekFill } from "react-icons/bs";
 
 import Chip from "./Chip";
-import { useClientContext } from "../../contexts";
+import formatDate from "@/lib/utils/formatDate";
+import getISOWeekNumber from "@/lib/utils/getISOWeekNumber";
 import { NoteDatabseType } from "@/types/notes";
-import { formatDate, getISOWeekNumber } from "@/lib/utils";
+import { useClientContext } from "../../contexts/ClientContext";
 
 function getToday(notes: NoteDatabseType[]) {
   return notes.filter((note) => formatDate(note.date) === formatDate(new Date())).length;

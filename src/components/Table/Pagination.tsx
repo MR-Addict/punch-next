@@ -2,7 +2,7 @@
 
 import classNames from "classnames";
 
-import { useTableContext } from "../../contexts";
+import { useTableContext } from "@/contexts/Table/TableProvider";
 
 export default function Pagination() {
   const leftSide = 1;

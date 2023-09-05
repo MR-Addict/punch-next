@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import env from "@/types/env/client";
-import { getISOWeekNumber } from "@/lib/utils";
+import getISOWeekNumber from "@/lib/utils/getISOWeekNumber";
 
 export default function Logo() {
   const week = getISOWeekNumber(new Date()) - getISOWeekNumber(env.FIRST_WEEK) + 1;

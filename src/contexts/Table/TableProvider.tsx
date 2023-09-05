@@ -2,9 +2,8 @@
 
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
 
-import { formatDate } from "@/lib/utils";
+import formatDate from "@/lib/utils/formatDate";
 import { NoteDatabseType } from "@/types/notes";
-import { useClientContext } from "../ClientContext/ClientContext";
 
 const notesPerpage = 20;
 
@@ -16,6 +15,7 @@ interface TableContextProps {
   setCurrentPage: (value: number) => void;
   currentNotes: NoteDatabseType[];
   notes: NoteDatabseType[];
+  rawNotes: NoteDatabseType[];
 }
 
 const TableContext = createContext<TableContextProps>({
@@ -25,7 +25,8 @@ const TableContext = createContext<TableContextProps>({
   currentPage: 0,
   setCurrentPage(value: number) {},
   currentNotes: [],
-  notes: []
+  notes: [],
+  rawNotes: []
 });
 
 function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
@@ -39,9 +40,12 @@ function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
   );
 }
 
-export const TableContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const rawNotes = useClientContext().notes;
+interface Props {
+  children: React.ReactNode;
+  rawNotes: NoteDatabseType[];
+}
 
+export const TableContextProvider = ({ children, rawNotes }: Props) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [searchKeywords, setSearchKeywords] = useState("");
 
@@ -65,7 +69,8 @@ export const TableContextProvider = ({ children }: { children: React.ReactNode }
         currentPage,
         setCurrentPage,
         currentNotes,
-        notes
+        notes,
+        rawNotes
       }}
     >
       {children}

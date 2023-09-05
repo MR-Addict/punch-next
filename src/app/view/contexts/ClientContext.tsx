@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useMemo } from "react";
 
 import { NoteDatabseType } from "@/types/notes";
+import { TableContextProvider } from "@/contexts/Table/TableProvider";
 
 export type TabType = "table" | "chart";
 
@@ -44,7 +45,7 @@ export const ClientContextProvider = ({ children, data }: ClientContextProviderP
 
   return (
     <ClientContext.Provider value={{ notes, rawNotes: data, filter, setFilter, activeTab, setActiveTab }}>
-      {children}
+      <TableContextProvider rawNotes={notes}>{children}</TableContextProvider>
     </ClientContext.Provider>
   );
 };

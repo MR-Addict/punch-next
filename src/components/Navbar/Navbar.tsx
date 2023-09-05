@@ -1,7 +1,8 @@
-import { Logo } from "./components";
 import { BsGithub } from "react-icons/bs";
 
-import { MobileLinks, NormalLinks } from "./components";
+import Logo from "./components/Logo/Logo";
+import MobileLinks from "./components/Mobile/MobileLinks";
+import NormalLinks from "./components/Normal/NormalLinks";
 
 export default function Navbar() {
   return (

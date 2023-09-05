@@ -1,7 +1,7 @@
-import { useTableContext } from "../../contexts";
+import { useClientContext } from "../contexts/ClientContext";
 
 export default function Filter() {
-  const { totalArchives, archiveIndex, setArchiveIndex } = useTableContext();
+  const { totalArchives, archiveIndex, setArchiveIndex } = useClientContext();
 
   return (
     <select

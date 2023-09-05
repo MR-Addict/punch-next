@@ -1,8 +1,8 @@
 import { revalidatePath } from "next/cache";
 
 import env from "@/types/env/client";
-import { notes } from "@/lib/mongodb";
-import { getISOWeekNumber } from "@/lib/utils";
+import notes from "@/lib/mongodb/notes";
+import getISOWeekNumber from "@/lib/utils/getISOWeekNumber";
 import { NoteWithoutWeek } from "@/types/notes";
 
 export async function POST(request: Request) {

@@ -2,12 +2,11 @@
 
 import style from "./Table.module.css";
 import Pagination from "./Pagination";
-
-import { formatDate } from "@/lib/utils";
-import { useTableContext } from "../../contexts";
+import formatDate from "@/lib/utils/formatDate";
+import { useTableContext } from "@/contexts/Table/TableProvider";
 
 export default function Table() {
-  const { currentNotes, currentPage, notesPerpage } = useTableContext();
+  const { currentNotes, currentPage, notesPerpage, totalPages } = useTableContext();
 
   if (currentNotes.length === 0) return <h1 className="w-full text-center py-28 rounded-sm">没有符合条件的结果</h1>;
 
@@ -40,7 +39,7 @@ export default function Table() {
         </table>
       </div>
 
-      <Pagination />
+      {totalPages > 1 && <Pagination />}
     </div>
   );
 }

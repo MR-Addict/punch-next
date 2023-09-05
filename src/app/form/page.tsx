@@ -1,7 +1,7 @@
 import Client from "./Client";
 
 import env from "@/types/env/client";
-import { setMetadata } from "@/lib/utils";
+import setMetadata from "@/lib/utils/setMetadata";
 
 export const metadata = setMetadata("提交笔记");
 

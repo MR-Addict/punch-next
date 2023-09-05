@@ -1,8 +1,8 @@
 import Client from "./Client";
-import { ClientContextProvider, TableContextProvider } from "./contexts";
+import { ClientContextProvider } from "./contexts/ClientContext";
 
-import { notes } from "@/lib/mongodb";
-import { setMetadata } from "@/lib/utils";
+import notes from "@/lib/mongodb/notes";
+import setMetadata from "@/lib/utils/setMetadata";
 
 export const metadata = setMetadata("查看笔记");
 
@@ -12,9 +12,7 @@ export default async function Page() {
 
   return (
     <ClientContextProvider data={result.data}>
-      <TableContextProvider>
-        <Client />
-      </TableContextProvider>
+      <Client />
     </ClientContextProvider>
   );
 }

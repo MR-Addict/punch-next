@@ -3,7 +3,7 @@ import { IconType } from "react-icons/lib";
 import { FcAddressBook, FcOvertime, FcKindle } from "react-icons/fc";
 
 import style from "./page.module.css";
-import { setMetadata } from "@/lib/utils";
+import setMetadata from "@/lib/utils/setMetadata";
 
 export const metadata = setMetadata();
 

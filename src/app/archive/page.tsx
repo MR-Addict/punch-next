@@ -3,9 +3,9 @@ import fs from "fs";
 import path from "path";
 
 import Client from "./Client";
-import { setMetadata } from "@/lib/utils";
+import setMetadata from "@/lib/utils/setMetadata";
 import { NoteDatabse } from "@/types/notes";
-import { TableContextProvider } from "./contexts";
+import { ClientContextProvider } from "./contexts/ClientContext";
 
 export const metadata = setMetadata("归档笔记");
 
@@ -28,8 +28,8 @@ export default function Page() {
   const data = getNotes();
 
   return (
-    <TableContextProvider data={data}>
+    <ClientContextProvider data={data}>
       <Client />
-    </TableContextProvider>
+    </ClientContextProvider>
   );
 }

@@ -1,4 +1,4 @@
-import { LoadingDots } from "@/components";
+import LoadingDots from "@/components/LoadingDots/LoadingDots";
 
 export default function Loading() {
   return (

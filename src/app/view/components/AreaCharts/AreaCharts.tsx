@@ -3,8 +3,9 @@
 import { useMemo } from "react";
 
 import AreaChart from "./AreaChart";
-import { useClientContext } from "../../contexts";
-import { groupBy, formatDate } from "@/lib/utils";
+import groupBy from "@/lib/utils/groupBy";
+import formatDate from "@/lib/utils/formatDate";
+import { useClientContext } from "../../contexts/ClientContext";
 
 export default function AreaCharts() {
   const { notes, filter } = useClientContext();

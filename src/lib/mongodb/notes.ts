@@ -1,7 +1,7 @@
 import z from "zod";
 
 import clientPromise from "./clientPromise";
-import { formatDate } from "@/lib/utils";
+import formatDate from "@/lib/utils/formatDate";
 import { NoteDatabse, NoteType } from "@/types/notes";
 
 async function insert(note: NoteType) {

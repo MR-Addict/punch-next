@@ -2,9 +2,15 @@
 
 import classNames from "classnames";
 
-import { Message } from "@/components";
-import { useClientContext } from "./contexts";
-import { Table, Searchbar, Toolbar, Chips, AreaCharts } from "./components";
+import Table from "@/components/Table/Table";
+import Message from "@/components/Message/Message";
+import Searchbar from "@/components/Table/Searchbar";
+
+import Chips from "./components/Chips/Chips";
+import Toolbar from "./components/Toolbar/Toolbar";
+import AreaCharts from "./components/AreaCharts/AreaCharts";
+
+import { useClientContext } from "./contexts/ClientContext";
 
 export default function Client() {
   const { rawNotes, activeTab } = useClientContext();
