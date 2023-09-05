@@ -1,8 +1,20 @@
-.form {
-  box-shadow: 0 0 15px #0891b280;
-  @apply w-full max-w-md p-4 flex flex-col items-center justify-center gap-3 border border-cyan-600 rounded-lg animate-slideFromBottom;
+/* view link */
+.link {
+  @apply text-sm py-1 px-3 rounded-full text-white bg-gray-600/60 animate-slideFromBottom duration-300;
 }
 
+.link:hover {
+  @apply bg-gray-600/70;
+}
+
+/* form */
+.form {
+  box-shadow: 0 0 15px #0891b280;
+  @apply border border-cyan-600 rounded-lg animate-slideFromBottom;
+  @apply w-full max-w-md p-4 flex flex-col items-center justify-center gap-3;
+}
+
+/* input */
 .input-element {
   @apply w-full flex flex-col;
 }
@@ -19,11 +31,13 @@
   @apply border border-blue-600;
 }
 
+/* submit button */
 .button {
   transition: 300ms;
   @apply mt-2 w-full flex items-center justify-center h-12 rounded-md border border-cyan-600 font-semibold;
 }
 
+.button:disabled,
 .form:invalid .button {
   @apply cursor-not-allowed;
 }

@@ -1,12 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { FaRegUser, FaRegEdit, FaRegLightbulb } from "react-icons/fa";
 
 import style from "./Form.module.css";
-import { LoadingDots } from "@/components";
+import { formatDate } from "@/lib/utils";
 import { usePopupContext } from "@/contexts";
+import { LoadingDots, Message } from "@/components";
 
 const storageName = "user-submit-info";
 const defaultFormData = { name: "", group: "", content: "" };
@@ -14,14 +16,16 @@ const defaultFormData = { name: "", group: "", content: "" };
 export default function Form() {
   const router = useRouter();
   const { popup } = usePopupContext();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [pending, setPending] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
+  const [status, setStatus] = useState<"idle" | "done" | "duplicated">("idle");
 
   const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setIsSubmitting(true);
+    setPending(true);
 
     fetch("/api", {
       method: "POST",
@@ -30,10 +34,10 @@ export default function Form() {
     })
       .then((res) => res.json())
       .then((result) => {
-        popup(result);
         if (result.success) {
           router.refresh();
-          setFormData({ ...formData, content: "" });
+          setStatus("done");
+          document.cookie = `last_submit=${new Date()};max-age=86400;path=/;`;
           localStorage.setItem(storageName, JSON.stringify({ name: formData.name, group: formData.group }));
         } else console.error(result.message);
       })
@@ -41,16 +45,30 @@ export default function Form() {
         console.error(error);
         popup({ success: false, message: "提交失败，未知错误" });
       })
-      .finally(() => setIsSubmitting(false));
+      .finally(() => setPending(false));
   }
 
   useEffect(() => {
+    // parse user submit info
     const localUserInfo = localStorage.getItem(storageName);
-    if (localUserInfo) {
-      const parsedUserInfo = JSON.parse(localUserInfo);
-      setFormData({ ...formData, ...parsedUserInfo });
-    }
+    if (localUserInfo) setFormData({ ...formData, ...JSON.parse(localUserInfo) });
+
+    // get last submit time
+    const lastSubmit = document.cookie.match(/\blast_submit\b=([^;]*)/)?.at(1);
+    if (lastSubmit && formatDate(new Date()) === formatDate(lastSubmit)) setStatus("duplicated");
   }, []);
+
+  if (status !== "idle") {
+    return (
+      <div className="flex flex-col items-center gap-3">
+        {status === "done" && <Message message="恭喜，笔记提交成功" icon="success" />}
+        {status === "duplicated" && <Message message="你今天已经提交过啦" icon="forbidden" />}
+        <Link href="/view" className={style.link}>
+          去看笔记
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <form className={style.form} onSubmit={handleSubmit}>
@@ -121,9 +139,9 @@ export default function Form() {
       <button
         type="submit"
         className={style.button}
-        disabled={!formData.group || !formData.name || !formData.content || isSubmitting}
+        disabled={!formData.group || !formData.name || !formData.content || pending}
       >
-        {isSubmitting ? <LoadingDots /> : <span>提交</span>}
+        {pending ? <LoadingDots /> : <span>提交</span>}
       </button>
     </form>
   );

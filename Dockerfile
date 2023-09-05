@@ -2,6 +2,7 @@ FROM node:18-slim as builder
 LABEL stage=builder
 WORKDIR /builder
 COPY . .
+RUN echo 'module.exports={output:"standalone"};' > next.config.js
 RUN npm install && npm run build
 RUN mv .next/static .next/standalone/.next && mv public .next/standalone
 
