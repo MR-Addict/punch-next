@@ -1,1 +1,2 @@
-export { usePopupContext, PopupContextProvider } from "./PopupContext/PopupContext";
+export { usePopupContext, PopupContextProvider } from "./Popup/PopupProvider";
+export { useGlobalContext, GlobalContextProvider } from "./Global/GlobalProvider";

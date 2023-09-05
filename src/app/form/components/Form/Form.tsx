@@ -7,8 +7,8 @@ import { FaRegUser, FaRegEdit, FaRegLightbulb } from "react-icons/fa";
 
 import style from "./Form.module.css";
 import { formatDate } from "@/lib/utils";
-import { usePopupContext } from "@/contexts";
 import { LoadingDots, Message } from "@/components";
+import { useGlobalContext, usePopupContext } from "@/contexts";
 
 const storageName = "user-submit-info";
 const defaultFormData = { name: "", group: "", content: "" };
@@ -16,10 +16,10 @@ const defaultFormData = { name: "", group: "", content: "" };
 export default function Form() {
   const router = useRouter();
   const { popup } = usePopupContext();
+  const { status, setStatus } = useGlobalContext();
 
   const [pending, setPending] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
-  const [status, setStatus] = useState<"idle" | "done" | "duplicated">("idle");
 
   const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
