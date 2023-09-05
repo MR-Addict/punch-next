@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
 
-import formatDate from "@/lib/utils/formatDate";
 import { NoteDatabseType } from "@/types/notes";
 
 const notesPerpage = 20;
@@ -28,14 +27,9 @@ const TableContext = createContext<TableContextProps>({
 });
 
 function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
-  type KeyType = "group" | "name" | "content" | "date" | "week";
-  const keys: KeyType[] = ["group", "name", "content", "date", "week"];
-  return notes.filter((note) =>
-    keys.some((key) => {
-      if (key === "date") return formatDate(note[key]).includes(searchKeywords);
-      else return String(note[key]).toLowerCase().includes(searchKeywords);
-    })
-  );
+  type KeyType = "group" | "name" | "content";
+  const keys: KeyType[] = ["group", "name", "content"];
+  return notes.filter((note) => keys.some((key) => note[key].toLowerCase().includes(searchKeywords)));
 }
 
 interface Props {

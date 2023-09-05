@@ -8,6 +8,7 @@ import notes from "@/lib/mongodb/notes";
 import setMetadata from "@/lib/utils/setMetadata";
 import { NoteDatabse } from "@/types/notes";
 import { ClientContextProvider } from "./contexts/ClientContext";
+import env from "@/types/env/client";
 
 export const metadata = setMetadata("查看笔记");
 
@@ -30,7 +31,7 @@ export default async function Page() {
   const result = await notes.query();
   if (!result.data) throw new Error(result.message);
 
-  let data = [{ name: "2023-2024年第一学期", notes: result.data }];
+  let data = [{ name: env.CURRENT_TERM, notes: result.data }];
   data = data.concat(getArchiveNotes()).filter((item) => item.notes.length > 0);
 
   return (
