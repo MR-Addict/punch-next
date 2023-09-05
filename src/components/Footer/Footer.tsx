@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className="hidden md:flex gap-1 pb-2 text-sm">
+    <footer className="flex gap-1 pb-2 text-sm">
       <p>
         <span>Copyright &copy; {new Date().getFullYear()} </span>
         <a href="https://github.com/NJTUSTAS" className="underline">

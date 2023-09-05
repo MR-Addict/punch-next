@@ -20,7 +20,7 @@
     "autoprefixer": "^10.4.15",
     "chart.js": "^4.4.0",
     "chartjs-plugin-datalabels": "^2.2.0",
-    "classnames": "^2.3.2",
+    "clsx": "^2.0.0",
     "postcss": "^8.4.29",
     "prettier": "^3.0.3",
     "react": "^18.2.0",

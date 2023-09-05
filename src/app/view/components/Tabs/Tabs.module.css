@@ -1,0 +1,11 @@
+.tab {
+  @apply py-1 px-2;
+}
+
+.tab:first-of-type {
+  @apply border-r  border-r-gray-500;
+}
+
+.tab.active {
+  @apply bg-dark duration-100;
+}

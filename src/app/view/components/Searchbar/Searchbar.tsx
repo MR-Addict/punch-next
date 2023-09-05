@@ -15,7 +15,7 @@ export default function Searchbar() {
   }, [localSearchKeywords]);
 
   return (
-    <div className="bg-dark w-full flex flex-row items-center gap-1 justify-end border border-gray-500 py-1 px-2 rounded-sm focus-within:border-blue-600 animate-slideFromTop">
+    <div className="bg-dark w-full flex flex-row items-center gap-1 justify-end border border-gray-500 py-1 px-2 focus-within:border-blue-600 animate-slideFromTop">
       <input
         value={localSearchKeywords}
         placeholder="Search..."

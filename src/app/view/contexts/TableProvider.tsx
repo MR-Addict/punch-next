@@ -8,25 +8,23 @@ import { NoteDatabseType } from "@/types/notes";
 const notesPerpage = 20;
 
 interface TableContextProps {
-  setSearchKeywords: (value: string) => void;
   totalPages: number;
-  notesPerpage: number;
   currentPage: number;
-  setCurrentPage: (value: number) => void;
-  currentNotes: NoteDatabseType[];
+  notesPerpage: number;
   notes: NoteDatabseType[];
-  rawNotes: NoteDatabseType[];
+  currentNotes: NoteDatabseType[];
+  setCurrentPage: (value: number) => void;
+  setSearchKeywords: (value: string) => void;
 }
 
 const TableContext = createContext<TableContextProps>({
-  setSearchKeywords(value: string) {},
+  notes: [],
   notesPerpage,
   totalPages: 0,
   currentPage: 0,
-  setCurrentPage(value: number) {},
   currentNotes: [],
-  notes: [],
-  rawNotes: []
+  setCurrentPage(value: number) {},
+  setSearchKeywords(value: string) {}
 });
 
 function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
@@ -63,14 +61,13 @@ export const TableContextProvider = ({ children, rawNotes }: Props) => {
   return (
     <TableContext.Provider
       value={{
-        setSearchKeywords,
+        notes,
         totalPages,
         notesPerpage,
         currentPage,
-        setCurrentPage,
         currentNotes,
-        notes,
-        rawNotes
+        setCurrentPage,
+        setSearchKeywords
       }}
     >
       {children}

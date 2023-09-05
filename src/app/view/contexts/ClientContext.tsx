@@ -14,7 +14,6 @@ interface ClientContextProps {
   activeTab: TabType;
   archiveIndex: number;
   notes: NoteDatabseType[];
-  rawNotes: NoteDatabseType[];
   totalArchives: { index: number; name: string }[];
   setFilter: (value: FilterType) => void;
   setActiveTab: (value: TabType) => void;
@@ -23,7 +22,6 @@ interface ClientContextProps {
 
 const ClientContext = createContext<ClientContextProps>({
   notes: [],
-  rawNotes: [],
   totalArchives: [],
   archiveIndex: 0,
   filter: "技术部",
@@ -57,7 +55,6 @@ export const ClientContextProvider = ({ children, data }: ClientContextProviderP
       value={{
         notes,
         filter,
-        rawNotes,
         activeTab,
         archiveIndex,
         totalArchives,

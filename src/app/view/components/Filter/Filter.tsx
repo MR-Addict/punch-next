@@ -1,14 +1,14 @@
 "use client";
 
 import style from "./Filter.module.css";
-import { useClientContext } from "../../../../contexts/ClientContext";
+import { useClientContext } from "../../contexts/ClientContext";
 
 export default function Filter() {
   const { filter, setFilter } = useClientContext();
   const { totalArchives, archiveIndex, setArchiveIndex } = useClientContext();
 
   return (
-    <div className="space-x-2">
+    <div className="flex flex-row items-center gap-2">
       <select
         value={filter}
         // @ts-expect-error

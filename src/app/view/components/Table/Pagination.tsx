@@ -1,6 +1,6 @@
 "use client";
 
-import classNames from "classnames";
+import clsx from "clsx";
 
 import { useTableContext } from "../../contexts/TableProvider";
 
@@ -18,10 +18,7 @@ export default function Pagination() {
           setCurrentPage(page);
           window.scroll({ top: 0, behavior: "auto" });
         }}
-        className={classNames(
-          { "text-cyan-600": page === currentPage },
-          "w-6 h-6 place-items-center border border-gray-500"
-        )}
+        className={clsx({ "text-cyan-600": page === currentPage }, "w-6 h-6 place-items-center border border-gray-500")}
       >
         {page + 1}
       </button>

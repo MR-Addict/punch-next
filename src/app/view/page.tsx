@@ -29,7 +29,9 @@ function getArchiveNotes() {
 export default async function Page() {
   const result = await notes.query();
   if (!result.data) throw new Error(result.message);
-  const data = [{ name: "2023-2024年第一学期", notes: result.data }].concat(getArchiveNotes());
+
+  let data = [{ name: "2023-2024年第一学期", notes: result.data }];
+  data = data.concat(getArchiveNotes()).filter((item) => item.notes.length > 0);
 
   return (
     <ClientContextProvider data={data}>

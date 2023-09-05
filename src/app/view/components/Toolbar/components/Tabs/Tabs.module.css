@@ -1,7 +1,0 @@
-.tab {
-  @apply border-b border-b-gray-500 py-1 px-2 rounded-sm;
-}
-
-.tab.active {
-  @apply bg-dark duration-100;
-}

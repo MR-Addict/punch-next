@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import classNames from "classnames";
+import clsx from "clsx";
 import { useState, useEffect } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { usePathname } from "next/navigation";
@@ -26,13 +26,13 @@ export default function MobileLinks() {
         className={style["menu-btn"]}
         onClick={() => setIsExpandMenu(!isExpandMenu)}
       >
-        <AiOutlineCloseCircle className={classNames(style["menu-icon"], { [style.active]: isExpandMenu })} />
-        <HiMenuAlt3 className={classNames(style["menu-icon"], { [style.active]: !isExpandMenu })} />
+        <AiOutlineCloseCircle className={clsx(style["menu-icon"], { [style.active]: isExpandMenu })} />
+        <HiMenuAlt3 className={clsx(style["menu-icon"], { [style.active]: !isExpandMenu })} />
       </button>
 
-      <ul className={classNames(style.menu, { [style.active]: isExpandMenu })}>
+      <ul className={clsx(style.menu, { [style.active]: isExpandMenu })}>
         {links.map((item) => (
-          <li key={item.name} className={classNames(style.link, { [style.active]: rootPath === item.link })}>
+          <li key={item.name} className={clsx(style.link, { [style.active]: rootPath === item.link })}>
             <Link href={item.link} onClick={() => setIsExpandMenu(rootPath === item.link)}>
               {item.name}
             </Link>

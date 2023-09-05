@@ -1,9 +1,9 @@
 "use client";
 
-import classNames from "classnames";
+import clsx from "clsx";
 
 import style from "./Tabs.module.css";
-import { useClientContext, TabType } from "../../../../contexts/ClientContext";
+import { useClientContext, TabType } from "../../contexts/ClientContext";
 
 function Tab({ title, tab }: { title: string; tab: TabType }) {
   const { activeTab, setActiveTab } = useClientContext();
@@ -12,7 +12,7 @@ function Tab({ title, tab }: { title: string; tab: TabType }) {
     <button
       type="button"
       onClick={() => setActiveTab(tab)}
-      className={classNames(style.tab, { [style.active]: activeTab === tab })}
+      className={clsx(style.tab, { [style.active]: activeTab === tab })}
     >
       <h1>{title}</h1>
     </button>
@@ -21,7 +21,7 @@ function Tab({ title, tab }: { title: string; tab: TabType }) {
 
 export default function Tabs() {
   return (
-    <div className="flex flex-row gap-2">
+    <div className="w-fit flex flex-row border border-gray-500">
       <Tab title="表格" tab="table" />
       <Tab title="图表" tab="chart" />
     </div>
