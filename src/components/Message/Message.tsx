@@ -1,14 +1,15 @@
-import { FcReadingEbook, FcCalendar, FcApproval, FcCancel } from "react-icons/fc";
+import { FcPortraitMode, FcReadingEbook, FcCalendar, FcApproval, FcCancel } from "react-icons/fc";
 
 interface Props {
   message: string;
-  icon: "reading" | "calendar" | "success" | "forbidden";
+  icon: "people" | "reading" | "calendar" | "success" | "forbidden";
 }
 
 export default function Message({ message, icon }: Props) {
   return (
     <div className="flex flex-col items-center justify-center gap-2">
       <div className="animate-slideFromTop">
+        {icon === "people" && <FcPortraitMode size={100} />}
         {icon === "reading" && <FcReadingEbook size={100} />}
         {icon === "calendar" && <FcCalendar size={100} />}
         {icon === "success" && <FcApproval size={100} />}

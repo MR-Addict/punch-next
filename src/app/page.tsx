@@ -27,7 +27,7 @@ export default function Page() {
     <main className="w-full px-4 md:px-48 flex-1 flex flex-col items-center justify-center">
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <LinkCard Icon={FcAddressBook} title="提交笔记" subtitle="记录今天的值班内容" link="/form" />
-        <LinkCard Icon={FcOvertime} title="查看笔记" subtitle="去看所有的值班的笔记" link="/view" />
+        <LinkCard Icon={FcOvertime} title="查看笔记" subtitle="去看大家的值班笔记" link="/view" />
       </ul>
     </main>
   );
