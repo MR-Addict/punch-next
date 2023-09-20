@@ -53,11 +53,11 @@ npm run format
 
 ```json
 {
-  "_id": string,
-  "date": string,
-  "week": number,
-  "name": string,
-  "content": string
+  "_id": "string",
+  "date": "string",
+  "week": "number",
+  "name": "string",
+  "content": "string"
 }
 ```
 

@@ -1,5 +1,4 @@
 FROM node:18-slim as builder
-LABEL stage=builder
 WORKDIR /builder
 COPY . .
 RUN echo 'module.exports={output:"standalone"};' > next.config.js
