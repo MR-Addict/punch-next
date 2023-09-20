@@ -27,8 +27,8 @@ const TableContext = createContext<TableContextProps>({
 });
 
 function searchNotes(notes: NoteDatabseType[], searchKeywords: string) {
-  type KeyType = "group" | "name" | "content";
-  const keys: KeyType[] = ["group", "name", "content"];
+  type KeyType = "name" | "content";
+  const keys: KeyType[] = ["name", "content"];
   return notes.filter((note) => keys.some((key) => note[key].toLowerCase().includes(searchKeywords)));
 }
 

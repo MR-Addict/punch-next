@@ -4,11 +4,11 @@ import path from "path";
 
 import Client from "./Client";
 
+import env from "@/types/env/client";
 import notes from "@/lib/mongodb/notes";
 import setMetadata from "@/lib/utils/setMetadata";
 import { NoteDatabse } from "@/types/notes";
-import { ClientContextProvider } from "./contexts/ClientContext";
-import env from "@/types/env/client";
+import { ViewContextProvider } from "@/contexts/View/ViewProvider";
 
 export const metadata = setMetadata("查看笔记");
 
@@ -35,8 +35,8 @@ export default async function Page() {
   data = data.concat(getArchiveNotes()).filter((item) => item.notes.length > 0);
 
   return (
-    <ClientContextProvider data={data}>
+    <ViewContextProvider data={data}>
       <Client />
-    </ClientContextProvider>
+    </ViewContextProvider>
   );
 }

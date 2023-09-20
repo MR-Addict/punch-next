@@ -2,7 +2,7 @@
 
 import style from "./Table.module.css";
 import formatDate from "@/lib/utils/formatDate";
-import { useTableContext } from "../../contexts/TableProvider";
+import { useTableContext } from "@/contexts/Table/TableProvider";
 
 import Pagination from "./Pagination";
 
@@ -19,7 +19,6 @@ export default function Table() {
             <tr>
               <th>序号</th>
               <th>姓名</th>
-              <th>组别</th>
               <th>周数</th>
               <th>日期</th>
               <th>值班笔记</th>
@@ -30,10 +29,9 @@ export default function Table() {
               <tr key={note._id}>
                 <td>{currentPage * notesPerpage + index + 1}</td>
                 <td>{note.name}</td>
-                <td>{note.group}</td>
                 <td>{`第${note.week}周`}</td>
                 <td>{formatDate(note.date)}</td>
-                <td className="max-w-md min-w-[18rem] whitespace-break-spaces">{note.content}</td>
+                <td className="max-w-md min-w-[20rem] whitespace-break-spaces">{note.content}</td>
               </tr>
             ))}
           </tbody>

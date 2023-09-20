@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-import { useTableContext } from "../../contexts/TableProvider";
+import { useTableContext } from "@/contexts/Table/TableProvider";
 
 export default function Searchbar() {
   const { setSearchKeywords } = useTableContext();
   const [localSearchKeywords, setLocalSearchKeywords] = useState("");
 
   useEffect(() => {
-    const timer = setTimeout(() => setSearchKeywords(localSearchKeywords.toLowerCase()), 500);
+    const timer = setTimeout(() => setSearchKeywords(localSearchKeywords.toLowerCase().trim()), 500);
     return () => clearTimeout(timer);
   }, [localSearchKeywords]);
 
@@ -21,8 +21,8 @@ export default function Searchbar() {
         placeholder="Search..."
         aria-label="search input"
         name="filter searchKeywords"
-        onChange={(e) => setLocalSearchKeywords(e.target.value.trim())}
         className="bg-dark w-full outline-none"
+        onChange={(e) => setLocalSearchKeywords(e.target.value)}
       />
 
       {localSearchKeywords.length !== 0 && (

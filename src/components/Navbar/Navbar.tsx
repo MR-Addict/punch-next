@@ -6,7 +6,7 @@ import NormalLinks from "./components/Normal/NormalLinks";
 
 export default function Navbar() {
   return (
-    <nav className="w-full px-4 md:px-48 pt-4 md:pt-7 flex flex-row items-center justify-between isolate">
+    <nav className="w-full px-4 md:px-28 pt-4 md:pt-7 flex flex-row items-center justify-between isolate">
       <Logo />
       <NormalLinks />
 

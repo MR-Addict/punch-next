@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { FaRegUser, FaRegEdit, FaRegLightbulb } from "react-icons/fa";
+import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
 import style from "./Form.module.css";
 import formatDate from "@/lib/utils/formatDate";
@@ -12,15 +12,15 @@ import { usePopupContext } from "@/contexts/Popup/PopupProvider";
 import Message from "@/components/Message/Message";
 import LoadingDots from "@/components/LoadingDots/LoadingDots";
 
-const storageName = "user-submit-info";
-const defaultFormData = { name: "", group: "", content: "" };
+const storageName = "user";
+const cookieName = "last_submit";
 
 export default function Form() {
   const router = useRouter();
   const { popup } = usePopupContext();
 
   const [pending, setPending] = useState(false);
-  const [formData, setFormData] = useState(defaultFormData);
+  const [formData, setFormData] = useState({ name: "", content: "" });
   const [status, setStatus] = useState<null | "idle" | "done" | "duplicated">(null);
 
   const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,9 +39,12 @@ export default function Form() {
         if (result.success) {
           router.refresh();
           setStatus("done");
-          document.cookie = `last_submit=${new Date()};max-age=86400;path=/;`;
-          localStorage.setItem(storageName, JSON.stringify({ name: formData.name, group: formData.group }));
-        } else console.error(result.message);
+          localStorage.setItem(storageName, JSON.stringify({ name: formData.name }));
+          document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
+        } else {
+          console.error(result.message);
+          popup({ success: false, message: result.message });
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -56,7 +59,7 @@ export default function Form() {
     if (localUserInfo) setFormData({ ...formData, ...JSON.parse(localUserInfo) });
 
     // get last submit time
-    const lastSubmit = document.cookie.match(/\blast_submit\b=([^;]*)/)?.at(1);
+    const lastSubmit = document.cookie.match(new RegExp("\\b" + cookieName + "\\b=([^;]*)"))?.at(1);
     if (lastSubmit && formatDate(new Date()) === formatDate(lastSubmit)) setStatus("duplicated");
     else setStatus("idle");
   }, []);
@@ -77,30 +80,7 @@ export default function Form() {
       <form className={style.form} onSubmit={handleSubmit}>
         <h1 className="text-2xl font-semibold">值班笔记</h1>
 
-        <div className="w-full flex flex-col gap-3">
-          <section className={style["input-element"]}>
-            <label className={style.label} htmlFor="submitFormGroup">
-              <FaRegLightbulb size={13} />
-              <span>组别</span>
-            </label>
-            <select
-              required
-              name="group"
-              id="submitFormGroup"
-              value={formData.group}
-              onChange={handleChange}
-              className={style.input}
-            >
-              <option disabled value="">
-                -- 请选择组别 --
-              </option>
-              <option value="航模组">航模组</option>
-              <option value="编程组">编程组</option>
-              <option value="电子组">电子组</option>
-              <option value="静模组">静模组</option>
-            </select>
-          </section>
-
+        <div className="w-full flex flex-col gap-5">
           <section className={style["input-element"]}>
             <label className={style.label} htmlFor="submitFormName">
               <FaRegUser size={13} />
@@ -139,11 +119,7 @@ export default function Form() {
           </section>
         </div>
 
-        <button
-          type="submit"
-          className={style.button}
-          disabled={!formData.group || !formData.name || !formData.content || pending}
-        >
+        <button type="submit" className={style.button} disabled={!formData.name || !formData.content || pending}>
           {pending ? <LoadingDots /> : <span>提交</span>}
         </button>
       </form>

@@ -3,10 +3,10 @@
 import clsx from "clsx";
 
 import style from "./Tabs.module.css";
-import { useClientContext, TabType } from "../../contexts/ClientContext";
+import { useViewContext, TabType } from "@/contexts/View/ViewProvider";
 
 function Tab({ title, tab }: { title: string; tab: TabType }) {
-  const { activeTab, setActiveTab } = useClientContext();
+  const { activeTab, setActiveTab } = useViewContext();
 
   return (
     <button

@@ -11,7 +11,7 @@
 .form {
   box-shadow: 0 0 15px #0891b280;
   @apply border border-cyan-600 rounded-lg animate-slideFromBottom;
-  @apply w-full max-w-md p-4 flex flex-col items-center justify-center gap-3;
+  @apply w-full max-w-sm p-4 flex flex-col items-center justify-center gap-5;
 }
 
 /* input */

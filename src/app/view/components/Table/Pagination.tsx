@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 
-import { useTableContext } from "../../contexts/TableProvider";
+import { useTableContext } from "@/contexts/Table/TableProvider";
 
 export default function Pagination() {
   const leftSide = 1;

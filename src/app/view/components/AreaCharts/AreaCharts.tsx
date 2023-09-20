@@ -5,10 +5,10 @@ import { useMemo } from "react";
 import AreaChart from "./AreaChart";
 import groupBy from "@/lib/utils/groupBy";
 import formatDate from "@/lib/utils/formatDate";
-import { useClientContext } from "../../contexts/ClientContext";
+import { useViewContext } from "@/contexts/View/ViewProvider";
 
 export default function AreaCharts() {
-  const { notes, filter } = useClientContext();
+  const { notes } = useViewContext();
 
   const notesGroupedByDay = useMemo(() => groupBy([...notes].reverse(), (note) => formatDate(note.date)), [notes]);
   const notesGroupedByWeek = useMemo(() => groupBy([...notes].reverse(), (note) => `第${note.week}周`), [notes]);
@@ -24,8 +24,8 @@ export default function AreaCharts() {
 
   return (
     <div className="flex flex-col gap-10 animate-slideFromBottom">
-      <AreaChart title={filter + "每日提交"} data={notesGroupedByDay.map((item) => item.count)} labels={dayLabels} />
-      <AreaChart title={filter + "每周提交"} data={notesGroupedByWeek.map((item) => item.count)} labels={weekLabels} />
+      <AreaChart title="每日提交曲线" data={notesGroupedByDay.map((item) => item.count)} labels={dayLabels} />
+      <AreaChart title="每周提交曲线" data={notesGroupedByWeek.map((item) => item.count)} labels={weekLabels} />
     </div>
   );
 }

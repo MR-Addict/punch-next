@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   const body = await request.json();
   const parsedResult = NoteWithoutWeek.safeParse(body);
   if (!parsedResult.success) {
-    return new Response(JSON.stringify({ success: false, message: "提交失败，表单存在不合法项目" }), {
+    return new Response(JSON.stringify({ success: false, message: "提交失败，表单内容不合法" }), {
       headers: { "Content-Type": "application/json" },
       status: 400
     });

@@ -2,12 +2,11 @@ import z from "zod";
 
 const NoteWithoutWeek = z.object({
   name: z.string().max(10),
-  group: z.string().max(10),
   content: z.string().max(500)
 });
 
-const Note = NoteWithoutWeek.merge(z.object({ week: z.number() }));
-const NoteDatabse = Note.merge(z.object({ _id: z.string(), date: z.string() }));
+const Note = z.object({ week: z.number() }).merge(NoteWithoutWeek);
+const NoteDatabse = z.object({ _id: z.string(), date: z.string() }).merge(Note);
 
 type NoteType = z.TypeOf<typeof Note>;
 type NoteDatabseType = z.TypeOf<typeof NoteDatabse>;
