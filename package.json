@@ -10,14 +10,14 @@
   },
   "dependencies": {
     "mongodb": "^6.1.0",
-    "next": "^13.5.1",
+    "next": "^13.5.2",
     "zod": "3.22.2"
   },
   "devDependencies": {
-    "@types/node": "^20.6.3",
+    "@types/node": "^20.6.5",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
-    "autoprefixer": "^10.4.15",
+    "autoprefixer": "^10.4.16",
     "chart.js": "^4.4.0",
     "chartjs-plugin-datalabels": "^2.2.0",
     "clsx": "^2.0.0",
