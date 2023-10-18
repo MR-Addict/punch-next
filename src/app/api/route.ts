@@ -1,6 +1,7 @@
 import env from "@/types/env/client";
 import notes from "@/lib/mongodb/notes";
 import getISOWeekNumber from "@/lib/utils/getISOWeekNumber";
+import { revalidatePath } from "next/cache";
 import { NoteWithoutWeek } from "@/types/notes";
 
 export async function POST(request: Request) {
@@ -23,6 +24,7 @@ export async function POST(request: Request) {
 
   const week = getISOWeekNumber(now) - getISOWeekNumber(env.FIRST_WEEK) + 1;
   const result = await notes.insert({ week, ...parsedResult.data });
+  if (result.success) revalidatePath("/view", "page");
   return new Response(JSON.stringify(result), {
     headers: { "Content-Type": "application/json" },
     status: result.success ? 201 : 500
