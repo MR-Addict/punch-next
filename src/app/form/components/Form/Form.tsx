@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { useState, useEffect } from "react";
 import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
@@ -16,7 +16,6 @@ const storageName = "user";
 const cookieName = "last_submit";
 
 export default function Form() {
-  const router = useRouter();
   const { popup } = usePopupContext();
 
   const [pending, setPending] = useState(false);
@@ -37,10 +36,10 @@ export default function Form() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          router.refresh();
           setStatus("done");
           localStorage.setItem(storageName, JSON.stringify({ name: formData.name }));
           document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
+          revalidatePath("/view", "page");
         } else {
           console.error(result.message);
           popup({ success: false, message: result.message });
