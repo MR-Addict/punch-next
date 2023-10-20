@@ -30,14 +30,19 @@ export default function Client() {
         {archives.length > 1 && <Filter />}
       </div>
 
-      <div className={clsx("flex-col gap-5", activeTab === "table" ? "flex" : "hidden")}>
-        <Searchbar />
-        <Table />
-      </div>
-
-      <div className={clsx("flex-col gap-5", activeTab === "chart" ? "flex" : "hidden")}>
-        <Chips />
-        <AreaCharts />
+      <div className="flex-1 flex flex-col gap-5">
+        {activeTab === "table" && (
+          <>
+            <Searchbar />
+            <Table />
+          </>
+        )}
+        {activeTab === "chart" && (
+          <>
+            <Chips />
+            <AreaCharts />
+          </>
+        )}
       </div>
     </main>
   );

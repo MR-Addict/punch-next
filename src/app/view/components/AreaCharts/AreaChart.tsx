@@ -10,7 +10,7 @@ const LineOptions = {
   maintainAspectRatio: false,
   responsive: true,
   scales: {
-    y: { grid: { color: "#6b728040" } },
+    y: { grid: { color: "#6b728040" }, beginAtZero: true },
     x: { grid: { color: "#6b728040" } }
   },
   plugins: {
@@ -41,8 +41,8 @@ export default function AreaChart({ title, data, labels }: { title: string; data
   return (
     <div className="bg-dark rounded-xl p-5 flex flex-col items-center gap-3">
       <h1 className="font-semibold text-lg">{title}</h1>
-      <div className="w-full overflow-x-auto">
-        <div className="w-full min-w-[600px] h-[300px] md:h-[500px]">
+      <div className="flex-1 w-full overflow-x-auto">
+        <div className="w-full min-w-[600px] md:min-w-full h-[300px] md:h-full">
           <Line
             // @ts-expect-error
             options={LineOptions}

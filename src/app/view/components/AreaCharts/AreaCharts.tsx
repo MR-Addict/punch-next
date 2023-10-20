@@ -23,7 +23,7 @@ export default function AreaCharts() {
   const weekLabels = useMemo(() => notesGroupedByWeek.map((item) => item.category), [notesGroupedByWeek]);
 
   return (
-    <div className="flex flex-col gap-10 animate-slideFromBottom">
+    <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-5">
       <AreaChart title="每日提交曲线" data={notesGroupedByDay.map((item) => item.count)} labels={dayLabels} />
       <AreaChart title="每周提交曲线" data={notesGroupedByWeek.map((item) => item.count)} labels={weekLabels} />
     </div>
