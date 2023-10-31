@@ -13,7 +13,7 @@ import { ViewContextProvider } from "@/contexts/View/ViewProvider";
 export const metadata = setMetadata("查看笔记");
 
 function getArchiveNotes() {
-  const archivePath = path.join(process.cwd(), "/src/assets");
+  const archivePath = path.join(process.cwd(), "/src/data/archive");
   const fileNames = fs.readdirSync(archivePath);
   fileNames.sort((a, b) => b.localeCompare(a));
 

@@ -3,7 +3,6 @@ import { FcAddressBook, FcOvertime } from "react-icons/fc";
 
 import style from "./page.module.css";
 import setMetadata from "@/lib/utils/setMetadata";
-import HalloweenIcon from "@/components/Icons/HalloweenIcon";
 
 export const metadata = setMetadata();
 
@@ -31,10 +30,9 @@ function LinkCard({ Icon, title, subtitle, link }: Props) {
 export default function Page() {
   return (
     <main className="w-full px-4 md:px-28 flex-1 flex flex-col items-center justify-center">
-      <ul className="flex flex-row justify-center flex-wrap gap-5 md:gap-10">
+      <ul className="flex flex-row justify-center flex-wrap gap-7 md:gap-10">
         <LinkCard Icon={<FcAddressBook size={90} />} title="提交笔记" subtitle="记录今天的值班内容" link="/form" />
         <LinkCard Icon={<FcOvertime size={90} />} title="查看笔记" subtitle="去看大家的值班笔记" link="/view" />
-        <LinkCard Icon={<HalloweenIcon size={90} />} title="万圣节快乐" subtitle="Happy Halloween!" link="/" />
       </ul>
     </main>
   );
