@@ -1,7 +1,5 @@
 "use client";
 
-import clsx from "clsx";
-
 import Tabs from "./components/Tabs/Tabs";
 import Table from "./components/Table/Table";
 import Chips from "./components/Chips/Chips";
@@ -24,13 +22,13 @@ export default function Client() {
   }
 
   return (
-    <main className="w-full flex-1 py-10 px-4 md:px-28 flex flex-col gap-5">
+    <main className="w-full flex-1 py-10 px-4 md:px-28 flex flex-col gap-3">
       <div className="flex flex-row justify-between items-center">
-        <Tabs />
         {archives.length > 1 && <Filter />}
+        <Tabs />
       </div>
 
-      <div className="flex-1 flex flex-col gap-5">
+      <div className="flex-1 flex flex-col gap-3">
         {activeTab === "table" && (
           <>
             <Searchbar />

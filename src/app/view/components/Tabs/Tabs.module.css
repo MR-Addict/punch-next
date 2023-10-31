@@ -1,9 +1,5 @@
 .tab {
-  @apply py-1 px-2;
-}
-
-.tab:first-of-type {
-  @apply border-r  border-r-gray-500;
+  @apply py-1 px-2 rounded-md;
 }
 
 .tab.active {

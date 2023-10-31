@@ -18,7 +18,10 @@ export default function Pagination() {
           setCurrentPage(page);
           window.scroll({ top: 0, behavior: "auto" });
         }}
-        className={clsx({ "text-cyan-600": page === currentPage }, "w-6 h-6 place-items-center border border-gray-500")}
+        className={clsx(
+          { "text-cyan-600 bg-dark": page === currentPage },
+          "w-7 h-7 place-items-center rounded-md border border-dark"
+        )}
       >
         {page + 1}
       </button>
@@ -26,12 +29,12 @@ export default function Pagination() {
   }
 
   return (
-    <div className="w-full flex flex-col md:flex-row items-center justify-between gap-2 text-sm py-3 pl-2 pr-5 border border-gray-500 border-t-0 rounded-b-sm">
+    <div className="w-full flex flex-col md:flex-row items-center justify-between gap-2 rounded-b-md">
       <p>
         {currentPage + 1}/{totalPages}页 (共{notes.length}条记录)
       </p>
 
-      <div className="flex flex-row items-center gap-1.5">
+      <div className="flex flex-row items-center gap-2">
         {/* first button */}
         {currentNotes.length > 0 && <Button page={0} />}
 

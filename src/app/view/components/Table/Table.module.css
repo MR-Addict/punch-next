@@ -6,12 +6,8 @@
   @apply text-left;
 }
 
-.table tr {
-  @apply border-b border-b-gray-600;
-}
-
 .table :is(th, td) {
-  @apply py-3 px-2;
+  @apply p-3;
 }
 
 .table tbody tr:nth-of-type(odd) {

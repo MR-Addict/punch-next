@@ -27,10 +27,6 @@
   @apply bg-gray-100 text-black outline-none p-2 rounded-md;
 }
 
-.input:focus {
-  @apply outline outline-1 outline-cyan-600;
-}
-
 /* submit button */
 .btn {
   transition: 300ms;
