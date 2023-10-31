@@ -1,24 +1,9 @@
 version: "3"
 services:
   punch:
-    image: punch
     build: .
-    environment:
-      - NEXT_PUBLIC_TIMEZONE=8
-      - NEXT_PUBLIC_FIRST_WEEK=2023-09-04 00:01
-      - NEXT_PUBLIC_START_DATE=2023-09-04 00:01
-      - NEXT_PUBLIC_END_DATE=2023-12-03 23:59
-      - NEXT_PUBLIC_CURRENT_TERM=2023-2024年第一学期
-      - MONGODB_URI=mongodb://admin:punch@mongodb:27017
+    image: punch
+    env_file: .env
     ports:
       - 3000:3000
     restart: unless-stopped
-
-  mongodb:
-    image: mongo
-    restart: unless-stopped
-    volumes:
-      - ./data:/data/db
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=punch
