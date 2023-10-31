@@ -24,7 +24,7 @@ export async function POST(request: Request) {
 
   const week = getISOWeekNumber(now) - getISOWeekNumber(env.FIRST_WEEK) + 1;
   const result = await notes.insert({ week, ...parsedResult.data });
-  if (result.success) revalidatePath("/view", "page");
+  if (result.success) revalidatePath("/", "layout");
   return new Response(JSON.stringify(result), {
     headers: { "Content-Type": "application/json" },
     status: result.success ? 201 : 500
