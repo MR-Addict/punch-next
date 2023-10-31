@@ -2,16 +2,18 @@
 
 import Link from "next/link";
 import Confetti from "react-confetti";
+import { useFormState } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
-import style from "./Form.module.css";
+import style from "../style.module.css";
+import action from "../../lib/action";
 import formatDate from "@/lib/utils/formatDate";
 import { usePopupContext } from "@/contexts/Popup/PopupProvider";
 
 import Message from "@/components/Message/Message";
-import LoadingDots from "@/components/LoadingDots/LoadingDots";
+import SubmitButton from "../SubmitButton/SubmitButton";
 
 const storageName = "user";
 const cookieName = "last_submit";
@@ -19,40 +21,28 @@ const cookieName = "last_submit";
 export default function Form() {
   const router = useRouter();
   const { popup } = usePopupContext();
+  const [formActionState, formAction] = useFormState(action, null);
 
-  const [pending, setPending] = useState(false);
   const [formData, setFormData] = useState({ name: "", content: "" });
   const [status, setStatus] = useState<null | "idle" | "done" | "duplicated">(null);
 
   const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setPending(true);
+  // handle submit result
+  useEffect(() => {
+    if (!formActionState) return;
 
-    fetch("/api", {
-      method: "POST",
-      body: JSON.stringify({ ...formData, content: formData.content.trim() }),
-      headers: { "Content-Type": "application/json" }
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.success) {
-          localStorage.setItem(storageName, JSON.stringify({ name: formData.name }));
-          document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
-          setStatus("done");
-          router.refresh();
-        } else {
-          console.error(result.message);
-          popup({ success: false, message: result.message });
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        popup({ success: false, message: "提交失败，未知错误" });
-      })
-      .finally(() => setPending(false));
-  }
+    const { success, message } = formActionState;
+    if (success) {
+      localStorage.setItem(storageName, JSON.stringify({ name: formData.name }));
+      document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
+      setStatus("done");
+      router.refresh();
+    } else {
+      console.error(message);
+      popup({ success: false, message: message });
+    }
+  }, [formActionState]);
 
   useEffect(() => {
     // parse user submit info
@@ -83,7 +73,7 @@ export default function Form() {
     );
   } else {
     return (
-      <form className={style.form} onSubmit={handleSubmit}>
+      <form className={style.form} action={formAction}>
         <h1 className="text-2xl font-semibold">值班笔记</h1>
 
         <div className="w-full flex flex-col gap-5">
@@ -125,9 +115,7 @@ export default function Form() {
           </section>
         </div>
 
-        <button type="submit" className={style.button} disabled={!formData.name || !formData.content || pending}>
-          {pending ? <LoadingDots /> : <span>提交</span>}
-        </button>
+        <SubmitButton />
       </form>
     );
   }
