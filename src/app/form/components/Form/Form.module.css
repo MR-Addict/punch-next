@@ -1,6 +1,6 @@
 /* view link */
 .link {
-  @apply text-sm py-1 px-3 rounded-full text-white bg-gray-600/60 animate-slideFromBottom duration-300;
+  @apply text-sm py-1.5 px-4 rounded-full text-white bg-gray-600/60 animate-slideFromBottom duration-300;
 }
 
 .link:hover {
@@ -16,7 +16,7 @@
 
 /* input */
 .input-element {
-  @apply w-full flex flex-col;
+  @apply w-full flex flex-col gap-0.5;
 }
 
 .label {
@@ -24,11 +24,11 @@
 }
 
 .input {
-  @apply bg-gray-100 text-black outline-none p-2 rounded-md border border-black;
+  @apply bg-gray-100 text-black outline-none p-2 rounded-md;
 }
 
 .input:focus {
-  @apply border border-blue-600;
+  @apply outline outline-1 outline-cyan-600;
 }
 
 /* submit button */

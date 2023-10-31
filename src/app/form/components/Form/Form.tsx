@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Confetti from "react-confetti";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { FaRegUser, FaRegEdit } from "react-icons/fa";
@@ -68,7 +69,12 @@ export default function Form() {
   else if (status !== "idle") {
     return (
       <div className="flex flex-col items-center gap-3">
-        {status === "done" && <Message message="恭喜，笔记提交成功" icon="success" />}
+        {status === "done" && (
+          <>
+            <Confetti recycle={false} />
+            <Message message="恭喜，笔记提交成功" icon="success" />
+          </>
+        )}
         {status === "duplicated" && <Message message="你今天已经提交过啦" icon="forbidden" />}
         <Link href="/view" className={style.link}>
           去看笔记
