@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
+import style from "./Searchbar.module.css";
 import { useTableContext } from "@/contexts/Table/TableProvider";
 
 export default function Searchbar() {
@@ -15,7 +16,7 @@ export default function Searchbar() {
   }, [localSearchKeywords]);
 
   return (
-    <div className="bg-dark w-full flex flex-row items-center gap-1 justify-end rounded-md py-1.5 px-3 animate-slideFromTop">
+    <div className={style.wrapper}>
       <input
         value={localSearchKeywords}
         placeholder="Search..."
@@ -26,7 +27,12 @@ export default function Searchbar() {
       />
 
       {localSearchKeywords.length !== 0 && (
-        <button type="button" aria-label="clear button" onClick={() => setLocalSearchKeywords("")}>
+        <button
+          type="button"
+          aria-label="clear button"
+          className="hover:text-cyan-600"
+          onClick={() => setLocalSearchKeywords("")}
+        >
           <AiOutlineCloseCircle />
         </button>
       )}
