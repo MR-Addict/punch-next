@@ -15,8 +15,8 @@ export default async function action(prev: any, formData: FormData) {
   }
 
   // get form data
-  const name = formData.get("name")?.toString();
-  const content = formData.get("content")?.toString();
+  const name = formData.get("name")?.toString().trim();
+  const content = formData.get("content")?.toString().trim();
 
   // validate form data
   const parsedResult = NoteWithoutWeek.safeParse({ name, content });

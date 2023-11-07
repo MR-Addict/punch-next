@@ -2,7 +2,7 @@ import z from "zod";
 
 const NoteWithoutWeek = z.object({
   name: z.string().max(10),
-  content: z.string().max(500)
+  content: z.string().min(4).max(500)
 });
 
 const Note = z.object({ week: z.number() }).merge(NoteWithoutWeek);
