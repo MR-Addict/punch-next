@@ -74,7 +74,10 @@ export default function Form() {
   } else {
     return (
       <form className={style.form} action={formAction}>
-        <h1 className="text-2xl font-semibold">值班笔记</h1>
+        <header className="flex flex-col items-center justify-center gap-2">
+          <h1 className="text-2xl font-semibold">值班笔记</h1>
+          <p className="text-gray-400">在无聊的时间里就从事学习</p>
+        </header>
 
         <div className="w-full flex flex-col gap-5">
           <section className={style["input-element"]}>
