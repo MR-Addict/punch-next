@@ -1,13 +1,13 @@
 .btn {
-  @apply w-7 h-7 place-items-center rounded-md border border-dark text-gray-300 duration-300;
+  @apply w-7 h-7 place-items-center rounded-md border border-gray-300 duration-300;
 }
 
 .btn.active {
-  @apply bg-dark text-gray-100;
+  @apply bg-black text-white border-black;
 }
 
 .btn:hover:not(.active) {
-  @apply bg-dark/50;
+  @apply md:bg-gray-100;
 }
 
 .wrapper {

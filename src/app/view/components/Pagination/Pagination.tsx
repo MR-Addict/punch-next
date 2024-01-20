@@ -13,7 +13,7 @@ export default function Pagination() {
   function handleClick(page: number) {
     if (page === currentPage) return;
     setCurrentPage(page);
-    window.scroll({ top: 0, behavior: "auto" });
+    window.scroll({ top: 0, behavior: "smooth" });
   }
 
   function Button({ page }: { page: number }) {

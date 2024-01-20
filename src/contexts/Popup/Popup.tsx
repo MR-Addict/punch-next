@@ -6,16 +6,16 @@ import { MdCheckCircleOutline, MdErrorOutline } from "react-icons/md";
 import style from "./Popup.module.css";
 
 interface Props {
-  isPopup: boolean;
-  popupData: { success: boolean; message: string };
+  active: boolean;
+  data: { success: boolean; message: string };
 }
 
-export default function Popup({ popupData, isPopup }: Props) {
+export default function Popup({ data, active }: Props) {
   return (
-    <section aria-label="popup window" className={clsx(style.popupwindow, isPopup ? style.active : "")}>
-      <div className={clsx(style.popupbody, popupData.success ? style.success : "")}>
-        {popupData.success ? <MdCheckCircleOutline size={25} /> : <MdErrorOutline size={25} />}
-        <p>{popupData.message}</p>
+    <section aria-label="popup window" className={clsx(style.popupwindow, { [style.active]: active })}>
+      <div className={clsx(style.popupbody, { [style.success]: data.success })}>
+        {data.success ? <MdCheckCircleOutline size={25} /> : <MdErrorOutline size={25} />}
+        <p>{data.message}</p>
       </div>
     </section>
   );

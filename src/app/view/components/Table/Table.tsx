@@ -13,7 +13,7 @@ export default function Table() {
 
   return (
     <div className="w-full animate-slideFromBottom space-y-5">
-      <div className="w-full overflow-x-auto bg-dark rounded-md">
+      <div className="w-full overflow-x-auto bg-gray-100 rounded-md">
         <table className={style.table}>
           <thead>
             <tr>

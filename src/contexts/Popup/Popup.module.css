@@ -5,7 +5,7 @@
 }
 
 .popupwindow.active {
-  @apply translate-y-28;
+  @apply translate-y-36;
 }
 
 /* body */

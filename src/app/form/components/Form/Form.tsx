@@ -67,19 +67,19 @@ export default function Form() {
         )}
         {status === "duplicated" && <Message message="你今天已经提交过啦" icon="forbidden" />}
         <Link href="/view" className={style.link}>
-          去看笔记
+          去看笔记 👉
         </Link>
       </div>
     );
   } else {
     return (
       <form className={style.form} action={formAction}>
-        <header className="flex flex-col items-center justify-center gap-2">
-          <h1 className="text-2xl font-semibold">值班笔记</h1>
-          <p className="text-gray-400">在无聊的时间里就从事学习</p>
+        <header className="w-full space-y-2">
+          <h1 className="text-2xl font-semibold border-b-4 border-b-black w-fit">值班笔记</h1>
+          <p className="text-gray-500 border-b border-b-gray-300">在无聊的时间里就从事学习</p>
         </header>
 
-        <div className="w-full flex flex-col gap-5">
+        <div className="w-full flex flex-col gap-3">
           <section className={style["input-element"]}>
             <label className={style.label} htmlFor="submitFormName">
               <FaRegUser size={13} />
@@ -113,7 +113,7 @@ export default function Form() {
               onChange={handleChange}
               style={{ height: 170 }}
               className={style.input}
-              placeholder="今天的值班笔记内容"
+              placeholder="写写今天都发生了什么"
             />
           </section>
         </div>

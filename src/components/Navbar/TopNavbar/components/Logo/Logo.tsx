@@ -10,11 +10,11 @@ export default function Logo() {
 
   return (
     <div className="relative">
-      <Link href="/" className="font-bold text-xl">
-        值班笔记
-      </Link>
+      <Link href="/">值班笔记</Link>
 
-      <p className="absolute top-0 -right-1 translate-x-full text-xs bg-cyan-600 rounded-lg px-1">{`第${week}周`}</p>
+      <p className="absolute top-0 -right-1 translate-x-full text-xs bg-blue-600 rounded-lg px-1 text-white">
+        {`第${week}周`}
+      </p>
     </div>
   );
 }

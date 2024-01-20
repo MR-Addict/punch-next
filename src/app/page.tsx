@@ -20,7 +20,7 @@ function LinkCard({ Icon, title, subtitle, link }: Props) {
         {Icon}
         <div className="flex flex-col md:items-center gap-1">
           <h1 className="font-semibold text-lg">{title}</h1>
-          <p className="text-xs text-gray-400">{subtitle}</p>
+          <p className="text-xs text-gray-600">{subtitle}</p>
         </div>
       </Link>
     </li>
@@ -30,7 +30,7 @@ function LinkCard({ Icon, title, subtitle, link }: Props) {
 export default function Page() {
   return (
     <main className="w-full px-4 md:px-28 flex-1 flex flex-col items-center justify-center">
-      <ul className="flex flex-row justify-center flex-wrap gap-7 md:gap-10">
+      <ul className="flex flex-row justify-center flex-wrap gap-10">
         <LinkCard Icon={<FcAddressBook size={90} />} title="提交笔记" subtitle="记录今天的值班内容" link="/form" />
         <LinkCard Icon={<FcOvertime size={90} />} title="查看笔记" subtitle="去看大家的值班笔记" link="/view" />
       </ul>

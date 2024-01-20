@@ -19,7 +19,6 @@ const LineOptions = {
     datalabels: {
       align: "middle",
       anchor: "top",
-      color: "#d1d5db",
       formatter: (value: any, context: { dataset: { data: any[] } }) => {
         const dataPoints = context.dataset.data;
         const sum = parseInt(dataPoints.reduce((prop, a) => prop + a, 0));
@@ -39,7 +38,7 @@ const LineOptions = {
 
 export default function AreaChart({ title, data, labels }: { title: string; data: any[]; labels: any[] }) {
   return (
-    <div className="bg-dark rounded-xl p-5 flex flex-col items-center gap-3">
+    <div className="bg-gray-100 rounded-xl p-5 flex flex-col items-center gap-3">
       <h1 className="font-semibold text-lg">{title}</h1>
       <div className="flex-1 w-full overflow-x-auto">
         <div className="w-full min-w-[600px] md:min-w-full h-[300px] md:h-full">

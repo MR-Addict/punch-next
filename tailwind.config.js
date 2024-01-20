@@ -4,10 +4,6 @@ module.exports = {
   content: ["./src/**/*.{tsx,css}"],
   theme: {
     extend: {
-      colors: {
-        dark: "#20232a",
-        light: "#2c3036"
-      },
       keyframes: {
         scaleUp: {
           from: { transform: "scale(0.8)", opacity: 0 },

@@ -12,7 +12,7 @@ export default function Error({ error }: { error: Error }) {
         type="button"
         aria-label="reset button"
         onClick={() => location.reload()}
-        className="text-white shadow-[0_0_5px_#0891b2] border border-cyan-600 duration-300 rounded-full p-0.5"
+        className="text-white shadow-[0_0_5px_#0891b2] border border-blue-600 duration-300 rounded-full p-0.5"
       >
         <IoMdRefresh size={37} />
       </button>

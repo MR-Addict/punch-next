@@ -2,7 +2,7 @@
 
 值班笔记 Next.js 重构
 
-![preview](preview.png)
+<img width="400" src="preview.jpg" alt="preview"/>
 
 ## 1. 项目开发
 
@@ -85,7 +85,7 @@ version: "3"
 services:
   punch:
     build: .
-    image: mraddict063/punch
+    image: punch
     restart: unless-stopped
     env_file: .env
     ports:

@@ -22,7 +22,7 @@ export default function Client() {
   }
 
   return (
-    <main className="w-full flex-1 py-10 px-4 md:px-28 flex flex-col gap-4">
+    <main className="w-full flex-1 py-5 md:py-10 px-4 md:px-28 flex flex-col gap-4">
       <div className="flex flex-row justify-between items-center">
         {archives.length > 1 && <Filter />}
         <Tabs />

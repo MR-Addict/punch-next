@@ -1,17 +1,12 @@
 /* view link */
 .link {
-  @apply text-sm py-1.5 px-4 rounded-full text-white bg-gray-600/60 animate-slideFromBottom duration-300;
-}
-
-.link:hover {
-  @apply bg-gray-600/70;
+  @apply text-sm py-1.5 px-4 rounded-full text-white bg-black animate-slideFromBottom;
 }
 
 /* form */
 .form {
-  box-shadow: 0 0 15px #0891b280;
-  @apply border border-cyan-600 rounded-xl animate-slideFromBottom;
-  @apply w-full max-w-sm px-4 py-6 md:px-6 md:py-8 flex flex-col items-center justify-center gap-2;
+  @apply shadow-sm border border-gray-300 rounded-xl animate-slideFromBottom;
+  @apply w-full max-w-sm px-4 py-6 md:px-6 md:py-8 flex flex-col items-center justify-center gap-5;
 }
 
 /* input */
@@ -24,20 +19,15 @@
 }
 
 .input {
-  @apply bg-gray-100 text-black outline-none p-2 rounded-md;
+  @apply outline-none bg-gray-100 py-2 px-4 rounded-md;
 }
 
 /* submit button */
 .btn {
   transition: 300ms;
-  @apply mt-2 w-full flex items-center justify-center h-12 rounded-md border border-cyan-600 font-semibold;
+  @apply bg-black text-white w-full flex items-center justify-center h-12 rounded-md font-semibold;
 }
 
-.btn:disabled,
-.form:invalid .btn {
+.btn:disabled {
   @apply cursor-not-allowed;
-}
-
-.form:valid .btn:enabled:hover {
-  box-shadow: 0 0 15px #0891b2;
 }

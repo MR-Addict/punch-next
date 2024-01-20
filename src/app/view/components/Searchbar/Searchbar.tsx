@@ -22,7 +22,7 @@ export default function Searchbar() {
         placeholder="Search..."
         aria-label="search input"
         name="filter searchKeywords"
-        className="bg-dark w-full outline-none"
+        className="bg-gray-100 w-full outline-none"
         onChange={(e) => setLocalSearchKeywords(e.target.value)}
       />
 
@@ -30,7 +30,7 @@ export default function Searchbar() {
         <button
           type="button"
           aria-label="clear button"
-          className="hover:text-cyan-600"
+          className="hover:md:text-black text-gray-600"
           onClick={() => setLocalSearchKeywords("")}
         >
           <AiOutlineCloseCircle />

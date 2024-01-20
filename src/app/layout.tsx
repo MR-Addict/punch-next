@@ -1,7 +1,7 @@
 import "./globals.css";
 
-import Footer from "@/components/Footer/Footer";
-import Navbar from "@/components/Navbar/Navbar";
+import TopNavbar from "@/components/Navbar/TopNavbar/TopNavbar";
+import BottomNavbar from "@/components/Navbar/BottomNavbar/BottomNavbar";
 import { PopupContextProvider } from "@/contexts/Popup/PopupProvider";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -9,9 +9,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-Hans">
       <body>
         <PopupContextProvider>
-          <Navbar />
+          <TopNavbar />
           {children}
-          <Footer />
+          <BottomNavbar />
         </PopupContextProvider>
       </body>
     </html>

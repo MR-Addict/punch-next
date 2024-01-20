@@ -13,23 +13,23 @@ const PopupContext = createContext<PopupContextProps>({
 });
 
 export const PopupContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isPopup, setIsPopup] = useState(false);
-  const [popupData, setPopupData] = useState({ success: false, message: "" });
+  const [active, setActive] = useState(false);
+  const [data, setData] = useState({ success: false, message: "" });
 
   function popup(data: { success: boolean; message: string }) {
-    setPopupData(data);
-    setIsPopup(true);
+    setData(data);
+    setActive(true);
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsPopup(false), 3000);
+    const timer = setTimeout(() => setActive(false), 3000);
 
     return () => clearTimeout(timer);
-  }, [popupData]);
+  }, [data]);
 
   return (
     <PopupContext.Provider value={{ popup }}>
-      <Popup popupData={popupData} isPopup={isPopup} />
+      <Popup data={data} active={active} />
       {children}
     </PopupContext.Provider>
   );

@@ -7,5 +7,5 @@ body {
   min-height: 100svh;
   font-family: sans-serif;
 
-  @apply bg-black flex flex-col items-center justify-center text-gray-300;
+  @apply flex flex-col items-center justify-center;
 }
