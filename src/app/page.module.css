@@ -1,8 +1,8 @@
 .card {
-  @apply duration-300 p-10 rounded-xl border border-gray-300;
+  @apply duration-300 p-10 rounded-xl bg-gray-100;
   @apply flex flex-row md:flex-col items-center justify-center gap-3 animate-scaleUp;
 }
 
 .card:hover {
-  @apply -translate-y-1 shadow-md;
+  @apply md:-translate-y-1 md:shadow-md;
 }

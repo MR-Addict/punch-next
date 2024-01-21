@@ -12,7 +12,14 @@ export default function BottomNavbar() {
   const rootPath = (usePathname() || "/").split("/").slice(0, 2).join("/");
 
   useEffect(() => {
-    setScrollable(window.innerHeight < document.body.scrollHeight);
+    function handleScroll() {
+      const isScrollable = window.innerHeight < document.body.scrollHeight;
+      const isScrolledToBottom = Math.ceil(window.innerHeight + window.scrollY) >= document.body.scrollHeight;
+      setScrollable(isScrollable && !isScrolledToBottom);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
