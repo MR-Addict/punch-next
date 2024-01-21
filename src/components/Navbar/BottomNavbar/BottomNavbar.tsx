@@ -1,6 +1,8 @@
 "use client";
 
 import clsx from "clsx";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -27,10 +29,11 @@ export default function BottomNavbar() {
       <ul className={clsx(style.links, { [style.scrollable]: scrollable })}>
         {links.map((link) => (
           <li key={link.name}>
-            <a href={link.link} className={clsx(style.link, { [style.active]: rootPath === link.link })}>
+            <Link href={link.link} className={style.link}>
+              {rootPath === link.link && <motion.div layoutId="active-link" className={style["active-link"]} />}
               <link.Icon size={20} />
               <p>{link.name}</p>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

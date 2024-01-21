@@ -1,7 +1,7 @@
 .tab {
-  @apply py-1 px-2 rounded-md;
+  @apply relative py-1 px-2 rounded-md;
 }
 
-.tab.active {
-  @apply gradient-50 duration-100;
+.active-tab {
+  @apply absolute inset-0 -z-10 gradient-50 rounded-md;
 }

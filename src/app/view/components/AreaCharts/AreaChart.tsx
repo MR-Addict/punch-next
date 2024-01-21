@@ -38,10 +38,10 @@ const LineOptions = {
 
 export default function AreaChart({ title, data, labels }: { title: string; data: any[]; labels: any[] }) {
   return (
-    <div className="gradient-50 rounded-xl p-5 flex flex-col items-center gap-3">
+    <div className="gradient-50 shadow-md rounded-xl p-5 flex flex-col items-center gap-3">
       <h1 className="font-semibold text-lg">{title}</h1>
       <div className="flex-1 w-full overflow-x-auto">
-        <div className="w-full min-w-[600px] md:min-w-full h-[300px] md:h-full">
+        <div className="w-full min-w-[600px] md:min-w-full h-[250px] md:h-full">
           <Line
             // @ts-expect-error
             options={LineOptions}

@@ -9,7 +9,7 @@ interface Props {
 
 export default function Chip({ Icon, title, value, color }: Props) {
   return (
-    <div className="duration-300 flex flex-row justify-between items-center py-5 px-5 md:px-10 rounded-xl gradient-50">
+    <div className="duration-300 flex flex-row justify-between items-center py-5 px-5 md:px-10 rounded-xl gradient-50 shadow-md">
       <Icon size={50} fill={color} className="animate-scaleUp" />
 
       <div className="flex flex-col justify-between items-center gap-1">
