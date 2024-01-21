@@ -3,5 +3,5 @@
 }
 
 .tab.active {
-  @apply bg-gray-100 duration-100;
+  @apply gradient-50 duration-100;
 }

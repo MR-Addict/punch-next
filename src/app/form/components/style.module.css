@@ -5,13 +5,13 @@
 
 /* form */
 .form {
-  @apply shadow-sm border border-gray-300 rounded-xl animate-slideFromBottom;
+  @apply gradient-50 shadow-sm border border-gray-300 rounded-xl animate-slideFromBottom;
   @apply w-full max-w-sm px-4 py-6 md:px-6 md:py-8 flex flex-col items-center justify-center gap-5;
 }
 
 /* input */
 .input-element {
-  @apply w-full flex flex-col gap-0.5;
+  @apply w-full flex flex-col gap-1;
 }
 
 .label {
@@ -19,13 +19,17 @@
 }
 
 .input {
-  @apply outline-none bg-gray-100 py-2 px-4 rounded-md;
+  @apply border border-gray-400 outline-none gradient-50 py-2 px-4 rounded-md;
+}
+
+.input:focus {
+  @apply outline outline-blue-600;
 }
 
 /* submit button */
 .btn {
   transition: 300ms;
-  @apply bg-black text-white w-full flex items-center justify-center h-12 rounded-md font-semibold;
+  @apply border border-gray-400 gradient-50 w-full flex items-center justify-center h-12 rounded-md font-semibold;
 }
 
 .btn:disabled {

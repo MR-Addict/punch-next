@@ -22,7 +22,7 @@ export default function Searchbar() {
         placeholder="Search..."
         aria-label="search input"
         name="filter searchKeywords"
-        className="bg-gray-100 w-full outline-none"
+        className="bg-transparent w-full outline-none"
         onChange={(e) => setLocalSearchKeywords(e.target.value)}
       />
 

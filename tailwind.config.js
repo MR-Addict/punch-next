@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -40,5 +42,16 @@ module.exports = {
       slideFromBottom: "slideFromBottom ease-out 500ms"
     }
   },
-  plugins: []
+  plugins: [
+    plugin(function ({ addComponents, theme }) {
+      addComponents({
+        ".gradient-50": {
+          backgroundImage: `linear-gradient(135deg, ${theme("colors.blue.50")}, ${theme("colors.purple.50")})`
+        },
+        ".gradient-100": {
+          backgroundImage: `linear-gradient(135deg, ${theme("colors.blue.100")}, ${theme("colors.purple.100")})`
+        }
+      });
+    })
+  ]
 };

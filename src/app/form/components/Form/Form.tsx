@@ -76,7 +76,7 @@ export default function Form() {
       <form className={style.form} action={formAction}>
         <header className="w-full space-y-2">
           <h1 className="text-2xl font-semibold border-b-4 border-b-black w-fit">值班笔记</h1>
-          <p className="text-gray-500 border-b border-b-gray-300">在无聊的时间里就从事学习</p>
+          <p className="text-gray-500 border-b border-b-gray-300 italic">在无聊的时间里就从事学习</p>
         </header>
 
         <div className="w-full flex flex-col gap-3">

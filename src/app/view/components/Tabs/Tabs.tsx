@@ -25,7 +25,7 @@ function Tab({ Icon, tab }: { Icon: IconType; tab: TabType }) {
 
 export default function Tabs() {
   return (
-    <div className="w-fit flex flex-row p-1 border border-gray-200 rounded-md">
+    <div className="w-fit flex flex-row p-1 rounded-md bg-black/5">
       <Tab Icon={PiChartLine} tab="chart" />
       <Tab Icon={CiViewTable} tab="table" />
     </div>

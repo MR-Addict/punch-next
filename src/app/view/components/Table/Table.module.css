@@ -11,7 +11,7 @@
 }
 
 .table tbody tr:nth-of-type(odd) {
-  @apply bg-gray-50;
+  @apply bg-white;
 }
 
 .table tbody tr:hover {

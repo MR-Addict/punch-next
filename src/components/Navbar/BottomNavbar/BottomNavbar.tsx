@@ -23,7 +23,7 @@ export default function BottomNavbar() {
   }, []);
 
   return (
-    <nav className="w-full sticky bottom-0 bg-white md:hidden">
+    <nav className="w-full sticky bottom-0 gradient-50 md:hidden">
       <ul className={clsx(style.links, { [style.scrollable]: scrollable })}>
         {links.map((link) => (
           <li key={link.name}>

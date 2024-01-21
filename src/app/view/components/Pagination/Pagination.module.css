@@ -7,7 +7,7 @@
 }
 
 .btn:hover:not(.active) {
-  @apply md:bg-gray-100;
+  @apply md:bg-white;
 }
 
 .wrapper {
