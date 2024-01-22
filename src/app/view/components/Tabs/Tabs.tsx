@@ -13,9 +13,7 @@ function Tab({ Icon, tab }: { Icon: IconType; tab: TabType }) {
 
   return (
     <button type="button" aria-label="tab" onClick={() => setActiveTab(tab)} className={style.tab}>
-      {activeTab === tab && (
-        <motion.div layoutId="active-tab" transition={{ duration: 0.1 }} className={style["active-tab"]} />
-      )}
+      {activeTab === tab && <motion.div layoutId="active-view-tab" className={style["active-tab"]} />}
       <Icon size={20} />
     </button>
   );

@@ -1,4 +1,3 @@
 .nav {
-  @apply border-b border-b-gray-300;
-  @apply w-full px-4 md:px-28 py-2 md:py-3 flex flex-row items-center justify-between isolate;
+  @apply w-full px-4 md:px-28 py-2 md:py-3 flex flex-row items-center justify-between isolate shadow-sm;
 }

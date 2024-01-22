@@ -1,9 +1,10 @@
 "use client";
 
-import clsx from "clsx";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
+import style from "./Links.module.css";
 import links from "../../../config";
 
 export default function Links() {
@@ -11,14 +12,18 @@ export default function Links() {
 
   return (
     <div className="ml-auto hidden md:flex flex-row items-center gap-4">
-      <ul className="flex flex-row gap-4">
-        {links.map((item) => (
-          <li key={item.name} className={clsx("text-black", { "text-gray-500": rootPath !== item.link })}>
-            <Link href={item.link}>{item.name}</Link>
+      <ul className="flex">
+        {links.map((link) => (
+          <li key={link.name}>
+            <Link href={link.link} className={style.link}>
+              {rootPath === link.link && <motion.div layoutId="active-top-link" className={style["active-link"]} />}
+              <link.Icon size={20} />
+              <p>{link.name}</p>
+            </Link>
           </li>
         ))}
       </ul>
-      <p className="mr-4 text-gray-200">|</p>
+      <p className="mr-4 text-gray-300">|</p>
     </div>
   );
 }

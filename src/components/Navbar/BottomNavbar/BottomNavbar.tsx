@@ -25,12 +25,12 @@ export default function BottomNavbar() {
   }, []);
 
   return (
-    <nav className="w-full sticky bottom-0 gradient-50 md:hidden">
+    <nav className="w-full sticky bottom-0 gradient-100 md:hidden">
       <ul className={clsx(style.links, { [style.scrollable]: scrollable })}>
         {links.map((link) => (
           <li key={link.name}>
             <Link href={link.link} className={style.link}>
-              {rootPath === link.link && <motion.div layoutId="active-link" className={style["active-link"]} />}
+              {rootPath === link.link && <motion.div layoutId="active-bottom-link" className={style["active-link"]} />}
               <link.Icon size={20} />
               <p>{link.name}</p>
             </Link>
