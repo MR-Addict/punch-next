@@ -1,44 +1,48 @@
 "use client";
 
+import { AiOutlineCalendar, AiOutlineUser } from "react-icons/ai";
+
 import style from "./Table.module.css";
+import groupBy from "@/lib/utils/groupBy";
 import formatDate from "@/lib/utils/formatDate";
 import { useTableContext } from "@/contexts/Table/TableProvider";
 
-import Pagination from "../Pagination/Pagination";
-
 export default function Table() {
-  const { currentNotes, currentPage, notesPerpage, totalPages } = useTableContext();
+  const { currentNotes, setSearchKeywords } = useTableContext();
 
   if (currentNotes.length === 0) return <h1 className="w-full text-center py-28 rounded-sm">没有符合条件的结果</h1>;
 
-  return (
-    <div className="w-full animate-slideFromBottom space-y-5">
-      <div className="w-full overflow-x-auto bg-gray-100 rounded-md">
-        <table className={style.table}>
-          <thead>
-            <tr>
-              <th>序号</th>
-              <th>姓名</th>
-              <th>周数</th>
-              <th>日期</th>
-              <th>值班笔记</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentNotes.map((note, index) => (
-              <tr key={note._id}>
-                <td>{currentPage * notesPerpage + index + 1}</td>
-                <td>{note.name}</td>
-                <td>{`第${note.week}周`}</td>
-                <td>{formatDate(note.date)}</td>
-                <td className="max-w-md min-w-[20rem] whitespace-break-spaces">{note.content}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+  const notesGroupedByWeek = groupBy(currentNotes, (note) => `#第${note.week}周`);
 
-      {totalPages > 1 && <Pagination />}
-    </div>
+  return (
+    <ul className="space-y-10 animate-slideFromBottom">
+      {notesGroupedByWeek.map((group) => (
+        <li key={group.category} className="space-y-1 md:space-y-3">
+          <h1 className="font-semibold">{group.category}</h1>
+
+          <ul className="space-y-5">
+            {group.data.map((note) => (
+              <li key={note._id} className="flex flex-col md:flex-row gap-2">
+                <button type="button" className={style.avatar} onClick={() => setSearchKeywords(note.name)}>
+                  {note.name.at(0)}
+                </button>
+
+                <div className="flex flex-col gap-2 w-full gradient-50 py-3 px-4 rounded-md shadow-md duration-300">
+                  <h2 className="flex flex-row items-center gap-0.5 border-b border-b-gray-300 w-fit text-gray-500">
+                    <AiOutlineUser />
+                    <span className="mr-2">{note.name}</span>
+
+                    <AiOutlineCalendar />
+                    <span>{formatDate(note.date)}</span>
+                  </h2>
+
+                  <p className="whitespace-pre-wrap">{note.content}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
   );
 }

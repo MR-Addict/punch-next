@@ -1,24 +1,5 @@
-.table {
-  @apply w-full;
-}
-
-.table tr {
-  @apply text-left;
-}
-
-.table :is(th, td) {
-  @apply p-3;
-}
-
-.table tbody tr:nth-of-type(odd) {
-  @apply bg-white;
-}
-
-.table tbody tr:hover {
-  @apply md:bg-gray-200;
-}
-
-.table thead th,
-.table tbody tr td:not(:last-of-type) {
-  @apply whitespace-nowrap;
+.avatar {
+  text-shadow: 1px 1px 1px gray;
+  @apply sticky top-0;
+  @apply w-10 h-10 rounded-full bg-white hidden md:grid place-items-center shadow-md font-bold text-gray-800;
 }

@@ -1,39 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
 import style from "./Searchbar.module.css";
 import { useTableContext } from "@/contexts/Table/TableProvider";
 
 export default function Searchbar() {
-  const { setSearchKeywords } = useTableContext();
-  const [localSearchKeywords, setLocalSearchKeywords] = useState("");
-
-  useEffect(() => {
-    const timer = setTimeout(() => setSearchKeywords(localSearchKeywords.toLowerCase().trim()), 500);
-    return () => clearTimeout(timer);
-  }, [localSearchKeywords]);
+  const { searchKeywords, setSearchKeywords } = useTableContext();
 
   return (
     <div className={style.wrapper}>
+      <p className="text-lg">🔍</p>
+
       <input
-        value={localSearchKeywords}
+        value={searchKeywords}
         placeholder="Search..."
         aria-label="search input"
         name="filter searchKeywords"
         className="bg-transparent w-full outline-none"
-        onChange={(e) => setLocalSearchKeywords(e.target.value)}
+        onChange={(e) => setSearchKeywords(e.target.value)}
       />
 
-      {localSearchKeywords.length !== 0 && (
+      {searchKeywords.length !== 0 && (
         <button
           type="button"
           aria-label="clear button"
-          className="hover:md:text-black text-gray-600"
-          onClick={() => setLocalSearchKeywords("")}
+          className="hover:md:bg-black/20 bg-black/10 rounded-full p-1"
+          onClick={() => setSearchKeywords("")}
         >
-          <AiOutlineCloseCircle />
+          <AiOutlineClose size={13} />
         </button>
       )}
     </div>

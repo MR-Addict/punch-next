@@ -28,9 +28,11 @@ export default function Pagination() {
     );
   }
 
+  if (totalPages <= 1) return <></>;
+
   return (
     <div className={style.wrapper}>
-      <p>
+      <p className="text-gray-700">
         {currentPage + 1}/{totalPages}页 (共{notes.length}条记录)
       </p>
 

@@ -10,6 +10,7 @@ interface TableContextProps {
   totalPages: number;
   currentPage: number;
   notesPerpage: number;
+  searchKeywords: string;
   notes: NoteDatabseType[];
   currentNotes: NoteDatabseType[];
   setCurrentPage: (value: number) => void;
@@ -22,6 +23,7 @@ const TableContext = createContext<TableContextProps>({
   totalPages: 0,
   currentPage: 0,
   currentNotes: [],
+  searchKeywords: "",
   setCurrentPage(value: number) {},
   setSearchKeywords(value: string) {}
 });
@@ -60,6 +62,7 @@ export const TableContextProvider = ({ children, rawNotes }: Props) => {
         notesPerpage,
         currentPage,
         currentNotes,
+        searchKeywords,
         setCurrentPage,
         setSearchKeywords
       }}

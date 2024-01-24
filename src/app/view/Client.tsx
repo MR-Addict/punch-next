@@ -9,6 +9,7 @@ import Searchbar from "./components/Searchbar/Searchbar";
 import AreaCharts from "./components/AreaCharts/AreaCharts";
 
 import { useViewContext } from "@/contexts/View/ViewProvider";
+import Pagination from "./components/Pagination/Pagination";
 
 export default function Client() {
   const { activeTab, archives } = useViewContext();
@@ -33,6 +34,7 @@ export default function Client() {
           <>
             <Searchbar />
             <Table />
+            <Pagination />
           </>
         )}
         {activeTab === "chart" && (
