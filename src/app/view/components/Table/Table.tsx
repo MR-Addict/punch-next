@@ -6,6 +6,7 @@ import style from "./Table.module.css";
 import groupBy from "@/lib/utils/groupBy";
 import formatDate from "@/lib/utils/formatDate";
 import { useTableContext } from "@/contexts/Table/TableProvider";
+import RenderMarkdown from "@/components/RenderMarkdown/RenderMarkdown";
 
 export default function Table() {
   const { currentNotes, setSearchKeywords } = useTableContext();
@@ -27,7 +28,7 @@ export default function Table() {
                   {note.name.at(0)}
                 </button>
 
-                <div className="flex flex-col gap-2 w-full gradient-50 py-3 px-4 rounded-md shadow-md duration-300">
+                <div className="flex flex-col w-full gradient-50 py-3 px-4 rounded-md shadow-md duration-300">
                   <h2 className="flex flex-row items-center gap-0.5 border-b border-b-gray-300 w-fit text-gray-500">
                     <AiOutlineUser />
                     <span className="mr-2">{note.name}</span>
@@ -36,7 +37,7 @@ export default function Table() {
                     <span>{formatDate(note.date)}</span>
                   </h2>
 
-                  <p className="whitespace-pre-wrap">{note.content}</p>
+                  <RenderMarkdown content={note.content} />
                 </div>
               </li>
             ))}

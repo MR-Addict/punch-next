@@ -1,6 +1,10 @@
 /* view link */
 .link {
-  @apply text-sm py-1.5 px-4 rounded-full text-white bg-black animate-slideFromBottom;
+  @apply duration-300 py-2 px-4 rounded-full gradient-50 shadow-md animate-slideFromBottom text-gray-600;
+}
+
+.link:hover {
+  @apply md:text-black;
 }
 
 /* form */
@@ -19,17 +23,13 @@
 }
 
 .input {
-  @apply border border-gray-400 outline-none gradient-50 py-2 px-4 rounded-md;
-}
-
-.input:focus {
-  @apply outline outline-blue-600;
+  @apply font-mono resize-none w-full h-full outline-none bg-white border border-gray-400 p-2 rounded-md;
 }
 
 /* submit button */
 .btn {
-  transition: 300ms;
-  @apply border border-gray-400 gradient-50 w-full flex items-center justify-center h-12 rounded-md font-semibold;
+  @apply text-gray-800 border border-gray-400 bg-white;
+  @apply w-full flex items-center justify-center h-12 rounded-md font-semibold;
 }
 
 .btn:disabled {

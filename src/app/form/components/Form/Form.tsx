@@ -8,11 +8,12 @@ import { useState, useEffect } from "react";
 import { LiaMarkdown } from "react-icons/lia";
 import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
-import style from "../style.module.css";
 import action from "../../lib/action";
+import style from "../style.module.css";
 import formatDate from "@/lib/utils/formatDate";
 import { usePopupContext } from "@/contexts/Popup/PopupProvider";
 
+import MarkdownEditor from "./Editor";
 import Message from "@/components/Message/Message";
 import SubmitButton from "../SubmitButton/SubmitButton";
 
@@ -107,15 +108,17 @@ export default function Form() {
             <textarea
               required
               name="content"
+              className="hidden"
               id="submitFormContent"
-              minLength={4}
-              maxLength={500}
-              value={formData.content}
               onChange={handleChange}
-              style={{ height: 170 }}
-              className={style.input}
-              placeholder="写写今天都发生了什么"
+              value={formData.content}
             />
+
+            <MarkdownEditor
+              value={formData.content}
+              setValue={(value) => setFormData({ ...formData, content: value })}
+            />
+
             <a
               target="_blank"
               href="https://www.markdownguide.org"

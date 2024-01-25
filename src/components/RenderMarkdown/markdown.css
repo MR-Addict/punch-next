@@ -1,0 +1,47 @@
+.markdown h1 {
+  @apply text-lg;
+}
+
+.markdown :is(h1, h2, h3, h4, h5, h6) {
+  @apply font-bold my-2;
+}
+
+.markdown li {
+  @apply list-disc list-inside;
+}
+
+.markdown p {
+  @apply my-2 text-gray-800;
+}
+
+.markdown a {
+  @apply text-blue-600 underline;
+}
+
+.markdown table {
+  @apply text-gray-800 my-2;
+}
+
+.markdown table :is(td, th) {
+  @apply border border-gray-300 px-3 py-2;
+}
+
+.markdown pre[class*="language-"] {
+  @apply my-2;
+}
+
+.markdown blockquote {
+  @apply my-2 border-l-4 border-l-blue-600 pl-5 py-0.5 rounded-r-md bg-black/5;
+}
+
+.markdown hr {
+  @apply border-b border-b-gray-300;
+}
+
+.markdown code:not([class]) {
+  @apply mx-0.5 px-1 py-0.5 bg-black/10 rounded-sm text-sm;
+}
+
+.markdown img {
+  @apply rounded-md max-w-2xl w-full my-2;
+}
