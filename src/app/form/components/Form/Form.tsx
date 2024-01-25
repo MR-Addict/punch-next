@@ -5,6 +5,7 @@ import Confetti from "react-confetti";
 import { useFormState } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import { LiaMarkdown } from "react-icons/lia";
 import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
 import style from "../style.module.css";
@@ -115,6 +116,14 @@ export default function Form() {
               className={style.input}
               placeholder="写写今天都发生了什么"
             />
+            <a
+              target="_blank"
+              href="https://www.markdownguide.org"
+              className="flex flex-row items-center gap-0.5 text-xs text-gray-700 hover:text-black"
+            >
+              <LiaMarkdown size={17} />
+              <span>Markdwn supported.</span>
+            </a>
           </section>
         </div>
 

@@ -32,7 +32,7 @@ interface ViewContextProviderProps {
 
 export const ViewContextProvider = ({ children, data }: ViewContextProviderProps) => {
   const [archiveIndex, setArchiveIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState<TabType>("chart");
+  const [activeTab, setActiveTab] = useState<TabType>("table");
 
   const notes = useMemo(() => data.at(archiveIndex)?.notes || [], [archiveIndex]);
   const archives = useMemo(() => data.map((item, index) => ({ index, name: item.name })), [data]);

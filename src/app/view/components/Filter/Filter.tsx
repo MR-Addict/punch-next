@@ -7,7 +7,12 @@ export default function Filter() {
   const { archives, archiveIndex, setArchiveIndex } = useViewContext();
 
   return (
-    <select value={archiveIndex} onChange={(e) => setArchiveIndex(Number(e.target.value))} className={style.select}>
+    <select
+      value={archiveIndex}
+      className={style.select}
+      aria-label="archive selector"
+      onChange={(e) => setArchiveIndex(Number(e.target.value))}
+    >
       {archives.map((item) => (
         <option key={item.name} value={item.index}>
           {item.name}
