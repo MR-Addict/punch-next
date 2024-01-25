@@ -1,0 +1,7 @@
+.icon-btn {
+  @apply w-10 h-10 bg-black/50 duration-300 text-white rounded-full grid place-content-center;
+}
+
+.icon-btn:hover {
+  @apply md:bg-black/70;
+}

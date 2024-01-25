@@ -6,6 +6,7 @@ import { useFormState } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { LiaMarkdown } from "react-icons/lia";
+import { MdOutlineFullscreen } from "react-icons/md";
 import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
 import action from "../../lib/action";
@@ -13,22 +14,22 @@ import style from "../style.module.css";
 import formatDate from "@/lib/utils/formatDate";
 import { usePopupContext } from "@/contexts/Popup/PopupProvider";
 
-import MarkdownEditor from "./Editor";
+import FullscreenEditor from "./FullscreenEditor";
 import Message from "@/components/Message/Message";
 import SubmitButton from "../SubmitButton/SubmitButton";
 
-const storageName = "user";
-const cookieName = "last_submit";
+const storageName = "punch-username";
+const cookieName = "punch-last-submit-date";
 
 export default function Form() {
   const router = useRouter();
   const { popup } = usePopupContext();
   const [formActionState, formAction] = useFormState(action, null);
 
-  const [formData, setFormData] = useState({ name: "", content: "" });
+  const [fullscreen, setFullscreen] = useState(false);
+  const [name, setName] = useState("");
+  const [content, setContent] = useState("");
   const [status, setStatus] = useState<null | "idle" | "done" | "duplicated">(null);
-
-  const handleChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   // handle submit result
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function Form() {
 
     const { success, message } = formActionState;
     if (success) {
-      localStorage.setItem(storageName, JSON.stringify({ name: formData.name }));
+      localStorage.setItem(storageName, name);
       document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
       setStatus("done");
       router.refresh();
@@ -48,8 +49,8 @@ export default function Form() {
 
   useEffect(() => {
     // parse user submit info
-    const localUserInfo = localStorage.getItem(storageName);
-    if (localUserInfo) setFormData({ ...formData, ...JSON.parse(localUserInfo) });
+    const localUsername = localStorage.getItem(storageName);
+    if (localUsername) setName(localUsername);
 
     // get last submit time
     const lastSubmit = document.cookie.match(new RegExp("\\b" + cookieName + "\\b=([^;]*)"))?.at(1);
@@ -75,7 +76,14 @@ export default function Form() {
     );
   } else {
     return (
-      <form className={style.form} action={formAction}>
+      <form className={style.form} action={formAction} onSubmit={() => console.log(content)}>
+        <FullscreenEditor
+          content={content}
+          fullscreen={fullscreen}
+          setContent={setContent}
+          setFullscreen={setFullscreen}
+        />
+
         <header className="w-full space-y-2">
           <h1 className="text-2xl font-semibold border-b-4 border-b-black w-fit">值班笔记</h1>
           <p className="text-gray-500 border-b border-b-gray-300 italic">"在无聊的时间里就从事学习"</p>
@@ -88,41 +96,56 @@ export default function Form() {
               <span>姓名</span>
             </label>
             <input
+              autoFocus={name.length === 0}
               required
               type="text"
               name="name"
               id="submitFormName"
               placeholder="姓名"
+              minLength={2}
               maxLength={10}
-              value={formData.name}
-              onChange={handleChange}
+              value={name}
               className={style.input}
+              onChange={(e) => setName(e.target.value)}
             />
           </section>
 
           <section className={style["input-element"]}>
-            <label className={style.label} htmlFor="submitFormContent">
-              <FaRegEdit size={15} />
-              <span>值班笔记</span>
-            </label>
+            <div className="flex flex-row items-center justify-between">
+              <label className={style.label} htmlFor="submitFormContent">
+                <FaRegEdit size={15} />
+                <span>值班笔记</span>
+              </label>
+
+              <button
+                type="button"
+                aria-label="fullscreen"
+                onClick={() => setFullscreen(true)}
+                className="mr-1 text-gray-700"
+              >
+                <MdOutlineFullscreen size={22} />
+              </button>
+            </div>
+
             <textarea
               required
+              maxLength={1000}
               name="content"
-              className="hidden"
               id="submitFormContent"
-              onChange={handleChange}
-              value={formData.content}
+              placeholder="写写今天都发生了什么"
+              value={content}
+              style={{ height: 170 }}
+              autoFocus={name.length > 0}
+              className={style.input}
+              onChange={(e) => setContent(e.target.value)}
             />
 
-            <MarkdownEditor
-              value={formData.content}
-              setValue={(value) => setFormData({ ...formData, content: value })}
-            />
+            <p className="absolute text-gray-600 text-xs bottom-6 right-1.5">{`${content.length}/1000`}</p>
 
             <a
               target="_blank"
               href="https://www.markdownguide.org"
-              className="flex flex-row items-center gap-0.5 text-xs text-gray-700 hover:text-black"
+              className="w-fit flex flex-row items-center gap-0.5 text-xs text-gray-700 hover:text-black"
             >
               <LiaMarkdown size={17} />
               <span>Markdwn supported.</span>

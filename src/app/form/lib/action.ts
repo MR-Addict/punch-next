@@ -5,7 +5,6 @@ import notes from "@/lib/mongodb/notes";
 import getISOWeekNumber from "@/lib/utils/getISOWeekNumber";
 
 import { revalidatePath } from "next/cache";
-import { NoteWithoutWeek } from "@/types/notes";
 
 export default async function action(prev: any, formData: FormData) {
   // validate submit date
@@ -16,17 +15,16 @@ export default async function action(prev: any, formData: FormData) {
 
   // get form data
   const name = formData.get("name")?.toString().trim();
-  const content = formData.get("content")?.toString().trim();
+  const content = formData.get("content")?.toString().replaceAll("\r", "").trim();
 
   // validate form data
-  const parsedResult = NoteWithoutWeek.safeParse({ name, content });
-  if (!parsedResult.success) {
-    return { success: false, message: "提交失败，表单内容不合法" };
-  }
+  if (!name || name.length < 2 || name.length > 10) return { success: false, message: "姓名长度应该在2-10位之间" };
+  else if (!content || content.length < 4 || content.length > 1000)
+    return { success: false, message: "值班笔记长度应该在10-1000位之间" };
 
   // insert into database
   const week = getISOWeekNumber(now) - getISOWeekNumber(env.FIRST_WEEK) + 1;
-  const result = await notes.insert({ week, ...parsedResult.data });
+  const result = await notes.insert({ week, name, content });
 
   // revalidate and resonse result
   if (result.success) revalidatePath("/view", "page");

@@ -37,7 +37,11 @@ export default function Table() {
                     <span>{formatDate(note.date)}</span>
                   </h2>
 
-                  <RenderMarkdown content={note.content} />
+                  {new Date(note.date).getFullYear() >= 2024 ? (
+                    <RenderMarkdown content={note.content} />
+                  ) : (
+                    <p className="whitespace-pre-wrap mt-2">{note.content}</p>
+                  )}
                 </div>
               </li>
             ))}

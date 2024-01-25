@@ -10,11 +10,7 @@ import "./prism-atom-dark.css";
 
 export default function RenderMarkdown({ content, className }: { content: string; className?: string }) {
   return (
-    <Markdown
-      remarkPlugins={[remarkGfm]}
-      rehypePlugins={[rehypePrism]}
-      className={clsx("markdown w-full h-full overflow-y-auto", className)}
-    >
+    <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypePrism]} className={clsx("markdown", className)}>
       {content}
     </Markdown>
   );
