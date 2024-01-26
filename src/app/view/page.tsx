@@ -4,16 +4,16 @@ import path from "path";
 
 import Client from "./Client";
 
-import env from "@/types/env/client";
 import notes from "@/lib/mongodb/notes";
 import setMetadata from "@/lib/utils/setMetadata";
 import { NoteDatabse } from "@/types/notes";
 import { ViewContextProvider } from "@/contexts/View/ViewProvider";
+import { PublicEnv } from "@/types/env";
 
 export const metadata = setMetadata("查看笔记");
 
 function getArchiveNotes() {
-  const archivePath = path.join(process.cwd(), "/src/data/archive");
+  const archivePath = path.join(process.cwd(), "archive");
   const fileNames = fs.readdirSync(archivePath);
   fileNames.sort((a, b) => b.localeCompare(a));
 
@@ -30,6 +30,8 @@ function getArchiveNotes() {
 export default async function Page() {
   const result = await notes.query();
   if (!result.data) throw new Error(result.message);
+
+  const env = PublicEnv.parse(process.env);
 
   let data = [{ name: env.CURRENT_TERM, notes: result.data }];
   data = data.concat(getArchiveNotes()).filter((item) => item.notes.length > 0);

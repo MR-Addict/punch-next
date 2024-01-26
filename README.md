@@ -9,11 +9,10 @@
 添加环境变量 `.env`：
 
 ```env
-NEXT_PUBLIC_TIMEZONE="8"
-NEXT_PUBLIC_FIRST_WEEK="2023-09-04 00:01"
-NEXT_PUBLIC_START_DATE="2023-09-04 00:01"
-NEXT_PUBLIC_END_DATE="2023-12-03 23:59"
-NEXT_PUBLIC_CURRENT_TERM="2023-2024年第一学期"
+FIRST_WEEK="2023-09-04 00:01"
+START_DATE="2023-09-04 00:01"
+END_DATE="2023-12-03 23:59"
+CURRENT_TERM="2023-2024年第一学期"
 MONGODB_URI="mongodb://username:password@mongodb.example.com:27017"
 ```
 
@@ -49,7 +48,7 @@ npm run format
 
 ### 2.2. 笔记归档
 
-每学期结束后我会把本学期的笔记添加到归档页面当中，归档页面不再使用数据库存储，而是使用本地的 JSON 文件，并编译成静态页面以提高访问速度。JSON 文件的路径是`/src/data/archive` ，每条笔记的 schema 如下：
+每学期结束后我会把本学期的笔记添加到归档页面当中，归档页面不再使用数据库存储，而是使用本地的 JSON 文件，并编译成静态页面以提高访问速度。JSON 文件的路径是`archive` ，每条笔记的 schema 如下：
 
 ```json
 {
@@ -66,10 +65,10 @@ npm run format
 值班笔记可以设置值班时间，不在值班时间不能提交值班笔记，只能查看笔记。需要设置的时间有**第一周时间**，**开始时间**，**结束时间**和**当前学期**，第一周时间必须是每学期的第一天，否则页面有关周数的地方都会不准确。下面是一个参考示例：
 
 ```env
-NEXT_PUBLIC_FIRST_WEEK="2023-09-04 00:01"
-NEXT_PUBLIC_START_DATE="2023-09-04 00:01"
-NEXT_PUBLIC_END_DATE="2023-12-03 23:59"
-NEXT_PUBLIC_CURRENT_TERM="2023-2024年第一学期"
+FIRST_WEEK="2023-09-04 00:01"
+START_DATE="2023-09-04 00:01"
+END_DATE="2023-12-03 23:59"
+CURRENT_TERM="2023-2024年第一学期"
 ```
 
 ### 2.5. ISR

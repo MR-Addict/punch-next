@@ -7,6 +7,10 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
+        pluse: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0.5 }
+        },
         scaleUp: {
           from: { transform: "scale(0.8)", opacity: 0 },
           to: { transform: "scale(1)", opacity: 1 }
@@ -34,6 +38,7 @@ module.exports = {
       }
     },
     animation: {
+      pluse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       scaleUp: "scaleUp ease-out 500ms",
       scaleDown: "scaleDown ease-out 500ms",
       slideFromLeft: "slideFromLeft ease-out 500ms",

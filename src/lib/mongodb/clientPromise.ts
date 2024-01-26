@@ -1,6 +1,8 @@
 import { MongoClient } from "mongodb";
 
-import env from "@/types/env/server";
+import { ServerEnv } from "@/types/env";
+
+const env = ServerEnv.parse(process.env);
 
 const uri = env.MONGODB_URI;
 let client: MongoClient;

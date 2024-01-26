@@ -1,16 +1,15 @@
 "use client";
 
+import z from "zod";
 import clsx from "clsx";
 import Link from "next/link";
 import Confetti from "react-confetti";
-import { useFormState } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { LiaMarkdown } from "react-icons/lia";
 import { MdOutlineFullscreen } from "react-icons/md";
 import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
-import action from "../../lib/action";
 import style from "../style.module.css";
 import formatDate from "@/lib/utils/formatDate";
 import { usePopupContext } from "@/contexts/Popup/PopupProvider";
@@ -25,28 +24,38 @@ const cookieName = "punch-last-submit-date";
 export default function Form() {
   const router = useRouter();
   const { popup } = usePopupContext();
-  const [formActionState, formAction] = useFormState(action, null);
 
-  const [fullscreen, setFullscreen] = useState(false);
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
+  const [pending, setPending] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
   const [status, setStatus] = useState<null | "idle" | "done" | "duplicated">(null);
 
   // handle submit result
-  useEffect(() => {
-    if (!formActionState) return;
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setPending(true);
 
-    const { success, message } = formActionState;
-    if (success) {
-      localStorage.setItem(storageName, name);
-      document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
-      setStatus("done");
-      router.refresh();
-    } else {
-      console.error(message);
-      popup({ success: false, message: message });
+    try {
+      const formData = new FormData(event.currentTarget);
+      const res = await fetch("/api/note", { method: "POST", body: formData }).then((res) => res.json());
+      const { success, message } = z.object({ success: z.boolean(), message: z.string() }).parse(res);
+
+      if (success) {
+        localStorage.setItem(storageName, name);
+        document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
+        setStatus("done");
+        router.refresh();
+      } else {
+        console.error(message);
+        popup({ success: false, message: message });
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setPending(false);
     }
-  }, [formActionState]);
+  }
 
   useEffect(() => {
     // parse user submit info
@@ -77,7 +86,7 @@ export default function Form() {
     );
   } else {
     return (
-      <form className={style.form} action={formAction}>
+      <form className={style.form} onSubmit={handleSubmit}>
         <MarkdownEditor
           content={content}
           fullscreen={fullscreen}
@@ -155,7 +164,7 @@ export default function Form() {
           </section>
         </div>
 
-        <SubmitButton />
+        <SubmitButton pending={pending} />
       </form>
     );
   }

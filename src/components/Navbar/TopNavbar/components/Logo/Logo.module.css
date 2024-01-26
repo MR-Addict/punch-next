@@ -1,0 +1,11 @@
+.logo-position {
+  @apply absolute -top-1 -right-1 translate-x-full;
+}
+
+.logo {
+  @apply text-xs bg-blue-600 rounded-full px-1.5 py-0.5 text-white;
+}
+
+.skeleton {
+  @apply w-11 h-5 rounded-full bg-black/20 animate-pluse;
+}
