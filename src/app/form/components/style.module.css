@@ -32,12 +32,15 @@
 
 /* fullscreen btn */
 .fullscreen-btn {
-  @apply opacity-0 scale-0 duration-200 text-gray-600;
+  transform: scale(0);
+  @apply text-gray-600;
+  animation: 500ms popup 300ms ease forwards;
 }
 
-.fullscreen-btn.active,
-.input:focus-within .fullscreen-btn {
-  @apply delay-500 opacity-100 scale-100;
+@keyframes popup {
+  to {
+    transform: scale(1);
+  }
 }
 
 /* submit button */

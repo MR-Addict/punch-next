@@ -1,7 +1,6 @@
 "use client";
 
 import z from "zod";
-import clsx from "clsx";
 import Link from "next/link";
 import Confetti from "react-confetti";
 import { useRouter } from "next/navigation";
@@ -106,7 +105,6 @@ export default function Form() {
               <span>姓名</span>
             </label>
             <input
-              autoFocus={name.length === 0}
               required
               type="text"
               name="name"
@@ -116,6 +114,7 @@ export default function Form() {
               maxLength={10}
               value={name}
               className={style.input}
+              autoFocus={name.length === 0}
               onChange={(e) => setName(e.target.value)}
             />
           </section>
@@ -134,10 +133,10 @@ export default function Form() {
                 id="submitFormContent"
                 placeholder="写写今天都发生了什么"
                 value={content}
-                style={{ height: 170 }}
+                style={{ height: 150 }}
                 autoFocus={name.length > 0}
-                className="peer w-full h-full resize-none outline-none"
                 onChange={(e) => setContent(e.target.value)}
+                className="peer w-full h-full resize-none outline-none"
               />
 
               <div className="flex flex-row items-center justify-between">
@@ -146,7 +145,7 @@ export default function Form() {
                   type="button"
                   aria-label="fullscreen"
                   onClick={() => setFullscreen(true)}
-                  className={clsx(style["fullscreen-btn"], { [style.active]: content.length > 0 })}
+                  className={style["fullscreen-btn"]}
                 >
                   <MdOutlineFullscreen size={20} />
                 </button>
