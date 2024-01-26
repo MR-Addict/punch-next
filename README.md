@@ -51,6 +51,7 @@ ISR，也就是 Next.js 的按需编译，查看笔记的页面正常情况下�
 
 ```yaml
 version: "3"
+
 services:
   punch:
     image: mraddict063/punch
@@ -62,7 +63,15 @@ services:
       - START_DATE=2023-09-04 00:01
       - END_DATE=2023-12-03 23:59
       - CURRENT_TERM=2023-2024年第一学期
-      - MONGODB_URI=mongodb://mongodb.example.com:27017
+      - MONGODB_URI=mongodb://mongodb:27017
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    restart: unless-stopped
+    volumes:
+      - ./data:/data/db
 ```
 
 ## 3. 原项目地址
