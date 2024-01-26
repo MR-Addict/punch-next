@@ -1,0 +1,29 @@
+name: docker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          username: mraddict063
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: mraddict063/punch:latest
+          build-args: |
+            FIRST_WEEK=${{ secrets.FIRST_WEEK }}
+            START_DATE=${{ secrets.START_DATE }}
+            END_DATE=${{ secrets.END_DATE }}
+            CURRENT_TERM=${{ secrets.CURRENT_TERM }}
+            MONGODB_URI=${{ secrets.MONGODB_URI }}
