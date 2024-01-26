@@ -8,8 +8,8 @@ import Message from "@/components/Message/Message";
 import Searchbar from "./components/Searchbar/Searchbar";
 import AreaCharts from "./components/AreaCharts/AreaCharts";
 
-import { useViewContext } from "@/contexts/View/ViewProvider";
 import Pagination from "./components/Pagination/Pagination";
+import { useViewContext } from "@/contexts/View/ViewProvider";
 
 export default function Client() {
   const { activeTab, archives } = useViewContext();

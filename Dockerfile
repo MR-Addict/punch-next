@@ -15,6 +15,12 @@ RUN mv .next/static .next/standalone/.next
 
 FROM node:18-alpine
 WORKDIR /app
-COPY --from=builder /app/.next/standalone .
+
 EXPOSE 3000
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+ENV NODE_ENV production
+
+COPY --from=builder /app/.next/standalone .
+
 CMD ["node", "server.js"]

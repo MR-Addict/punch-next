@@ -6,10 +6,11 @@ import Client from "./Client";
 
 import notes from "@/lib/mongodb/notes";
 import setMetadata from "@/lib/utils/setMetadata";
+import { PublicEnv } from "@/types/env";
 import { NoteDatabse } from "@/types/notes";
 import { ViewContextProvider } from "@/contexts/View/ViewProvider";
-import { PublicEnv } from "@/types/env";
 
+export const revalidate = 60;
 export const metadata = setMetadata("查看笔记");
 
 function getArchiveNotes() {
