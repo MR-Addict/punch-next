@@ -2,7 +2,7 @@
 
 值班笔记 Next.js 重构
 
-<img width="400" src="preview.jpg" alt="preview" style="border-radius: 0.5rem"/>
+<img width="400" src="preview.jpg" alt="preview" />
 
 ## 1. 项目开发
 

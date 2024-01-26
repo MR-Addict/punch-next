@@ -10,12 +10,12 @@
 /* form */
 .form {
   @apply gradient-50 shadow-md rounded-xl animate-slideFromBottom;
-  @apply w-full max-w-sm px-4 py-6 md:px-6 md:py-8 flex flex-col items-center justify-center gap-5;
+  @apply w-full max-w-sm px-4 py-6 md:px-6 md:py-8 flex flex-col items-center justify-center gap-4;
 }
 
 /* input */
 .input-element {
-  @apply w-full flex flex-col gap-1 relative;
+  @apply w-full flex flex-col gap-1;
 }
 
 .label {
@@ -26,16 +26,26 @@
   @apply w-full resize-none h-full outline-none bg-white border border-gray-400 p-2 rounded-md;
 }
 
-.input:focus {
+.input:focus-within {
   @apply outline outline-blue-600;
 }
 
+/* fullscreen btn */
+.fullscreen-btn {
+  @apply opacity-0 scale-0 duration-200 text-gray-600;
+}
+
+.fullscreen-btn.active,
+.input:focus-within .fullscreen-btn {
+  @apply delay-500 opacity-100 scale-100;
+}
+
 /* submit button */
-.btn {
+.submit-btn {
   @apply text-gray-800 border border-gray-400 bg-white;
   @apply w-full flex items-center justify-center h-12 rounded-md font-semibold;
 }
 
-.btn:disabled {
+.submit-btn:disabled {
   @apply cursor-not-allowed;
 }

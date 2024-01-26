@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import Link from "next/link";
 import Confetti from "react-confetti";
 import { useFormState } from "react-dom";
@@ -14,9 +15,9 @@ import style from "../style.module.css";
 import formatDate from "@/lib/utils/formatDate";
 import { usePopupContext } from "@/contexts/Popup/PopupProvider";
 
-import FullscreenEditor from "./FullscreenEditor";
 import Message from "@/components/Message/Message";
 import SubmitButton from "../SubmitButton/SubmitButton";
+import MarkdownEditor from "@/components/MarkdownEditor/MarkdownEditor";
 
 const storageName = "punch-username";
 const cookieName = "punch-last-submit-date";
@@ -76,8 +77,8 @@ export default function Form() {
     );
   } else {
     return (
-      <form className={style.form} action={formAction} onSubmit={() => console.log(content)}>
-        <FullscreenEditor
+      <form className={style.form} action={formAction}>
+        <MarkdownEditor
           content={content}
           fullscreen={fullscreen}
           setContent={setContent}
@@ -111,36 +112,37 @@ export default function Form() {
           </section>
 
           <section className={style["input-element"]}>
-            <div className="flex flex-row items-center justify-between">
-              <label className={style.label} htmlFor="submitFormContent">
-                <FaRegEdit size={15} />
-                <span>值班笔记</span>
-              </label>
+            <label className={style.label} htmlFor="submitFormContent">
+              <FaRegEdit size={15} />
+              <span>值班笔记</span>
+            </label>
 
-              <button
-                type="button"
-                aria-label="fullscreen"
-                onClick={() => setFullscreen(true)}
-                className="mr-1 text-gray-700"
-              >
-                <MdOutlineFullscreen size={22} />
-              </button>
+            <div className={style.input}>
+              <textarea
+                required
+                maxLength={1000}
+                name="content"
+                id="submitFormContent"
+                placeholder="写写今天都发生了什么"
+                value={content}
+                style={{ height: 170 }}
+                autoFocus={name.length > 0}
+                className="peer w-full h-full resize-none outline-none"
+                onChange={(e) => setContent(e.target.value)}
+              />
+
+              <div className="flex flex-row items-center justify-between">
+                <p className="text-gray-600 text-xs text-right">{`${content.length}/1000`}</p>
+                <button
+                  type="button"
+                  aria-label="fullscreen"
+                  onClick={() => setFullscreen(true)}
+                  className={clsx(style["fullscreen-btn"], { [style.active]: content.length > 0 })}
+                >
+                  <MdOutlineFullscreen size={20} />
+                </button>
+              </div>
             </div>
-
-            <textarea
-              required
-              maxLength={1000}
-              name="content"
-              id="submitFormContent"
-              placeholder="写写今天都发生了什么"
-              value={content}
-              style={{ height: 170 }}
-              autoFocus={name.length > 0}
-              className={style.input}
-              onChange={(e) => setContent(e.target.value)}
-            />
-
-            <p className="absolute text-gray-600 text-xs bottom-6 right-1.5">{`${content.length}/1000`}</p>
 
             <a
               target="_blank"

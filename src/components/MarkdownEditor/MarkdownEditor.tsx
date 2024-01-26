@@ -2,17 +2,18 @@
 
 import CodeMirror from "@uiw/react-codemirror";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { languages } from "@codemirror/language-data";
-import { BasicSetupOptions } from "@uiw/react-codemirror";
-import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
-import { AiOutlineFullscreenExit } from "react-icons/ai";
 import { VscOpenPreview } from "react-icons/vsc";
+import { languages } from "@codemirror/language-data";
+import { AnimatePresence, motion } from "framer-motion";
+import { BasicSetupOptions } from "@uiw/react-codemirror";
+import { AiOutlineFullscreenExit } from "react-icons/ai";
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 
-import style from "./FullscreenEditor.module.css";
+import style from "./MarkdownEditor.module.css";
 
-import RenderMarkdown from "@/components/RenderMarkdown/RenderMarkdown";
+import MarkdownRenderer from "@/components/MarkdownRenderer/MarkdownRenderer";
 
 interface Props {
   content: string;
@@ -21,7 +22,7 @@ interface Props {
   setFullscreen: Function;
 }
 
-export default function FullscreenEditor({ content, fullscreen, setContent, setFullscreen }: Props) {
+export default function MarkdownEditor({ content, fullscreen, setContent, setFullscreen }: Props) {
   const options: BasicSetupOptions = { foldGutter: false };
 
   const [showPreview, setShowPreview] = useState(false);
@@ -45,10 +46,10 @@ export default function FullscreenEditor({ content, fullscreen, setContent, setF
         >
           {(windowWidth >= 768 || !showPreview) && (
             <CodeMirror
-              theme="dark"
               width="100%"
               height="100%"
               value={content}
+              theme={vscodeDark}
               basicSetup={options}
               placeholder="写写今天都发生了什么"
               className="overflow-auto text-base h-full"
@@ -58,7 +59,7 @@ export default function FullscreenEditor({ content, fullscreen, setContent, setF
           )}
 
           {(windowWidth >= 768 || showPreview) && (
-            <RenderMarkdown content={content} className="overflow-auto px-4 md:px-0" />
+            <MarkdownRenderer content={content} className="overflow-auto px-4 md:px-0" />
           )}
 
           <div className="absolute right-4 md:right-10 bottom-10 flex flex-col gap-2">

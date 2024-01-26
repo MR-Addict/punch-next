@@ -6,7 +6,7 @@ import style from "./Table.module.css";
 import groupBy from "@/lib/utils/groupBy";
 import formatDate from "@/lib/utils/formatDate";
 import { useTableContext } from "@/contexts/Table/TableProvider";
-import RenderMarkdown from "@/components/RenderMarkdown/RenderMarkdown";
+import MarkdownRenderer from "@/components/MarkdownRenderer/MarkdownRenderer";
 
 export default function Table() {
   const { currentNotes, setSearchKeywords } = useTableContext();
@@ -38,7 +38,7 @@ export default function Table() {
                   </h2>
 
                   {new Date(note.date).getFullYear() >= 2024 ? (
-                    <RenderMarkdown content={note.content} />
+                    <MarkdownRenderer content={note.content} />
                   ) : (
                     <p className="whitespace-pre-wrap mt-2">{note.content}</p>
                   )}
