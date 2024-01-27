@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     });
   }
   const name = formData.get("name")?.toString().trim();
-  const content = formData.get("content")?.toString().replaceAll("\r", "").trim();
+  const content = formData.get("content")?.toString().trim();
 
   // validate form data
   if (!name || name.length < 2 || name.length > 10) {

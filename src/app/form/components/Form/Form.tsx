@@ -140,7 +140,7 @@ export default function Form() {
               />
 
               <div className="flex flex-row items-center justify-between">
-                <p className="text-gray-600 text-xs text-right">{`${content.length}/1000`}</p>
+                <p className="text-gray-600 text-xs">{`${content.length}/1000`}</p>
                 <button
                   type="button"
                   aria-label="fullscreen"
