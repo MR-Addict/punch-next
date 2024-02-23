@@ -21,8 +21,8 @@ export default function Logo() {
     <div className="relative">
       <Link href="/">值班笔记</Link>
 
-      {!week && <p className={clsx(style["logo-position"], style.skeleton)} />}
-      {week && <p className={clsx(style["logo-position"], style.logo)}>{`第${week}周`}</p>}
+      {week === null && <p className={clsx(style["logo-position"], style.skeleton)} />}
+      {week !== null && <p className={clsx(style["logo-position"], style.logo)}>{`第${week}周`}</p>}
     </div>
   );
 }
