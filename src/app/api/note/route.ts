@@ -1,8 +1,8 @@
+import { revalidatePath } from "next/cache";
+
 import { PublicEnv } from "@/types/env";
 import notes from "@/lib/mongodb/notes";
 import getISOWeekNumber from "@/lib/utils/getISOWeekNumber";
-
-import { revalidatePath } from "next/cache";
 
 export async function POST(request: Request) {
   const env = PublicEnv.parse(process.env);
@@ -26,6 +26,7 @@ export async function POST(request: Request) {
       status: 400
     });
   }
+
   const name = formData.get("name")?.toString().trim();
   const content = formData.get("content")?.toString().trim();
 
