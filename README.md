@@ -63,13 +63,16 @@ services:
       - START_DATE=2023-09-04 00:01
       - END_DATE=2023-12-03 23:59
       - CURRENT_TERM=2023-2024年第一学期
-      - MONGODB_URI=mongodb://mongodb:27017
+      - MONGODB_URI=mongodb://punch:punch@mongodb:27017
     depends_on:
       - mongodb
 
   mongodb:
     image: mongo
     restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=punch
+      - MONGO_INITDB_ROOT_PASSWORD=punch
     volumes:
       - ./data:/data/db
 ```
