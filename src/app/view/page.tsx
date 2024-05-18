@@ -9,6 +9,8 @@ import { ViewContextProvider } from "@/contexts/View/ViewProvider";
 
 export const metadata = setMetadata("查看笔记");
 
+export const revalidate = 60;
+
 export default async function Page() {
   const result = await notes.query();
   if (!result.data) throw new Error(result.message);
