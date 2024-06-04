@@ -7,12 +7,13 @@ import Filter from "./components/Filter/Filter";
 import Message from "@/components/Message/Message";
 import Searchbar from "./components/Searchbar/Searchbar";
 import AreaCharts from "./components/AreaCharts/AreaCharts";
-
 import Pagination from "./components/Pagination/Pagination";
+
+import timeInterval from "@/lib/utils/timeInterval";
 import { useViewContext } from "@/contexts/View/ViewProvider";
 
 export default function Client() {
-  const { activeTab, archives } = useViewContext();
+  const { activeTab, archives, lastModified } = useViewContext();
 
   if (archives.length === 0) {
     return (
@@ -23,7 +24,7 @@ export default function Client() {
   }
 
   return (
-    <main className="w-full flex-1 py-5 md:py-10 px-4 md:px-28 flex flex-col gap-4">
+    <main className="w-full flex-1 py-5 md:py-10 px-4 md:px-28 flex flex-col gap-6">
       <div className="flex flex-row justify-between items-center">
         {archives.length > 1 && <Filter />}
         <Tabs />
@@ -44,6 +45,8 @@ export default function Client() {
           </>
         )}
       </div>
+
+      <p className="mx-auto text-xs text-gray-600">数据库上次同步于{timeInterval(lastModified)}</p>
     </main>
   );
 }

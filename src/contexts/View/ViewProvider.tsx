@@ -9,28 +9,35 @@ export type TabType = "table" | "chart";
 
 interface ViewContextProps {
   activeTab: TabType;
+  setActiveTab: (value: TabType) => void;
+
   archiveIndex: number;
+  setArchiveIndex: (value: number) => void;
+
+  lastModified: Date;
   notes: NoteDatabseType[];
   archives: { index: number; name: string }[];
-  setActiveTab: (value: TabType) => void;
-  setArchiveIndex: (value: number) => void;
 }
 
 const ViewContext = createContext<ViewContextProps>({
+  archiveIndex: 0,
+  setArchiveIndex(value: number) {},
+
+  activeTab: "chart",
+  setActiveTab: (value: TabType) => {},
+
   notes: [],
   archives: [],
-  archiveIndex: 0,
-  activeTab: "chart",
-  setArchiveIndex(value: number) {},
-  setActiveTab: (value: TabType) => {}
+  lastModified: new Date()
 });
 
 interface ViewContextProviderProps {
+  lastModified: Date;
   children: React.ReactNode;
   data: { name: string; notes: NoteDatabseType[] }[];
 }
 
-export const ViewContextProvider = ({ children, data }: ViewContextProviderProps) => {
+export const ViewContextProvider = ({ children, lastModified, data }: ViewContextProviderProps) => {
   const [archiveIndex, setArchiveIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<TabType>("table");
 
@@ -40,12 +47,15 @@ export const ViewContextProvider = ({ children, data }: ViewContextProviderProps
   return (
     <ViewContext.Provider
       value={{
+        activeTab,
+        setActiveTab,
+
+        archiveIndex,
+        setArchiveIndex,
+
         notes,
         archives,
-        activeTab,
-        archiveIndex,
-        setActiveTab,
-        setArchiveIndex
+        lastModified
       }}
     >
       <TableContextProvider rawNotes={notes}>{children}</TableContextProvider>

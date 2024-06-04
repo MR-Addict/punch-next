@@ -23,7 +23,7 @@ export default async function Page() {
   // exportNotesToArchive(env.CURRENT_TERM, result.data);
 
   return (
-    <ViewContextProvider data={data}>
+    <ViewContextProvider lastModified={new Date()} data={data}>
       <Client />
     </ViewContextProvider>
   );

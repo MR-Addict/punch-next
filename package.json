@@ -9,14 +9,14 @@
     "format": "prettier -c --write ."
   },
   "dependencies": {
-    "mongodb": "^6.6.2",
+    "mongodb": "^6.7.0",
     "next": "^14.2.3"
   },
   "devDependencies": {
     "@codemirror/lang-markdown": "^6.2.5",
     "@codemirror/language-data": "^6.5.1",
-    "@types/node": "^20.12.12",
-    "@types/react": "^18.3.2",
+    "@types/node": "^20.14.1",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@uiw/codemirror-theme-vscode": "^4.22.1",
     "@uiw/react-codemirror": "^4.22.1",
@@ -24,9 +24,9 @@
     "chart.js": "^4.4.3",
     "chartjs-plugin-datalabels": "^2.2.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.2.4",
+    "framer-motion": "^11.2.10",
     "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.0",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
     "react-confetti": "^6.1.0",
