@@ -7,13 +7,6 @@ interface AppContextProps {
   env: PublicEnvType | null;
 }
 
-const defaultEnv: PublicEnvType = {
-  FIRST_WEEK: new Date(),
-  START_DATE: new Date(),
-  END_DATE: new Date(),
-  CURRENT_TERM: ""
-};
-
 const AppContext = createContext<AppContextProps>({
   env: null
 });
