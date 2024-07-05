@@ -1,6 +1,10 @@
 .links {
-  @apply w-full p-2.5 border-t border-t-gray-300;
+  @apply w-full py-3 border-t border-t-gray-300;
   @apply flex flex-row items-center justify-evenly;
+}
+
+.links.tg-web-app {
+  @apply py-5;
 }
 
 .link {
@@ -8,5 +12,5 @@
 }
 
 .active-link {
-  @apply absolute inset-0 -z-10 bg-black/5 rounded-full;
+  @apply absolute inset-0.5 -z-10 bg-black/5 rounded-full;
 }
