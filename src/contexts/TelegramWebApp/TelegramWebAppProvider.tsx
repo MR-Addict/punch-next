@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import { createContext, useContext, useState, useEffect } from "react";
 
 interface TelegramWebAppContextProps {
@@ -16,11 +17,16 @@ interface TelegramWebAppContextProviderProps {
 }
 
 export const TelegramWebAppContextProvider = ({ children }: TelegramWebAppContextProviderProps) => {
+  const pathname = usePathname();
   const [webApp, setWebApp] = useState<WebApp | null>(null);
 
   useEffect(() => {
+    if (webApp) webApp.HapticFeedback.impactOccurred("soft");
+  }, [pathname]);
+
+  useEffect(() => {
     const app = window.Telegram.WebApp;
-    if (!app || !app.initData) return;
+    if (!app) return;
 
     // Initialize the Telegram Web App
     app.ready();
