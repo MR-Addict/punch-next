@@ -20,12 +20,14 @@ export const TelegramWebAppContextProvider = ({ children }: TelegramWebAppContex
 
   useEffect(() => {
     const app = window.Telegram.WebApp;
-    if (!app) return;
+    if (!app || !app.initData) return;
 
     // Initialize the Telegram Web App
     app.ready();
     // Expand the Telegram Web App
     app.expand();
+    // Set the header color
+    app.setHeaderColor("#ffffff");
     // Set the background color
     app.setBackgroundColor("#faf5ff");
 
