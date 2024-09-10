@@ -25,8 +25,8 @@ export default function Form() {
   const router = useRouter();
   const { popup } = usePopupContext();
 
-  const [name, setName] = usePersistantState("name", "");
-  const [content, setContent] = usePersistantState("content", "");
+  const [name, setName] = usePersistantState("form-name", "");
+  const [content, setContent] = usePersistantState("form-content", "");
 
   const [pending, setPending] = useState(false);
   const [openEditor, setOpenEditor] = useState(false);

@@ -50,8 +50,6 @@ ISR，也就是 Next.js 的按需编译，查看笔记的页面正常情况下�
 我已经提前编译好了 Docker 镜像，可以直接使用，部署的话记得修改其中的环境变量：
 
 ```yaml
-version: "3"
-
 services:
   punch:
     image: mraddict063/punch
@@ -59,10 +57,10 @@ services:
     ports:
       - 3000:3000
     environment:
-      - FIRST_WEEK=2023-09-04 00:01
-      - START_DATE=2023-09-04 00:01
-      - END_DATE=2023-12-03 23:59
-      - CURRENT_TERM=2023-2024年第一学期
+      - FIRST_WEEK=2024-09-02 00:01
+      - START_DATE=2024-09-02 00:01
+      - END_DATE=2025-01-19 23:59
+      - CURRENT_TERM=2024-2025年第一学期
       - MONGODB_URI=mongodb://punch:punch@mongodb:27017
     depends_on:
       - mongodb

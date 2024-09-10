@@ -1,9 +1,10 @@
 "use client";
 
-import { createContext, useContext, useState, useMemo } from "react";
+import { createContext, useContext, useMemo } from "react";
 
 import { NoteDatabseType } from "@/types/notes";
 import { TableContextProvider } from "@/contexts/Table/TableProvider";
+import usePersistantState from "@/hooks/usePersistantState";
 
 export type TabType = "table" | "chart";
 
@@ -38,8 +39,8 @@ interface ViewContextProviderProps {
 }
 
 export const ViewContextProvider = ({ children, lastModified, data }: ViewContextProviderProps) => {
-  const [archiveIndex, setArchiveIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState<TabType>("table");
+  const [archiveIndex, setArchiveIndex] = usePersistantState("view-archive-index", 0);
+  const [activeTab, setActiveTab] = usePersistantState<TabType>("view-active-tab", "table");
 
   const notes = useMemo(() => data.at(archiveIndex)?.notes || [], [archiveIndex]);
   const archives = useMemo(() => data.map((item, index) => ({ index, name: item.name })), [data]);

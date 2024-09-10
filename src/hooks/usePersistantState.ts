@@ -6,8 +6,10 @@ export default function usePersistantState<T>(
   prefix = "persistant-state"
 ): [T, Dispatch<SetStateAction<T>>] {
   const [state, setState] = useState<T>(() => {
+    if (typeof window === "undefined") return defaultValue;
+
     const value = localStorage.getItem(`${prefix}-${key}`);
-    if (value) return JSON.parse(value);
+    if (typeof value === "string") return JSON.parse(value);
     return defaultValue;
   });
 
