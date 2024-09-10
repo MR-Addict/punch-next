@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineFullscreenExit } from "react-icons/ai";
 import { MdOutlineModeEditOutline } from "react-icons/md";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 import CodeMirror from "@uiw/react-codemirror";
 import { EditorView } from "@codemirror/view";
@@ -14,6 +14,7 @@ import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 
 import style from "./MarkdownEditor.module.css";
+import useWindowSize from "@/hooks/useWindowSize";
 
 import MarkdownRenderer from "@/components/MarkdownRenderer/MarkdownRenderer";
 
@@ -27,14 +28,8 @@ interface Props {
 const options: BasicSetupOptions = { foldGutter: true, autocompletion: true };
 
 export default function MarkdownEditor({ content, openEditor, setContent, setOpenEditor }: Props) {
+  const windowWidth = useWindowSize().width;
   const [showPreview, setShowPreview] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <AnimatePresence>
@@ -53,8 +48,8 @@ export default function MarkdownEditor({ content, openEditor, setContent, setOpe
               value={content}
               theme={vscodeDark}
               basicSetup={options}
+              className={style.editor}
               placeholder="写写今天都发生了什么"
-              className="overflow-auto text-base pr-2"
               onChange={(value) => setContent(value)}
               extensions={[markdown({ base: markdownLanguage, codeLanguages: languages }), EditorView.lineWrapping]}
             />

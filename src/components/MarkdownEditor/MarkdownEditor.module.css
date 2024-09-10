@@ -1,8 +1,12 @@
 .wrapper {
   @apply fixed inset-0 z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 bg-white;
+}
 
-  /* hide scrollbar */
-  & * ::-webkit-scrollbar {
+.editor {
+  @apply overflow-auto text-base lg:pr-2;
+
+  /* hide y axis scrollbar */
+  & *::-webkit-scrollbar {
     @apply hidden;
   }
 }

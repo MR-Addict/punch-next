@@ -12,21 +12,22 @@ import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
 import style from "../style.module.css";
 import formatDate from "@/lib/utils/formatDate";
+import usePersistantState from "@/hooks/usePersistantState";
 import { usePopupContext } from "@/contexts/Popup/PopupProvider";
 
 import Message from "@/components/Message/Message";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import MarkdownEditor from "@/components/MarkdownEditor/MarkdownEditor";
 
-const storageName = "punch-username";
 const cookieName = "punch-last-submit-date";
 
 export default function Form() {
   const router = useRouter();
   const { popup } = usePopupContext();
 
-  const [name, setName] = useState("");
-  const [content, setContent] = useState("");
+  const [name, setName] = usePersistantState("name", "");
+  const [content, setContent] = usePersistantState("content", "");
+
   const [pending, setPending] = useState(false);
   const [openEditor, setOpenEditor] = useState(false);
   const [status, setStatus] = useState<null | "idle" | "done" | "duplicated">(null);
@@ -42,9 +43,9 @@ export default function Form() {
       const { success, message } = z.object({ success: z.boolean(), message: z.string() }).parse(res);
 
       if (success) {
-        localStorage.setItem(storageName, name);
         document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
         setStatus("done");
+        setContent("");
         router.refresh();
       } else {
         console.error(message);
@@ -58,10 +59,6 @@ export default function Form() {
   }
 
   useEffect(() => {
-    // parse user submit info
-    const localUsername = localStorage.getItem(storageName);
-    if (localUsername) setName(localUsername);
-
     // get last submit time
     const lastSubmit = document.cookie.match(new RegExp("\\b" + cookieName + "\\b=([^;]*)"))?.at(1);
     if (lastSubmit && formatDate(new Date()) === formatDate(lastSubmit)) setStatus("duplicated");
