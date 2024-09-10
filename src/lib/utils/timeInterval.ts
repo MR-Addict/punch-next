@@ -7,21 +7,22 @@ const intervalMap = {
   second: "秒"
 };
 
-export default function timeInterval(date: string | Date) {
-  const oneSecond = 1000;
-  const oneMinute = oneSecond * 60;
-  const oneHour = oneMinute * 60;
-  const oneDay = oneHour * 24;
-  const oneMonth = oneDay * 30;
-  const oneYear = oneDay * 365;
+const oneSecond = 1000;
+const oneMinute = oneSecond * 60;
+const oneHour = oneMinute * 60;
+const oneDay = oneHour * 24;
+const oneMonth = oneDay * 30;
+const oneYear = oneDay * 365;
 
+export default function timeInterval(date: string | Date) {
   const newDate = date instanceof Date ? date : new Date(date);
-  const ago = new Date().getTime() >= new Date(newDate).getTime();
+  const currentDate = new Date(new Date().getTime() + oneSecond);
+  const ago = currentDate.getTime() >= new Date(newDate).getTime();
 
   let isNeedCheck = true;
   let interval = { key: "year", value: 0 };
-  let leftTime = new Date().getTime() - new Date(newDate).getTime();
-  if (!ago) leftTime = new Date(newDate).getTime() - new Date().getTime();
+  let leftTime = currentDate.getTime() - new Date(newDate).getTime();
+  if (!ago) leftTime = new Date(newDate).getTime() - currentDate.getTime();
 
   const year = Math.floor(leftTime / oneYear);
   leftTime = leftTime % oneYear;
@@ -70,5 +71,6 @@ export default function timeInterval(date: string | Date) {
     isNeedCheck = false;
   }
 
+  if (interval.key === intervalMap.second) return "刚刚";
   return `${interval.value}${interval.key}${ago ? "前" : "后"}`;
 }

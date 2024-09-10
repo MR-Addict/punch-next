@@ -31,7 +31,7 @@
 }
 
 /* fullscreen btn */
-.fullscreen-btn {
+.open-editor-btn {
   transform: scale(0);
   @apply text-gray-600;
   animation: 500ms popup 300ms ease forwards;

@@ -3,7 +3,7 @@
 }
 
 .markdown :is(h1, h2, h3, h4, h5, h6) {
-  @apply font-bold my-2;
+  @apply font-bold my-4;
 }
 
 .markdown li {
@@ -11,7 +11,7 @@
 }
 
 .markdown p {
-  @apply my-2 text-gray-800;
+  @apply my-4 text-gray-800;
 }
 
 .markdown a {
@@ -19,7 +19,7 @@
 }
 
 .markdown table {
-  @apply text-gray-800 my-2;
+  @apply text-gray-800 my-4;
 }
 
 .markdown table :is(td, th) {
@@ -27,15 +27,15 @@
 }
 
 .markdown pre[class*="language-"] {
-  @apply my-2;
+  @apply my-4;
 }
 
 .markdown blockquote {
-  @apply my-2 border-l-4 border-l-blue-600 pl-5 py-0.5 rounded-r-md bg-black/5;
+  @apply my-4 border-l-4 border-l-blue-600 pl-5 py-2 rounded-r-md bg-black/5;
 }
 
 .markdown hr {
-  @apply border-b border-b-gray-300;
+  @apply border-b border-b-gray-300 my-4;
 }
 
 .markdown code:not([class]) {
@@ -43,5 +43,5 @@
 }
 
 .markdown img {
-  @apply rounded-md max-w-2xl w-full my-2;
+  @apply rounded-md max-w-2xl w-full my-4;
 }

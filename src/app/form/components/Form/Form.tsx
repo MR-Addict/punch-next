@@ -1,6 +1,7 @@
 "use client";
 
 import z from "zod";
+import clsx from "clsx";
 import Link from "next/link";
 import Confetti from "react-confetti";
 import { useRouter } from "next/navigation";
@@ -27,7 +28,7 @@ export default function Form() {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
   const [pending, setPending] = useState(false);
-  const [fullscreen, setFullscreen] = useState(false);
+  const [openEditor, setOpenEditor] = useState(false);
   const [status, setStatus] = useState<null | "idle" | "done" | "duplicated">(null);
 
   // handle submit result
@@ -88,9 +89,9 @@ export default function Form() {
       <form className={style.form} onSubmit={handleSubmit}>
         <MarkdownEditor
           content={content}
-          fullscreen={fullscreen}
+          openEditor={openEditor}
           setContent={setContent}
-          setFullscreen={setFullscreen}
+          setOpenEditor={setOpenEditor}
         />
 
         <header className="w-full space-y-2">
@@ -140,12 +141,14 @@ export default function Form() {
               />
 
               <div className="flex flex-row items-center justify-between">
-                <p className="text-gray-600 text-xs">{`${content.length}/1000`}</p>
+                <p className={clsx("text-xs", content.length > 1000 ? "text-red-600" : "text-gray-600")}>
+                  {`${content.length}/1000`}
+                </p>
                 <button
                   type="button"
-                  aria-label="fullscreen"
-                  onClick={() => setFullscreen(true)}
-                  className={style["fullscreen-btn"]}
+                  aria-label="openEditor"
+                  onClick={() => setOpenEditor(true)}
+                  className={style["open-editor-btn"]}
                 >
                   <MdOutlineFullscreen size={20} />
                 </button>
