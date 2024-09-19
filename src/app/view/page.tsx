@@ -4,8 +4,8 @@ import notes from "@/lib/mongodb/notes";
 import setMetadata from "@/lib/utils/setMetadata";
 import getArchiveNotes from "@/lib/notes/getArchiveNotes";
 import exportNotesToArchive from "@/lib/notes/exportNotesToArchive";
-import { PublicEnv } from "@/types/env";
 import { ViewContextProvider } from "@/contexts/View/ViewProvider";
+import { PublicEnv } from "@/types/env";
 
 export const metadata = setMetadata("查看笔记");
 

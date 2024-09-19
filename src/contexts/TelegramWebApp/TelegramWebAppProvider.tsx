@@ -25,7 +25,7 @@ export const TelegramWebAppContextProvider = ({ children }: TelegramWebAppContex
   }, [pathname]);
 
   useEffect(() => {
-    const app = window.Telegram.WebApp;
+    const app = window?.Telegram?.WebApp;
     if (!app) return;
 
     // Initialize the Telegram Web App
@@ -42,7 +42,7 @@ export const TelegramWebAppContextProvider = ({ children }: TelegramWebAppContex
 
   return (
     <TelegramWebAppContext.Provider value={{ webApp }}>
-      <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
+      <Script src="https://telegram.org/js/telegram-web-app.js" />
       {children}
     </TelegramWebAppContext.Provider>
   );
