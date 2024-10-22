@@ -11,7 +11,7 @@ export default function Page() {
   const content = fs.readFileSync(path.join(process.cwd(), "docs/help.md"), "utf-8");
 
   return (
-    <main className="animate-slideFromBottom">
+    <main className="animate-slideFromBottom max-w-6xl">
       <MarkdownRenderer content={content} />
     </main>
   );

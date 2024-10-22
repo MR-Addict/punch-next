@@ -27,7 +27,7 @@ export default function Table() {
               <li key={note._id} className="flex flex-col md:flex-row gap-2">
                 <p className={style.avatar}>{note.name.at(0)}</p>
 
-                <div className="flex flex-col w-full gradient-50 py-3 px-4 rounded-md shadow-md duration-300">
+                <div className="flex flex-col w-full gradient-50 pt-4 px-5 rounded-md shadow-md duration-300">
                   <h2 className="flex flex-row items-center gap-0.5 border-b border-b-gray-300 w-fit text-gray-500">
                     <AiOutlineUser />
                     <span className="mr-2">{note.name}</span>

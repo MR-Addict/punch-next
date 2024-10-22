@@ -14,8 +14,12 @@
   @apply font-bold my-4 text-gray-800;
 }
 
+.markdown ul {
+  @apply my-4;
+}
+
 .markdown li {
-  @apply list-disc list-inside;
+  @apply my-0.5 list-disc list-inside;
 }
 
 .markdown p {
@@ -51,5 +55,5 @@
 }
 
 .markdown img {
-  @apply rounded-xl w-full my-4 border border-gray-300;
+  @apply w-full max-w-6xl rounded-xl mx-auto my-4 border border-gray-300;
 }
