@@ -51,5 +51,5 @@
 }
 
 .markdown img {
-  @apply rounded-xl;
+  @apply rounded-xl w-full my-4 border border-gray-300;
 }

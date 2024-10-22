@@ -33,7 +33,7 @@ export default function Page() {
       <ul className={style.container}>
         <LinkCard Icon={<FcAddressBook size={100} />} title="提交笔记" subtitle="记录今天的值班内容" link="/form" />
         <LinkCard Icon={<FcOvertime size={100} />} title="查看笔记" subtitle="去看大家的值班笔记" link="/view" />
-        <LinkCard Icon={<FcReading size={100} />} title="帮助文档" subtitle="快速上手写出好看的笔记" link="/help" />
+        <LinkCard Icon={<FcReading size={100} />} title="帮助文档" subtitle="快速上手写出优雅的笔记" link="/help" />
       </ul>
     </main>
   );
