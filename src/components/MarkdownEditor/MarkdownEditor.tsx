@@ -55,12 +55,15 @@ export default function MarkdownEditor({ content, openEditor, setContent, setOpe
             />
           )}
 
-          {(windowWidth >= 1024 || showPreview) && (
-            <MarkdownRenderer content={content} className="overflow-auto px-4 lg:px-0" />
-          )}
+          {(windowWidth >= 1024 || showPreview) &&
+            (content.length > 0 ? (
+              <MarkdownRenderer content={content} className="overflow-auto px-4 lg:px-0" />
+            ) : (
+              <p className="grid place-content-center text-gray-600 p-4 lg:p-0">没有可以预览的内容</p>
+            ))}
 
-          <div className="absolute right-4 lg:right-10 bottom-10 flex flex-col gap-2">
-            {windowWidth < 1024 && content.length > 0 && (
+          <div className="absolute right-4 lg:right-10 bottom-6 flex flex-col gap-2">
+            {windowWidth < 1024 && (
               <button
                 type="button"
                 aria-label="toggle preview"
