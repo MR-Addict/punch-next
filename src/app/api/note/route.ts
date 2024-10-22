@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   // validate submit date
   const now = new Date();
   if (now < env.START_DATE || now > env.END_DATE) {
-    return new Response(JSON.stringify({ success: false, message: "不在值班时间哦，不用提交值班笔记" }), {
+    return new Response(JSON.stringify({ success: false, message: "不在值班时间，不用提交值班笔记" }), {
       headers: { "content-type": "application/json" },
       status: 400
     });

@@ -1,8 +1,16 @@
+.wrapper {
+  @apply flex flex-col items-center justify-center;
+}
+
+.container {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10;
+}
+
 .card {
   @apply duration-300 p-7 rounded-xl shadow-md gradient-50;
   @apply flex flex-row md:flex-col items-center justify-center gap-3 animate-scaleUp;
-}
 
-.card:hover {
-  @apply md:-translate-y-1 md:shadow-md;
+  &:hover {
+    @apply md:-translate-y-1 md:shadow-md;
+  }
 }

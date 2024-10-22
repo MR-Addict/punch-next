@@ -15,7 +15,7 @@ interface ViewContextProps {
   archiveIndex: number;
   setArchiveIndex: (value: number) => void;
 
-  lastModified: Date;
+  lastSynchronized: Date;
   notes: NoteDatabseType[];
   archives: { index: number; name: string }[];
 }
@@ -29,16 +29,16 @@ const ViewContext = createContext<ViewContextProps>({
 
   notes: [],
   archives: [],
-  lastModified: new Date()
+  lastSynchronized: new Date()
 });
 
 interface ViewContextProviderProps {
-  lastModified: Date;
+  lastSynchronized: Date;
   children: React.ReactNode;
   data: { name: string; notes: NoteDatabseType[] }[];
 }
 
-export const ViewContextProvider = ({ children, lastModified, data }: ViewContextProviderProps) => {
+export const ViewContextProvider = ({ children, lastSynchronized, data }: ViewContextProviderProps) => {
   const [archiveIndex, setArchiveIndex] = usePersistantState("view-archive-index", 0);
   const [activeTab, setActiveTab] = usePersistantState<TabType>("view-active-tab", "table");
 
@@ -56,7 +56,7 @@ export const ViewContextProvider = ({ children, lastModified, data }: ViewContex
 
         notes,
         archives,
-        lastModified
+        lastSynchronized
       }}
     >
       <TableContextProvider rawNotes={notes}>{children}</TableContextProvider>

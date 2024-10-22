@@ -4,8 +4,9 @@ import notes from "@/lib/mongodb/notes";
 import setMetadata from "@/lib/utils/setMetadata";
 import getArchiveNotes from "@/lib/notes/getArchiveNotes";
 import exportNotesToArchive from "@/lib/notes/exportNotesToArchive";
-import { ViewContextProvider } from "@/contexts/View/ViewProvider";
+
 import { PublicEnv } from "@/types/env";
+import { ViewContextProvider } from "@/contexts/View/ViewProvider";
 
 export const metadata = setMetadata("查看笔记");
 
@@ -23,7 +24,7 @@ export default async function Page() {
   // exportNotesToArchive(env.CURRENT_TERM, result.data);
 
   return (
-    <ViewContextProvider lastModified={new Date()} data={data}>
+    <ViewContextProvider lastSynchronized={new Date()} data={data}>
       <Client />
     </ViewContextProvider>
   );

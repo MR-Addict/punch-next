@@ -9,8 +9,8 @@ export default function Client() {
 
   if (env === null) return <></>;
 
-  if (new Date() < env.START_DATE) return <Message message="本学期值班还没开始哦，不用写值班笔记" icon="calendar" />;
-  if (new Date() > env.END_DATE) return <Message message="本学期值班已经结束咯，不用写值班笔记啦" icon="reading" />;
+  if (new Date() < env.START_DATE) return <Message message="本学期值班还没开始，不用写值班笔记" icon="calendar" />;
+  if (new Date() > env.END_DATE) return <Message message="本学期值班已经结束了，不用写值班笔记" icon="reading" />;
 
   return <Form />;
 }
