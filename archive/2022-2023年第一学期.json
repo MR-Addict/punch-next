@@ -102,7 +102,7 @@
     "date": "2022-11-29T16:00:00.000Z",
     "week": 13,
     "name": "陈亚辉",
-    "content": "学习更多知识\r\n了解部门其他人"
+    "content": "学习更多知识\r\n\r\n了解部门其他人"
   },
   {
     "_id": "362",
@@ -221,7 +221,7 @@
     "date": "2022-11-27T16:00:00.000Z",
     "week": 12,
     "name": "钱梓阳",
-    "content": "无事发生\r\n一切正常"
+    "content": "无事发生\r\n\r\n一切正常"
   },
   {
     "_id": "345",
@@ -326,14 +326,14 @@
     "date": "2022-11-23T16:00:00.000Z",
     "week": 12,
     "name": "陈一非",
-    "content": "复习c语言等内容\r\n学习小车编程语言"
+    "content": "复习c语言等内容\r\n\r\n学习小车编程语言"
   },
   {
     "_id": "330",
     "date": "2022-11-23T16:00:00.000Z",
     "week": 12,
     "name": "仇烨",
-    "content": "学习了kotlin\r\n写了一些companion getter/setter init\r\n学到了kotlin变量名要求\r\n学了!! ?的方便之处\r\n不知道为什么我的Android studio不能java转kt\r\n感觉kotlin要求很高 但习惯了会很方便"
+    "content": "学习了kotlin\r\n\r\n写了一些companion getter/setter init\r\n\r\n学到了kotlin变量名要求\r\n\r\n学了!! ?的方便之处\r\n\r\n不知道为什么我的Android studio不能java转kt\r\n\r\n感觉kotlin要求很高 但习惯了会很方便"
   },
   {
     "_id": "329",
@@ -501,14 +501,14 @@
     "date": "2022-11-21T16:00:00.000Z",
     "week": 12,
     "name": "徐文皓",
-    "content": "学习了arduino的pwm\r\nc语言的结构体、共用体、指针\r\n智能车的pid控制"
+    "content": "学习了arduino的pwm\r\n\r\nc语言的结构体、共用体、指针\r\n\r\n智能车的pid控制"
   },
   {
     "_id": "305",
     "date": "2022-11-21T16:00:00.000Z",
     "week": 12,
     "name": "朱晨旭",
-    "content": "1.学习arduino的开关的使用方法2.学习使用电烙铁\r\n3.学习嵌入式学习第三章\r\n"
+    "content": "1.学习arduino的开关的使用方法2.学习使用电烙铁\r\n\r\n3.学习嵌入式学习第三章\r\n\r\n"
   },
   {
     "_id": "304",
@@ -571,7 +571,7 @@
     "date": "2022-11-16T16:00:00.000Z",
     "week": 11,
     "name": "仇烨",
-    "content": "继续进行Home项目的MVVM架构\r\n将近完成了Base64部分"
+    "content": "继续进行Home项目的MVVM架构\r\n\r\n将近完成了Base64部分"
   },
   {
     "_id": "295",
@@ -1033,7 +1033,7 @@
     "date": "2022-11-08T16:00:00.000Z",
     "week": 10,
     "name": "陈亚辉",
-    "content": "学习c++\r\n完成作业"
+    "content": "学习c++\r\n\r\n完成作业"
   },
   {
     "_id": "225",
@@ -1313,7 +1313,7 @@
     "date": "2022-10-24T16:00:00.000Z",
     "week": 8,
     "name": "钱梓阳",
-    "content": "摆烂\r\n一切正常"
+    "content": "摆烂\r\n\r\n一切正常"
   },
   {
     "_id": "185",
@@ -1334,14 +1334,14 @@
     "date": "2022-10-24T16:00:00.000Z",
     "week": 8,
     "name": "巩森",
-    "content": "#include<iostream>\r\n#include<math.h>\r\nusing namespace std;\r\nint main()\r\n{\r\n    int a=0;\r\n    int b,c,d,e,f=0;\r\n    cin>>a;\r\n    while(a/c!=0)\r\n    {\r\n    b++;\r\n    c=pow(10,b);\r\n    d=a%c/(c/10);\r\n    e=pow(2,b-1);\r\n    f+=e*d; \r\n    }\r\n    cout << f << endl;\r\n    return 0;\r\n}"
+    "content": "#include<iostream>\r\n\r\n#include<math.h>\r\n\r\nusing namespace std;\r\n\r\nint main()\r\n\r\n{\r\n\r\n    int a=0;\r\n\r\n    int b,c,d,e,f=0;\r\n\r\n    cin>>a;\r\n\r\n    while(a/c!=0)\r\n\r\n    {\r\n\r\n    b++;\r\n\r\n    c=pow(10,b);\r\n\r\n    d=a%c/(c/10);\r\n\r\n    e=pow(2,b-1);\r\n\r\n    f+=e*d; \r\n\r\n    }\r\n\r\n    cout << f << endl;\r\n\r\n    return 0;\r\n\r\n}"
   },
   {
     "_id": "182",
     "date": "2022-10-24T16:00:00.000Z",
     "week": 8,
     "name": "唐嘉鑫",
-    "content": "#include<bits/stdc++.h>\r\nusing namespace std;\r\nlong long s[100000000];\r\nbool num[100000000]={0};\r\nint a=0;\r\nint n;\r\nint i,j;\r\nvoid screen(int n){\r\n\tfor(i=2;i<=n;i++){\r\n\t\tif(!num[i]) \r\n\t\t\ts[a++]=i;\r\n\t\tfor(j=0;j<a&&i*s[j]<=n;j++){\r\n\t\t\tnum[i*s[j]]=1; \r\n\t\t\tif(i%s[j]==0)  \r\n\t\t\t\tbreak;\r\n\t\t}\r\n\t}\r\n}\r\nint main(){\r\nlong long f;\r\n\tcin >> n;\r\n\tscreen(n);\r\ncin >> f;\r\nfor(i=0;i<=f;i++){\r\n\t\tcin >> i;\r\ncout << s[i-1] << endl;\r\n}\r\n\r\n\treturn 0;\r\n}"
+    "content": "#include<bits/stdc++.h>\r\n\r\nusing namespace std;\r\n\r\nlong long s[100000000];\r\n\r\nbool num[100000000]={0};\r\n\r\nint a=0;\r\n\r\nint n;\r\n\r\nint i,j;\r\n\r\nvoid screen(int n){\r\n\r\n\tfor(i=2;i<=n;i++){\r\n\r\n\t\tif(!num[i]) \r\n\r\n\t\t\ts[a++]=i;\r\n\r\n\t\tfor(j=0;j<a&&i*s[j]<=n;j++){\r\n\r\n\t\t\tnum[i*s[j]]=1; \r\n\r\n\t\t\tif(i%s[j]==0)  \r\n\r\n\t\t\t\tbreak;\r\n\r\n\t\t}\r\n\r\n\t}\r\n\r\n}\r\n\r\nint main(){\r\n\r\nlong long f;\r\n\r\n\tcin >> n;\r\n\r\n\tscreen(n);\r\n\r\ncin >> f;\r\n\r\nfor(i=0;i<=f;i++){\r\n\r\n\t\tcin >> i;\r\n\r\ncout << s[i-1] << endl;\r\n\r\n}\r\n\r\n\r\n\r\n\treturn 0;\r\n\r\n}"
   },
   {
     "_id": "181",
@@ -1376,7 +1376,7 @@
     "date": "2022-10-24T16:00:00.000Z",
     "week": 8,
     "name": "朱晨旭",
-    "content": "1.练习使用电烙铁\r\n2.学习使用风枪"
+    "content": "1.练习使用电烙铁\r\n\r\n2.学习使用风枪"
   },
   {
     "_id": "176",
@@ -1600,21 +1600,21 @@
     "date": "2022-10-19T16:00:00.000Z",
     "week": 7,
     "name": "邢亦远",
-    "content": "arduino\r\n焊接"
+    "content": "arduino\r\n\r\n焊接"
   },
   {
     "_id": "144",
     "date": "2022-10-19T16:00:00.000Z",
     "week": 7,
     "name": "邢亦远",
-    "content": "arduino\r\n焊接"
+    "content": "arduino\r\n\r\n焊接"
   },
   {
     "_id": "143",
     "date": "2022-10-19T16:00:00.000Z",
     "week": 7,
     "name": "徐丰",
-    "content": "焊接 开发板排针的焊接 飞线 \r\n电脑拆机"
+    "content": "焊接 开发板排针的焊接 飞线 \r\n\r\n电脑拆机"
   },
   {
     "_id": "142",
@@ -1712,7 +1712,7 @@
     "date": "2022-10-18T16:00:00.000Z",
     "week": 7,
     "name": "王宇超",
-    "content": "联系c语言习题\r\n埃氏筛素数"
+    "content": "联系c语言习题\r\n\r\n埃氏筛素数"
   },
   {
     "_id": "128",
@@ -1845,7 +1845,7 @@
     "date": "2022-10-17T16:00:00.000Z",
     "week": 7,
     "name": "巩森",
-    "content": "#include<iostream>\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n     int number,largest=0;\r\n     int i=1;\r\n    while(i<=10)\r\n    {\r\n    cout << i<<\"请输入销售额\" << endl;\r\n    cin>>number;\r\n    ++i;\r\n     if(largest<number)\r\n     {  \r\n      largest=number;\r\n     }\r\n    cout <<\"最大值是\"<<largest << endl;\r\n    }\r\n    return 0;\r\n}"
+    "content": "#include<iostream>\r\n\r\nusing namespace std;\r\n\r\n\r\n\r\nint main()\r\n\r\n{\r\n\r\n     int number,largest=0;\r\n\r\n     int i=1;\r\n\r\n    while(i<=10)\r\n\r\n    {\r\n\r\n    cout << i<<\"请输入销售额\" << endl;\r\n\r\n    cin>>number;\r\n\r\n    ++i;\r\n\r\n     if(largest<number)\r\n\r\n     {  \r\n\r\n      largest=number;\r\n\r\n     }\r\n\r\n    cout <<\"最大值是\"<<largest << endl;\r\n\r\n    }\r\n\r\n    return 0;\r\n\r\n}"
   },
   {
     "_id": "109",
@@ -1859,7 +1859,7 @@
     "date": "2022-10-17T16:00:00.000Z",
     "week": 7,
     "name": "唐嘉鑫",
-    "content": "#include<iostream>\r\n#include <iomanip>\r\n using namespace std;\r\nint main()\r\n{double F=1;\r\n double n;\r\n double f1=0;\r\n double f2=1;\r\n cin >> n;\r\nif(n==0)\r\n{F=0;}\r\nelse\r\n{\r\n for(int i =1; i< n; i++)\r\n{\r\n   F=f1+f2;\r\n  f1=f2;\r\n  f2=F;\r\n}\r\n}\r\ncout <<fixed<<setprecision(2)<< F<< endl;\r\n}"
+    "content": "#include<iostream>\r\n\r\n#include <iomanip>\r\n\r\n using namespace std;\r\n\r\nint main()\r\n\r\n{double F=1;\r\n\r\n double n;\r\n\r\n double f1=0;\r\n\r\n double f2=1;\r\n\r\n cin >> n;\r\n\r\nif(n==0)\r\n\r\n{F=0;}\r\n\r\nelse\r\n\r\n{\r\n\r\n for(int i =1; i< n; i++)\r\n\r\n{\r\n\r\n   F=f1+f2;\r\n\r\n  f1=f2;\r\n\r\n  f2=F;\r\n\r\n}\r\n\r\n}\r\n\r\ncout <<fixed<<setprecision(2)<< F<< endl;\r\n\r\n}"
   },
   {
     "_id": "107",
@@ -1894,7 +1894,7 @@
     "date": "2022-10-17T16:00:00.000Z",
     "week": 7,
     "name": "朱智荣",
-    "content": "调试cpp代码等\r\n如以下代码\r\n#include<iostream> \r\n#include<string>\r\n#include<ctime> \r\nusing namespace std;\r\n\r\nint select(int n,int a)\r\n {\r\n \t int c=n;\r\n\t for(int i=1;i>0;i++)\r\n\t {\r\n\t\t n/=10;\r\n\t\t if(n<1)\r\n\t\t {\r\n\t\t\t for(int j=0;j<i-a;j++)\r\n\t\t     {\r\n\t\t\t     c/=10;\t\t\r\n\t\t     }\r\n\t\t\t  cout<<c%10;\r\n\t\t\t  return 0;\r\n\t\t }\r\n\t }\t\r\n } \r\n\t\r\n\t\r\nint main()\r\n{\r\n\tint n;\r\n\tint a;\r\n\tcin>>n;\r\n\tcin>>a;\r\n\tselect(n,a);\r\n\r\n\treturn 0;\r\n}"
+    "content": "调试cpp代码等\r\n\r\n如以下代码\r\n\r\n#include<iostream> \r\n\r\n#include<string>\r\n\r\n#include<ctime> \r\n\r\nusing namespace std;\r\n\r\n\r\n\r\nint select(int n,int a)\r\n\r\n {\r\n\r\n \t int c=n;\r\n\r\n\t for(int i=1;i>0;i++)\r\n\r\n\t {\r\n\r\n\t\t n/=10;\r\n\r\n\t\t if(n<1)\r\n\r\n\t\t {\r\n\r\n\t\t\t for(int j=0;j<i-a;j++)\r\n\r\n\t\t     {\r\n\r\n\t\t\t     c/=10;\t\t\r\n\r\n\t\t     }\r\n\r\n\t\t\t  cout<<c%10;\r\n\r\n\t\t\t  return 0;\r\n\r\n\t\t }\r\n\r\n\t }\t\r\n\r\n } \r\n\r\n\t\r\n\r\n\t\r\n\r\nint main()\r\n\r\n{\r\n\r\n\tint n;\r\n\r\n\tint a;\r\n\r\n\tcin>>n;\r\n\r\n\tcin>>a;\r\n\r\n\tselect(n,a);\r\n\r\n\r\n\r\n\treturn 0;\r\n\r\n}"
   },
   {
     "_id": "102",
@@ -1929,7 +1929,7 @@
     "date": "2022-10-16T16:00:00.000Z",
     "week": 6,
     "name": "钱梓阳",
-    "content": "10.17星期一\r\n拼高达\r\n一切正常"
+    "content": "10.17星期一\r\n\r\n拼高达\r\n\r\n一切正常"
   },
   {
     "_id": "97",
@@ -2083,7 +2083,7 @@
     "date": "2022-10-12T16:00:00.000Z",
     "week": 6,
     "name": "徐丰",
-    "content": "学习了arduino pwm输出 延时的底层 开发版的按钮延时 \r\n开关的接法 代码的烧录输出 \r\n  Int Intu 数据类型 几个函数 \r\n"
+    "content": "学习了arduino pwm输出 延时的底层 开发版的按钮延时 \r\n\r\n开关的接法 代码的烧录输出 \r\n\r\n  Int Intu 数据类型 几个函数 \r\n\r\n"
   },
   {
     "_id": "75",
@@ -2104,7 +2104,7 @@
     "date": "2022-10-12T16:00:00.000Z",
     "week": 6,
     "name": "邢亦远",
-    "content": "arduino\r\n焊接"
+    "content": "arduino\r\n\r\n焊接"
   },
   {
     "_id": "72",
@@ -2118,7 +2118,7 @@
     "date": "2022-10-12T16:00:00.000Z",
     "week": 6,
     "name": "仇烨",
-    "content": "完善项目Home\r\n学习Android方向的MVVM\r\n修改了layout 执行dataBinding\r\ndrawer改成了静态布局"
+    "content": "完善项目Home\r\n\r\n学习Android方向的MVVM\r\n\r\n修改了layout 执行dataBinding\r\n\r\ndrawer改成了静态布局"
   },
   {
     "_id": "70",
@@ -2545,7 +2545,7 @@
     "date": "2022-10-10T16:00:00.000Z",
     "week": 6,
     "name": "唐嘉鑫",
-    "content": "#include<iostream>\r\n#include<math.h>\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n    cout << \"Hello World!\" << endl;\r\n    int number=100;\r\n    do{\r\n    number++;\r\n    int a,b,c;\r\n    a=number/100;\r\n    b=number/10%10;\r\n    c=number%10;\r\n    if(pow(a,3)+pow(b,3)+pow(c,3)==number)\r\n    {cout<<number<<endl;}\r\n    }while(number<1000);\r\n    return 0;\r\n}"
+    "content": "#include<iostream>\r\n\r\n#include<math.h>\r\n\r\nusing namespace std;\r\n\r\n\r\n\r\nint main()\r\n\r\n{\r\n\r\n    cout << \"Hello World!\" << endl;\r\n\r\n    int number=100;\r\n\r\n    do{\r\n\r\n    number++;\r\n\r\n    int a,b,c;\r\n\r\n    a=number/100;\r\n\r\n    b=number/10%10;\r\n\r\n    c=number%10;\r\n\r\n    if(pow(a,3)+pow(b,3)+pow(c,3)==number)\r\n\r\n    {cout<<number<<endl;}\r\n\r\n    }while(number<1000);\r\n\r\n    return 0;\r\n\r\n}"
   },
   {
     "_id": "9",
@@ -2559,14 +2559,14 @@
     "date": "2022-10-10T16:00:00.000Z",
     "week": 6,
     "name": "巩森",
-    "content": "#include<iostream>\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n    double a,b,c=0;\r\n    cout<<\"请输入a=\"<<endl;\r\n    cin>>a;\r\n    cout<<\"请输入b=\"<<endl;\r\n    cin>>b;\r\n    cout<<\"请输入c=\"<<endl;\r\n    cin>>c;\r\n    if(a+b>c&&a+c>b&&b+c>a)\r\n    {\r\n    cout<<\"可以构成三角形\"<<endl;\r\n    }\r\n    else\r\n    {\r\n    cout<<\"不可以构成三角形\"<<endl;\r\n    }\r\n    return 0;"
+    "content": "#include<iostream>\r\n\r\nusing namespace std;\r\n\r\n\r\n\r\nint main()\r\n\r\n{\r\n\r\n    double a,b,c=0;\r\n\r\n    cout<<\"请输入a=\"<<endl;\r\n\r\n    cin>>a;\r\n\r\n    cout<<\"请输入b=\"<<endl;\r\n\r\n    cin>>b;\r\n\r\n    cout<<\"请输入c=\"<<endl;\r\n\r\n    cin>>c;\r\n\r\n    if(a+b>c&&a+c>b&&b+c>a)\r\n\r\n    {\r\n\r\n    cout<<\"可以构成三角形\"<<endl;\r\n\r\n    }\r\n\r\n    else\r\n\r\n    {\r\n\r\n    cout<<\"不可以构成三角形\"<<endl;\r\n\r\n    }\r\n\r\n    return 0;"
   },
   {
     "_id": "7",
     "date": "2022-10-10T16:00:00.000Z",
     "week": 6,
     "name": "徐文皓",
-    "content": "#include <stdio.h>\r\nint main(){\r\nchar c;\r\ndouble a,b;\r\nprintf(\"请输入单个运算式:\");\r\n\r\nscanf(\"%lf%c%lf\",&a,&c,&b);\r\n\r\nswitch(c){\r\n     case '+':printf(\"%lf%c%lf=%.2lf\",a,c,b,a+b);break;\r\n     case '-':printf(\"%lf%c%lf=%.2lf\",a,c,b,a-b);break;\r\n     case '*':printf(\"%lf%c%lf=%.2lf\",a,c,b,a*b);break;\r\n     case '/':printf(\"%lf%c%lf=%.2lf\",a,c,b,a/b);break;\r\n     default: printf(\"data error\");\r\n \r\n}\r\n\r\n    return 0;\r\n}\r\n    \r\n    "
+    "content": "#include <stdio.h>\r\n\r\nint main(){\r\n\r\nchar c;\r\n\r\ndouble a,b;\r\n\r\nprintf(\"请输入单个运算式:\");\r\n\r\n\r\n\r\nscanf(\"%lf%c%lf\",&a,&c,&b);\r\n\r\n\r\n\r\nswitch(c){\r\n\r\n     case '+':printf(\"%lf%c%lf=%.2lf\",a,c,b,a+b);break;\r\n\r\n     case '-':printf(\"%lf%c%lf=%.2lf\",a,c,b,a-b);break;\r\n\r\n     case '*':printf(\"%lf%c%lf=%.2lf\",a,c,b,a*b);break;\r\n\r\n     case '/':printf(\"%lf%c%lf=%.2lf\",a,c,b,a/b);break;\r\n\r\n     default: printf(\"data error\");\r\n\r\n \r\n\r\n}\r\n\r\n\r\n\r\n    return 0;\r\n\r\n}\r\n\r\n    \r\n\r\n    "
   },
   {
     "_id": "6",

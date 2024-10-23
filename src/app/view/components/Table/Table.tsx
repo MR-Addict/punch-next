@@ -30,7 +30,7 @@ export default function Table() {
               <li key={note._id} className="flex flex-col md:flex-row gap-2">
                 <p className={style.avatar}>{note.name.at(0)}</p>
 
-                <div className="flex flex-col w-full gradient-50 py-4 px-5 rounded-md shadow-md duration-300">
+                <div className="flex flex-col w-full gradient-50 pt-4 px-5 rounded-md shadow-md duration-300">
                   <h2 className="flex flex-row gap-2 w-fit text-gray-500">
                     <p className="flex flex-row items-center gap-0.5 border-b border-b-gray-300">
                       <AiOutlineUser />
@@ -48,11 +48,7 @@ export default function Table() {
                     </button>
                   </h2>
 
-                  {new Date(note.date).getFullYear() >= 2024 ? (
-                    <MarkdownRenderer content={note.content} />
-                  ) : (
-                    <p className="whitespace-pre-wrap mt-2">{note.content}</p>
-                  )}
+                  <MarkdownRenderer content={note.content} />
                 </div>
               </li>
             ))}
