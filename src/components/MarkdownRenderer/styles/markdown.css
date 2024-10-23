@@ -63,5 +63,5 @@
 }
 
 .markdown img {
-  @apply w-full max-w-6xl rounded-xl mx-auto my-4 border border-gray-300 shadow-sm;
+  @apply min-h-10 w-full max-w-6xl rounded-xl mx-auto my-4 border border-gray-300 shadow-sm;
 }
