@@ -152,14 +152,10 @@ export default function Form() {
               </div>
             </div>
 
-            <a
-              target="_blank"
-              href="https://www.markdownguide.org"
-              className="w-fit flex flex-row items-center gap-0.5 text-xs text-gray-700 hover:text-black"
-            >
+            <Link href="/help" className="flex flex-row items-center gap-1">
               <LiaMarkdown size={17} />
-              <span>Markdwn supported.</span>
-            </a>
+              <span className="text-xs text-gray-700 hover:text-black">Markdwn supported.</span>
+            </Link>
           </section>
         </div>
 

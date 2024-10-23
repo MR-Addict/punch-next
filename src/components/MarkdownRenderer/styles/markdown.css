@@ -31,11 +31,19 @@
 }
 
 .markdown table {
-  @apply text-gray-800 my-4;
+  @apply text-gray-800 my-4 rounded-xl outline outline-1 outline-gray-400;
+}
+
+.markdown table tbody tr {
+  @apply border-t border-t-gray-400;
 }
 
 .markdown table :is(td, th) {
-  @apply border border-gray-300 px-3 py-2;
+  @apply px-3 py-2;
+}
+
+.markdown table :is(th, td):not(:last-child) {
+  @apply border-r border-gray-400;
 }
 
 .markdown pre[class*="language-"] {
@@ -47,7 +55,7 @@
 }
 
 .markdown hr {
-  @apply border-b border-b-blue-300 my-4;
+  @apply border-b border-b-gray-400 my-4;
 }
 
 .markdown code:not([class]) {
@@ -55,5 +63,5 @@
 }
 
 .markdown img {
-  @apply w-full max-w-6xl rounded-xl mx-auto my-4 border border-gray-300;
+  @apply w-full max-w-6xl rounded-xl mx-auto my-4 border border-gray-300 shadow-sm;
 }
