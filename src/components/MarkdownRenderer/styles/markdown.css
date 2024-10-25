@@ -11,11 +11,11 @@
 }
 
 .markdown :is(h1, h2, h3, h4, h5, h6) {
-  @apply font-bold mt-4 text-gray-800;
+  @apply font-bold mt-3 text-gray-800;
 }
 
 .markdown ul {
-  @apply mt-4;
+  @apply mt-3;
 }
 
 .markdown li {
@@ -23,7 +23,7 @@
 }
 
 .markdown p {
-  @apply mt-4 text-gray-700;
+  @apply mt-3 text-gray-700;
 }
 
 .markdown a {
@@ -31,7 +31,7 @@
 }
 
 .markdown table {
-  @apply text-gray-800 mt-4 rounded-xl outline outline-1 outline-gray-400;
+  @apply text-gray-800 mt-3 rounded-xl outline outline-1 outline-gray-400;
 }
 
 .markdown table tbody tr {
@@ -46,22 +46,22 @@
   @apply border-r border-gray-400;
 }
 
-.markdown pre[class*="language-"] {
-  @apply mt-4;
+.markdown pre:has(.code-highlight) {
+  @apply mt-3;
 }
 
 .markdown blockquote {
-  @apply mt-4 border-l-4 border-l-blue-600 pl-5 py-2 rounded-xl bg-black/5;
+  @apply mt-3 border-l-4 border-l-blue-600 pl-5 py-2 rounded-xl bg-black/5;
 }
 
 .markdown hr {
-  @apply border-b border-b-gray-400 mt-4;
+  @apply border-b border-b-gray-400 mt-3;
 }
 
 .markdown code:not([class]) {
-  @apply mx-0.5 px-1 py-0.5 bg-black/10 rounded-sm text-sm;
+  @apply mx-0.5 px-1 py-0.5 bg-black/10 rounded-sm text-sm text-black;
 }
 
 .markdown img {
-  @apply min-h-10 w-full max-w-6xl rounded-xl mx-auto mt-4 border border-gray-300 shadow-sm;
+  @apply min-h-10 w-full max-w-6xl rounded-xl mx-auto mt-3 border border-gray-300 shadow-sm;
 }

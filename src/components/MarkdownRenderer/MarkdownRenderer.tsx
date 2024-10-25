@@ -16,7 +16,7 @@ export default function MarkdownRenderer({ content, className }: { content: stri
     <Markdown
       remarkPlugins={[remarkGfm]}
       components={{ a: Anchor }}
-      rehypePlugins={[[rehypePrism, { showLineNumbers: true, ignoreMissing: true }]]}
+      rehypePlugins={[[rehypePrism, { ignoreMissing: true }]]}
       className={clsx("markdown", className)}
     >
       {content}
