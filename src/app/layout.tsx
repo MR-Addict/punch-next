@@ -1,21 +1,20 @@
 import "./globals.css";
 
+import { Toaster } from "react-hot-toast";
+import { AppContextProvider } from "@/contexts/App/AppProvider";
+
 import TopNavbar from "@/components/Navbar/TopNavbar/TopNavbar";
 import BottomNavbar from "@/components/Navbar/BottomNavbar/BottomNavbar";
-
-import { AppContextProvider } from "@/contexts/App/AppProvider";
-import { PopupContextProvider } from "@/contexts/Popup/PopupProvider";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-Hans">
       <body>
         <AppContextProvider>
-          <PopupContextProvider>
-            <TopNavbar />
-            {children}
-            <BottomNavbar />
-          </PopupContextProvider>
+          <Toaster />
+          <TopNavbar />
+          {children}
+          <BottomNavbar />
         </AppContextProvider>
       </body>
     </html>

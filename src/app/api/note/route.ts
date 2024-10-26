@@ -29,6 +29,7 @@ export async function POST(request: Request) {
 
   const name = formData.get("name")?.toString().trim();
   const content = formData.get("content")?.toString().trim();
+  const useMarkdown = formData.get("useMarkdown")?.toString().trim() === "true";
 
   // validate form data
   if (!name || name.length < 2 || name.length > 10) {
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
 
   // insert into database
   const week = getISOWeekNumber(now) - getISOWeekNumber(env.FIRST_WEEK) + 1;
-  const result = await notes.insert({ week, name, content });
+  const result = await notes.insert({ week, name, useMarkdown, content });
 
   // revalidate and resonse result
   if (result.success) revalidatePath("/view", "page");

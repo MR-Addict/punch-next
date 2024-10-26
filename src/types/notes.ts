@@ -1,6 +1,7 @@
 import z from "zod";
 
 const NoteWithoutWeek = z.object({
+  useMarkdown: z.boolean(),
   name: z.string().max(10),
   content: z.string().min(4).max(1000)
 });

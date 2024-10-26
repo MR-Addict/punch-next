@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineFullscreenExit } from "react-icons/ai";
 import { MdOutlineModeEditOutline } from "react-icons/md";

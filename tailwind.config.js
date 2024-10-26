@@ -55,6 +55,21 @@ module.exports = {
         },
         ".gradient-100": {
           backgroundImage: `linear-gradient(135deg, ${theme("colors.blue.100")}, ${theme("colors.purple.50")})`
+        },
+        ".gradient-200": {
+          backgroundImage: `linear-gradient(135deg, ${theme("colors.blue.200")}, ${theme("colors.purple.200")})`
+        },
+        ".gradient-300": {
+          backgroundImage: `linear-gradient(135deg, ${theme("colors.blue.300")}, ${theme("colors.purple.300")})`
+        },
+        ".gradient-400": {
+          backgroundImage: `linear-gradient(135deg, ${theme("colors.blue.400")}, ${theme("colors.purple.400")})`
+        },
+        ".gradient-500": {
+          backgroundImage: `linear-gradient(135deg, ${theme("colors.blue.500")}, ${theme("colors.purple.500")})`
+        },
+        ".gradient-600": {
+          backgroundImage: `linear-gradient(135deg, ${theme("colors.blue.600")}, ${theme("colors.purple.600")})`
         }
       });
     })

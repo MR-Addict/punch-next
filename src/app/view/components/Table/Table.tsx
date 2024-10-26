@@ -30,11 +30,11 @@ export default function Table() {
               <li key={note._id} className="flex flex-col md:flex-row gap-2">
                 <p className={style.avatar}>{note.name.at(0)}</p>
 
-                <div className="flex flex-col w-full gradient-50 pt-4 px-5 rounded-md shadow-md duration-300">
-                  <h2 className="flex flex-row gap-2 w-fit text-gray-500">
+                <div className="flex flex-col w-full gradient-50 py-4 px-5 rounded-md shadow-md duration-300">
+                  <h2 className="flex flex-row gap-3 w-fit text-gray-500">
                     <p className="flex flex-row items-center gap-0.5 border-b border-b-gray-300">
                       <AiOutlineUser />
-                      <span className="mr-2">{note.name}</span>
+                      <span>{note.name}</span>
                     </p>
 
                     <button
@@ -46,9 +46,14 @@ export default function Table() {
                       {intervalFomatDate && <span>{timeInterval(note.date)}</span>}
                       {!intervalFomatDate && <span>{formatDate(note.date, false)}</span>}
                     </button>
+
+                    {note.useMarkdown && (
+                      <span className="gradient-600 text-white text-xs rounded-sm h-fit px-0.5">Md</span>
+                    )}
                   </h2>
 
-                  <MarkdownRenderer content={note.content} />
+                  {note.useMarkdown && <MarkdownRenderer content={note.content} />}
+                  {!note.useMarkdown && <p className="whitespace-pre-wrap mt-3 text-gray-700">{note.content}</p>}
                 </div>
               </li>
             ))}

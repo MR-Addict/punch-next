@@ -3,17 +3,17 @@
 import z from "zod";
 import clsx from "clsx";
 import Link from "next/link";
+import toast from "react-hot-toast";
 import Confetti from "react-confetti";
+
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { LiaMarkdown } from "react-icons/lia";
 import { MdOutlineFullscreen } from "react-icons/md";
 import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
 import style from "../style.module.css";
 import formatDate from "@/lib/utils/formatDate";
 import usePersistantState from "@/hooks/usePersistantState";
-import { usePopupContext } from "@/contexts/Popup/PopupProvider";
 
 import Message from "@/components/Message/Message";
 import SubmitButton from "../SubmitButton/SubmitButton";
@@ -23,10 +23,10 @@ const cookieName = "punch-last-submit-date";
 
 export default function Form() {
   const router = useRouter();
-  const { popup } = usePopupContext();
 
   const [name, setName] = usePersistantState("form-name", "");
   const [content, setContent] = usePersistantState("form-content", "");
+  const [useMarkdown, setUseMarkdown] = usePersistantState("form-use-markdown", false);
 
   const [pending, setPending] = useState(false);
   const [openEditor, setOpenEditor] = useState(false);
@@ -39,6 +39,7 @@ export default function Form() {
 
     try {
       const formData = new FormData(event.currentTarget);
+      formData.set("useMarkdown", useMarkdown.toString());
       const res = await fetch("/api/note", { method: "POST", body: formData }).then((res) => res.json());
       const { success, message } = z.object({ success: z.boolean(), message: z.string() }).parse(res);
 
@@ -49,7 +50,7 @@ export default function Form() {
         router.refresh();
       } else {
         console.error(message);
-        popup({ success: false, message: message });
+        toast.error(message);
       }
     } catch (err) {
       console.error(err);
@@ -141,21 +142,28 @@ export default function Form() {
                 <p className={clsx("text-xs", content.length > 1000 ? "text-red-600" : "text-gray-600")}>
                   {`${content.length}/1000`}
                 </p>
+
                 <button
                   type="button"
-                  aria-label="openEditor"
+                  title="打开Markdown编辑器"
                   onClick={() => setOpenEditor(true)}
-                  className={style["open-editor-btn"]}
+                  className={clsx(style["open-editor-btn"], { [style.active]: useMarkdown })}
                 >
                   <MdOutlineFullscreen size={20} />
                 </button>
               </div>
             </div>
 
-            <Link href="/help" className="flex flex-row items-center gap-1">
-              <LiaMarkdown size={17} />
-              <span className="text-xs text-gray-700 hover:text-black">Markdown supported.</span>
-            </Link>
+            <label htmlFor="submitFormUseMarkdown" className="flex flex-row items-center gap-1 mt-0.5">
+              <input
+                type="checkbox"
+                name="useMarkdown"
+                id="submitFormUseMarkdown"
+                checked={useMarkdown}
+                onChange={(e) => setUseMarkdown(e.target.checked)}
+              />
+              <p className="select-none text-xs">使用Markdown</p>
+            </label>
           </section>
         </div>
 
