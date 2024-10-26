@@ -12,7 +12,7 @@ export default function Searchbar() {
   const [localSearchKeywords, setLocalSearchKeywords] = useState("");
 
   useEffect(() => {
-    const timer = setTimeout(() => setSearchKeywords(localSearchKeywords), 500);
+    const timer = setTimeout(() => setSearchKeywords(localSearchKeywords.toLocaleLowerCase()), 500);
     return () => clearTimeout(timer);
   }, [localSearchKeywords]);
 
@@ -32,8 +32,8 @@ export default function Searchbar() {
       {localSearchKeywords.length !== 0 && (
         <button
           type="button"
-          aria-label="clear button"
-          className="hover:md:bg-black/30 bg-black/10 rounded-full p-1"
+          aria-label="clear"
+          className="hover:md:bg-black/20 bg-black/10 rounded-full p-1"
           onClick={() => setLocalSearchKeywords("")}
         >
           <AiOutlineClose size={13} />
