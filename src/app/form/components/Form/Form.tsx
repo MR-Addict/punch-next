@@ -24,9 +24,9 @@ const cookieName = "punch-last-submit-date";
 export default function Form() {
   const router = useRouter();
 
+  const [useMarkdown, setUseMarkdown] = useState(false);
   const [name, setName] = usePersistantState("form-name", "");
   const [content, setContent] = usePersistantState("form-content", "");
-  const [useMarkdown, setUseMarkdown] = usePersistantState("form-use-markdown", false);
 
   const [pending, setPending] = useState(false);
   const [openEditor, setOpenEditor] = useState(false);
