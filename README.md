@@ -24,6 +24,7 @@
   "date": "string",
   "week": "number",
   "name": "string",
+  "useMarkdown": "boolean",
   "content": "string"
 }
 ```

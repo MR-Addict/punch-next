@@ -36,7 +36,7 @@ export default function Pagination() {
         {currentPage + 1}/{totalPages}页 (共{notes.length}条记录)
       </p>
 
-      <div className="flex flex-row items-center gap-2">
+      <div className="flex flex-row items-center gap-3">
         {/* first button */}
         {currentNotes.length > 0 && <Button page={0} />}
 

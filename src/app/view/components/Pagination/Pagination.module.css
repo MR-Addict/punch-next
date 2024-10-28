@@ -1,5 +1,9 @@
+.wrapper {
+  @apply w-full flex flex-col md:flex-row items-center justify-between gap-2 rounded-b-md;
+}
+
 .btn {
-  @apply w-7 h-7 place-items-center rounded-md border border-gray-300 duration-300;
+  @apply w-8 h-8 place-items-center rounded-md border border-gray-300 duration-300;
 }
 
 .btn.active {
@@ -8,8 +12,4 @@
 
 .btn:hover:not(.active) {
   @apply md:bg-white;
-}
-
-.wrapper {
-  @apply w-full flex flex-col md:flex-row items-center justify-between gap-2 rounded-b-md;
 }

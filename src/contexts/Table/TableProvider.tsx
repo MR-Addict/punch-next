@@ -4,7 +4,7 @@ import { createContext, useContext, useState, useMemo, useEffect } from "react";
 
 import { NoteDatabseType } from "@/types/notes";
 
-const notesPerpage = 50;
+const notesPerpage = 30;
 
 interface TableContextProps {
   totalPages: number;
