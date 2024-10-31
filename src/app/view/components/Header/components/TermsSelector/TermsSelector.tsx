@@ -24,7 +24,7 @@ export default function TermsSelector() {
   if (terms === null) return null;
 
   return (
-    <select value={termIndex} className={clsx(style.wrapper, style.select)} onChange={handleClick}>
+    <select value={termIndex} className={clsx(style.wrapper, style.select)} onChange={handleClick} aria-label="term">
       {terms.map((item, index) => (
         <option key={item} value={index}>
           {item}

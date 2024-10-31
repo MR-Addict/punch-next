@@ -30,6 +30,7 @@ export default function Body() {
 
   if (notes === undefined) return <Skeleton />;
   if (notes === null) return <div className={clsx(style.wrapper, style.error)}>无法获取数据</div>;
+  if (!notes.length) return <div className={clsx(style.wrapper, style.error)}>这里空空如也</div>;
 
   return (
     <section className={style.wrapper}>

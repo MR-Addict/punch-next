@@ -22,11 +22,12 @@ export default function getArchivedNotes(
   const parsedContent = z.array(NoteDatabse).safeParse(JSON.parse(content));
   if (!parsedContent.success) return { success: false, code: 500, message: "归档内容解析失败" };
 
-  const pagination = { page, pageSize, total: parsedContent.data.length };
-  const data = parsedContent.data
+  const filteredResults = parsedContent.data
     .filter((item) => keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase())))
-    .sort(({ date: a }, { date: b }) => new Date(b).getTime() - new Date(a).getTime())
-    .slice((page - 1) * pageSize, page * pageSize);
+    .sort(({ date: a }, { date: b }) => new Date(b).getTime() - new Date(a).getTime());
+  const paginatedResults = filteredResults.slice((page - 1) * pageSize, page * pageSize);
 
-  return { success: true, data: { data, pagination } };
+  const pagination = { page, pageSize, total: filteredResults.length };
+
+  return { success: true, data: { data: paginatedResults, pagination } };
 }

@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   const searchParams = new URL(request.url).searchParams;
   const query = searchParams.get("query") || "";
   const page = parseInt(searchParams.get("page") || "1");
-  const pageSize = parseInt(searchParams.get("pageSize") || "20");
+  const pageSize = Math.min(Math.max(parseInt(searchParams.get("pageSize") || "20"), 1), 100);
   const termIndex = parseInt(searchParams.get("termIndex") || "0");
 
   if (termIndex > 0) {

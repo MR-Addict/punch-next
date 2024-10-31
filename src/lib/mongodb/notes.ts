@@ -32,22 +32,17 @@ async function query(page: number, pageSize: number, query: string): Promise<Api
     const client = await clientPromise;
     const collection = client.db("stas").collection("notes");
 
-    const searchFilter = query
-      ? { $or: [{ name: { $regex: query, $options: "i" } }, { content: { $regex: query, $options: "i" } }] }
-      : {};
+    const searchFilter = {
+      $or: [{ name: { $regex: query, $options: "i" } }, { content: { $regex: query, $options: "i" } }]
+    };
 
-    const result = await collection
-      .find(searchFilter)
-      .sort({ date: -1 })
-      .skip((page - 1) * pageSize)
-      .limit(pageSize)
-      .map((item) => ({ ...item, _id: item._id.toString(), date: item.date.toISOString() }))
-      .toArray();
+    const filteredResults = await collection.find(searchFilter).sort({ date: -1 }).toArray();
+    const paginatedResults = filteredResults
+      .slice((page - 1) * pageSize, page * pageSize)
+      .map((item) => ({ ...item, _id: item._id.toString(), date: item.date.toISOString() }));
 
-    const data = z.array(NoteDatabse).parse(result);
-
-    const total = await collection.countDocuments();
-    const pagination = { page, pageSize, total };
+    const data = z.array(NoteDatabse).parse(paginatedResults);
+    const pagination = { page, pageSize, total: filteredResults.length };
 
     return { success: true, data: { data, pagination } };
   } catch (error) {

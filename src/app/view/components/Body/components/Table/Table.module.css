@@ -1,4 +1,7 @@
-.avatar {
-  @apply w-10 h-10 rounded-full bg-white sticky top-0;
-  @apply hidden md:grid place-items-center shadow-md font-bold text-gray-800;
+.note {
+  @apply flex flex-col w-full gradient-50 py-4 px-5 rounded-xl shadow-md;
+}
+
+.chip {
+  @apply flex flex-row items-center gap-0.5 border-b border-b-gray-300;
 }

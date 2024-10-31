@@ -1,5 +1,7 @@
 "use client";
 
+import clsx from "clsx";
+import { useMemo } from "react";
 import { AiOutlineCalendar, AiOutlineUser } from "react-icons/ai";
 
 import style from "./Table.module.css";
@@ -14,7 +16,11 @@ import MarkdownRenderer from "@/components/MarkdownRenderer/MarkdownRenderer";
 export default function Table({ notes }: { notes: NoteDatabseType[] }) {
   const [intervalFomatDate, setIntervalFomatDate] = usePersistantState("view-interval-format-date", true);
 
-  const notesGroupedByWeek = groupBy(notes, (note) => `#第${note.week}周`);
+  const notesGroupedByWeek = useMemo(() => groupBy(notes, (note) => `#第${note.week}周`), [notes]);
+
+  function toggleIntervalFomatDate() {
+    setIntervalFomatDate((prev) => !prev);
+  }
 
   return (
     <ul className="w-full space-y-10 animate-slideFromBottom">
@@ -24,34 +30,26 @@ export default function Table({ notes }: { notes: NoteDatabseType[] }) {
 
           <ul className="space-y-5">
             {group.data.map((note) => (
-              <li key={note._id} className="flex flex-col md:flex-row gap-2">
-                <p className={style.avatar}>{note.name.at(0)}</p>
+              <li key={note._id} className={style.note}>
+                <header className="flex flex-row w-fit text-gray-500">
+                  <p className={style.chip}>
+                    <AiOutlineUser />
+                    <span>{note.name}</span>
+                  </p>
 
-                <div className="flex flex-col w-full gradient-50 py-4 px-5 rounded-md shadow-md duration-300">
-                  <h2 className="flex flex-row w-fit text-gray-500">
-                    <p className="flex flex-row items-center gap-0.5 border-b border-b-gray-300">
-                      <AiOutlineUser />
-                      <span>{note.name}</span>
-                    </p>
+                  <button type="button" className={clsx(style.chip, "ml-3 mr-2")} onClick={toggleIntervalFomatDate}>
+                    <AiOutlineCalendar />
+                    {intervalFomatDate && <span>{timeInterval(note.date)}</span>}
+                    {!intervalFomatDate && <span>{formatDate(note.date, false)}</span>}
+                  </button>
 
-                    <button
-                      type="button"
-                      className="flex flex-row items-center gap-0.5 border-b border-b-gray-300 ml-3 mr-2"
-                      onClick={() => setIntervalFomatDate((prev) => !prev)}
-                    >
-                      <AiOutlineCalendar />
-                      {intervalFomatDate && <span>{timeInterval(note.date)}</span>}
-                      {!intervalFomatDate && <span>{formatDate(note.date, false)}</span>}
-                    </button>
+                  {note.useMarkdown && (
+                    <span className="gradient-600 text-white text-xs rounded-sm h-fit px-1 -translate-y-0.5">Md</span>
+                  )}
+                </header>
 
-                    {note.useMarkdown && (
-                      <span className="gradient-600 text-white text-xs rounded-sm h-fit px-1 -translate-y-0.5">Md</span>
-                    )}
-                  </h2>
-
-                  {note.useMarkdown && <MarkdownRenderer content={note.content} />}
-                  {!note.useMarkdown && <p className="whitespace-pre-wrap mt-3 text-gray-700">{note.content}</p>}
-                </div>
+                {note.useMarkdown && <MarkdownRenderer content={note.content} />}
+                {!note.useMarkdown && <p className="whitespace-pre-wrap mt-3 text-gray-700">{note.content}</p>}
               </li>
             ))}
           </ul>
