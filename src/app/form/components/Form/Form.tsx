@@ -12,18 +12,19 @@ import { FaRegUser, FaRegEdit } from "react-icons/fa";
 import style from "../style.module.css";
 import formatDate from "@/lib/utils/formatDate";
 import addNoteApi from "@/lib/api/notes/addNoteApi";
+import useSessionState from "@/hooks/useSessionState";
 import usePersistantState from "@/hooks/usePersistantState";
 
 import Message from "@/components/Message/Message";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import MarkdownEditor from "@/components/MarkdownEditor/MarkdownEditor";
 
-const cookieName = "punch-last-submit-date";
+const cookieName = "last-submit";
 
 export default function Form() {
-  const [useMarkdown, setUseMarkdown] = useState(false);
   const [name, setName] = usePersistantState("form-name", "");
   const [content, setContent] = usePersistantState("form-content", "");
+  const [useMarkdown, setUseMarkdown] = useSessionState("form-usemarkdown", false);
 
   const [pending, setPending] = useState(false);
   const [openEditor, setOpenEditor] = useState(false);
@@ -39,6 +40,7 @@ export default function Form() {
     if (res.success) {
       setContent("");
       setStatus("done");
+      setUseMarkdown(false);
       document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
     } else toast.error(res.message);
 
