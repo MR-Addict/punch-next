@@ -14,13 +14,13 @@ export default function Searchbar() {
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => setSearchQuery(searchParams.get("query") || ""), [searchParams]);
-
   function handleSetSearchQuery(query: string) {
     setSearchQuery(query);
     if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => setSearchParam(router, { query }), 500);
+    debounceRef.current = setTimeout(() => setSearchParam(router, { query, page: "" }), 500);
   }
+
+  useEffect(() => setSearchQuery(searchParams.get("query") || ""), [searchParams]);
 
   return (
     <div className={style.wrapper}>
