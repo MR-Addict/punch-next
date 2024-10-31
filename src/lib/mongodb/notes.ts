@@ -17,7 +17,7 @@ async function insert(note: NoteType): Promise<ApiResultType> {
     }
 
     const result = await collection.insertOne({ date: new Date(), ...note });
-    if (result.insertedId) return { success: true, code: 200, message: "提交成功" };
+    if (result.insertedId) return { success: true };
     else return { success: false, code: 500, message: "提交失败，无法写入数据库" };
   } catch (error) {
     console.error(error);
@@ -49,7 +49,7 @@ async function query(page: number, pageSize: number, query: string): Promise<Api
     const total = await collection.countDocuments();
     const pagination = { page, pageSize, total };
 
-    return { success: true, code: 200, message: "获取成功", data: { data, pagination } };
+    return { success: true, data: { data, pagination } };
   } catch (error) {
     console.error(error);
     return { success: false, code: 500, message: "无法连接至数据库" };

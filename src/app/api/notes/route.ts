@@ -12,11 +12,11 @@ export async function GET(request: Request) {
 
   if (termIndex > 0) {
     const res = getArchivedNotes(termIndex - 1, page, pageSize, query);
-    return new Response(JSON.stringify(res), { headers: { "content-type": "application/json" }, status: res.code });
+    return Response.json(res, { status: res.success ? 200 : res.code });
   }
 
-  const result = await notes.query(page, pageSize, query);
-  return new Response(JSON.stringify(result), { headers: { "content-type": "application/json" }, status: result.code });
+  const res = await notes.query(page, pageSize, query);
+  return Response.json(res, { status: res.success ? 200 : res.code });
 }
 
 export async function POST(request: Request) {
@@ -25,10 +25,7 @@ export async function POST(request: Request) {
   // validate submit date
   const now = new Date();
   if (now < env.START_DATE || now > env.END_DATE) {
-    return new Response(JSON.stringify({ success: false, message: "不在值班时间，不用提交值班笔记" }), {
-      headers: { "content-type": "application/json" },
-      status: 400
-    });
+    return Response.json({ success: false, message: "不在值班时间，不用提交值班笔记" }, { status: 400 });
   }
 
   // get form data
@@ -36,10 +33,7 @@ export async function POST(request: Request) {
   try {
     formData = await request.formData();
   } catch (err) {
-    return new Response(JSON.stringify({ success: false, message: "表单数据解析错误" }), {
-      headers: { "content-type": "application/json" },
-      status: 400
-    });
+    return Response.json({ success: false, message: "表单数据解析错误" }, { status: 400 });
   }
 
   const name = formData.get("name")?.toString().trim();
@@ -48,15 +42,9 @@ export async function POST(request: Request) {
 
   // validate form data
   if (!name || name.length < 2 || name.length > 10) {
-    return new Response(JSON.stringify({ success: false, message: "姓名长度应该在2-10位之间" }), {
-      headers: { "content-type": "application/json" },
-      status: 400
-    });
+    return Response.json({ success: false, message: "姓名长度应该在2-10位之间" }, { status: 400 });
   } else if (!content || content.length < 4 || content.length > 1000) {
-    return new Response(JSON.stringify({ success: false, message: "值班笔记长度应该在10-1000位之间" }), {
-      headers: { "content-type": "application/json" },
-      status: 400
-    });
+    return Response.json({ success: false, message: "值班笔记长度应该在10-1000位之间" }, { status: 400 });
   }
 
   // insert into database

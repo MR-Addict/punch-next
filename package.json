@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "archive": "tsx src/lib/notes/archiveNotes.ts",
     "format": "prettier -c --write ."
   },
   "dependencies": {
@@ -16,7 +17,7 @@
     "@codemirror/lang-markdown": "^6.3.0",
     "@codemirror/language-data": "^6.5.1",
     "@codemirror/view": "^6.34.1",
-    "@types/node": "^22.8.1",
+    "@types/node": "^22.8.5",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@uiw/codemirror-theme-vscode": "^4.23.6",
@@ -24,6 +25,7 @@
     "antd": "^5.21.6",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
     "framer-motion": "^11.11.10",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
@@ -37,6 +39,7 @@
     "rehype-prism-plus": "^2.0.0",
     "remark-gfm": "^4.0.0",
     "tailwindcss": "^3.4.14",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "zod": "^3.23.8"
   },

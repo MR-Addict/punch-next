@@ -27,5 +27,6 @@ export default function getArchivedNotes(
     .filter((item) => keys.some((key) => item[key].toLowerCase().includes(query.toLowerCase())))
     .sort(({ date: a }, { date: b }) => new Date(b).getTime() - new Date(a).getTime())
     .slice((page - 1) * pageSize, page * pageSize);
-  return { success: true, code: 200, message: "获取成功", data: { data, pagination } };
+
+  return { success: true, data: { data, pagination } };
 }

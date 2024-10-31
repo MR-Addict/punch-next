@@ -3,12 +3,12 @@ import { MongoClient } from "mongodb";
 import { ServerEnv } from "@/types/env";
 
 const env = ServerEnv.parse(process.env);
-
 const uri = env.MONGODB_URI;
+
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
 
-if (env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
   let globalWithMongoClientPromise = global as typeof globalThis & {
     _mongoClientPromise: Promise<MongoClient>;
   };

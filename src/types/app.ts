@@ -1,16 +1,14 @@
 import { z } from "zod";
 
-export type ApiResultType<T = undefined> = (
+export type ApiResultType<T = undefined> =
   | ({
       readonly success: true;
     } & (T extends undefined ? {} : { readonly data: NonNullable<T> }))
   | {
       readonly success: false;
-    }
-) & {
-  readonly code: number;
-  readonly message: string;
-};
+      readonly message: string;
+      readonly code: number;
+    };
 
 export const Pagination = z.object({
   page: z.number(),

@@ -1,7 +1,5 @@
 import z from "zod";
 
-const NodeEnv = z.enum(["development", "production", "test", "preview"]);
-
 const PublicEnv = z.object({
   CURRENT_TERM: z.string(),
   START_DATE: z.string().transform((value) => new Date(value)),
@@ -10,7 +8,6 @@ const PublicEnv = z.object({
 });
 
 const ServerEnv = z.object({
-  NODE_ENV: NodeEnv,
   MONGODB_URI: z.string()
 });
 

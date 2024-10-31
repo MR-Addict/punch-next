@@ -24,7 +24,7 @@ export default async function getNotesApi(
     const res = await fetch(url).then((res) => res.json());
     const parsed = z.object({ data: z.array(NoteDatabse), pagination: Pagination }).safeParse(res.data);
     if (!parsed.success) return { success: false, message: res.message || fallbackMessage, code: res.code || 500 };
-    return { success: true, message: "获取成功", code: 200, data: parsed.data };
+    return { success: true, data: parsed.data };
   } catch (err) {
     console.error(err);
     return { success: false, code: 500, message: fallbackMessage };

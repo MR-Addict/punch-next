@@ -1,6 +1,5 @@
 "use client";
 
-import z from "zod";
 import clsx from "clsx";
 import Link from "next/link";
 import toast from "react-hot-toast";
@@ -12,6 +11,7 @@ import { FaRegUser, FaRegEdit } from "react-icons/fa";
 
 import style from "../style.module.css";
 import formatDate from "@/lib/utils/formatDate";
+import addNoteApi from "@/lib/api/notes/addNoteApi";
 import usePersistantState from "@/hooks/usePersistantState";
 
 import Message from "@/components/Message/Message";
@@ -34,25 +34,15 @@ export default function Form() {
     event.preventDefault();
     setPending(true);
 
-    try {
-      const formData = new FormData(event.currentTarget);
-      formData.set("useMarkdown", useMarkdown.toString());
-      const res = await fetch("/api/note", { method: "POST", body: formData }).then((res) => res.json());
-      const { success, message } = z.object({ success: z.boolean(), message: z.string() }).parse(res);
+    const formData = new FormData(event.currentTarget);
+    const res = await addNoteApi(formData);
+    if (res.success) {
+      setContent("");
+      setStatus("done");
+      document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
+    } else toast.error(res.message);
 
-      if (success) {
-        setContent("");
-        setStatus("done");
-        document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
-      } else {
-        console.error(message);
-        toast.error(message);
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setPending(false);
-    }
+    setPending(false);
   }
 
   useEffect(() => {
@@ -73,7 +63,9 @@ export default function Form() {
             <Message message="恭喜，笔记提交成功" icon="success" />
           </>
         )}
+
         {status === "duplicated" && <Message message="你今天已经提交过啦" icon="forbidden" />}
+
         <Link href="/view" className={style.link}>
           去看笔记 👉
         </Link>
