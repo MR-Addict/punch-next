@@ -48,6 +48,7 @@ export default function Form() {
   function handleUseMarkdown(event: React.ChangeEvent<HTMLInputElement>) {
     setUseMarkdown(event.target.checked);
     if (event.target.checked) toast(CustomToast);
+    else toast.dismiss();
   }
 
   // handle submit result
