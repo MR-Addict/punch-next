@@ -1,11 +1,10 @@
+import { Splitter } from "antd";
+import { Dispatch, SetStateAction } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineFullscreenExit } from "react-icons/ai";
-import { MdOutlineModeEditOutline } from "react-icons/md";
-import { Dispatch, SetStateAction, useState } from "react";
 
 import CodeMirror from "@uiw/react-codemirror";
 import { EditorView } from "@codemirror/view";
-import { VscOpenPreview } from "react-icons/vsc";
 import { languages } from "@codemirror/language-data";
 import { BasicSetupOptions } from "@uiw/react-codemirror";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
@@ -23,11 +22,10 @@ interface Props {
   setOpenEditor: Dispatch<SetStateAction<boolean>>;
 }
 
-const options: BasicSetupOptions = { foldGutter: true, autocompletion: true };
+const options: BasicSetupOptions = { foldGutter: false, autocompletion: false };
 
 export default function MarkdownEditor({ content, openEditor, setContent, setOpenEditor }: Props) {
-  const windowWidth = useWindowSize().width;
-  const [showPreview, setShowPreview] = useState(false);
+  const { width } = useWindowSize();
 
   return (
     <AnimatePresence>
@@ -39,39 +37,27 @@ export default function MarkdownEditor({ content, openEditor, setContent, setOpe
           transition={{ duration: 0.3 }}
           className={style.wrapper}
         >
-          {(windowWidth >= 1024 || !showPreview) && (
-            <CodeMirror
-              width="100%"
-              height="100%"
-              value={content}
-              theme={vscodeDark}
-              basicSetup={options}
-              className={style.editor}
-              placeholder="写写今天都发生了什么"
-              onChange={(value) => setContent(value)}
-              extensions={[markdown({ base: markdownLanguage, codeLanguages: languages }), EditorView.lineWrapping]}
-            />
-          )}
+          <Splitter layout={width >= 1024 ? "horizontal" : "vertical"}>
+            <Splitter.Panel min="20%" max="70%">
+              <CodeMirror
+                width="100%"
+                height="100%"
+                value={content}
+                theme={vscodeDark}
+                basicSetup={options}
+                className={style.editor}
+                placeholder="写写今天都发生了什么"
+                onChange={(value) => setContent(value)}
+                extensions={[markdown({ base: markdownLanguage, codeLanguages: languages }), EditorView.lineWrapping]}
+              />
+            </Splitter.Panel>
 
-          {(windowWidth >= 1024 || showPreview) &&
-            (content.length > 0 ? (
-              <MarkdownRenderer content={content} className="overflow-auto px-4 lg:px-0" />
-            ) : (
-              <p className="grid place-content-center text-gray-600 p-4 lg:p-0">没有可以预览的内容</p>
-            ))}
+            <Splitter.Panel>
+              <MarkdownRenderer content={content} className="overflow-auto px-4 pb-4" />
+            </Splitter.Panel>
+          </Splitter>
 
           <div className="absolute right-4 lg:right-10 bottom-6 flex flex-col gap-2">
-            {windowWidth < 1024 && (
-              <button
-                type="button"
-                aria-label="toggle preview"
-                className={style["icon-btn"]}
-                onClick={() => setShowPreview(!showPreview)}
-              >
-                {showPreview ? <MdOutlineModeEditOutline size={23} /> : <VscOpenPreview size={23} />}
-              </button>
-            )}
-
             <button
               type="button"
               aria-label="exit full screen"

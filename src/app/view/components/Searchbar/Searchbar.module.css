@@ -1,7 +1,0 @@
-.wrapper {
-  @apply outline-none gradient-50 shadow-md w-full flex flex-row items-center justify-end gap-1 rounded-md py-2.5 px-3 animate-slideFromTop;
-}
-
-.wrapper:focus-within {
-  @apply outline outline-blue-600;
-}

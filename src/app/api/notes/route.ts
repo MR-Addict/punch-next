@@ -1,8 +1,23 @@
-import { revalidatePath } from "next/cache";
-
 import { PublicEnv } from "@/types/env";
 import notes from "@/lib/mongodb/notes";
 import getISOWeekNumber from "@/lib/utils/getISOWeekNumber";
+import getArchivedNotes from "@/lib/notes/getArchivedNotes";
+
+export async function GET(request: Request) {
+  const searchParams = new URL(request.url).searchParams;
+  const query = searchParams.get("query") || "";
+  const page = parseInt(searchParams.get("page") || "1");
+  const pageSize = parseInt(searchParams.get("pageSize") || "20");
+  const termIndex = parseInt(searchParams.get("termIndex") || "0");
+
+  if (termIndex > 0) {
+    const res = getArchivedNotes(termIndex - 1, page, pageSize, query);
+    return new Response(JSON.stringify(res), { headers: { "content-type": "application/json" }, status: res.code });
+  }
+
+  const result = await notes.query(page, pageSize, query);
+  return new Response(JSON.stringify(result), { headers: { "content-type": "application/json" }, status: result.code });
+}
 
 export async function POST(request: Request) {
   const env = PublicEnv.parse(process.env);
@@ -47,9 +62,6 @@ export async function POST(request: Request) {
   // insert into database
   const week = getISOWeekNumber(now) - getISOWeekNumber(env.FIRST_WEEK) + 1;
   const result = await notes.insert({ week, name, useMarkdown, content });
-
-  // revalidate and resonse result
-  if (result.success) revalidatePath("/view", "page");
 
   return Response.json(result);
 }

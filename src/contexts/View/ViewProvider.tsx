@@ -1,65 +1,77 @@
 "use client";
 
-import { createContext, useContext, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
+import { createContext, useContext, useEffect, useState } from "react";
 
+import { PaginationType } from "@/types/app";
 import { NoteDatabseType } from "@/types/notes";
-import { TableContextProvider } from "@/contexts/Table/TableProvider";
-import usePersistantState from "@/hooks/usePersistantState";
 
-export type TabType = "table" | "chart";
+import getTermsApi from "@/lib/api/terms/getTermsApi";
+import getNotesApi from "@/lib/api/notes/getNotesApi";
+
+const defaultPagination: PaginationType = { page: 1, pageSize: 20, total: 0 };
 
 interface ViewContextProps {
-  activeTab: TabType;
-  setActiveTab: (value: TabType) => void;
+  terms: string[] | null | undefined;
 
-  archiveIndex: number;
-  setArchiveIndex: (value: number) => void;
+  pagination: PaginationType;
 
-  lastSynchronized: Date;
-  notes: NoteDatabseType[];
-  archives: { index: number; name: string }[];
+  notes: NoteDatabseType[] | null | undefined;
+
+  refreshNotes: () => Promise<void>;
 }
 
 const ViewContext = createContext<ViewContextProps>({
-  archiveIndex: 0,
-  setArchiveIndex(value: number) {},
+  terms: undefined,
 
-  activeTab: "chart",
-  setActiveTab: (value: TabType) => {},
+  pagination: defaultPagination,
 
-  notes: [],
-  archives: [],
-  lastSynchronized: new Date()
+  notes: undefined,
+
+  refreshNotes: async () => {}
 });
 
-interface ViewContextProviderProps {
-  lastSynchronized: Date;
-  children: React.ReactNode;
-  data: { name: string; notes: NoteDatabseType[] }[];
-}
+export const ViewContextProvider = ({ children }: { children: React.ReactNode }) => {
+  const searchParams = useSearchParams();
 
-export const ViewContextProvider = ({ children, lastSynchronized, data }: ViewContextProviderProps) => {
-  const [archiveIndex, setArchiveIndex] = usePersistantState("view-archive-index", 0);
-  const [activeTab, setActiveTab] = usePersistantState<TabType>("view-active-tab", "table");
+  const [pagination, setPagination] = useState<PaginationType>(defaultPagination);
+  const [terms, setTerms] = useState<string[] | null | undefined>(undefined);
+  const [notes, setNotes] = useState<NoteDatabseType[] | null | undefined>(undefined);
 
-  const notes = useMemo(() => data.at(archiveIndex)?.notes || [], [archiveIndex]);
-  const archives = useMemo(() => data.map((item, index) => ({ index, name: item.name })), [data]);
+  async function refreshNotes() {
+    const page = searchParams.get("page") || "1";
+    const pageSize = searchParams.get("pageSize") || "20";
+    const termIndex = searchParams.get("termIndex") || "0";
+    const query = searchParams.get("query") || "";
+
+    const res = await getNotesApi(Number(page), Number(pageSize), Number(termIndex), query);
+
+    if (!res.success) {
+      setNotes(null);
+      setPagination(defaultPagination);
+    } else {
+      setNotes(res.data.data);
+      setPagination(res.data.pagination);
+    }
+  }
+
+  useEffect(() => {
+    getTermsApi().then((res) => setTerms(res));
+  }, []);
 
   return (
     <ViewContext.Provider
       value={{
-        activeTab,
-        setActiveTab,
+        terms,
 
-        archiveIndex,
-        setArchiveIndex,
+        pagination,
 
         notes,
-        archives,
-        lastSynchronized
+
+        refreshNotes
       }}
     >
-      <TableContextProvider rawNotes={notes}>{children}</TableContextProvider>
+      {children}
     </ViewContext.Provider>
   );
 };

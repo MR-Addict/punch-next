@@ -1,9 +1,9 @@
 .wrapper {
-  @apply fixed inset-0 z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 bg-white;
+  @apply fixed inset-0 z-10 bg-white;
 }
 
 .editor {
-  @apply overflow-auto text-base lg:pr-2;
+  @apply h-full text-base;
 
   /* hide y axis scrollbar */
   & *::-webkit-scrollbar {

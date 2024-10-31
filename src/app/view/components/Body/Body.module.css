@@ -1,0 +1,15 @@
+.wrapper {
+  @apply flex-1 flex flex-col items-center gap-6;
+}
+
+.loading {
+  @apply flex flex-col gap-5;
+
+  & li {
+    @apply w-full h-24 bg-black/5 animate-pluse rounded-md shadow-md;
+  }
+}
+
+.error {
+  @apply flex-1 flex flex-col items-center justify-center text-gray-600;
+}

@@ -1,7 +1,10 @@
 import "./globals.css";
 
+import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
+
 import { AppContextProvider } from "@/contexts/App/AppProvider";
+import { ViewContextProvider } from "@/contexts/View/ViewProvider";
 
 import TopNavbar from "@/components/Navbar/TopNavbar/TopNavbar";
 import BottomNavbar from "@/components/Navbar/BottomNavbar/BottomNavbar";
@@ -10,12 +13,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-Hans">
       <body>
-        <AppContextProvider>
-          <Toaster />
-          <TopNavbar />
-          {children}
-          <BottomNavbar />
-        </AppContextProvider>
+        <Suspense>
+          <AppContextProvider>
+            <ViewContextProvider>
+              <Toaster />
+              <TopNavbar />
+              {children}
+              <BottomNavbar />
+            </ViewContextProvider>
+          </AppContextProvider>
+        </Suspense>
       </body>
     </html>
   );

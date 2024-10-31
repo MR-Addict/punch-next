@@ -1,0 +1,7 @@
+.wrapper {
+  @apply outline-none gradient-50 shadow-md flex-1 flex flex-row items-center justify-end gap-1 rounded-md h-10 px-3;
+}
+
+.wrapper:focus-within {
+  @apply outline outline-blue-600;
+}

@@ -1,7 +1,0 @@
-.tab {
-  @apply relative py-1 px-2 rounded-md;
-}
-
-.active-tab {
-  @apply absolute inset-0 -z-10 gradient-50 rounded-md;
-}

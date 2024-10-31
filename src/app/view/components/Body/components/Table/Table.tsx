@@ -7,20 +7,17 @@ import groupBy from "@/lib/utils/groupBy";
 import formatDate from "@/lib/utils/formatDate";
 import timeInterval from "@/lib/utils/timeInterval";
 import usePersistantState from "@/hooks/usePersistantState";
-import { useTableContext } from "@/contexts/Table/TableProvider";
 
+import { NoteDatabseType } from "@/types/notes";
 import MarkdownRenderer from "@/components/MarkdownRenderer/MarkdownRenderer";
 
-export default function Table() {
-  const { currentNotes } = useTableContext();
+export default function Table({ notes }: { notes: NoteDatabseType[] }) {
   const [intervalFomatDate, setIntervalFomatDate] = usePersistantState("view-interval-format-date", true);
 
-  if (currentNotes.length === 0) return <h1 className="w-full text-center py-28 rounded-sm">没有符合条件的结果</h1>;
-
-  const notesGroupedByWeek = groupBy(currentNotes, (note) => `#第${note.week}周`);
+  const notesGroupedByWeek = groupBy(notes, (note) => `#第${note.week}周`);
 
   return (
-    <ul className="space-y-10 animate-slideFromBottom">
+    <ul className="w-full space-y-10 animate-slideFromBottom">
       {notesGroupedByWeek.map((group) => (
         <li key={group.category} className="space-y-1 md:space-y-3">
           <h1 className="font-semibold">{group.category}</h1>

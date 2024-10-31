@@ -1,0 +1,15 @@
+.wrapper {
+  @apply gradient-50 h-10 rounded-md shadow-md;
+}
+
+.select {
+  @apply outline-none px-2;
+
+  &:focus {
+    @apply outline outline-blue-600;
+  }
+}
+
+.skeleton {
+  width: 198px;
+}

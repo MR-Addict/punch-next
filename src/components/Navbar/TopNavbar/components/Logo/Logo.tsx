@@ -1,12 +1,12 @@
 "use client";
 
+import clsx from "clsx";
 import Link from "next/link";
 import { useMemo } from "react";
 
 import style from "./Logo.module.css";
 import getISOWeekNumber from "@/lib/utils/getISOWeekNumber";
 import { useAppContext } from "@/contexts/App/AppProvider";
-import clsx from "clsx";
 
 export default function Logo() {
   const { env } = useAppContext();
