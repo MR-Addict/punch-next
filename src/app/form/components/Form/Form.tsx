@@ -21,6 +21,21 @@ import MarkdownEditor from "@/components/MarkdownEditor/MarkdownEditor";
 
 const cookieName = "last-submit";
 
+function CustomToast() {
+  function handleClick() {
+    setTimeout(() => toast.dismiss(), 200);
+  }
+
+  return (
+    <p className="text-sm text-gray-700">
+      请确保你已阅读Markdown相关的
+      <Link href="/help" className="text-blue-600 underline" onClick={handleClick}>
+        帮助文档
+      </Link>
+    </p>
+  );
+}
+
 export default function Form() {
   const [name, setName] = usePersistantState("form-name", "");
   const [content, setContent] = usePersistantState("form-content", "");
@@ -29,6 +44,11 @@ export default function Form() {
   const [pending, setPending] = useState(false);
   const [openEditor, setOpenEditor] = useState(false);
   const [status, setStatus] = useState<null | "idle" | "done" | "duplicated">(null);
+
+  function handleUseMarkdown(event: React.ChangeEvent<HTMLInputElement>) {
+    setUseMarkdown(event.target.checked);
+    if (event.target.checked) toast(CustomToast);
+  }
 
   // handle submit result
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -147,7 +167,7 @@ export default function Form() {
               name="useMarkdown"
               id="submitFormUseMarkdown"
               checked={useMarkdown}
-              onChange={(e) => setUseMarkdown(e.target.checked)}
+              onChange={handleUseMarkdown}
             />
             <p className="select-none text-xs">使用Markdown</p>
           </label>

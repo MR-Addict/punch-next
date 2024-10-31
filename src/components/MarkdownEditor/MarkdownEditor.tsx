@@ -53,7 +53,8 @@ export default function MarkdownEditor({ content, openEditor, setContent, setOpe
             </Splitter.Panel>
 
             <Splitter.Panel>
-              <MarkdownRenderer content={content} className="overflow-auto px-4 pb-4" />
+              {content.length === 0 && <p className="w-full h-full grid place-content-center">在此预览 Markdown</p>}
+              {content.length > 0 && <MarkdownRenderer content={content} className="px-4 pb-4" />}
             </Splitter.Panel>
           </Splitter>
 
