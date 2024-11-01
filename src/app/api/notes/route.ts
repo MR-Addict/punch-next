@@ -38,7 +38,7 @@ export async function POST(request: Request) {
 
   const name = formData.get("name")?.toString().trim();
   const content = formData.get("content")?.toString().trim();
-  const useMarkdown = formData.get("useMarkdown")?.toString().trim() === "true";
+  const useMarkdown = formData.get("useMarkdown")?.toString().trim() === "on";
 
   // validate form data
   if (!name || name.length < 2 || name.length > 10) {
