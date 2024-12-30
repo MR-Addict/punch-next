@@ -3,7 +3,7 @@ import z from "zod";
 import clientPromise from "./clientPromise";
 import formatDate from "@/lib/utils/formatDate";
 
-import { ApiResultType, PaginationType } from "@/types/app";
+import { ApiResultType, PaginatedResultType } from "@/types/app";
 import { NoteDatabse, NoteDatabseType, NoteType } from "@/types/notes";
 
 async function insert(note: NoteType): Promise<ApiResultType> {
@@ -25,9 +25,11 @@ async function insert(note: NoteType): Promise<ApiResultType> {
   }
 }
 
-type ReturnDataType = { data: NoteDatabseType[]; pagination: PaginationType };
-
-async function query(page: number, pageSize: number, query: string): Promise<ApiResultType<ReturnDataType>> {
+async function query(
+  page: number,
+  pageSize: number,
+  query: string
+): Promise<ApiResultType<PaginatedResultType<NoteDatabseType>>> {
   try {
     const client = await clientPromise;
     const collection = client.db("stas").collection("notes");
@@ -51,9 +53,23 @@ async function query(page: number, pageSize: number, query: string): Promise<Api
   }
 }
 
+async function isEmpty(): Promise<boolean> {
+  try {
+    const client = await clientPromise;
+    const collection = client.db("stas").collection("notes");
+
+    const count = await collection.countDocuments();
+    return count === 0;
+  } catch (error) {
+    console.error(error);
+    return true;
+  }
+}
+
 const user = {
   insert,
-  query
+  query,
+  isEmpty
 };
 
 export default user;

@@ -16,7 +16,7 @@ export default function Table({ notes }: { notes: NoteDatabseType[] }) {
   return (
     <ul className="w-full space-y-10 animate-slideFromBottom">
       {notesGroupedByWeek.map((group) => (
-        <li key={group.category} className="space-y-1 md:space-y-3">
+        <li key={group.category} className="space-y-1 lg:space-y-3">
           <h1 className="font-semibold">{group.category}</h1>
 
           <ul className="space-y-5">

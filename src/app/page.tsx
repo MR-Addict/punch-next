@@ -18,7 +18,7 @@ function LinkCard({ Icon, title, subtitle, link }: Props) {
     <li>
       <Link href={link} className={style.card}>
         <div>{Icon}</div>
-        <div className="flex-1 flex flex-col md:items-center gap-2">
+        <div className="flex-1 flex flex-col lg:items-center gap-2">
           <h1 className="font-semibold text-lg">{title}</h1>
           <p className="text-xs text-gray-700">{subtitle}</p>
         </div>

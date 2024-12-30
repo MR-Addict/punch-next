@@ -2,10 +2,8 @@ import fs from "fs";
 import { z } from "zod";
 
 import getArchivedNotesList from "./getArchivedTerms";
-import { ApiResultType, PaginationType } from "@/types/app";
 import { NoteDatabse, NoteDatabseType } from "@/types/notes";
-
-type ReturnDataType = { data: NoteDatabseType[]; pagination: PaginationType };
+import { ApiResultType, PaginatedResultType } from "@/types/app";
 
 const keys = ["name", "content"] as const;
 
@@ -14,7 +12,7 @@ export default function getArchivedNotes(
   page: number,
   pageSize: number,
   query: string
-): ApiResultType<ReturnDataType> {
+): ApiResultType<PaginatedResultType<NoteDatabseType>> {
   const archivedNotesList = getArchivedNotesList();
   if (index >= archivedNotesList.length) return { success: false, code: 404, message: "归档内容不存在" };
 

@@ -6,5 +6,5 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   const currentTerm = Env.parse(process.env).CURRENT_TERM;
   const archivedTerms = getArchivedTerms().map((term) => term.name);
-  return Response.json([currentTerm, ...archivedTerms]);
+  return Response.json(Array.from(new Set([currentTerm, ...archivedTerms])));
 }

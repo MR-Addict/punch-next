@@ -11,7 +11,7 @@ export default function BottomNavbar() {
   const rootPath = (usePathname() || "/").split("/").slice(0, 2).join("/");
 
   return (
-    <nav className="w-full sticky bottom-0 gradient-50 md:hidden">
+    <nav className="w-full sticky bottom-0 gradient-50 lg:hidden">
       <ul className={style.links}>
         {links.map((link) => (
           <li key={link.name}>

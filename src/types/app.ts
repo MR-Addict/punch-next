@@ -17,3 +17,4 @@ export const Pagination = z.object({
 });
 
 export type PaginationType = z.infer<typeof Pagination>;
+export type PaginatedResultType<T> = { data: T[]; pagination: PaginationType };

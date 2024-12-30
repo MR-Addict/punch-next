@@ -8,9 +8,9 @@
 
 .card {
   @apply duration-300 p-7 rounded-xl shadow-md gradient-50;
-  @apply flex flex-row md:flex-col items-center justify-center gap-3 animate-scaleUp;
+  @apply flex flex-row lg:flex-col items-center justify-center gap-3 animate-scaleUp;
 
   &:hover {
-    @apply md:-translate-y-1 md:shadow-md;
+    @apply lg:-translate-y-1 lg:shadow-md;
   }
 }

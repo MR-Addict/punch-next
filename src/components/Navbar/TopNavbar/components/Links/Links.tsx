@@ -11,7 +11,7 @@ export default function Links() {
   const rootPath = (usePathname() || "/").split("/").slice(0, 2).join("/");
 
   return (
-    <div className="ml-auto hidden md:flex flex-row items-center gap-4">
+    <div className="ml-auto hidden lg:flex flex-row items-center gap-4">
       <ul className="flex">
         {links.map((link) => (
           <li key={link.name}>

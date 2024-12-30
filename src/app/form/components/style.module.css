@@ -4,13 +4,13 @@
 }
 
 .link:hover {
-  @apply md:text-black;
+  @apply lg:text-black;
 }
 
 /* form */
 .form {
   @apply gradient-50 shadow-md rounded-xl animate-slideFromBottom;
-  @apply w-full max-w-sm px-4 py-6 md:px-6 md:py-8 flex flex-col items-center justify-center gap-4;
+  @apply w-full max-w-sm px-4 py-6 lg:px-6 lg:py-8 flex flex-col items-center justify-center gap-4;
 }
 
 /* input */

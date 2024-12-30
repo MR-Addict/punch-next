@@ -39,7 +39,7 @@ export default function Searchbar() {
         <button
           type="button"
           aria-label="clear"
-          className="hover:md:bg-black/10 bg-black/5 rounded-full p-1"
+          className="hover:lg:bg-black/10 bg-black/5 rounded-full p-1"
           onClick={() => handleSetSearchQuery("")}
         >
           <AiOutlineClose size={12} />
