@@ -37,7 +37,7 @@ export default function Note({ note, intervalFomatDate, setIntervalFomatDate }: 
       </header>
 
       {note.useMarkdown && <MarkdownRenderer content={note.content} />}
-      {!note.useMarkdown && <p className="whitespace-pre-wrap mt-3 text-gray-700">{note.content}</p>}
+      {!note.useMarkdown && <p className="whitespace-pre-wrap mt-3 text-gray-800">{note.content}</p>}
     </li>
   );
 }

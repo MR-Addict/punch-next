@@ -27,7 +27,7 @@ function CustomToast() {
   }
 
   return (
-    <p className="text-sm text-gray-700">
+    <p className="text-sm text-gray-800">
       请确保你已阅读Markdown相关的
       <Link href="/help" className="text-blue-600 underline" onClick={handleClick}>
         帮助文档

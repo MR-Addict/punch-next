@@ -1,71 +1,79 @@
 .markdown {
   @apply isolate;
-}
 
-.markdown h1 {
-  @apply text-xl;
-}
+  h1 {
+    @apply text-xl;
+  }
 
-.markdown h2 {
-  @apply text-lg;
-}
+  h2 {
+    @apply text-lg;
+  }
 
-.markdown :is(h1, h2, h3, h4, h5, h6) {
-  @apply font-bold mt-4 text-gray-800;
-}
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply font-bold mt-4 text-neutral-900;
+  }
 
-.markdown ul {
-  @apply mt-4;
-}
+  ul {
+    @apply mt-4;
+  }
 
-.markdown li {
-  @apply my-0.5 list-disc list-inside text-gray-700;
-}
+  li {
+    @apply my-0.5 list-disc list-inside text-neutral-800;
+  }
 
-.markdown p {
-  @apply mt-4 text-gray-700;
-}
+  p {
+    @apply mt-4 text-neutral-800;
+  }
 
-.markdown strong {
-  @apply text-gray-800;
-}
+  strong {
+    @apply text-neutral-900;
+  }
 
-.markdown a {
-  @apply text-blue-600 underline;
-}
+  a {
+    @apply text-blue-600 underline;
+  }
 
-.markdown table {
-  @apply text-gray-800 mt-4 rounded-xl outline outline-1 outline-gray-400;
-}
+  table {
+    @apply text-neutral-900 mt-4 rounded-xl outline outline-1 outline-neutral-400;
 
-.markdown table tbody tr {
-  @apply border-t border-t-gray-400;
-}
+    tbody tr {
+      @apply border-t border-t-neutral-400;
+    }
 
-.markdown table :is(td, th) {
-  @apply px-3 py-2;
-}
+    :is(td, th) {
+      @apply px-3 py-2;
+    }
 
-.markdown table :is(th, td):not(:last-child) {
-  @apply border-r border-gray-400;
-}
+    :is(th, td):not(:last-child) {
+      @apply border-r border-neutral-400;
+    }
+  }
 
-.markdown pre:has(.code-highlight) {
-  @apply mt-4;
-}
+  pre:has(.code-highlight) {
+    @apply mt-4;
+  }
 
-.markdown blockquote {
-  @apply mt-4 border-l-4 border-l-blue-600 pl-5 py-2 rounded-xl bg-black/5;
-}
+  blockquote {
+    @apply mt-4 border-l-4 border-l-blue-600 pl-5 py-2 rounded-xl gradient-200 border border-neutral-300;
+  }
 
-.markdown hr {
-  @apply border-b border-b-gray-400 mt-4;
-}
+  hr {
+    @apply border-b border-b-neutral-400 mt-4;
+  }
 
-.markdown code:not([class]) {
-  @apply mx-0.5 px-1 py-0.5 bg-black/10 rounded-sm text-sm text-black;
-}
+  code:not([class]) {
+    @apply mx-0.5 px-1 py-0.5 bg-black/10 rounded-sm text-sm text-black;
+  }
 
-.markdown img {
-  @apply min-h-10 w-full max-w-6xl rounded-xl mx-auto mt-4 border border-gray-300 shadow-sm;
+  img {
+    @apply min-h-10 w-full max-w-6xl rounded-xl mx-auto mt-4 border border-neutral-300 shadow-md;
+  }
+
+  .contains-task-list li {
+    @apply list-none;
+
+    & input {
+      @apply w-4 h-4;
+    }
+  }
 }

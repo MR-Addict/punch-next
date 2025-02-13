@@ -1,0 +1,21 @@
+.wrapper {
+  @apply relative my-4;
+
+  &.preview pre {
+    @apply hidden;
+  }
+}
+
+.btns {
+  @apply flex flex-row items-center gap-2.5;
+  @apply z-10 absolute top-0 translate-y-3 right-3;
+
+  & .btn {
+    @apply gradient-100 p-1 rounded-md;
+    @apply duration-300 scale-0 opacity-0 invisible;
+  }
+}
+
+.wrapper:hover .btn {
+  @apply scale-100 opacity-100 visible;
+}

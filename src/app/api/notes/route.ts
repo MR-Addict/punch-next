@@ -10,16 +10,14 @@ export async function GET(request: Request) {
   const pageSize = Math.min(Math.max(parseInt(searchParams.get("pageSize") || "20"), 1), 100);
   const termIndex = parseInt(searchParams.get("termIndex") || "0");
 
-  const isDatabaseEmpty = await notes.isEmpty();
-
-  // if database is not empty, query from database
-  if (!isDatabaseEmpty && termIndex === 0) {
+  // if termIndex equals 0, query from database
+  if (termIndex === 0) {
     const res = await notes.query(page, pageSize, query);
     return Response.json(res, { status: res.success ? 200 : res.code });
   }
 
-  // if database is empty, query from file system
-  const index = termIndex - (isDatabaseEmpty ? 0 : 1);
+  // else query from file system
+  const index = termIndex - 1;
   const res = getArchivedNotes(index, page, pageSize, query);
   return Response.json(res, { status: res.success ? 200 : res.code });
 }
