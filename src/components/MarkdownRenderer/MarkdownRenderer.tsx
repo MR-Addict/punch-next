@@ -9,20 +9,19 @@ import "./styles/markdown.css";
 import "./styles/prism-atom-dark.css";
 import "./styles/prism-line-number.css";
 
+import Img from "./components/Img/Img";
 import Pre from "./components/Preview/Preview";
 import Anchor from "./components/Anchor/Anchor";
 
 export default function MarkdownRenderer({ content, className }: { content: string; className?: string }) {
-  const components = content.startsWith("STOP_PRE") ? { a: Anchor } : { a: Anchor, pre: Pre };
-
   return (
     <Markdown
-      components={components}
       remarkPlugins={[remarkGfm]}
       className={clsx("markdown", className)}
+      components={{ a: Anchor, img: Img, pre: Pre }}
       rehypePlugins={[[rehypePrism, { ignoreMissing: true }]]}
     >
-      {content.replace(/^STOP_PRE/, "")}
+      {content}
     </Markdown>
   );
 }
