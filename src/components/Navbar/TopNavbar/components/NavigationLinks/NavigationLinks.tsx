@@ -4,10 +4,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-import style from "./Links.module.css";
 import links from "../../../config";
+import style from "./NavigationLinks.module.css";
 
-export default function Links() {
+export default function NavigationLinks() {
   const rootPath = (usePathname() || "/").split("/").slice(0, 2).join("/");
 
   return (

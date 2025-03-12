@@ -9,5 +9,5 @@
 }
 
 .active-link {
-  @apply absolute inset-0 -z-10 rounded-full gradient-100;
+  @apply absolute inset-0 -z-10 rounded-full gradient-200;
 }

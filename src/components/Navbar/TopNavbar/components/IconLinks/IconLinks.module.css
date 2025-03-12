@@ -1,0 +1,11 @@
+.wrapper {
+  @apply flex flex-row items-center gap-1;
+}
+
+.link {
+  @apply p-1.5 rounded-md duration-200 text-gray-800;
+
+  &:hover {
+    @apply lg:bg-black/10;
+  }
+}

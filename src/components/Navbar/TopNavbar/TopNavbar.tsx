@@ -1,15 +1,15 @@
 import style from "./TopNavbar.module.css";
 
 import Logo from "./components/Logo/Logo";
-import Links from "./components/Links/Links";
-import Github from "./components/Github/Github";
+import IconLinks from "./components/IconLinks/IconLinks";
+import NavigationLinks from "./components/NavigationLinks/NavigationLinks";
 
 export default function TopNavbar() {
   return (
     <nav className={style.nav}>
       <Logo />
-      <Links />
-      <Github />
+      <NavigationLinks />
+      <IconLinks />
     </nav>
   );
 }
