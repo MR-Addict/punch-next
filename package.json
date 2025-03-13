@@ -10,8 +10,10 @@
     "format": "prettier -c --write ."
   },
   "dependencies": {
+    "ai": "^4.1.59",
     "mongodb": "^6.14.2",
-    "next": "^14.2.16"
+    "next": "^14.2.16",
+    "ollama-ai-provider": "^1.2.0"
   },
   "devDependencies": {
     "@codemirror/lang-markdown": "^6.3.2",
