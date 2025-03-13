@@ -15,6 +15,8 @@ import addNoteApi from "@/lib/api/notes/addNoteApi";
 import useSessionState from "@/hooks/useSessionState";
 import usePersistantState from "@/hooks/usePersistantState";
 
+import { SubmitIndexType } from "@/types/notes";
+
 import Message from "@/components/Message/Message";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import MarkdownEditor from "@/components/MarkdownEditor/MarkdownEditor";
@@ -44,6 +46,7 @@ export default function Form() {
   const [pending, setPending] = useState(false);
   const [openEditor, setOpenEditor] = useState(false);
   const [status, setStatus] = useState<null | "idle" | "done" | "duplicated">(null);
+  const [submitIndex, setSubmitIndex] = useState<SubmitIndexType>({ today: 0, term: 0 });
 
   function handleUseMarkdown(event: React.ChangeEvent<HTMLInputElement>) {
     setUseMarkdown(event.target.checked);
@@ -62,6 +65,7 @@ export default function Form() {
       setContent("");
       setStatus("done");
       setUseMarkdown(false);
+      setSubmitIndex(res.data.index);
       document.cookie = `${cookieName}=${new Date().toISOString()};max-age=${60 * 60 * 24};path=/;`;
     } else toast.error(res.message);
 
@@ -83,14 +87,22 @@ export default function Form() {
         {status === "done" && (
           <>
             <Confetti recycle={false} />
-            <Message message="恭喜，笔记提交成功" icon="success" />
+            <Message message="恭喜你，笔记提交成功" icon="success" />
+            <p className="text-center text-balance italic text-gray-800 animate-slideFromBottom">
+              <span>你是今天第</span>
+              <span className="font-bold"> {submitIndex.today} </span>
+              <span>个提交的人，本学期你共提交了</span>
+              <span className="font-bold"> {submitIndex.term} </span>
+              <span>次</span>
+            </p>
           </>
         )}
 
         {status === "duplicated" && <Message message="你今天已经提交过啦" icon="forbidden" />}
 
         <Link href="/view" className={style.link}>
-          去看笔记 👉
+          <span className="animate-bounceInline">👉</span>
+          <span>去看笔记</span>
         </Link>
       </div>
     );

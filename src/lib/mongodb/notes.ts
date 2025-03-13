@@ -4,9 +4,9 @@ import clientPromise from "./clientPromise";
 import formatDate from "@/lib/utils/formatDate";
 
 import { ApiResultType, PaginatedResultType } from "@/types/app";
-import { NoteDatabse, NoteDatabseType, NoteType } from "@/types/notes";
+import { NoteDatabse, NoteDatabseType, NoteType, SubmitIndexType } from "@/types/notes";
 
-async function insert(note: NoteType): Promise<ApiResultType> {
+async function insert(note: NoteType): Promise<ApiResultType<{ index: SubmitIndexType }>> {
   try {
     const client = await clientPromise;
     const collection = client.db("stas").collection("notes");
@@ -16,9 +16,12 @@ async function insert(note: NoteType): Promise<ApiResultType> {
       return { success: false, code: 400, message: "你今天已经提交过啦，请勿重复提交" };
     }
 
-    const result = await collection.insertOne({ date: new Date(), ...note });
-    if (result.insertedId) return { success: true };
-    else return { success: false, code: 500, message: "提交失败，无法写入数据库" };
+    const { insertedId } = await collection.insertOne({ date: new Date(), ...note });
+    if (insertedId) {
+      const today = await collection.countDocuments({ date: { $gte: new Date(new Date().toDateString()) } });
+      const term = await collection.countDocuments({ name: note.name });
+      return { success: true, data: { index: { today, term } } };
+    } else return { success: false, code: 500, message: "提交失败，无法写入数据库" };
   } catch (error) {
     console.error(error);
     return { success: false, code: 500, message: "提交失败，无法连接至数据库" };

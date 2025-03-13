@@ -1,10 +1,11 @@
 /* view link */
 .link {
-  @apply duration-300 py-2 px-4 rounded-full gradient-50 shadow-md animate-slideFromBottom text-gray-600;
-}
+  @apply flex flex-row items-center gap-1;
+  @apply duration-300 py-2 px-4 rounded-full gradient-100 shadow-md animate-slideFromBottom text-gray-700;
 
-.link:hover {
-  @apply lg:text-black;
+  &:hover {
+    @apply lg:gradient-200;
+  }
 }
 
 /* form */
