@@ -1,7 +1,7 @@
 import fs from "fs";
 import { z } from "zod";
 
-import getArchivedNotesList from "./getArchivedTerms";
+import getArchivedTerms from "./getArchivedTerms";
 import { NoteDatabse, NoteDatabseType } from "@/types/notes";
 import { ApiResultType, PaginatedResultType } from "@/types/app";
 
@@ -13,7 +13,7 @@ export default function getArchivedNotes(
   pageSize: number,
   query: string
 ): ApiResultType<PaginatedResultType<NoteDatabseType>> {
-  const archivedNotesList = getArchivedNotesList();
+  const archivedNotesList = getArchivedTerms();
   if (index >= archivedNotesList.length) return { success: false, code: 404, message: "归档内容不存在" };
 
   const content = fs.readFileSync(archivedNotesList[index].path, "utf-8").trim();
