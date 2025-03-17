@@ -3,7 +3,7 @@ import path from "path";
 import "dotenv/config";
 
 import notes from "@/lib/mongodb/notes";
-import clientPromise from "../mongodb/clientPromise";
+import clientPromise from "@/lib/mongodb/clientPromise";
 
 import { PublicEnv } from "@/types/env";
 import { NoteDatabseType } from "@/types/notes";

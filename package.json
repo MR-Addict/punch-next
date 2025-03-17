@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "archive": "tsx src/lib/notes/archiveNotes.ts",
+    "llm-ner": "tsx src/lib/ai/llm-ner/llm-ner.ts",
     "format": "prettier -c --write ."
   },
   "dependencies": {
     "ai": "^4.1.59",
+    "chalk": "^5.4.1",
     "mongodb": "^6.14.2",
     "next": "^14.2.16",
     "ollama-ai-provider": "^1.2.0"
