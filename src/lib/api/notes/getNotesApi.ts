@@ -6,15 +6,15 @@ import { ApiResultType, Pagination, PaginationType } from "@/types/app";
 type ReturnDataType = { data: NoteDatabseType[]; pagination: PaginationType };
 
 export default async function getNotesApi(
+  term: string,
   page: number,
   pageSize: number,
-  termIndex: number,
   query: string
 ): Promise<ApiResultType<ReturnDataType>> {
   const params = new URLSearchParams();
+  params.append("term", term);
   params.append("page", page.toString());
   params.append("pageSize", pageSize.toString());
-  params.append("termIndex", termIndex.toString());
   params.append("query", query);
 
   const url = `/api/notes?${params.toString()}`;

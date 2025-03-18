@@ -1,9 +1,12 @@
 import { z } from "zod";
 import { ollama } from "ollama-ai-provider";
 import { generateObject, generateText, tool } from "ai";
+
 import getArchivedNotes from "../notes/getArchivedNotes";
+import getArchivedTerms from "../notes/getArchivedTerms";
 
 const model = ollama("llama3.1");
+const terms = getArchivedTerms();
 
 export async function chatObject(text: string) {
   const { object } = await generateObject({
@@ -37,7 +40,7 @@ export async function chatTool() {
         parameters: z.object({
           query: z.string().describe("用于查询的关键字，将会在归档笔记的 `name` 和 `content` 字段中进行匹配")
         }),
-        execute: async ({ query }) => getArchivedNotes(1, 1, 1000, query)
+        execute: async ({ query }) => getArchivedNotes(terms[1].name, 1, 1000, query)
       })
     },
     maxSteps: 5,

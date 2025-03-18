@@ -13,21 +13,20 @@ export default function TermsSelector() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
+  const term = useMemo(() => searchParams.get("term") || terms?.at(0) || "", [terms, searchParams]);
 
-  const termIndex = useMemo(() => searchParams.get("termIndex") || "0", [searchParams]);
-
-  function handleClick(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSearchParam(router, { termIndex: event.target.value, page: "" });
+  function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setSearchParam(router, { term: event.target.value, page: "" });
   }
 
   if (terms === undefined) return <div className={clsx(style.wrapper, style.skeleton)} />;
   if (terms === null) return null;
 
   return (
-    <select value={termIndex} className={clsx(style.wrapper, style.select)} onChange={handleClick} aria-label="term">
-      {terms.map((item, index) => (
-        <option key={item} value={index}>
-          {item}
+    <select value={term} className={clsx(style.wrapper, style.select)} onChange={handleChange} aria-label="term">
+      {terms.map((term) => (
+        <option key={term} value={term}>
+          {term}
         </option>
       ))}
     </select>

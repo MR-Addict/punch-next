@@ -5,8 +5,10 @@ import "dotenv/config";
 
 import { prompt } from "./consts";
 import getArchivedNotes from "@/lib/notes/getArchivedNotes";
+import getArchivedTerms from "@/lib/notes/getArchivedTerms";
 
 const model = ollama("gemma3");
+const terms = getArchivedTerms();
 
 async function LLMNER(text: string) {
   try {
@@ -51,13 +53,8 @@ async function LLMNormalize(text: string) {
 }
 
 (async () => {
-  const res = getArchivedNotes(4, 1, 1000, "");
+  const res = getArchivedNotes(terms[4].name, 1, 1000, "");
   if (!res.success) return;
-
-  // const note = res.data.data[2];
-
-  // const ners = await LLMNER(note.content);
-  // console.log(`Note[${note._id}]: ${ners.join(", ")}`);
 
   const ners = await new Promise<string[]>((resolve) => {
     let finished = 0;
