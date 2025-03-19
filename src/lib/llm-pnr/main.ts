@@ -7,8 +7,8 @@ import getAllNotes from "../notes/getAllNotest";
 
 (async () => {
   const allTermNotes = await getAllNotes();
-  allTermNotes.forEach(async ({ term, notes }) => {
+  for (const { term, notes } of allTermNotes) {
     const pns = await getTermNotesPNs(term, notes);
     writeJSONToFile(pns, `${term}.json`);
-  });
+  }
 })();

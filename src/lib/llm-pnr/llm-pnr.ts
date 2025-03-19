@@ -47,24 +47,24 @@ async function getTextPNs(text: string) {
 }
 
 export async function getTermNotesPNs(term: string, notes: NoteDatabseType[]): Promise<Record<string, PNDataType[]>> {
-  return await new Promise<Record<string, PNDataType[]>>((resolve) => {
+  return await new Promise<Record<string, PNDataType[]>>(async (resolve) => {
     let finished = 0;
     const pns: Record<string, PNDataType[]> = {};
 
-    notes.forEach(async (note) => {
+    for (const note of notes) {
       const data = await getTextPNs(note.content);
       if (data !== null) {
         data.forEach((pn) => {
           const d: PNDataType = { _id: note._id, term, positions: pn.positions };
           if (pns[pn.pn] === undefined) pns[pn.pn] = [d];
           else pns[pn.pn].push(d);
-          console.log(`[INFO]: ${JSON.stringify(d)}`);
+          console.log(`[INFO](${finished}/${notes.length}): ${term} ${pn.pn}`);
         });
       }
 
       // Resolve when all notes are processed
       finished++;
       if (finished === notes.length) resolve(pns);
-    });
+    }
   });
 }
