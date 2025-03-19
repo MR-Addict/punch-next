@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "archive": "tsx src/lib/notes/archiveNotes.ts",
-    "llm-ner": "tsx src/lib/ai/llm-ner/llm-ner.ts",
+    "llm-pnr": "tsx src/lib/llm-pnr/main.ts",
     "format": "prettier -c --write ."
   },
   "dependencies": {
