@@ -2,10 +2,7 @@ import { z } from "zod";
 import { generateObject } from "ai";
 import { ollama } from "ollama-ai-provider";
 
-import { PNDataType } from "./type";
 import { NoteDatabseType } from "@/types/notes";
-
-import getPositions from "./utils/getPositions";
 
 const model = ollama("gemma3");
 
@@ -33,38 +30,21 @@ async function LLMPNR(text: string) {
   }
 }
 
-async function getTextPNs(text: string) {
-  const data = await LLMPNR(text);
-  if (!data) return null;
+export async function getTermNotesPNs(term: string, notes: NoteDatabseType[]): Promise<Record<string, string[]>> {
+  let finished = 0;
+  const pns: Record<string, string[]> = {};
 
-  return data
-    .map((pn) => {
-      const positions = getPositions(pn, text);
-      if (positions.length === 0) return;
-      return { pn, positions };
-    })
-    .filter((pn) => pn !== undefined);
-}
-
-export async function getTermNotesPNs(term: string, notes: NoteDatabseType[]): Promise<Record<string, PNDataType[]>> {
-  return await new Promise<Record<string, PNDataType[]>>(async (resolve) => {
-    let finished = 0;
-    const pns: Record<string, PNDataType[]> = {};
-
-    for (const note of notes) {
-      const data = await getTextPNs(note.content);
-      if (data !== null) {
-        data.forEach((pn) => {
-          const d: PNDataType = { _id: note._id, term, positions: pn.positions };
-          if (pns[pn.pn] === undefined) pns[pn.pn] = [d];
-          else pns[pn.pn].push(d);
-          console.log(`[INFO](${finished}/${notes.length}): ${term} ${pn.pn}`);
-        });
-      }
-
-      // Resolve when all notes are processed
-      finished++;
-      if (finished === notes.length) resolve(pns);
+  for (const note of notes) {
+    const data = await LLMPNR(note.content);
+    finished++;
+    if (data !== null) {
+      data.forEach((pn) => {
+        if (pns[pn] === undefined) pns[pn] = [note._id];
+        else pns[pn].push(note._id);
+        console.log(`[INFO](${((finished / notes.length) * 100).toFixed(0)}%): ${term} ${pn}`);
+      });
     }
-  });
+  }
+
+  return pns;
 }

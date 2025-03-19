@@ -11,4 +11,5 @@ import getAllNotes from "../notes/getAllNotest";
     const pns = await getTermNotesPNs(term, notes);
     writeJSONToFile(pns, `${term}.json`);
   }
+  process.exit(0);
 })();
