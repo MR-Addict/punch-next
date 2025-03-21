@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const pnFolder = path.join(process.cwd(), ".pnr");
+const pnFolder = path.join(process.cwd(), ".analyze");
 
 function mkdirIfNotExists(dir: string) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });

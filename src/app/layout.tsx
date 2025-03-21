@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 
 import { AppContextProvider } from "@/contexts/App/AppProvider";
-import { ViewContextProvider } from "@/contexts/View/ViewProvider";
 
 import TopNavbar from "@/components/Navbar/TopNavbar/TopNavbar";
 import BottomNavbar from "@/components/Navbar/BottomNavbar/BottomNavbar";
@@ -15,12 +14,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Suspense>
           <AppContextProvider>
-            <ViewContextProvider>
-              <Toaster />
-              <TopNavbar />
-              {children}
-              <BottomNavbar />
-            </ViewContextProvider>
+            <Toaster />
+            <TopNavbar />
+            {children}
+            <BottomNavbar />
           </AppContextProvider>
         </Suspense>
       </body>

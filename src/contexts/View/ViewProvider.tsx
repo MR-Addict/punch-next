@@ -1,19 +1,16 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 import { PaginationType } from "@/types/app";
 import { NoteDatabseType } from "@/types/notes";
 
-import getTermsApi from "@/lib/api/terms/getTermsApi";
 import getNotesApi from "@/lib/api/notes/getNotesApi";
 
 const defaultPagination: PaginationType = { page: 1, pageSize: 20, total: 0 };
 
 interface ViewContextProps {
-  terms: string[] | null | undefined;
-
   pagination: PaginationType;
 
   notes: NoteDatabseType[] | null | undefined;
@@ -22,8 +19,6 @@ interface ViewContextProps {
 }
 
 const ViewContext = createContext<ViewContextProps>({
-  terms: undefined,
-
   pagination: defaultPagination,
 
   notes: undefined,
@@ -35,7 +30,6 @@ export const ViewContextProvider = ({ children }: { children: React.ReactNode })
   const searchParams = useSearchParams();
 
   const [pagination, setPagination] = useState<PaginationType>(defaultPagination);
-  const [terms, setTerms] = useState<string[] | null | undefined>(undefined);
   const [notes, setNotes] = useState<NoteDatabseType[] | null | undefined>(undefined);
 
   async function refreshNotes() {
@@ -55,15 +49,9 @@ export const ViewContextProvider = ({ children }: { children: React.ReactNode })
     }
   }
 
-  useEffect(() => {
-    getTermsApi().then((res) => setTerms(res));
-  }, []);
-
   return (
     <ViewContext.Provider
       value={{
-        terms,
-
         pagination,
 
         notes,

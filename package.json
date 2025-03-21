@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "archive": "tsx src/lib/notes/archiveNotes.ts",
-    "llm-pnr": "tsx src/lib/llm-pnr/main.ts",
-    "format": "prettier -c --write ."
+    "format": "prettier -c --write .",
+    "analyze": "tsx src/lib/analyze/main.ts",
+    "archive": "tsx src/lib/notes/archiveNotes.ts"
   },
   "dependencies": {
     "ai": "^4.1.59",

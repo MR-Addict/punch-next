@@ -18,6 +18,7 @@ async function LLMPNR(text: string) {
 
       - Only extract proper nouns —— Do not include common nouns, generic terms, or ambiguous words that are not clearly proper nouns.
       - Maintain accuracy —— Distinguish between proper nouns and regular nouns to avoid misclassification.
+      - Use original text —— Provide the exact proper nouns as they appear in the input text without any modifications.
 
       Input text:
 

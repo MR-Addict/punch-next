@@ -6,14 +6,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import style from "./TermsSelector.module.css";
 import setSearchParam from "@/lib/utils/setSearchParam";
-import { useViewContext } from "@/contexts/View/ViewProvider";
+import { useAppContext } from "@/contexts/App/AppProvider";
 
 export default function TermsSelector() {
-  const { terms } = useViewContext();
+  const { term, terms } = useAppContext();
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const term = useMemo(() => searchParams.get("term") || terms?.at(0) || "", [terms, searchParams]);
 
   function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
     setSearchParam(router, { term: event.target.value, page: "" });
@@ -23,10 +22,10 @@ export default function TermsSelector() {
   if (terms === null) return null;
 
   return (
-    <select value={term} className={clsx(style.wrapper, style.select)} onChange={handleChange} aria-label="term">
-      {terms.map((term) => (
-        <option key={term} value={term}>
-          {term}
+    <select value={term || ""} className={clsx(style.wrapper, style.select)} onChange={handleChange} aria-label="term">
+      {terms.map((item) => (
+        <option key={item} value={item}>
+          {item}
         </option>
       ))}
     </select>
