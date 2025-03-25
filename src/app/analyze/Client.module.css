@@ -1,0 +1,27 @@
+.wrapper {
+  @apply py-5 lg:py-10 flex flex-col gap-6;
+}
+
+.title {
+  @apply flex flex-row items-center justify-between;
+
+  & h1 {
+    @apply font-bold text-xl;
+  }
+}
+
+.content {
+  @apply w-full p-4;
+
+  & ul {
+    @apply flex flex-row flex-wrap gap-6;
+
+    & .item {
+      @apply gradient-200 p-4 rounded-full flex flex-row items-center gap-1;
+
+      & p {
+        @apply text-blue-600;
+      }
+    }
+  }
+}

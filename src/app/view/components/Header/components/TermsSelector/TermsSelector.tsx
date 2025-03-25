@@ -1,8 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { useMemo } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import style from "./TermsSelector.module.css";
 import setSearchParam from "@/lib/utils/setSearchParam";
@@ -12,7 +11,6 @@ export default function TermsSelector() {
   const { term, terms } = useAppContext();
 
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
     setSearchParam(router, { term: event.target.value, page: "" });

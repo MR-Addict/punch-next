@@ -2,36 +2,39 @@
 
 import { useEffect, useState } from "react";
 
+import style from "./Client.module.css";
 import getPNRData from "@/lib/api/analyze/getPNRData";
 import { useAppContext } from "@/contexts/App/AppProvider";
+import TermsSelector from "../view/components/Header/components/TermsSelector/TermsSelector";
 
 export default function Client() {
-  const { terms } = useAppContext();
+  const { term } = useAppContext();
   const [pns, setPNs] = useState<Record<string, string[]> | null | undefined>(undefined);
 
   useEffect(() => {
-    if (!terms) return;
-    getPNRData(terms[1]).then((res) => {
+    if (!term) return;
+    getPNRData(term).then((res) => {
       if (res.success) setPNs(res.data);
       else setPNs(null);
     });
-  }, [terms]);
+  }, [term]);
 
   return (
-    <main className="py-5 lg:py-10 flex flex-col gap-6">
-      <h1>Analyze</h1>
+    <main className={style.wrapper}>
+      <header className={style.title}>
+        <h1>值班笔记分析</h1>
+        <TermsSelector />
+      </header>
 
-      <div>
+      <div className={style.content}>
         {pns && (
           <ul>
             {Object.entries(pns).map(([key, value]) => (
               <li key={key}>
-                <h2>{key}</h2>
-                {/* <ul>
-                  {value.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul> */}
+                <button type="button" className={style.item}>
+                  <h2>{key}</h2>
+                  {value.length > 1 && <p>{`(${value.length})`}</p>}
+                </button>
               </li>
             ))}
           </ul>
