@@ -39,12 +39,12 @@ export const ViewContextProvider = ({ children }: { children: React.ReactNode })
   const [notes, setNotes] = useState<NoteDatabseType[] | null | undefined>(undefined);
 
   async function refreshNotes() {
+    const term = searchParams.get("term") || "";
     const page = searchParams.get("page") || "1";
     const pageSize = searchParams.get("pageSize") || "20";
-    const termIndex = searchParams.get("termIndex") || "0";
     const query = searchParams.get("query") || "";
 
-    const res = await getNotesApi(Number(page), Number(pageSize), Number(termIndex), query);
+    const res = await getNotesApi(term, Number(page), Number(pageSize), query);
 
     if (!res.success) {
       setNotes(null);

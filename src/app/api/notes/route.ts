@@ -1,24 +1,31 @@
 import { PublicEnv } from "@/types/env";
+
 import notes from "@/lib/mongodb/notes";
+import getAllTerms from "@/lib/notes/getAllTerms";
 import getISOWeekNumber from "@/lib/utils/getISOWeekNumber";
 import getArchivedNotes from "@/lib/notes/getArchivedNotes";
 
 export async function GET(request: Request) {
+  const termsLists = getAllTerms();
+  const env = PublicEnv.parse(process.env);
+
   const searchParams = new URL(request.url).searchParams;
-  const query = searchParams.get("query") || "";
+  const term = searchParams.get("term") || env.CURRENT_TERM;
   const page = parseInt(searchParams.get("page") || "1");
   const pageSize = Math.min(Math.max(parseInt(searchParams.get("pageSize") || "20"), 1), 100);
-  const termIndex = parseInt(searchParams.get("termIndex") || "0");
+  const query = searchParams.get("query") || "";
 
-  // if termIndex equals 0, query from database
-  if (termIndex === 0) {
+  const termFound = termsLists.find((t) => t === term);
+  if (!termFound) return Response.json({ success: false, message: "请求的学期不存在" }, { status: 404 });
+
+  // query from database
+  if (termFound === env.CURRENT_TERM) {
     const res = await notes.query(page, pageSize, query);
     return Response.json(res, { status: res.success ? 200 : res.code });
   }
 
-  // else query from file system
-  const index = termIndex - 1;
-  const res = getArchivedNotes(index, page, pageSize, query);
+  // query from file system
+  const res = getArchivedNotes(term, page, pageSize, query);
   return Response.json(res, { status: res.success ? 200 : res.code });
 }
 
