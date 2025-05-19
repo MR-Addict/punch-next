@@ -2,6 +2,28 @@
   @apply flex flex-col w-full gradient-50 py-4 px-5 rounded-xl shadow-md;
 }
 
+.header {
+  @apply flex flex-row w-fit text-gray-500;
+}
+
+.copy-btn {
+  @apply ml-4 invisible opacity-0 scale-75 duration-300 delay-200 relative;
+
+  & svg {
+    @apply invisible opacity-0 scale-75;
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+
+    &.active {
+      @apply visible opacity-100 scale-100 duration-200;
+    }
+  }
+}
+
+.note:hover .copy-btn,
+.copy-btn:has(svg:last-of-type.active) {
+  @apply visible opacity-100 scale-100;
+}
+
 .chip {
   @apply flex flex-row items-center gap-0.5 border-b border-b-gray-300;
 }

@@ -18,14 +18,14 @@ export async function GET(request: Request) {
   const termFound = termsLists.find((t) => t === term);
   if (!termFound) return Response.json({ success: false, message: "请求的学期不存在" }, { status: 404 });
 
-  // query from database
-  if (termFound === env.CURRENT_TERM) {
-    const res = await notes.query(page, pageSize, query);
-    return Response.json(res, { status: res.success ? 200 : res.code });
+  // Qury from archived notes
+  let res = getArchivedNotes(term, page, pageSize, query);
+  // If the term is current term, try to query from the database
+  if (term === env.CURRENT_TERM) {
+    const dbRes = await notes.query(page, pageSize, query);
+    if (dbRes.success && dbRes.data.pagination.total > 0) res = dbRes;
   }
 
-  // query from file system
-  const res = getArchivedNotes(term, page, pageSize, query);
   return Response.json(res, { status: res.success ? 200 : res.code });
 }
 

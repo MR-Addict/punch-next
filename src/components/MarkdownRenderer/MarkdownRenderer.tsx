@@ -15,13 +15,14 @@ import Anchor from "./components/Anchor/Anchor";
 
 export default function MarkdownRenderer({ content, className }: { content: string; className?: string }) {
   return (
-    <Markdown
-      remarkPlugins={[remarkGfm]}
-      className={clsx("markdown", className)}
-      components={{ a: Anchor, img: Img, pre: Pre }}
-      rehypePlugins={[[rehypePrism, { ignoreMissing: true }]]}
-    >
-      {content}
-    </Markdown>
+    <div className={clsx("markdown", className)}>
+      <Markdown
+        remarkPlugins={[remarkGfm]}
+        components={{ a: Anchor, img: Img, pre: Pre }}
+        rehypePlugins={[[rehypePrism, { ignoreMissing: true }]]}
+      >
+        {content}
+      </Markdown>
+    </div>
   );
 }

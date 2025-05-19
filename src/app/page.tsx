@@ -7,7 +7,7 @@ import setMetadata from "@/lib/utils/setMetadata";
 export const metadata = setMetadata();
 
 interface Props {
-  Icon: JSX.Element;
+  Icon: React.ReactNode;
   title: string;
   subtitle: string;
   link: string;

@@ -1,0 +1,106 @@
+[
+  {
+    "_id": "67ea4d4493a43123bd82e564",
+    "date": "2025-03-31T08:07:32.168Z",
+    "week": 7,
+    "useMarkdown": false,
+    "name": "孙文青",
+    "content": "学习cad建模"
+  },
+  {
+    "_id": "67e518e593a43123bd82e563",
+    "date": "2025-03-27T09:22:45.704Z",
+    "week": 6,
+    "useMarkdown": false,
+    "name": "陆语涵",
+    "content": "和gx在学计算机二级～"
+  },
+  {
+    "_id": "67e3c15093a43123bd82e562",
+    "date": "2025-03-26T08:56:48.095Z",
+    "week": 6,
+    "useMarkdown": false,
+    "name": "袁学亮",
+    "content": "调戏本地部署的ai"
+  },
+  {
+    "_id": "67e3c0a293a43123bd82e561",
+    "date": "2025-03-26T08:53:54.527Z",
+    "week": 6,
+    "useMarkdown": false,
+    "name": "陆锦江",
+    "content": "选定数电课设题目，根据提供的材料尝试实现计时器。\r\n今日解决了分频器问题，使用7400完成了时钟树的搭建。\r\n尝试掌握555"
+  },
+  {
+    "_id": "67e3bb9593a43123bd82e560",
+    "date": "2025-03-26T08:32:21.956Z",
+    "week": 6,
+    "useMarkdown": false,
+    "name": "廖文捷",
+    "content": "学习学习学习！Python<(_ _)>"
+  },
+  {
+    "_id": "67dd869c93a43123bd82e55f",
+    "date": "2025-03-21T15:32:44.650Z",
+    "week": 5,
+    "useMarkdown": true,
+    "name": "吴昊鑫",
+    "content": "# 这是我的值班笔记\r\n我干了这些事情\r\n+ 我钻孔了\r\n+ 我做题了\r\n+ 我做对题了\r\n+ 我做对了几道题"
+  },
+  {
+    "_id": "67d7ea3a93a43123bd82e55e",
+    "date": "2025-03-17T09:24:10.571Z",
+    "week": 5,
+    "useMarkdown": false,
+    "name": "王烨帅",
+    "content": "学tauri"
+  },
+  {
+    "_id": "67d14653100af66f8c7d895e",
+    "date": "2025-03-12T08:31:15.561Z",
+    "week": 4,
+    "useMarkdown": false,
+    "name": "吴婉泱",
+    "content": "快乐学习"
+  },
+  {
+    "_id": "67d1252b100af66f8c7d895d",
+    "date": "2025-03-12T06:09:47.547Z",
+    "week": 4,
+    "useMarkdown": false,
+    "name": "薛若寒",
+    "content": "学数电课程"
+  },
+  {
+    "_id": "67d124e4100af66f8c7d895c",
+    "date": "2025-03-12T06:08:36.297Z",
+    "week": 4,
+    "useMarkdown": false,
+    "name": "缪悦",
+    "content": "学习数电"
+  },
+  {
+    "_id": "67d0f36a100af66f8c7d895b",
+    "date": "2025-03-12T02:37:30.912Z",
+    "week": 4,
+    "useMarkdown": false,
+    "name": "王烨帅",
+    "content": "学习cmake，llvm工具链"
+  },
+  {
+    "_id": "67ceb52e100af66f8c7d895a",
+    "date": "2025-03-10T09:47:26.248Z",
+    "week": 4,
+    "useMarkdown": false,
+    "name": "王徐宁",
+    "content": "写Python作业\r\n逛逛咸鱼"
+  },
+  {
+    "_id": "67ceaa37100af66f8c7d8959",
+    "date": "2025-03-10T09:00:39.456Z",
+    "week": 4,
+    "useMarkdown": false,
+    "name": "孙文青",
+    "content": "学习cad画图"
+  }
+]
