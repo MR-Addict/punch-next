@@ -6,14 +6,16 @@ import CopyButton from "./components/CopyButton/CopyButton";
 
 export default function Pre(props: React.ComponentProps<"pre">) {
   const preRef = useRef<HTMLPreElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const content = useMemo(() => preRef.current?.innerText.replaceAll("\n\n", "\n") || "", [preRef.current]);
+  const { text } = useMemo(() => {
+    const text = preRef.current?.innerText.replaceAll("\n\n", "\n") || "";
+    return { text };
+  }, [preRef.current]);
 
   return (
-    <div ref={wrapperRef} className={style.wrapper}>
+    <div className={style.wrapper}>
       <div className={style.btns}>
-        <CopyButton text={content} />
+        <CopyButton text={text} />
       </div>
 
       <pre {...props} ref={preRef}>

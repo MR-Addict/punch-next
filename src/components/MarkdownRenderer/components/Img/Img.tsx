@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { GrView } from "react-icons/gr";
+import { createPortal } from "react-dom";
 
 import style from "./Img.module.css";
 
@@ -16,9 +17,12 @@ export default function Img(props: React.ImgHTMLAttributes<HTMLImageElement>) {
         <img {...props} onClick={() => setOpen(true)} />
       </button>
 
-      <button type="button" className={clsx(style.preview, { [style.active]: open })} onClick={() => setOpen(false)}>
-        <img {...props} />
-      </button>
+      {createPortal(
+        <button type="button" className={clsx(style.preview, { [style.active]: open })} onClick={() => setOpen(false)}>
+          <img {...props} />
+        </button>,
+        document?.body
+      )}
     </>
   );
 }

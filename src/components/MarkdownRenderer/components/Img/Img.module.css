@@ -17,8 +17,12 @@
 }
 
 .preview {
-  @apply invisible bg-black/50;
-  @apply z-10 fixed inset-0 flex items-center justify-center p-4;
+  @apply z-10 invisible fixed inset-0 flex items-center justify-center p-4;
+
+  &::before {
+    content: "";
+    @apply absolute inset-0 bg-black/50 backdrop-blur-sm;
+  }
 
   &.active {
     @apply visible;
@@ -29,6 +33,7 @@
   }
 
   & img {
-    @apply opacity-0 scale-50 max-h-full max-w-full duration-300;
+    @apply rounded-xl;
+    @apply opacity-0 scale-50 w-fit h-fit max-h-full max-w-full duration-300;
   }
 }

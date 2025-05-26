@@ -12,7 +12,7 @@
 
   & .btn {
     @apply gradient-100 p-1 rounded-md;
-    @apply duration-300 scale-50 opacity-0 invisible;
+    @apply duration-300 scale-75 opacity-0 invisible;
   }
 }
 
