@@ -7,7 +7,7 @@
 }
 
 .copy-btn {
-  @apply ml-2 invisible opacity-0 scale-75 duration-300 delay-200 relative;
+  @apply ml-2 duration-300 delay-200 relative;
 
   & svg {
     @apply invisible opacity-0 scale-75;
@@ -16,6 +16,12 @@
     &.active {
       @apply visible opacity-100 scale-100 duration-200;
     }
+  }
+}
+
+@media (min-width: 640px) {
+  .copy-btn {
+    @apply invisible opacity-0 scale-75;
   }
 }
 

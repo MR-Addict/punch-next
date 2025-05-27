@@ -57,12 +57,7 @@ export default function Pre(props: React.ComponentProps<"pre">) {
         <pre {...props}>{props.children}</pre>
 
         {isPreviewOpen && (
-          <>
-            <div className={style.connector}>
-              <TbArrowBigDownLines size={20} />
-            </div>
-            <MarkdownRenderer content={codeblock} className={style.preview} options={{ components: { pre: null } }} />
-          </>
+          <MarkdownRenderer content={codeblock} className={style.preview} options={{ components: { pre: null } }} />
         )}
       </div>
     </div>

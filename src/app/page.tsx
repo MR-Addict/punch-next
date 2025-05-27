@@ -2,9 +2,6 @@ import Link from "next/link";
 import { FcAddressBook, FcOvertime, FcReading } from "react-icons/fc";
 
 import style from "./page.module.css";
-import setMetadata from "@/lib/utils/setMetadata";
-
-export const metadata = setMetadata();
 
 interface Props {
   Icon: React.ReactNode;

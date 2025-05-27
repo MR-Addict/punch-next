@@ -58,7 +58,7 @@
   }
 
   blockquote {
-    @apply mt-4 border-l-4 border-l-blue-600 pl-5 py-2 rounded-xl gradient-200;
+    @apply mt-4 border-l-4 border-l-blue-600 pl-5 pr-2 py-2 rounded-xl gradient-200;
   }
 
   hr {

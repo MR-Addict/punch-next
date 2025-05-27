@@ -1,9 +1,9 @@
 .wrapper {
-  @apply gradient-50 h-10 rounded-md shadow-md;
+  @apply h-10 rounded-md shadow-md;
 }
 
 .select {
-  @apply outline-none px-2;
+  @apply gradient-50 h-full outline-none px-2 rounded-md;
 
   &:focus {
     @apply outline outline-blue-600;

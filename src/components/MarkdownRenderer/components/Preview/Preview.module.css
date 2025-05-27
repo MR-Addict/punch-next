@@ -23,17 +23,28 @@
 }
 
 .code-wrapper {
-  @apply flex flex-col gap-1;
-
-  & .connector {
-    @apply mx-auto text-neutral-800;
-  }
+  @apply flex flex-col gap-4;
 
   & .preview {
     background-size: 20px 20px;
     background-image:
       linear-gradient(to right, #f0f1f3 1px, transparent 1px), linear-gradient(to bottom, #f0f1f3 1px, transparent 1px);
 
-    @apply p-4 pt-0 bg-white rounded-xl;
+    @apply p-4 pt-0 bg-white rounded-xl overflow-hidden;
+  }
+}
+
+@supports (height: calc-size(auto, size)) {
+  .code-wrapper .preview {
+    animation: growVertically 500ms linear forwards;
+  }
+}
+
+@keyframes growVertically {
+  from {
+    height: 0;
+  }
+  to {
+    height: calc-size(auto, size);
   }
 }

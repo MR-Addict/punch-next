@@ -2,7 +2,7 @@
   @apply w-full relative;
 
   & img {
-    @apply cursor-pointer rounded-xl min-h-10 w-fit h-fit max-w-full mx-auto;
+    @apply cursor-pointer rounded-xl min-h-10 max-w-full mx-auto;
   }
 
   & div {
@@ -33,6 +33,6 @@
   }
 
   & img {
-    @apply rounded-xl opacity-0 scale-50 w-fit h-fit max-h-full max-w-full duration-300;
+    @apply rounded-xl opacity-0 scale-50 max-h-full max-w-full duration-300;
   }
 }

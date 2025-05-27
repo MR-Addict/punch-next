@@ -179,8 +179,9 @@ export default function Form() {
               type="checkbox"
               name="useMarkdown"
               id="submitFormUseMarkdown"
-              checked={useMarkdown}
+              className="accent-blue-600"
               onChange={handleUseMarkdown}
+              checked={useMarkdown}
             />
             <p className="select-none text-xs">使用Markdown</p>
           </label>

@@ -9,6 +9,10 @@ import { ViewContextProvider } from "@/contexts/View/ViewProvider";
 import TopNavbar from "@/components/Navbar/TopNavbar/TopNavbar";
 import BottomNavbar from "@/components/Navbar/BottomNavbar/BottomNavbar";
 
+import setMetadata from "@/lib/utils/setMetadata";
+
+export const metadata = setMetadata();
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-Hans">

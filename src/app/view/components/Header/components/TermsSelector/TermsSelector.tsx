@@ -23,12 +23,14 @@ export default function TermsSelector() {
   if (terms === null) return null;
 
   return (
-    <select value={term} className={clsx(style.wrapper, style.select)} onChange={handleChange} aria-label="term">
-      {terms.map((term) => (
-        <option key={term} value={term}>
-          {term}
-        </option>
-      ))}
-    </select>
+    <div className={style.wrapper}>
+      <select value={term} className={style.select} onChange={handleChange} aria-label="term">
+        {terms.map((term) => (
+          <option key={term} value={term}>
+            {term}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }
