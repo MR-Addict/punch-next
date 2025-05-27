@@ -1,21 +1,39 @@
 .wrapper {
-  @apply relative my-4;
-
-  &.preview pre {
-    @apply hidden;
-  }
+  @apply relative;
 }
 
 .btns {
   @apply flex flex-row items-center gap-2.5;
-  @apply z-10 absolute top-0 translate-y-3 right-3;
+  @apply z-10 absolute top-0 translate-y-7 right-3;
 
   & .btn {
     @apply gradient-100 p-1 rounded-md;
+  }
+}
+
+@media (min-width: 640px) {
+  .btns .btn {
     @apply duration-300 scale-75 opacity-0 invisible;
   }
 }
 
+.btn:disabled,
 .wrapper:hover .btn {
   @apply scale-100 opacity-100 visible;
+}
+
+.code-wrapper {
+  @apply flex flex-col gap-1;
+
+  & .connector {
+    @apply mx-auto text-neutral-800;
+  }
+
+  & .preview {
+    background-size: 20px 20px;
+    background-image:
+      linear-gradient(to right, #f0f1f3 1px, transparent 1px), linear-gradient(to bottom, #f0f1f3 1px, transparent 1px);
+
+    @apply p-4 pt-0 bg-white rounded-xl;
+  }
 }

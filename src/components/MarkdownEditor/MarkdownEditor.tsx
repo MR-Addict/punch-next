@@ -3,12 +3,13 @@ import { Dispatch, SetStateAction } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineFullscreenExit } from "react-icons/ai";
 
-import CodeMirror from "@uiw/react-codemirror";
 import { EditorView } from "@codemirror/view";
 import { languages } from "@codemirror/language-data";
-import { BasicSetupOptions } from "@uiw/react-codemirror";
-import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+
+import CodeMirror from "@uiw/react-codemirror";
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import { BasicSetupOptions } from "@uiw/react-codemirror";
 
 import style from "./MarkdownEditor.module.css";
 import useWindowSize from "@/hooks/useWindowSize";

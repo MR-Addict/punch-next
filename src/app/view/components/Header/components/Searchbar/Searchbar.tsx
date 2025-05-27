@@ -31,7 +31,7 @@ export default function Searchbar() {
         placeholder="Search..."
         aria-label="search input"
         name="filter searchKeywords"
-        className="bg-transparent w-full outline-none text-gray-800"
+        className="bg-transparent w-full outline-none text-neutral-800"
         onChange={(e) => handleSetSearchQuery(e.target.value)}
       />
 

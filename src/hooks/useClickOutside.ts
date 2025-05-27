@@ -2,7 +2,7 @@ import { DependencyList, useEffect } from "react";
 
 export function useClickOutside<T extends Element = HTMLDivElement>(
   handler: (event?: MouseEvent | TouchEvent) => void,
-  refs: React.RefObject<T> | React.RefObject<T>[],
+  refs: React.RefObject<T | null> | React.RefObject<T | null>[],
   deps?: DependencyList
 ) {
   useEffect(() => {

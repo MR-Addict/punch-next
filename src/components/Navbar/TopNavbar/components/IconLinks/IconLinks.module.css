@@ -3,7 +3,7 @@
 }
 
 .link {
-  @apply p-1.5 rounded-md duration-200 text-gray-800;
+  @apply p-1.5 rounded-md duration-200 text-neutral-800;
 
   &:hover {
     @apply lg:bg-black/10;

@@ -1,26 +1,70 @@
-import { useMemo, useRef } from "react";
+import { BiHide, BiCheck } from "react-icons/bi";
+import { TbArrowBigDownLines } from "react-icons/tb";
+import { VscOpenPreview, VscCopy } from "react-icons/vsc";
+
+import { useEffect, useRef, useState } from "react";
 
 import style from "./Preview.module.css";
+import copyToClipboard from "@/lib/utils/copyToClipboard";
 
-import CopyButton from "./components/CopyButton/CopyButton";
+import MarkdownRenderer from "@/components/MarkdownRenderer/MarkdownRenderer";
 
 export default function Pre(props: React.ComponentProps<"pre">) {
-  const preRef = useRef<HTMLPreElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const { text } = useMemo(() => {
-    const text = preRef.current?.innerText.replaceAll("\n\n", "\n") || "";
-    return { text };
-  }, [preRef.current]);
+  const [copied, setCopied] = useState(false);
+  const [codeblock, setCodeblock] = useState("");
+
+  const [isPreviewOpen, setIsPreviewOpen] = useState<boolean | null>(null);
+
+  function handleTogglePreview() {
+    setIsPreviewOpen((prev) => !prev);
+  }
+
+  function handleCopy() {
+    const success = copyToClipboard(codeblock);
+    if (success) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }
+
+  useEffect(() => {
+    const pre = wrapperRef.current?.querySelector("pre");
+    const codeblock = pre?.textContent?.trim() ?? "";
+    setCodeblock(codeblock);
+
+    const markdownClasses = ["language-md", "language-markdown"];
+    const isMarkdown = markdownClasses.some((cls) => pre?.classList.contains(cls));
+    setIsPreviewOpen(isMarkdown ? false : null);
+  }, [wrapperRef.current]);
 
   return (
-    <div className={style.wrapper}>
+    <div ref={wrapperRef} className={style.wrapper}>
       <div className={style.btns}>
-        <CopyButton text={text} />
+        {isPreviewOpen !== null && (
+          <button title="预览" type="button" className={style.btn} onClick={handleTogglePreview}>
+            {isPreviewOpen ? <BiHide /> : <VscOpenPreview />}
+          </button>
+        )}
+
+        <button title="复制" type="button" disabled={copied} onClick={handleCopy} className={style.btn}>
+          {copied ? <BiCheck /> : <VscCopy />}
+        </button>
       </div>
 
-      <pre {...props} ref={preRef}>
-        {props.children}
-      </pre>
+      <div className={style["code-wrapper"]}>
+        <pre {...props}>{props.children}</pre>
+
+        {isPreviewOpen && (
+          <>
+            <div className={style.connector}>
+              <TbArrowBigDownLines size={20} />
+            </div>
+            <MarkdownRenderer content={codeblock} className={style.preview} options={{ components: { pre: null } }} />
+          </>
+        )}
+      </div>
     </div>
   );
 }

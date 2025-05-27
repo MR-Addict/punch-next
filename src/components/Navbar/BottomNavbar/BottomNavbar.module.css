@@ -1,5 +1,5 @@
 .links {
-  @apply w-full py-3 border-t border-t-gray-300;
+  @apply w-full py-3 border-t border-t-neutral-300;
   @apply flex flex-row items-center justify-evenly;
 }
 

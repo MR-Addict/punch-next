@@ -29,7 +29,7 @@ function CustomToast() {
   }
 
   return (
-    <p className="text-sm text-gray-800">
+    <p className="text-sm text-neutral-800">
       请确保你已阅读Markdown相关的
       <Link href="/help" className="text-blue-600 underline" onClick={handleClick}>
         帮助文档
@@ -88,7 +88,7 @@ export default function Form() {
           <>
             <Confetti recycle={false} />
             <Message message="恭喜你，笔记提交成功" icon="success" />
-            <p className="text-center text-balance italic text-gray-800 animate-slideFromBottom">
+            <p className="text-center text-balance italic text-neutral-800 animate-slideFromBottom">
               <span>你是今天第</span>
               <span className="font-bold"> {submitIndex.today} </span>
               <span>个提交的人，本学期你共提交了</span>
@@ -114,7 +114,7 @@ export default function Form() {
 
       <header className="w-full space-y-2">
         <h1 className="text-2xl font-semibold border-b-4 border-b-black w-fit">值班笔记</h1>
-        <p className="text-gray-500 border-b border-b-gray-300 italic">"在无聊的时间里就从事学习"</p>
+        <p className="text-neutral-500 border-b border-b-neutral-300 italic">"在无聊的时间里就从事学习"</p>
       </header>
 
       <div className="w-full flex flex-col gap-3">
@@ -159,7 +159,7 @@ export default function Form() {
             />
 
             <div className="flex flex-row items-center justify-between">
-              <p className={clsx("text-xs", content.length > 1000 ? "text-red-600" : "text-gray-600")}>
+              <p className={clsx("text-xs", content.length > 1000 ? "text-red-600" : "text-neutral-600")}>
                 {`${content.length}/1000`}
               </p>
 

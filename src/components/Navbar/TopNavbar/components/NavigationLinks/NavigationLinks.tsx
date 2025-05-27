@@ -23,7 +23,7 @@ export default function NavigationLinks() {
           </li>
         ))}
       </ul>
-      <p className="mr-4 text-gray-300">|</p>
+      <p className="mr-4 text-neutral-300">|</p>
     </div>
   );
 }

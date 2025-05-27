@@ -38,19 +38,15 @@ export default function Note({ note, intervalFomatDate, setIntervalFomatDate }: 
           <span>{note.name}</span>
         </p>
 
-        <Tooltip title="切换日期格式">
-          <button type="button" className={clsx(style.chip, "ml-4 mr-2")} onClick={toggleIntervalFomatDate}>
-            <AiOutlineCalendar />
-            {intervalFomatDate && <span>{timeInterval(note.date)}</span>}
-            {!intervalFomatDate && <span>{formatDate(note.date, false)}</span>}
-          </button>
-        </Tooltip>
+        <button type="button" className={style.chip} onClick={toggleIntervalFomatDate}>
+          <AiOutlineCalendar />
+          {intervalFomatDate && <span>{timeInterval(note.date)}</span>}
+          {!intervalFomatDate && <span>{formatDate(note.date, false)}</span>}
+        </button>
 
-        {note.useMarkdown && (
-          <span className="gradient-600 text-white text-xs rounded-sm h-fit px-1 -translate-y-0.5">Md</span>
-        )}
+        {note.useMarkdown && <span className="gradient-600 text-white text-xs rounded-sm h-fit px-1">Md</span>}
 
-        <Tooltip title="复制">
+        <Tooltip title="复制笔记">
           <button type="button" className={style["copy-btn"]} onClick={handleCopy} aria-label="复制笔记内容">
             <MdOutlineContentCopy className={clsx({ [style.active]: !copied })} />
             <MdOutlineCheck className={clsx(style.check, { [style.active]: copied })} />
@@ -59,7 +55,7 @@ export default function Note({ note, intervalFomatDate, setIntervalFomatDate }: 
       </header>
 
       {note.useMarkdown && <MarkdownRenderer content={note.content} />}
-      {!note.useMarkdown && <p className="whitespace-pre-wrap mt-3 text-gray-800">{note.content}</p>}
+      {!note.useMarkdown && <p className="whitespace-pre-wrap mt-3 text-neutral-800">{note.content}</p>}
     </li>
   );
 }
