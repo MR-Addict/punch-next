@@ -10,7 +10,7 @@ ARG CURRENT_TERM
 ARG MONGODB_URI
 
 RUN echo "module.exports = { output: 'standalone' };" > next.config.js
-RUN npm install && npm run build
+RUN npm install && npm install pnpm -g && pnpm run build
 RUN mv .next/static .next/standalone/.next && mv public .next/standalone
 
 FROM node:18-alpine
