@@ -1,4 +1,4 @@
-FROM node:18-alpine as builder
+FROM node:24-alpine as builder
 WORKDIR /app
 COPY . .
 
@@ -13,7 +13,7 @@ RUN echo "module.exports = { output: 'standalone' };" > next.config.js
 RUN npm install && npm install pnpm -g && pnpm run build
 RUN mv .next/static .next/standalone/.next && mv public .next/standalone
 
-FROM node:18-alpine
+FROM node:24-alpine
 WORKDIR /app
 
 EXPOSE 3000
