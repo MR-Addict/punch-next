@@ -134,7 +134,7 @@ Markdown 是一种轻量级**标记语言**，使用一些简单的标记符号�
 在 Markdown 中，可以使用 `[链接文本](链接地址)` 的方式插入链接。
 
 ```md
-[百度](https://www.bing.com)
+[必应](https://www.bing.com)
 ```
 
 ### 5. 图片

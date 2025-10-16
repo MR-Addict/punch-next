@@ -1,5 +1,4 @@
 import { BiHide, BiCheck } from "react-icons/bi";
-import { TbArrowBigDownLines } from "react-icons/tb";
 import { VscOpenPreview, VscCopy } from "react-icons/vsc";
 
 import { useEffect, useRef, useState } from "react";

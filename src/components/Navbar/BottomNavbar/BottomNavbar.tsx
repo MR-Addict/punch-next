@@ -17,7 +17,6 @@ export default function BottomNavbar() {
           <li key={link.name}>
             <Link href={link.link} className={style.link}>
               {rootPath === link.link && <motion.div layoutId="active-bottom-link" className={style["active-link"]} />}
-              <link.Icon size={20} />
               <p>{link.name}</p>
             </Link>
           </li>
