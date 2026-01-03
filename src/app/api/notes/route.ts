@@ -20,8 +20,14 @@ export async function GET(request: Request) {
 
   // Qury from archived notes
   let res = getArchivedNotes(term, page, pageSize, query);
-  // If the term is current term, query from the database
-  if (term === env.CURRENT_TERM) res = await notes.query(page, pageSize, query);
+  // If the term is current term
+  if (term === env.CURRENT_TERM) {
+    const now = new Date();
+    // Within the start and end date, query from database, otherwise only return archived notes
+    if (now >= env.START_DATE && now <= env.END_DATE) {
+      res = await notes.query(page, pageSize, query);
+    }
+  }
 
   return Response.json(res, { status: res.success ? 200 : res.code });
 }
